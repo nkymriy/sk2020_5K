@@ -12,7 +12,7 @@
 
 ## リンク
 プロジェクトの詳細は以下のリンクから確認してください。
-- [~~コンセプト~~](01.concept/README.md)未作成
+- [コンセプト](01.concept/README.md)
 - [企画](02.paln/README.md)
 - [~~設計~~](03.design/README.md)未作成
 - [~~ソース~~](04.source/README.md)未作成
