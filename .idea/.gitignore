@@ -6,3 +6,5 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+/markdown-navigator.xml
+/markdown-navigator-enh.xml
