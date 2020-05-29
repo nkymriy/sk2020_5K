@@ -25,8 +25,8 @@ idea(アイデア)とunleash(解き放つ)を組み合わせた造語。
 
 ## リンク
 プロジェクトの詳細は以下のリンクから確認してください。
-- [コンセプト](01.concept/README.md)
-- [企画](02.paln/README.md)
-- [~~設計~~](03.design/README.md)未作成
-- [~~ソース~~](04.source/README.md)未作成
-- [~~マニュアル~~](05.manual/README.md)未作成
+- [コンセプト](01.concept/)
+- [企画](02.paln/)
+- [~~設計~~](03.design/)未作成
+- [~~ソース~~](04.source/)未作成
+- [~~マニュアル~~](05.manual/)未作成
