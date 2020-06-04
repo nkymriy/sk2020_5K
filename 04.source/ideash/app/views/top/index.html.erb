@@ -1,2 +1,116 @@
-<h1>Top#index</h1>
-<p>Find me in app/views/top/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Ideash home</title>
+</head>
+<body>
+<!-- 背景緑部分-->
+<div class="top">
+  <div class="seg_1">
+
+    <%= image_tag 'thinkman.png', class: 'image_think_man no_select' %>
+    <div class="backgound_text no_select">
+      Inspiration<br>
+      w/<br>
+      Ideash<br>
+    </div>
+
+    <div class="btns_1">
+      <div class="ui massive buttons btns_1_1">
+        <button class="ui inverted button" onclick="location.href='signin.html'" value="遷移">Sign In</button>
+        <div class="or"></div>
+        <button class="ui black button" onclick="location.href='signup.html'" value="遷移">Sign Up</button>
+      </div>
+    </div>
+  </div>
+  <div class="seg_2">
+    <div class="backgound_text no_select">
+      our Life is<br>
+      Creative.<br>
+      Creativity<br>
+      fr Simple.<br>
+      <%= image_tag 'icon.png', class: 'icon_1' %>
+    </div>
+  </div>
+</div>
+<!-- 背景白部分-->
+<div class="about">
+  <div class="seg_3"><!--　隙間　-->
+    <%= image_tag 'icon_black.png', class: 'icon_2' %>
+  </div>
+  <div class="seg_4">
+    <div class="ui two column grid container"><!-- what is -->
+      <div><!-- スクショ -->
+        <%= image_tag 'index_background.png', class: 'screen' %>
+      </div>
+      <div class="explain"><!-- 説明 -->
+        <div class="ui piled segment">
+          <h2 class="ui header con_1">
+            <i class="comment icon"></i>
+            <div class="content">What is Ideash
+              <div class="sub header">Ideashとは？</div>
+            </div>
+          </h2>
+          <h3 class="ui center aligned header h3 con_2">
+            様々な発想手法を簡単に利用可能にします。<br>
+            そこには紙もペンも必要ありません。<br>
+            ただ目の前にあるPCだけです。<br>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="seg_3"><!--　隙間　-->
+    <%=image_tag 'icon_black.png', class: 'icon_2' %>
+  </div>
+  <div class="seg_5"><!-- how to -->
+    <div class="explain"><!-- 説明 -->
+      <div class="ui two column grid container"><!-- what is -->
+        <div class="explain"><!-- 説明 -->
+          <div class="ui piled segment">
+            <h2 class="ui header con_1">
+              <i class="comment icon"></i>
+              <div class="content">Unleash ideas.
+                <div class="sub header">アイデアを解き放て</div>
+              </div>
+            </h2>
+            <h3 class="ui center aligned header h3 con_2">
+              Ideashは様々なツール（発想手法）を実装予定です<br>
+              それらを使うのに面倒な準備や<br>
+              タイムキーパは必要ありません<br>
+              アイデアの発想に集中することが出来ます<br>
+              <br>
+              オズボーンチェックリスト<br>
+              ブレインストーミング<br>
+              シックスハット法<br>
+              マインドマップ<br>
+              スキャンパー法<br>
+              マンダラート<br>
+              ゴードン法<br>
+              逆設定法<br>
+              KJ法<br>
+              etc..<br>
+              <br>
+              名前も聞いたこと無い？大丈夫！<br>
+              Ideashはツールの使い所や説明に加え<br>
+              分かりやすいチュートリアルも用意します
+
+            </h3>
+          </div>
+        </div>
+        <div><!-- スクショ -->
+          <%=image_tag 'index_background.png',  class:'screen' %>
+        </div>
+      </div>
+    </div>
+    <div><!-- 手順のやつ -->
+
+    </div>
+  </div>
+</div>
+<!--フッター -->
+<footer>
+
+</footer>
+</body>
+</html>
