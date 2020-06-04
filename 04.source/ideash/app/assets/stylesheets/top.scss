@@ -1,3 +1,141 @@
 // Place all the styles related to the top controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "semantic-ui";
+body {
+  font-family: "游ゴシック", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+}
+
+/*みどり部分*/
+.top {
+  background-image: url("index_background.png");
+  background-size: 100% 100%;
+  padding-bottom: 10%;
+}
+
+/*大きい文字(白)*/
+.backgound_text {
+  font-style: normal;
+  font-weight: 900;
+  -webkit-text-stroke: 17px #FFFFFF;
+  font-size: 330px;
+  line-height: 320px;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+
+  width: fit-content;
+  margin: auto;
+
+  /*文字を上に*/
+  position:relative;
+
+}
+
+.image_think_man {
+  position: absolute;
+  right: 0; /*右寄せにする*/
+  overflow: hidden;
+  height: 1500px;
+  top: -10%;
+  filter: blur(4px)
+}
+
+.no_select {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  z-index: 0;
+}
+
+
+/*第1区分*/
+.seg_1 {
+  position: relative;
+}
+
+.btns_1 {
+  width: 80%;
+  /*あとで背景設定したい*/
+}
+
+.btns_1_1 {
+  position: absolute;
+  width: fit-content;
+  top: 50%;
+  left: 40%;
+  z-index: 10;
+}
+
+/*第2区分*/
+.seg_2 {
+  position: relative;
+  padding-top: 30%;
+}
+
+.icon_1 {
+  position: absolute;
+  width: 30%;
+  top: 53%;
+  left: 35%;
+}
+
+/*白になるとこ*/
+
+/*第3区分*/
+.seg_3 {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  text-align: center;
+}
+
+.icon_2 {
+  width: 7%;
+}
+
+/*第4区分*/
+.seg_4 {
+  padding-top: 8%;
+  height: 700px;
+}
+
+.seg_4 .explain {
+  width: fit-content;
+  padding-top: 2%;
+}
+
+.seg_4 .con_1 {
+  width: fit-content;
+  margin: auto;
+}
+
+.seg_4 .con_2 {
+}
+
+.seg_4 .screen {
+  width: 600px;
+  height: 400px;
+}
+
+/*第5区分*/
+.seg_5 {
+  padding-top: 8%;
+  padding-left: 8%;
+  height: 1000px;
+}
+
+.seg_5 .con_1 {
+  width: fit-content;
+  margin: auto;
+}
+
+.seg_5 .con_2 {
+}
+
+.seg_5 .screen {
+  width: 600px;
+  height: 800px;
+}
