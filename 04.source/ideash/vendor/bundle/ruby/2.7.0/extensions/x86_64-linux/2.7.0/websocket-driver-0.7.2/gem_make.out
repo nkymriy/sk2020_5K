@@ -1,0 +1,19 @@
+current directory: /mnt/c/Users/OTYUA/Desktop/sk2020_5K/04.source/ideash/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.2/ext/websocket-driver
+/home/otyua/.rbenv/versions/2.7.1/bin/ruby -I /home/otyua/.rbenv/versions/2.7.1/lib/ruby/2.7.0 -r ./siteconf20200610-16050-1i0aby4.rb extconf.rb
+creating Makefile
+
+current directory: /mnt/c/Users/OTYUA/Desktop/sk2020_5K/04.source/ideash/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.2/ext/websocket-driver
+make "DESTDIR=" clean
+make: Warning: File 'Makefile' has modification time 0.012 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /mnt/c/Users/OTYUA/Desktop/sk2020_5K/04.source/ideash/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.2/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /mnt/c/Users/OTYUA/Desktop/sk2020_5K/04.source/ideash/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.2/ext/websocket-driver
+make "DESTDIR=" install
+make: Warning: File 'websocket_mask.so' has modification time 0.003 s in the future
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20200610-16050-14qzier
+make: warning:  Clock skew detected.  Your build may be incomplete.
