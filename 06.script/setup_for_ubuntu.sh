@@ -1,24 +1,31 @@
-# apt�̃A�b�v�f�[�g
+#yarnをインストールする準備
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt install -y yarn
+
+# aptのアップデート
 sudo apt update && sudo apt upgrade -y
 
-#sqlite3�̃C���X�g�[��
+#sqlite3のインストール
 sudo apt install -y sqlite3 libsqlite3-dev
 
-#rbenv�̃C���X�g�[��
+#rbenvのインストール
 git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
 
-#ruby-build�̃C���X�g�[��
+#ruby-buildのインストール
 git clone git://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
-#�p�X��ʂ�
+#パスを通す
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
 echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 
-#�ݒ��ǂݍ��܂���
+
+
+#設定を読み込ませる
 exec $SHELL -l
 
 
-#ruby���C���X�g�[�����Ďg���o�[�W������ύX����
+#rubyをインストールして使うバージョンを変更する
 rbenv install 2.7.1
 rbenv global 2.7.1
 

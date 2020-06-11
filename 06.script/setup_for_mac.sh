@@ -12,6 +12,10 @@ brew install rbenv
 # rbenvインストール時にruby-buildはインストールされるが、一応実行しておく
 brew install ruby-build
 
+#yarnをインストールする
+brew install yarn
+brew upgrade yarn
+
 # pathを通す
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
 
