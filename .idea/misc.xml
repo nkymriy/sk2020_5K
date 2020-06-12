@@ -3,4 +3,5 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Remote: ruby-2.7.1-p83" project-jdk-type="RUBY_SDK" />
 </project>
