@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ideash.iml" filepath="$PROJECT_DIR$/.idea/modules/ideash.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/sk2020_5K.iml" filepath="$PROJECT_DIR$/.idea/sk2020_5K.iml" />
+    </modules>
+  </component>
+</project>
