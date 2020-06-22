@@ -4,6 +4,36 @@
   <title>Ideash home</title>
 </head>
 <body>
+<%= render 'shared/header' %>
+<%= render 'shared/homemenu' %>
+<%= render 'shared/memomenu' %>
 
+<!-- 1 -->
+<div class="block-center block-memo">
 
+  <!-- 2 -->
+  <div class="memo-contents">
+    <!-- 3 -->
+    <div class="ui header block-center about-contents">
+      <div class="content about-text">
+        発想はまず自分の考えを整理することから<br>
+        思いついたことをmemoしていきましょう
+      </div>
+      <%= image_tag 'thinkman.png', class: 'image_think_man no_select' %>
+    </div>
+    <!-- 4 -->
+    <div class="ui field block-center memo-content">
+      <div class="field">
+        <textarea rows="30" cols="70"></textarea><br>
+      </div>
+    </div>
+    <!-- 5 -->
+    <div class="block-center save-contents">
+      <div class="ui fluid action input">
+        <input type="text" placeholder="メモに名前をつけてください">
+        <button class="ui button">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>

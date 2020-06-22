@@ -1,3 +1,43 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "semantic-ui";
+
+body{
+  font-family: "游ゴシック", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+  position: relative;
+  background-color: #E5E5E5;
+}
+
+/*header*/
+.home-header{
+}
+
+/*homemenu*/
+.to_home_text{
+  color: #00BAB0;
+  font-size: large;
+}
+
+.home-menu-bleak{
+  height: 7%;
+}
+
+/*memomenu*/
+.bleak{
+  height: 5%;
+  margin-bottom: 5%;
+}
+
+.memos .memo-text{
+  font-weight: normal;
+}
+
+.memos .memo-icon{
+  float: right;
+  margin-top: 1%;
+}
+
+.memos .memo-sample{
+  margin-top: -5px;
+}
