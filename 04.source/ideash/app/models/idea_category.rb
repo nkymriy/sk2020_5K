@@ -1,0 +1,2 @@
+class IdeaCategory < ApplicationRecord
+end
