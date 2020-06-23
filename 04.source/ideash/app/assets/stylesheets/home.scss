@@ -19,9 +19,18 @@ body{
   font-size: large;
 }
 
-.home-menu-bleak{
-  height: 7%;
+.menu_icon{
+  width: 15%;
 }
+
+.copyright{
+  position: absolute;
+  color: aliceblue;
+  bottom: 15px;
+  right: 30px;
+}
+
+
 
 /*memomenu*/
 .bleak{
@@ -40,4 +49,47 @@ body{
 
 .memos .memo-sample{
   margin-top: -5px;
+}
+
+/*home*/
+.block-memo{
+  position: absolute;
+  height: 95%;
+  width: 68%;
+  left: 16%;
+  right: 16%;
+  top: 5%;
+}
+
+.block-center{
+  text-align:  center;
+}
+
+/* 2 */
+.memo-contents{
+  width: fit-content;
+  margin: 5% 27%;
+}
+
+/* 3 */
+.about-contents{
+  border: #1b1e21 1px solid;
+  margin: 10% 30%;
+  padding-bottom: 5%;
+}
+
+.about-text{
+}
+
+.about-image{
+}
+
+
+/* 4 */
+.memo-content{
+}
+
+/* 5 */
+.save-contents{
+  margin-top: 5%;
 }
