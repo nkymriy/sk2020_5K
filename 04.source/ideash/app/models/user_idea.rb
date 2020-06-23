@@ -1,0 +1,2 @@
+class UserIdea < ApplicationRecord
+end
