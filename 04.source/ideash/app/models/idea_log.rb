@@ -1,0 +1,2 @@
+class IdeaLog < ApplicationRecord
+end
