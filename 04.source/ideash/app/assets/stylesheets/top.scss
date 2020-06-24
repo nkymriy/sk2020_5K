@@ -11,6 +11,7 @@ body {
   background-image: url("index_background.png");
   background-size: 100% 100%;
   padding-bottom: 10%;
+  padding-top: 2%;
 }
 
 /*大きい文字(白)*/
@@ -33,11 +34,11 @@ body {
 
 .image_think_man {
   position: absolute;
-  right: 0; /*右寄せにする*/
-  overflow: hidden;
-  height: 1500px;
+  right: 0;
   top: -10%;
-  filter: blur(4px)
+  /*overflow: hidden;*/
+  height: 1500px;
+  /*filter: blur(2px)*/
 }
 
 .no_select {
@@ -58,16 +59,23 @@ body {
 }
 
 .btns_1 {
-  width: 80%;
+  position: absolute;
+  width: 25%;
+  height: 19%;
+  text-align: center;
+  padding-top: 3%;
+  top: 43%;
+  left: 37%;
+  z-index: 10;
   /*あとで背景設定したい*/
+  background-color: white;
+  border-radius: 20px;
+  outline:solid 3px #60C3BE;
+  outline-offset: -2em;
 }
 
 .btns_1_1 {
-  position: absolute;
   width: fit-content;
-  top: 50%;
-  left: 40%;
-  z-index: 10;
 }
 
 /*第2区分*/
@@ -78,8 +86,8 @@ body {
 
 .icon_1 {
   position: absolute;
-  width: 30%;
-  top: 53%;
+  width: 25%;
+  top: 37%;
   left: 35%;
 }
 
