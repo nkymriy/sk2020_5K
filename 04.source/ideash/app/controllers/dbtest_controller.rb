@@ -1,0 +1,2 @@
+class DbtestController < ApplicationController
+end
