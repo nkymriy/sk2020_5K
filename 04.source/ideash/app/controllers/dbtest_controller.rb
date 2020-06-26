@@ -1,6 +1,6 @@
 class DbtestController < ApplicationController
 
-  def callertest
+  def index
     @users = User.all
   end
 
