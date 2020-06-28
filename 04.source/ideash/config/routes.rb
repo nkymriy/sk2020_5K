@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
   root 'top#index'
 
+  get 'idea/memo/new' => 'memo#new'
+  get 'idea/memo/show' => 'memo#show'
+  get 'idea/memo/edit' => 'memo#edit'
+
   get 'idea' => 'ideas#home'
   get 'idea/home' => 'ideas#home'
   get 'idea/history' => 'ideas#history'
   get 'idea/category' => 'ideas#category'
+
   get 'account/signin' => 'users#signin'
   get 'account/signup' => 'users#signup'
   get 'account/signout' =>'users#singout'
