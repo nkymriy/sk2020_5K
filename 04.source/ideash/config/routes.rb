@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'top#index'
 
+  get 'idea/brainstorming/new' => 'brainstorming#new'
+  get 'idea/brainstorming/replay' => 'brainstorming#replay'
+  get 'idea/brainstorming/edit' => 'brainstorming#edit'
+
   get 'idea/memo/new' => 'memo#new'
   get 'idea/memo/show' => 'memo#show'
   get 'idea/memo/edit' => 'memo#edit'
