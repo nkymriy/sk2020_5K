@@ -178,6 +178,7 @@ p{
   width: 100%;
   text-align: center;
   padding-top: 10%;
+  padding-bottom: 10%;
   position: relative;
 }
 
@@ -199,5 +200,20 @@ p{
   position: absolute;
   transform: scale(-1, 1);
   left: 15%;
-  top:70%
+  top:49.5%;
+}
+
+/*footer*/
+.footer{
+  width: 100%;
+  height: 17%;
+  background-color: #000000;
+  color: white;
+  text-align: center;
+}
+.footer-menu{
+  padding-top: 2%;
+}
+ul.footer-menu li {
+  display: inline;
 }
