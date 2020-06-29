@@ -109,46 +109,66 @@ body {
   padding-top: 10%;
 }
 
+/*説明部分のCSS*/
+h1{
+  font-size: 450%;
+}
+h2{
+  font-size: 230%;
+  font-weight: lighter;
+}
+p{
+  font-size: 170%;
+  width: 31%;
+  line-height: 150%;
+}
+
+
 /*第4区分*/
-.seg_4 {
-  padding-top: 8%;
-  height: 700px;
+.seg_4{
+  position: relative;
+  padding-top: 10%;
 }
 
-.seg_4 .explain {
-  width: fit-content;
-  padding-top: 2%;
+.seg_4 .headers{
+  margin-left: 17%;
 }
 
-.seg_4 .con_1 {
-  width: fit-content;
-  margin: auto;
+.seg_4 h2{
+
 }
 
-.seg_4 .con_2 {
-}
-
-.seg_4 .screen {
-  width: 600px;
-  height: 400px;
+.seg_4 p{
+  margin-left: 17%;
+  margin-top: 5%;
 }
 
 /*第5区分*/
-.seg_5 {
-  padding-top: 8%;
-  padding-left: 8%;
-  height: 1000px;
+.seg_5{
+  position: relative;
+  padding-top: 32%;
+
 }
 
-.seg_5 .con_1 {
-  width: fit-content;
-  margin: auto;
+.seg_5 .headers{
+  margin-left: 52%;
 }
 
-.seg_5 .con_2 {
+.seg_5 p{
+  margin-left: 52%;
+  margin-top: 5%;
 }
 
-.seg_5 .screen {
-  width: 600px;
-  height: 800px;
+.sample_1{
+  position: absolute;
+  width: 70%;
+  top: 65%;
+  left: 52%;
+}
+
+.sample_2{
+  position: absolute;
+  width: 70%;
+  top: 15%;
+  left: -25%;
 }
