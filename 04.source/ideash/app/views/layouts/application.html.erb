@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>Ideash</title>
+    <%if false %>
+      Viewの先頭に <% content_for(:html_title) { 'Title' } %> でtitleを指定する
+    <%end %>
+    <title><%= content_for?(:html_title) ? yield(:html_title) : "Ideash" %></title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
