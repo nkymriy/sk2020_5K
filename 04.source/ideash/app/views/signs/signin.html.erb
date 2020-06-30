@@ -94,7 +94,7 @@
             <input type="password" name="password" placeholder="Password">
           </div>
         </div>
-        <div class="ui fluid large teal submit button" onclick="location.href='home/index'" value="遷移">Sign In</div>
+        <div class="ui fluid large teal submit button" onclick="location.href='/home/index'" value="遷移">Sign In</div>
       </div>
 
       <div class="ui error message"></div>
@@ -102,7 +102,7 @@
     </form>
 
     <div class="ui message">
-      New to us? <a href="signup/index">Sign Up</a>
+      New to us?   <%= link_to 'Sign Up', :signup_index %>
     </div>
   </div>
 </div>
@@ -206,7 +206,7 @@
             <input type="password" name="password" placeholder="Password">
           </div>
         </div>
-        <div class="ui fluid large teal submit button" onclick="location.href='home.html'" value="遷移">Sign In</div>
+        <div class="ui fluid large teal submit button" onclick="location.href='/home.html'" value="遷移">Sign In</div>
       </div>
 
       <div class="ui error message"></div>
