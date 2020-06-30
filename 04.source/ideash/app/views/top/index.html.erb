@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <title>Ideash home</title>
-</head>
-<body>
+<% content_for(:html_title) { 'top | Ideash' } %>
 <!-- 背景緑部分-->
 <div class="top">
   <div class="seg_1">
@@ -18,10 +13,10 @@
 
     <div class=" btns_1">
       <div class="ui massive buttons btns_1_1">
-        <%= link_to "Sign In", :account_signin, class: "ui teal button"  %>
+        <%= link_to "Sign In", :account_signin, class: "ui teal button" %>
         <div class="or"></div>
-        <%= link_to "Sign Up", :account_signup, class: "ui black button"  %>
-<!--        <h1>Comming soon!</h1> -->
+        <%= link_to "Sign Up", :account_signup, class: "ui black button" %>
+        <!--        <h1>Comming soon!</h1> -->
       </div>
     </div>
   </div>
@@ -85,10 +80,8 @@
 <!-- footer -->
 <div class="footer">
   <ul class="footer-menu">
-  <li>home　｜　</li>
-  <li>about 　｜　</li>
-  <li>service</li>
+    <li>home　｜　</li>
+    <li>about 　｜　</li>
+    <li>service</li>
   </ul>
 </div>
-</body>
-</html>
