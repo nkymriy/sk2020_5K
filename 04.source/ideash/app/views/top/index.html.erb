@@ -69,9 +69,9 @@
     <%= image_tag 'icon_mini.png', class: 'icon' %>
     <div class="btn_2">
       <div class="ui massive buttons btns_2_1">
-        <button class="ui teal button" onclick="location.href='/signin/index'" value="遷移">Sign In</button>
+        <%= link_to "Sign In", :account_signin, class: "ui teal button" %>
         <div class="or"></div>
-        <button class="ui black button" onclick="location.href='/signup/index'" value="遷移">Sign Up</button>
+        <%= link_to "Sign Up", :account_signup, class: "ui black button" %>
       </div>
     </div>
   </div>
