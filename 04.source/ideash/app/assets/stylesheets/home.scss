@@ -1,0 +1,96 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "semantic-ui";
+
+body{
+  font-family: "游ゴシック", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+  position: relative;
+}
+
+/*header*/
+.home-header{
+}
+
+/*homemenu*/
+.to_home_text{
+  color: #00BAB0;
+  font-size: large;
+}
+
+.menu_icon{
+  width: 15%;
+}
+
+.copyright{
+  position: absolute;
+  color: aliceblue;
+  bottom: 15px;
+  right: 30px;
+}
+
+
+
+/*memomenu*/
+.bleak{
+  height: 5%;
+  margin-bottom: 5%;
+}
+
+.memos .memo-text{
+  font-weight: normal;
+}
+
+.memos .memo-icon{
+  float: right;
+  margin-top: 1%;
+}
+
+.memos .memo-sample{
+  margin-top: -5px;
+}
+
+/*home*/
+.block-memo{
+  position: absolute;
+  height: 95%;
+  width: 68%;
+  left: 16%;
+  right: 16%;
+  top: 5%;
+  background-color: #E5E5E5;
+}
+
+.block-center{
+  text-align:  center;
+}
+
+/* 2 */
+.memo-contents{
+  width: fit-content;
+  margin: 5% 27%;
+}
+
+/* 3 */
+.about-contents{
+  border: #1b1e21 1px solid;
+  margin: 10% 30%;
+  padding-bottom: 5%;
+}
+
+.about-text{
+  font-weight: normal;
+}
+
+.about-image{
+}
+
+
+/* 4 */
+.memo-content{
+}
+
+/* 5 */
+.save-contents{
+  margin-top: 5%;
+}
