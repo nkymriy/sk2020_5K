@@ -1,0 +1,13 @@
+<%= form_with model:@user, url:'/dbtest' do |f| %>
+  <p>
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name %>
+  </p>
+
+  <p>
+    <%= f.label :user_mail %>
+    <%= f.text_field :user_mail %>
+  </p>
+
+  <%= f.submit %>
+<% end %>

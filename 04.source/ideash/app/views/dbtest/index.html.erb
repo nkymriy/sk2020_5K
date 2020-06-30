@@ -1,0 +1,10 @@
+<h1>CallerTest</h1>
+<p>
+  現在登録されているユーザーは以下の通りです。
+</p>
+
+<p>
+  <% @users.each do |user| %>
+    [ユーザー名] <%= user.user_name %>, [メールアドレス] <%= user.user_mail %><br />
+  <% end %>
+</p>

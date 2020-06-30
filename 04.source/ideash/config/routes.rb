@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   get 'account/signup' => 'users#signup'
   get 'account/signout' =>'users#singout'
   get 'account/profile_edit' =>'users#edit'
+
+  resources :dbtest
+  resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
