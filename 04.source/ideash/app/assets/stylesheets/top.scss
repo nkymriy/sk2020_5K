@@ -195,16 +195,9 @@ p{
   margin-top: 3%;
 }
 
-.seg_6 .man{
-  width: 20%;
-  position: absolute;
-  transform: scale(-1, 1);
-  left: 15%;
-  top:49.5%;
-}
-
 /*footer*/
 .footer{
+  position: relative;
   width: 100%;
   height: 17%;
   background-color: #000000;
@@ -216,4 +209,12 @@ p{
 }
 ul.footer-menu li {
   display: inline;
+}
+
+.footer .man{
+  width: 20%;
+  position: absolute;
+  transform: scale(-1, 1);
+  left: 15%;
+  bottom:99.5%;
 }
