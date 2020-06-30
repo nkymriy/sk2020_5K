@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_06_23_040554) do
     t.string "user_mail", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_mail"], name: "index_users_on_user_mail", unique: true
   end
 
   add_foreign_key "idea_logs", "ideas"
