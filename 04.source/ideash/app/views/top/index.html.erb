@@ -18,9 +18,9 @@
 
     <div class=" btns_1">
       <div class="ui massive buttons btns_1_1">
-        <button class="ui teal button" onclick="location.href='signin/index'" value="遷移">Sign In</button>
+        <%= link_to "Sign In", :account_signin, class: "ui teal button"  %>
         <div class="or"></div>
-        <button class="ui black button" onclick="location.href='signup/index'" value="遷移">Sign Up</button>
+        <%= link_to "Sign Up", :account_signup, class: "ui black button"  %>
 <!--        <h1>Comming soon!</h1> -->
       </div>
     </div>
