@@ -1,2 +1,32 @@
-<h1>Ideas#home</h1>
-<p>Find me in app/views/ideas/home.html.erb</p>
+<%= render 'shared/header' %>
+<%= render 'shared/homemenu' %>
+<%= render 'shared/memomenu' %>
+
+<!-- 1 -->
+<div class="block-memo block-center">
+
+  <!-- 2 -->
+  <div class="memo-contents block-center">
+    <!-- 3 -->
+    <div class="ui header about-contents">
+      <div class="content about-text">
+        発想はまず自分の考えを整理することから<br>
+        思いついたことをmemoしていきましょう
+      </div>
+      <%= image_tag 'thinkman.png', class: 'about-image'%>
+    </div>
+    <!-- 4 -->
+    <div class="ui field memo-content">
+      <div class="field">
+        <textarea rows="44" cols="70"></textarea><br>
+      </div>
+    </div>
+    <!-- 5 -->
+    <div class="save-contents">
+      <div class="ui fluid action input">
+        <input type="text" placeholder="メモに名前をつけてください">
+        <button class="ui black button">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
