@@ -14,3 +14,7 @@
  *= require_self
  */
 
+body, input, textarea {
+    font-family: 'Roboto', sans-serif;
+}
+
