@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "semantic-ui";
 
+body{
+  background-color: white;
+}
+
 /*みどり部分*/
 .top {
   background-image: url("index_background.png");
@@ -144,7 +148,6 @@ p{
 .seg_5{
   position: relative;
   padding-top: 32%;
-
 }
 
 .seg_5 .headers{
