@@ -54,6 +54,7 @@
 #                  rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  devise_for :users
   root 'top#index'
 
   get 'idea/brainstorming/new' => 'brainstorming#new'

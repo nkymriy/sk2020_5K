@@ -13,6 +13,10 @@
 #  index_users_on_user_mail  (user_mail) UNIQUE
 #
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   has_one :user_logs
   has_many :user_idea
   has_many :idea, through: :user_idea
