@@ -64,5 +64,19 @@ Rails.application.configure do
   #added
   config.web_console.whitelisted_ips = "0.0.0.0/0"
   config.hosts << 'team5.work'
+  #devise用の設定
   config.action_mailer.default_url_options = {host: 'localhost', port: 3000}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      #gmail利用時はaddress,domain,portは下記で固定
+      address: "smtp.gmail.com",
+      domain: 'gmail.com',
+      port: 587,
+      #gmailのユーザアカウント（xxxx@gmail.com)※念のため、credentials.yml.enc行き
+      user_name: ENV['gmail_username'],
+      #gmail２段階認証回避のためにアプリケーションでの利用パスワードを取得、必ずcredentials.yml.endに設定を！！
+      password: ENV['gmail_appkey'],
+      #パスワードをBase64でエンコード
+      authentication: :login
+  }
 end
