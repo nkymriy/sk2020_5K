@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-      registrations: "users/registrations"
+      registrations: "users/registrations",
+      passwords:     'users/passwords',
+      confirmations: 'users/confirmations',
+      sessions:      'users/sessions',
   }
   get 'welcome/index'
   get 'top/index'
