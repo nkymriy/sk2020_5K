@@ -68,6 +68,10 @@ gem 'jquery-rails'
 #dotenv
 gem 'dotenv-rails'
 
+#コーディング規約のチェック
+gem 'rubocop'
+gem 'rubocop-rails'
+
 group :development, :test do
   #rspec-rails テスト用
   gem 'rspec-rails', '~> 4.0'
