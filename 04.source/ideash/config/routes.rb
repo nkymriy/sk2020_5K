@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'idea/brainstorming/edit' => 'brainstorming#edit'
 
   get 'idea/memo/new' => 'memo#new'
+  post 'idea/memo/new' => 'memo#new'
+  post 'idea/memo' => 'memo#create'
   get 'idea/memo/show' => 'memo#show'
   get 'idea/memo/edit' => 'memo#edit'
 
