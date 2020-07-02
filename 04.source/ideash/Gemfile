@@ -44,6 +44,9 @@ group :development do
   #error表示を変更
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  #DBのスキーマを表示してくれる
+  gem 'annotate'
 end
 
 group :test do

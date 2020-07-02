@@ -1,4 +1,23 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# == Schema Information
+#
+# Table name: user_ideas
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  idea_id    :integer
+#  user_id    :integer
+#
+# Indexes
+#
+#  index_user_ideas_on_idea_id  (idea_id)
+#  index_user_ideas_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  idea_id  (idea_id => ideas.id)
+#  user_id  (user_id => users.id)
+#
 
 # This model initially had no columns defined. If you add columns to the
 # model remove the '{}' from the fixture names and add the columns immediately
