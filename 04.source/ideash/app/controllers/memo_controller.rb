@@ -16,5 +16,11 @@ class MemoController < ApplicationController
   end
 
   def edit
+    @memo = Idea.find(params[:id])
+  end
+
+  def update
+    @memo = Idea.find(params[:id])
+    @memo.update(params.require(:idea).permit(:idea_name, :idea_description))
   end
 end

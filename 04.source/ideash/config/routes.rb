@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'idea/memo' => 'memo#create'
   get 'idea/memo/show' => 'memo#show'
   get 'idea/memo/edit' => 'memo#edit'
+  patch '/idea/memo' => 'memo#update'
 
   get 'idea' => 'ideas#home'
   get 'idea/home' => 'ideas#home'
