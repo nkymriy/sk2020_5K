@@ -33,7 +33,8 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-
+  #デフォルトURLの設定
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
@@ -64,5 +65,17 @@ Rails.application.configure do
   #added
   config.web_console.whitelisted_ips = "0.0.0.0/0"
   config.hosts << 'team5.work'
+
+  # mail setting
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :user_name => "ideash.sendmail@gmail.com",
+      :password => "nnvzvfrlpsuuhcml",
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
 
 end
