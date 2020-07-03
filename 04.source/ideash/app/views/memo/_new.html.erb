@@ -1,0 +1,19 @@
+<%= form_with model: @memo, local: true, url: idea_memo_path do |f| %>
+  <%= f.hidden_field :idea_category_id, :value => 1 %>
+
+  <div class="ui field memo-content">
+    <div class="field">
+      <%= f.text_area :idea_description, size: "70x44"%>
+      <!--          <textarea rows="44" cols="70"></textarea><br>-->
+    </div>
+  </div>
+  <!-- 5 -->
+  <div class="save-contents">
+    <div class="ui fluid action input">
+      <%= f.text_field :idea_name, placeholder: "メモに名前をつけてください" %>
+      <!--          <input type="text" placeholder="メモに名前をつけてください">-->
+      <%= f.submit "保存", class: "ui black button" %>
+      <!--          <button class="ui black button">保存</button>-->
+    </div>
+  </div>
+<% end %>
