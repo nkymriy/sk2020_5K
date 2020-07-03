@@ -60,7 +60,6 @@ Rails.application.routes.draw do
       confirmations: 'users/confirmations',
       sessions:      'users/sessions',
   }
-  get 'welcome/index'
   root 'top#index'
 
   get 'idea/brainstorming/new' => 'brainstorming#new'
