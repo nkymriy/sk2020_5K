@@ -4,7 +4,8 @@ class MemoController < ApplicationController
   end
 
   def create
-    @memo = Idea.new(params.require(:idea).permit(:idea_category_id, :idea_name, :idea_description))
+    # @memo = Idea.new(params.require(:idea).permit(:idea_category_id, :idea_name, :idea_description))
+    @memo = Idea.new(params.permit(:idea_category_id, :idea_name, :idea_description))
     if @memo.save
       # redirect_to :dbtest_index
     else
