@@ -12,8 +12,8 @@
     <div class="ui fluid action input">
       <%= f.text_field :idea_name, placeholder: "メモに名前をつけてください" %>
       <!--          <input type="text" placeholder="メモに名前をつけてください">-->
-      <%= f.submit "保存", class: "ui black button" %>
-      <!--          <button class="ui black button">保存</button>-->
+      <%#= f.submit "保存", class: "ui black button" %>
+      <%=button_tag '保存',class: "ui black button", type: 'submit'%>
     </div>
   </div>
 <% end %>
