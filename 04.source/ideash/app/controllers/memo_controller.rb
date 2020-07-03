@@ -13,6 +13,7 @@ class MemoController < ApplicationController
   end
 
   def show
+    @memo = Idea.find(params[:id])
   end
 
   def edit

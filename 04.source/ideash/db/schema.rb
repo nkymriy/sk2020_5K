@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2020_06_23_040554) do
     t.string "idea_category_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["idea_category_name"], name: "index_idea_categories_on_idea_category_name", unique: true
   end
 
   create_table "idea_logs", force: :cascade do |t|
