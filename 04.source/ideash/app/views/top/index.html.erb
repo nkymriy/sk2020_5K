@@ -10,7 +10,11 @@
       w/<br>
       Ideash<br>
     </div>
-
+    <h1>Hello!Rails!</h1>
+    <%= link_to '移動', welcome_index_path %>
+    <%= link_to '移動', '/welcome/index' %>
+    <%= link_to "サインイン", new_user_registration_path %> |
+    <%= link_to "ログイン", new_user_session_path %>
     <div class=" btns_1">
       <div class="ui massive buttons btns_1_1">
         <%= link_to "Sign In", :account_signin, class: "ui teal button" %>
@@ -48,6 +52,7 @@
       専用の用紙やホワイトボードなど面倒な準備は一切必要ありません。シンプルな画面に従って作業を行うだけでクリエイティブな人生を送れるようになります。</p>
     <%= image_tag 'top_sample_1.png', class: 'sample_1' %>
   </div>
+
 
   <div class="seg_5">
     <div class="headers">
