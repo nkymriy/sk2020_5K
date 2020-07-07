@@ -5,15 +5,12 @@ body {
 }
 
 /*header*/
-.home-header{
+.to_home_text{
+  color: teal;
+  font-size: larger;
 }
 
 /*homemenu*/
-.to_home_text{
-  color: #00BAB0;
-  font-size: large;
-}
-
 .menu_icon{
   width: 15%;
 }
@@ -44,5 +41,48 @@ body {
 
 .memos .memo-sample{
   margin-top: -5px;
+}
+
+/*editmenu*/
+.block-edit-sidebar ul {
+  list-style: none;
+  line-height: 1.5;
+  font-size: large;
+}
+
+.explain-list{
+  color: #999999;
+}
+.explain .bold{
+  color: #1B1C1D;
+}
+
+.timer{
+  height: 10%;
+  padding-top: 0;
+  font-size: 400%;
+  background-color: #1B1C1D;
+}
+.explain{
+  height: 17%;
+}
+.participant{
+  height: 17%;
+}
+.memo{
+  height: 56%;
+}
+
+.header-text{
+  font-size: large;
+  font-weight: bolder;
+}
+
+
+
+.memo-content{
+  margin: 5%;
+  width: 90%;
+  height: 90%;
 }
 

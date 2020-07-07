@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'top#index'
+  root 'brainstorming#edit'
 
   get 'idea/brainstorming/new' => 'brainstorming#new'
   get 'idea/brainstorming/replay' => 'brainstorming#replay'
