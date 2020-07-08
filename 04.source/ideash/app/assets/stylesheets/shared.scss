@@ -4,6 +4,15 @@ body {
   font-family: "游ゴシック", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
 }
 
+/*body*/
+.home_body{
+  border: fuchsia solid 1px;
+  margin-left: 16%;
+  margin-right: 16%;
+  padding: 1% 2%;
+  height: 80%;
+}
+
 /*header*/
 .to_home_text{
   color: teal;
