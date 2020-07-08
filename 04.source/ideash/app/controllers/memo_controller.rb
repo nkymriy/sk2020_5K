@@ -1,4 +1,11 @@
 class MemoController < ApplicationController
+
+  def index
+    # @memo = Idea.all
+    @user = User.find_by(id: params[:id])
+    @memo = @user.idea
+  end
+
   def new
     @memo = Idea.new
   end
