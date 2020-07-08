@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <%if false %>
-      Viewの先頭に <% content_for(:html_title) { 'Title' } %> でtitleを指定する
-    <%end %>
-    <title><%= content_for?(:html_title) ? yield(:html_title) : "Ideash" %></title>
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170879736-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
 
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+      function gtag() {
+          dataLayer.push(arguments);
+      }
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      gtag('js', new Date());
 
-  </head>
+      gtag('config', 'UA-170879736-1');
+  </script>
 
-  <body>
+  <%# <% content_for(:html_title) { 'Title' } \%\> でtitleを指定する%>
+  <title><%= content_for?(:html_title) ? yield(:html_title) : "Ideash" %></title>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</head>
+
+<body>
+<% if Rails.env.development? %>
+  <%= render 'shared/debug_sidemenu' %>
+  <div class="pusher">
     <%= yield %>
-  </body>
+  </div>
+<% else %>
+  <%= yield %>
+
+<% end %>
+<%# TODO: パーシャルに移動させる %>
+<%# <p class="notice"><%#= notice % ></p> %>
+<%# <p class="alert"><%#= alert % ></p> %>
+</body>
 </html>

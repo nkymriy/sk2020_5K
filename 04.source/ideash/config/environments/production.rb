@@ -20,7 +20,8 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  # config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = true
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
@@ -109,4 +110,26 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  #added
+  config.hosts << 'team5.work'
+  config.hosts << 'localhost'
+  #devise用の設定
+  #   #Action_mailerのデフォルトURLの設定
+  #   # config.action_mailer.default_url_options = { host: 'team5.work'}
+  config.action_mailer.default_url_options = {host: 'localhost', port: 3000}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      #gmail利用時はaddress,domain,portは下記で固定
+      address: "smtp.gmail.com",
+      domain: 'gmail.com',
+      port: 587,
+      #gmailのユーザアカウント（xxxx@gmail.com)※念のため、credentials.yml.enc行き
+      user_name: ENV['gmail_username'],
+      #gmail２段階認証回避のためにアプリケーションでの利用パスワードを取得、必ずcredentials.yml.endに設定を！！
+      password: ENV['gmail_appkey'],
+      #パスワードをBase64でエンコード
+      authentication: :login,
+      :enable_starttls_auto => true
+  }
 end
