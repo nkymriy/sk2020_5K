@@ -1,0 +1,20 @@
+<!-- サイドバーメニュー -->
+<div class="ui sidebar inverted vertical menu">
+  <a class="item">デバッグメニュー</a>
+  <a class="item">ログイン状態:<%= user_signed_in? %></a>
+  <%= link_to "サインアウト", :account_signout, class: 'item' %>
+
+
+</div>
+
+<script>
+    $('body').keydown(function (e) {
+        // alert(JSON.stringify(e.keyCode))
+        // Shift + d を入力するとデバッグメニューを表示する
+        if (e.shiftKey) {
+            if (e.keyCode === 68) {
+                $('.ui.sidebar').modal('show');
+            }
+        }
+    });
+</script>
