@@ -87,16 +87,19 @@ Rails.application.routes.draw do
   get 'idea/category' => 'ideas#category'
 
   devise_for :users, controllers: {
-      registrations: "users/registrations",
-      passwords: 'users/passwords',
+      #     registrations: "users/registrations",
+      #     passwords: 'users/passwords',
       confirmations: 'users/confirmations',
-      sessions: 'users/sessions',
+      #     sessions: 'users/sessions',
   }
+  devise_for :users, skip: :all
   devise_scope :user do
     get 'account/signin' => 'users/sessions#new'
-    get 'account/signup' => 'users/registration#signup'
-    get 'account/signout' =>'users/sessions#destroy'
-    get 'account/profile_edit' =>'users/edit'
+    post 'account/signin' => 'users/sessions#create'
+    get 'account/signup' => 'users/registrations#new'
+    post 'account/signup' => 'users/registrations#create'
+    get 'account/signout' => 'users/sessions#destroy'
+    get 'account/profile_edit' => 'users/edit'
   end
 
   resources :dbtest
