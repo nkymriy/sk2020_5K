@@ -50,11 +50,9 @@ body {
   font-size: large;
 }
 
-.explain-list{
-  color: #999999;
-}
-.explain .bold{
-  color: #1B1C1D;
+.header-text{
+  font-size: large;
+  font-weight: bolder;
 }
 
 .timer{
@@ -63,19 +61,27 @@ body {
   font-size: 400%;
   background-color: #1B1C1D;
 }
+
 .explain{
   height: 17%;
 }
+.explain-list{
+  color: #999999;
+}
+.explain .bold{
+  color: #1B1C1D;
+}
+
 .participant{
   height: 17%;
 }
-.memo{
-  height: 56%;
+.member{
+  height: 80%;
+  overflow: auto;
 }
 
-.header-text{
-  font-size: large;
-  font-weight: bolder;
+.memo{
+  height: 56%;
 }
 
 
