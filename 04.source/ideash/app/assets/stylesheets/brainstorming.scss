@@ -1,3 +1,46 @@
 // Place all the styles related to the Brainstorming controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.block-tech-about{
+  position: absolute;
+  top: 1%;
+  left:28%;
+  width: 45%;
+}
+
+.techname{
+  font-weight: bold;
+  font-size: x-large;
+  padding: 2% 0;
+}
+
+.block-tech-about .explain{
+  list-style: none;
+  line-height: 1.5;
+  font-size: large;
+}
+
+.block-tech-about ul {
+  list-style: none;
+  line-height: 1.5;
+  font-size: large;
+}
+
+.block-tech-about .header-text {
+  padding-left: 2%;
+}
+
+.participant-invitation{
+  font-weight: normal;
+  color: teal;
+}
+.block-tech-about .participant{
+  margin-top: -1%;
+  height: 120px;
+  overflow: auto;
+}
+
+.start-button{
+  margin: 5%;
+}
