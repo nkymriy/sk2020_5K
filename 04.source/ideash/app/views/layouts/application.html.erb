@@ -15,10 +15,7 @@
       gtag('config', 'UA-170879736-1');
   </script>
 
-  <% if false %>
-    Viewの先頭に
-    <% content_for(:html_title) { 'Title' } %> でtitleを指定する
-  <% end %>
+  <%# <% content_for(:html_title) { 'Title' } \%\> でtitleを指定する%>
   <title><%= content_for?(:html_title) ? yield(:html_title) : "Ideash" %></title>
 
   <%= csrf_meta_tags %>
@@ -30,8 +27,17 @@
 </head>
 
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+<% if Rails.env.development? %>
+  <%= render 'shared/debug_sidemenu' %>
+  <div class="pusher">
+    <%= yield %>
+  </div>
+<% else %>
+  <%= yield %>
+
+<% end %>
+<%# TODO: パーシャルに移動させる %>
+<%# <p class="notice"><%#= notice % ></p> %>
+<%# <p class="alert"><%#= alert % ></p> %>
 </body>
 </html>
