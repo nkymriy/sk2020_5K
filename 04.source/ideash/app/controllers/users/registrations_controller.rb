@@ -51,12 +51,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    # super(resource)
+    logger.debug("after_sign_up")
+    :idea_home
+  end
 
   # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_inactive_sign_up_path_for(resource)
+    # super(resource)
+    :account_signin
+  end
+
+  # サインイン時にサインアップを開いたときのリダイレクト先
+  def after_sign_in_path_for(resoure)
+    :idea_home
+  end
+
 end
