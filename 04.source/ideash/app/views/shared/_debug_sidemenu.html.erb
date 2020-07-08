@@ -1,8 +1,18 @@
 <!-- サイドバーメニュー -->
 <div class="ui sidebar inverted vertical menu">
-  <a class="item">デバッグメニュー</a>
-  <a class="item">ログイン状態:<%= user_signed_in? %></a>
-  <%= link_to "サインアウト", :account_signout, class: 'item' %>
+  <a class="active purple item">デバッグメニュー</a>
+  <a class="ui item">ユーザID:
+    <% if user_signed_in? %>
+      <%= current_user.id %>
+    <% else %>
+      未ログイン
+    <% end %>
+  </a>
+  <% if user_signed_in? %>
+    <%= link_to "サインアウト", :account_signout, class: 'active red item' %>
+  <% else %>
+    <%= link_to "サインイン", :account_signin, class: 'active blue item' %>
+  <% end %>
 
 
 </div>
