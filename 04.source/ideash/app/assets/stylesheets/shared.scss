@@ -65,9 +65,19 @@ body {
 
 .timer{
   height: 10%;
-  padding-top: 0;
-  font-size: 400%;
-  background-color: #1B1C1D;
+  font-size: xx-large;
+  font-weight: bold;
+  overflow: hidden;
+
+}
+.timer_min,.timer_sec{
+  float: left;
+}
+.timer_min{
+  margin: 5%;
+}
+.timer_sec{
+  margin-top: 5%;
 }
 
 .explain{
