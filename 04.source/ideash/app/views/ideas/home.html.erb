@@ -1,32 +1,52 @@
 <%= render 'shared/header' %>
 <%= render 'shared/homemenu' %>
-<%= render 'shared/memomenu' %>
 
-<!-- 1 -->
-<div class="block-memo block-center">
-
-  <!-- 2 -->
-  <div class="memo-contents block-center">
-    <!-- 3 -->
-    <div class="ui header about-contents">
-      <div class="content about-text">
-        発想はまず自分の考えを整理することから<br>
-        思いついたことをmemoしていきましょう
+<div class="home_body">
+  <div class="seg_1">
+    <h2 class="headline">Create New</h2>
+    <div class="ui four column grid">
+      <div class="column">
+        <a href="05_new.html"><div class="card"></div></a>
       </div>
-      <%= image_tag 'thinkman.png', class: 'about-image'%>
-    </div>
-    <!-- 4 -->
-    <div class="ui field memo-content">
-      <div class="field">
-        <textarea rows="44" cols="70"></textarea><br>
+      <div class="column">
+        <div class="card"></div>
+      </div>
+      <div class="column">
+        <div class="card"></div>
+      </div>
+      <div class="column">
+        <div class="card"></div>
       </div>
     </div>
-    <!-- 5 -->
-    <div class="save-contents">
-      <div class="ui fluid action input">
-        <input type="text" placeholder="メモに名前をつけてください">
-        <button class="ui black button">保存</button>
+    <div class="more"><a href="07_look_new.html"><h2>more ...</h2></a></div>
+  </div>
+  <div class="seg_2">
+    <h2 class="headline">Recent Creation</h2>
+    <div class="ui four column grid">
+      <div class="column">
+        <a href="05_new.html"><div class="card"></div></a>
+      </div>
+      <div class="column">
+        <div class="card"></div>
+      </div>
+      <div class="column">
+        <div class="card"></div>
+      </div>
+      <div class="column">
+        <div class="card"></div>
       </div>
     </div>
+    <div class="more"><a href="07_look_history.html"><h2>more ...</h2></a></div>
+  </div>
+  <div class="ui leaderboard ad">
+    <!-- Leaderboard
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXXXXXXXX"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    !-->
   </div>
 </div>

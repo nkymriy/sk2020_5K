@@ -1,3 +1,57 @@
 // Place all the styles related to the Ideas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.seg_1{
+  border: #1b1e21 1px solid;
+  height: 55%;
+}
+.seg_1 .card{
+  background-color: #1b1e21;
+  height: 270px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.seg_2{
+  border: #1b1e21 1px solid;
+  height: 45%;
+}
+.seg_2 .card{
+  border: #1b1e21 1px solid;
+  height: 200px;
+  width: 90%;
+  border-radius: 10px;
+}
+
+.more{
+  /*border: #1b1e21 1px solid;*/
+  width: fit-content;
+}.seg_1{
+   border: #1b1e21 1px solid;
+   height: 55%;
+   padding: 2% 6%;
+ }
+.seg_1 .card{
+  background-color: #1b1e21;
+  height: 270px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.seg_2{
+  border: #1b1e21 1px solid;
+  height: 45%;
+  padding: 2% 6%;
+}
+.seg_2 .card{
+  border: #1b1e21 1px solid;
+  height: 200px;
+  width: 90%;
+  border-radius: 10px;
+}
+
+.more{
+  /*border: #1b1e21 1px solid;*/
+  width: fit-content;
+}
