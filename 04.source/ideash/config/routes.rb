@@ -12,27 +12,33 @@
 #                             idea_home GET    /idea/home(.:format)                                                                     ideas#home
 #                          idea_history GET    /idea/history(.:format)                                                                  ideas#history
 #                         idea_category GET    /idea/category(.:format)                                                                 ideas#category
-#                      new_user_session GET    /users/sign_in(.:format)                                                                 sessions#new
-#                          user_session POST   /users/sign_in(.:format)                                                                 sessions#create
-#                  destroy_user_session DELETE /users/sign_out(.:format)                                                                sessions#destroy
-#                     new_user_password GET    /users/password/new(.:format)                                                            passwords#new
-#                    edit_user_password GET    /users/password/edit(.:format)                                                           passwords#edit
-#                         user_password PATCH  /users/password(.:format)                                                                passwords#update
-#                                       PUT    /users/password(.:format)                                                                passwords#update
-#                                       POST   /users/password(.:format)                                                                passwords#create
-#              cancel_user_registration GET    /users/cancel(.:format)                                                                  registrations#cancel
-#                 new_user_registration GET    /users/sign_up(.:format)                                                                 registrations#new
-#                edit_user_registration GET    /users/edit(.:format)                                                                    registrations#edit
-#                     user_registration PATCH  /users(.:format)                                                                         registrations#update
-#                                       PUT    /users(.:format)                                                                         registrations#update
-#                                       DELETE /users(.:format)                                                                         registrations#destroy
-#                                       POST   /users(.:format)                                                                         registrations#create
-#                 new_user_confirmation GET    /users/confirmation/new(.:format)                                                        confirmations#new
-#                     user_confirmation GET    /users/confirmation(.:format)                                                            confirmations#show
-#                                       POST   /users/confirmation(.:format)                                                            confirmations#create
+#                      new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
+#                          user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
+#                  destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
+#                     new_user_password GET    /users/password/new(.:format)                                                            devise/passwords#new
+#                    edit_user_password GET    /users/password/edit(.:format)                                                           devise/passwords#edit
+#                         user_password PATCH  /users/password(.:format)                                                                devise/passwords#update
+#                                       PUT    /users/password(.:format)                                                                devise/passwords#update
+#                                       POST   /users/password(.:format)                                                                devise/passwords#create
+#              cancel_user_registration GET    /users/cancel(.:format)                                                                  devise/registrations#cancel
+#                 new_user_registration GET    /users/sign_up(.:format)                                                                 devise/registrations#new
+#                edit_user_registration GET    /users/edit(.:format)                                                                    devise/registrations#edit
+#                     user_registration PATCH  /users(.:format)                                                                         devise/registrations#update
+#                                       PUT    /users(.:format)                                                                         devise/registrations#update
+#                                       DELETE /users(.:format)                                                                         devise/registrations#destroy
+#                                       POST   /users(.:format)                                                                         devise/registrations#create
+#                 new_user_confirmation GET    /users/confirmation/new(.:format)                                                        users/confirmations#new
+#                     user_confirmation GET    /users/confirmation(.:format)                                                            users/confirmations#show
+#                                       POST   /users/confirmation(.:format)                                                            users/confirmations#create
 #                       new_user_unlock GET    /users/unlock/new(.:format)                                                              devise/unlocks#new
 #                           user_unlock GET    /users/unlock(.:format)                                                                  devise/unlocks#show
 #                                       POST   /users/unlock(.:format)                                                                  devise/unlocks#create
+#                        account_signin GET    /account/signin(.:format)                                                                users/sessions#new
+#                                       POST   /account/signin(.:format)                                                                users/sessions#create
+#                        account_signup GET    /account/signup(.:format)                                                                users/registrations#new
+#                                       POST   /account/signup(.:format)                                                                users/registrations#create
+#                       account_signout GET    /account/signout(.:format)                                                               users/sessions#destroy
+#                  account_profile_edit GET    /account/profile_edit(.:format)                                                          account#profile_edit
 #                          dbtest_index GET    /dbtest(.:format)                                                                        dbtest#index
 #                                       POST   /dbtest(.:format)                                                                        dbtest#create
 #                            new_dbtest GET    /dbtest/new(.:format)                                                                    dbtest#new
