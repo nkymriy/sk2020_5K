@@ -46,6 +46,23 @@
 }
 
 /*process1*/
+.theme{
+  background-color: white;
+  font-size: x-large;
+  border-radius: 15px;
+  padding: 2%;
+  margin-bottom: 3%;
+}
+
 .ideas{
-  height: 60%;
+  height: 750px;
+  overflow: auto;
+}
+.idea{
+  font-size: larger;
+  height: 100px;
+}
+
+.post_idea{
+  margin-bottom: 3%;
 }
