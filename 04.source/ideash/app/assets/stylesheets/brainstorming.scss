@@ -75,3 +75,36 @@
   height: 800px;
   overflow: auto;
 }
+
+/*process3*/
+.process3_contents{
+  width: 100%;
+  overflow: hidden;
+}
+.group-contents{
+  height: 800px;
+  width: 80%;
+  padding: 2%;
+
+  float: left;
+  overflow: auto;
+}
+.idea-contents{
+  height: 800px;
+  width: 20%;
+  padding: 2%;
+
+  float: left;
+  overflow: auto;
+}
+
+.group{
+  height: 350px;
+  background-color: white;
+  padding: 1%;
+}
+
+.idea-contents .idea{
+  height: fit-content;
+  margin-bottom: 5%;
+}
