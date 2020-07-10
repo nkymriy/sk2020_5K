@@ -1,2 +1,28 @@
 <h1>Memo#edit</h1>
 <p>Find me in app/views/memo/edit.html.erb</p>
+
+<%#= form_with model: @memo, local: true, url: idea_memo_path(@memo.id) do |f| %>
+<%= form_with model: @memo, local: true, url: "/idea/memo?id=#{@memo.id}" do |f| %>
+
+  <% if @memo.errors.any? %>
+    <h3>入力した内容にエラーが<%= @memo.errors.count %>件あります</h3>
+    <ul>
+      <% @memo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <%= f.label :idea_name %>
+    <%= f.text_field :idea_name %>
+  </p>
+
+  <p>
+    <%= f.label :idea_description %>
+    <%= f.text_field :idea_description %>
+  </p>
+
+  <%= f.submit %>
+
+<% end %>

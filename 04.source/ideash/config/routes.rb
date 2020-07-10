@@ -76,8 +76,14 @@ Rails.application.routes.draw do
   get 'idea/brainstorming/edit' => 'brainstorming#edit'
 
   get 'idea/memo/new' => 'memo#new'
+  post 'idea/memo/new' => 'memo#new'
+  post 'idea/memo' => 'memo#create'
   get 'idea/memo/show' => 'memo#show'
   get 'idea/memo/edit' => 'memo#edit'
+  patch '/idea/memo' => 'memo#update'
+
+  # 仲 メモのindexによる一覧表示のテスト用
+  # get 'idea/memo' => 'memo#index'
 
   get 'idea' => 'ideas#home'
   get 'idea/home' => 'ideas#home'
