@@ -1,28 +1,22 @@
-<!-- 1 -->
-<div class="ui right fixed vertical menu block-main-sidebar">
-  <div class="ui bleak black segment">
-  </div>
-
   <a href="">
     <div class="item memos">
       <div class="ui header details">
         <div class="content memo-text">
-          卒業研究に向けての案
-<!--          この文字数が最大-->
+          <%= memo.idea_name %>
+          <!--        卒業研究に向けての案-->
+          <!--          この文字数が最大-->
           <div class="sub header memo-date">
-            2020-06-16
+            <%= memo.updated_at %>
+            <!--          2020-06-16-->
           </div>
         </div>
         <i class="universal access icon memo-icon"></i>
       </div>
       <div class="memo-sample">
-        メモの内容を一部表示する
-        この文字数が最大
+        <%= memo.idea_description %>
+        <!--      メモの内容を一部表示する-->
+        <!--      この文字数が最大-->
       </div>
     </div>
     <div class="ui divider"></div>
   </a>
-
-  <%#= render template: 'memo/index', layout: 'memo/index' %>
-
-</div>
