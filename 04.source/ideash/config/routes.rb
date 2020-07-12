@@ -52,9 +52,9 @@ Rails.application.routes.draw do
     post 'account/signup' => 'users/registrations#create'
     get 'account/signout' => 'users/sessions#destroy'
     get 'account/profile_edit' => 'users/edit'
-    get 'user/confirmation/new' => 'users/confirmation#new'
-    get 'user/confirmation' => 'users/confirmation#show'
-    post 'user/confirmation' => 'users/confirmation#create'
+    get 'user/confirmation/new' => 'users/confirmations#new'
+    get 'user/confirmation' => 'users/confirmations#show'
+    post 'user/confirmation' => 'users/confirmations#create'
   end
 
   # ユーザのホーム画面
