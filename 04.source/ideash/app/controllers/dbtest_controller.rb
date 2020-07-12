@@ -9,7 +9,7 @@ class DbtestController < ApplicationController
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:user_name, :user_mail))
+    @user = User.new(params.require(:user).permit(:user_name, :email))
     if @user.save
       redirect_to :dbtest_index
     else
