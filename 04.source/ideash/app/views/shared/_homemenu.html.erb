@@ -1,13 +1,31 @@
-<div class="ui left fixed vertical inverted menu">
+<div style="height: 45px"></div>
+<div class="ui fixed  inverted menu">
+<!--  <div class="menu">-->
+    <div id="toggler" class="item"><i class="icon large grey content"></i></div>
+    <%#= image_tag 'icon_mini.png', class: 'ui mini imag menu_icon', id:'toggler' %>
+<!--  </div>-->
+</div>
+<div class="ui sidebar inverted vertical menu">
   <div class="item">
     <%= image_tag 'icon_mini.png', class: 'ui mini imag menu_icon' %>
   </div>
 
-  <a class="item home-menu" href="07_look_new.html">新規作成</a>
-  <a class="item home-menu" href="05_new.html">ブレインストーミング</a>
-  <a class="item home-menu" href="07_look_history.html">履歴</a>
-  <a class="item home-menu" href="08_setting.html">アカウント</a>
-  <a class="item home-menu" href="02_signin.html">サインアウト</a>
+  <a class="item home-menu" href="#">新規作成</a>
+  <a class="item home-menu" href="#">ブレインストーミング</a>
+  <a class="item home-menu" href="#">履歴</a>
+  <a class="item home-menu" href="#">アカウント</a>
+  <a class="item home-menu" href="#">サインアウト</a>
 
   <small class="copyright">© 2020 by KUGATech team 5K</small>
 </div>
+<!--上部メニュー-->
+<!--<div class="ui black center aligned segment" style="margin-top: 0">-->
+<%#= link_to 'Ideash', :root ,:class => "to_home_text"%>
+<!--</div>-->
+
+
+<script>
+    $('#toggler').on('click', function () {
+        $('.ui.sidebar').sidebar('toggle');
+    });
+</script>
