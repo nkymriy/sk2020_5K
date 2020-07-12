@@ -1,8 +1,8 @@
 class MemoController < ApplicationController
   def new
+    get_user_memos
     @memo = Idea.new
-    @user = User.find_by(id: current_user.id)
-    @user_memo = @user.idea
+    @info_message = params[:info_message]
   end
 
   def create
@@ -17,10 +17,9 @@ class MemoController < ApplicationController
       logger.debug "params => #{new_idea}"
     end
     if user.save!
-      logger.debug "save success!!"
-      redirect_to idea_memo_new_path
+      redirect_to idea_memo_new_path(info_message: "メモを保存しました。")
     else
-      render :new
+      redirect_to idea_memo_new_path(info_message: "メモの保存に失敗しました。再度やり直してください。")
     end
   end
 
@@ -29,11 +28,27 @@ class MemoController < ApplicationController
   end
 
   def edit
+    get_user_memos
     @memo = Idea.find(params[:id])
+    if @memo.user.ids[0] != current_user.id
+      redirect_to idea_memo_new_path
+    end
+
   end
 
   def update
     @memo = Idea.find(params[:id])
+    if @memo.user.ids[0] != current_user.id
+      redirect_to idea_memo_new_path
+    end
     @memo.update(params.require(:idea).permit(:idea_name, :idea_description))
+    redirect_to idea_memo_new_path(info_message: "メモを更新しました")
+  end
+
+  protected
+
+  def get_user_memos
+    user = User.find_by(id: current_user.id)
+    @user_memo = user.idea
   end
 end
