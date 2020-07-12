@@ -8,9 +8,8 @@
 #                                       POST   /account/signup(.:format)                                                                users/registrations#create
 #                       account_signout GET    /account/signout(.:format)                                                               users/sessions#destroy
 #                  account_profile_edit GET    /account/profile_edit(.:format)                                                          account#profile_edit
-#                 user_confirmation_new GET    /user/confirmation/new(.:format)                                                         users/confirmation#new
-#                     user_confirmation GET    /user/confirmation(.:format)                                                             users/confirmation#show
-#                                       POST   /user/confirmation(.:format)                                                             users/confirmation#create
+#                     user_confirmation GET    /user/confirmation(.:format)                                                             users/confirmations#show
+#                                       POST   /user/confirmation(.:format)                                                             users/confirmations#create
 #                                  idea GET    /idea(.:format)                                                                          memo#new
 #                             idea_home GET    /idea/home(.:format)                                                                     memo#new
 #                         idea_memo_new GET    /idea/memo/new(.:format)                                                                 memo#new
@@ -52,7 +51,7 @@ Rails.application.routes.draw do
     post 'account/signup' => 'users/registrations#create'
     get 'account/signout' => 'users/sessions#destroy'
     get 'account/profile_edit' => 'users/edit'
-    get 'user/confirmation/new' => 'users/confirmations#new'
+    # get 'user/confirmation/new' => 'users/confirmations#new'
     get 'user/confirmation' => 'users/confirmations#show'
     post 'user/confirmation' => 'users/confirmations#create'
   end
