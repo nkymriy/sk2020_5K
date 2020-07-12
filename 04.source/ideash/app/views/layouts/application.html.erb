@@ -28,10 +28,10 @@
 
 <body>
 <% if Rails.env.development? %>
-  <%= render 'shared/debug_sidemenu' %>
-  <div class="pusher">
+  <%= render 'shared/debug_menu' %>
+<!--  <div class="pusher">-->
     <%= yield %>
-  </div>
+<!--  </div>-->
 <% else %>
   <%= yield %>
 
