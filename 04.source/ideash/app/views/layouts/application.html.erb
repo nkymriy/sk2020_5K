@@ -29,13 +29,9 @@
 <body>
 <% if Rails.env.development? %>
   <%= render 'shared/debug_menu' %>
-<!--  <div class="pusher">-->
-    <%= yield %>
-<!--  </div>-->
-<% else %>
-  <%= yield %>
-
 <% end %>
+<%= yield %>
+
 <%# TODO: パーシャルに移動させる %>
 <%# <p class="notice"><%#= notice % ></p> %>
 <%# <p class="alert"><%#= alert % ></p> %>
