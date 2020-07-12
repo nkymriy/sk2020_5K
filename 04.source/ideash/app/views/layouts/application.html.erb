@@ -28,14 +28,10 @@
 
 <body>
 <% if Rails.env.development? %>
-  <%= render 'shared/debug_sidemenu' %>
-  <div class="pusher">
-    <%= yield %>
-  </div>
-<% else %>
-  <%= yield %>
-
+  <%= render 'shared/debug_menu' %>
 <% end %>
+<%= yield %>
+
 <%# TODO: パーシャルに移動させる %>
 <%# <p class="notice"><%#= notice % ></p> %>
 <%# <p class="alert"><%#= alert % ></p> %>

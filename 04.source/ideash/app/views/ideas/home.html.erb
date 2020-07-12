@@ -1,5 +1,29 @@
-<%= render 'shared/header' %>
+<%#= render 'shared/header' %>
 <%= render 'shared/homemenu' %>
-<%= render 'shared/memomenu' %>
+<%#= render 'shared/memomenu' %>
 
-Home画面
+ホームメニューです。<br>
+<%= link_to '新しいメモを取りましょう', idea_memo_new_path %>
+
+
+<%#
+<!-- 1 -->
+<div class="block-memo block-center">
+
+  <!-- 2 -->
+  <div class="memo-contents block-center">
+    <!-- 3 -->
+    <div class="ui header about-contents">
+      <div class="content about-text">
+        発想はまず自分の考えを整理することから<br>
+        思いついたことをmemoしていきましょう
+      </div>
+      <%= image_tag 'thinkman.png', class: 'about-image' % >
+    </div>
+    <!-- 4 -->
+
+    <%= render 'memo/new' % >
+
+  </div>
+</div>
+%>

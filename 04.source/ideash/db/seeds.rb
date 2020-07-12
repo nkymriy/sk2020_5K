@@ -18,8 +18,10 @@ User.create(:email => "develop2@example.com",
             :password => "password",
             :confirmed_at => "2020-8-31"
 )
+
 IdeaCategory.create(:idea_category_name => 'メモ')
 IdeaCategory.create(:idea_category_name => 'ブレインストーミング')
+
 Idea.create(:idea_name => "test1", :idea_description => "example_idea", :idea_category_id => 1)
 Idea.create(:idea_name => "test2", :idea_description => "example_idea", :idea_category_id => 1)
 Idea.create(:idea_name => "test3", :idea_description => "example_idea", :idea_category_id => 1)

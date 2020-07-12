@@ -1,71 +1,17 @@
-<!-- 1 -->
-<div class="ui right fixed huge vertical menu block-main-sidebar">
-  <div class="ui bleak black segment">
+<%= link_to "/idea/memo/edit/#{memo.id}" do %>
+  <div class="item memos">
+    <div class="ui header details">
+      <div class="content memo-text">
+        <%= memo.idea_name %>
+        <div class="sub header memo-date">
+          <%= memo.updated_at %>
+        </div>
+      </div>
+      <i class="universal access icon memo-icon"></i>
+    </div>
+    <div class="memo-sample">
+      <%= memo.idea_description %>
+    </div>
   </div>
-  <a href="">
-    <!-- 2 -->
-    <div class="item memos">
-      <!-- 3 -->
-      <div class="ui header details">
-        <div class="content memo-text">
-          卒業研究に向けての案
-          <!-- この文字数が最大-->
-          <div class="sub header memo-date">
-            2020-06-16
-          </div>
-        </div>
-        <i class="universal access icon memo-icon"></i>
-      </div>
-      <!-- 4 -->
-      <div class="memo-sample">
-        メモの内容を一部表示する
-        <!-- この文字数が最大-->
-      </div>
-    </div>
-    <div class="ui divider"></div>
-  </a>
-  <a href="">
-    <!-- 2 -->
-    <div class="item memos">
-      <!-- 3 -->
-      <div class="ui header details">
-        <div class="content memo-text">
-          卒業研究に向けての案
-          <!-- この文字数が最大-->
-          <div class="sub header memo-date">
-            2020-06-16
-          </div>
-        </div>
-        <i class="universal access icon memo-icon"></i>
-      </div>
-      <!-- 4 -->
-      <div class="memo-sample">
-        メモの内容を一部表示する
-        <!-- この文字数が最大-->
-      </div>
-    </div>
-    <div class="ui divider"></div>
-  </a>
-  <a href="">
-    <!-- 2 -->
-    <div class="item memos">
-      <!-- 3 -->
-      <div class="ui header details">
-        <div class="content memo-text">
-          卒業研究に向けての案
-          <!-- この文字数が最大-->
-          <div class="sub header memo-date">
-            2020-06-16
-          </div>
-        </div>
-        <i class="universal access icon memo-icon"></i>
-      </div>
-      <!-- 4 -->
-      <div class="memo-sample">
-        メモの内容を一部表示する
-        <!-- この文字数が最大-->
-      </div>
-    </div>
-    <div class="ui divider"></div>
-  </a>
-</div>
+  <div class="ui divider"></div>
+<% end %>
