@@ -70,7 +70,7 @@ Rails.application.routes.draw do
   get 'idea/memo/new' => 'memo#new'
   post 'idea/memo/new' => 'memo#new'
   post 'idea/memo' => 'memo#create'
-  get 'idea/memo/show' => 'memo#show'
+  # get 'idea/memo/show' => 'memo#show'
   get 'idea/memo/edit/:id' => 'memo#edit'
   patch '/idea/memo' => 'memo#update'
 
