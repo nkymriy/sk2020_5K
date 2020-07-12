@@ -1,22 +1,17 @@
-  <a href="">
-    <div class="item memos">
-      <div class="ui header details">
-        <div class="content memo-text">
-          <%= memo.idea_name %>
-          <!--        卒業研究に向けての案-->
-          <!--          この文字数が最大-->
-          <div class="sub header memo-date">
-            <%= memo.updated_at %>
-            <!--          2020-06-16-->
-          </div>
+<%= link_to "/idea/memo/edit/#{memo.id}" do %>
+  <div class="item memos">
+    <div class="ui header details">
+      <div class="content memo-text">
+        <%= memo.idea_name %>
+        <div class="sub header memo-date">
+          <%= memo.updated_at %>
         </div>
-        <i class="universal access icon memo-icon"></i>
       </div>
-      <div class="memo-sample">
-        <%= memo.idea_description %>
-        <!--      メモの内容を一部表示する-->
-        <!--      この文字数が最大-->
-      </div>
+      <i class="universal access icon memo-icon"></i>
     </div>
-    <div class="ui divider"></div>
-  </a>
+    <div class="memo-sample">
+      <%= memo.idea_description %>
+    </div>
+  </div>
+  <div class="ui divider"></div>
+<% end %>
