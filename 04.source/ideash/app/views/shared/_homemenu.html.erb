@@ -1,0 +1,26 @@
+<div style="height: 45px"></div>
+<%# サイドバー %>
+<div class="ui sidebar inverted vertical menu">
+  <div class="item">
+    <%= image_tag 'icon_mini.png', class: 'ui mini imag menu_icon' %>
+  </div>
+
+  <%=link_to '新しいメモ', idea_memo_new_path, class: 'item'%>
+<!--  <a class="item home-menu" href="#">ブレインストーミング</a>-->
+<!--  <a class="item home-menu" href="#">履歴</a>-->
+<!--  <a class="item home-menu" href="#">アカウント</a>-->
+  <%=link_to 'サインアウト', account_signout_path, class: 'item'%>
+
+  <small class="copyright">© 2020 by KUGATech team 5K</small>
+</div>
+<%# 上部メニュー %>
+<div class="ui fixed inverted menu">
+  <div id="toggler" class="left item"><i class="icon large grey content"></i></div>
+</div>
+
+
+<script>
+    $('#toggler').on('click', function () {
+        $('.ui.sidebar').sidebar('toggle');
+    });
+</script>

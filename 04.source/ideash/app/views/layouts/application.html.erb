@@ -1,15 +1,39 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Ideash</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="ja">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170879736-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      function gtag() {
+          dataLayer.push(arguments);
+      }
 
-  <body>
-    <%= yield %>
-  </body>
+      gtag('js', new Date());
+
+      gtag('config', 'UA-170879736-1');
+  </script>
+
+  <%# <% content_for(:html_title) { 'Title' } \%\> でtitleを指定する%>
+  <title><%= content_for?(:html_title) ? yield(:html_title) : "Ideash" %></title>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</head>
+
+<body>
+<% if Rails.env.development? %>
+  <%= render 'shared/debug_menu' %>
+<% end %>
+<%= yield %>
+
+<%# TODO: パーシャルに移動させる %>
+<%# <p class="notice"><%#= notice % ></p> %>
+<%# <p class="alert"><%#= alert % ></p> %>
+</body>
 </html>

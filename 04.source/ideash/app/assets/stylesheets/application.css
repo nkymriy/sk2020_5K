@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+/*サイドバー開閉後の背景色*/
+body.pushable>.pusher{
+    background: #DADADA;
+}

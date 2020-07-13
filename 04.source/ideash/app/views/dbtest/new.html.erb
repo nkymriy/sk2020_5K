@@ -1,0 +1,24 @@
+<%= form_with model: @user, local: true, url: '/dbtest' do |f| %>
+
+  <% if @user.errors.any? %>
+    <h3>入力した内容にエラーが<%= @user.errors.count %>件あります</h3>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name %>
+  </p>
+
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+
+  <%= f.submit %>
+
+<% end %>

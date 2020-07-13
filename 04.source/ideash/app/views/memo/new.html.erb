@@ -1,0 +1,53 @@
+<%= render 'shared/homemenu' %>
+
+<div class="pusher">
+  <div style="height: 15px"></div>
+
+  <%# 右部のメモ一覧 %>
+  <div class="ui card  right floated list" style="overflow: scroll;height: 100%;background: white;padding: 10px">
+    <%# reverseで逆順に並べる %>
+    <%= render partial: 'shared/memomenu', collection: @user_memo.reverse, as: "memo" %>
+  </div>
+  <%#TODO 左側が空いているのが気になる %>
+  <div class="ui container">
+
+    <%# infoメッセージ %>
+    <% if @info_message.present? %>
+      <div class="ui info message">
+        <i class="close icon"></i>
+        <div class="header">
+          <%= @info_message %>
+        </div>
+      </div>
+    <% end %>
+    <script>
+        $('.message .close')
+            .on('click', function () {
+                $(this)
+                    .closest('.message')
+                    .transition('fade')
+                ;
+            })
+        ;
+    </script>
+
+    <%= form_with model: @memo, class: 'ui form ', local: true, url: idea_memo_path do |f| %>
+      <div class="fields">
+        <div class="sixteen wide field">
+          <label>タイトル</label>
+          <%= f.text_field :idea_name, placeholder: "メモに名前をつけてください", class: 'field', :required => true %>
+        </div>
+      </div>
+      <div class="fields">
+        <%= f.hidden_field :idea_category_id, :value => 1 %>
+        <div class="sixteen wide field">
+          <label>内容</label>
+          <%= f.text_area :idea_description, placeholder: "メモを書きましょう", class: 'required field', :required => true %>
+        </div>
+      </div>
+      <%= f.submit '保存 ', class: "ui black button" %>
+    <% end %>
+  </div>
+
+</div>
+

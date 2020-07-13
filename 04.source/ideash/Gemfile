@@ -22,6 +22,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'devise'
+gem 'haml-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -40,6 +43,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  #error表示を変更
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
+  #DBのスキーマを表示してくれる
+  gem 'annotate'
 end
 
 group :test do
@@ -57,3 +67,18 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'semantic-ui-sass'
 #jQuery
 gem 'jquery-rails'
+
+#dotenv
+gem 'dotenv-rails'
+
+#コーディング規約のチェック
+gem 'rubocop'
+gem 'rubocop-rails'
+
+#認証用
+gem 'devise'
+
+group :development, :test do
+  #rspec-rails テスト用
+  gem 'rspec-rails', '~> 4.0'
+end
