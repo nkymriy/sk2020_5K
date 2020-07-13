@@ -3,6 +3,17 @@
 body {
   font-family: "游ゴシック", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
 }
+/*水平スクロール*/
+.horizontal-list{
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+.horizontal-item{
+  display: inline-block;
+  width: 90%;
+}
+
 
 /*body*/
 .home_body{
