@@ -46,31 +46,30 @@
 /*process1*/
 .theme{
   background-color: white;
-  font-size: x-large;
+  font-size: large;
   border-radius: 15px;
   padding: 2%;
   margin-bottom: 3%;
 }
 
 .process1_ideas{
-  height: 750px;
+  height: 70vh;
   overflow: auto;
 }
-.idea{
+.process1_ideas .idea{
   font-size: larger;
   height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .post_idea{
   margin-bottom: 3%;
 }
 
 /*process2*/
 .process2_ideas{
-  height: 800px;
+  height: 80vh;
   overflow: auto;
 }
 
@@ -80,20 +79,27 @@
   overflow: hidden;
 }
 .group-contents{
-  height: 800px;
+  height: 78vh;
   width: 80%;
-  padding: 2%;
+  padding: 1%;
 
   float: left;
   overflow: auto;
 }
 .idea-contents{
-  height: 800px;
+  height: 78vh;
   width: 20%;
-  padding: 2%;
+  padding: 1%;
 
   float: left;
   overflow: auto;
+}
+
+.idea-contents .idea{
+  font-size: medium;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .group{
