@@ -5,26 +5,24 @@
 .block-tech-about{
   position: absolute;
   top: 1%;
-  left:28%;
-  width: 45%;
+  left:27%;
+  width: 50%;
 }
 
 .techname{
   font-weight: bold;
-  font-size: x-large;
-  padding: 2% 0;
+  font-size: large;
+  padding: 1% 0;
 }
 
 .block-tech-about .explain{
   list-style: none;
   line-height: 1.5;
-  font-size: large;
 }
 
 .block-tech-about ul {
   list-style: none;
   line-height: 1.5;
-  font-size: large;
 }
 
 .block-tech-about .header-text {
@@ -37,12 +35,12 @@
 }
 .block-tech-about .participant{
   margin-top: -1%;
-  height: 120px;
+  height: 15vh;
   overflow: auto;
 }
 
 .start-button{
-  margin: 5%;
+  margin: 3%;
 }
 
 /*process1*/
