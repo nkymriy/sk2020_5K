@@ -2,56 +2,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.seg_1{
-  border: #1b1e21 1px solid;
-  height: 55%;
+.creat_new_segment{
+  height: 40%;
 }
-.seg_1 .card{
+.creat_new_segment .news{
+  height: 30vh;
+}
+.creat_new_segment .new{
   background-color: #1b1e21;
-  height: 270px;
-  width: 300px;
+  height: 30vh;
+  width: 20%;
+  margin: 0 2%;
   border-radius: 10px;
 }
 
-.seg_2{
-  border: #1b1e21 1px solid;
-  height: 45%;
+.recent_creation_segment{
+  height: 30%;
 }
-.seg_2 .card{
-  border: #1b1e21 1px solid;
-  height: 200px;
-  width: 90%;
+.recent_creation_segment .creations{
+  height: 20vh;
+}
+.recent_creation_segment .creation{
+  border: #999999 solid 1px;
+  height: 20vh;
+  width: 20%;
+  margin: 0 2%;
   border-radius: 10px;
 }
-
-.more{
-  /*border: #1b1e21 1px solid;*/
-  width: fit-content;
-}.seg_1{
-   border: #1b1e21 1px solid;
-   height: 55%;
-   padding: 2% 6%;
- }
-.seg_1 .card{
-  background-color: #1b1e21;
-  height: 270px;
-  width: 300px;
-  border-radius: 10px;
+.home_body .header{
+  font-size: medium;
+  font-weight: bold;
+  margin-left: 3%;
 }
-
-.seg_2{
-  border: #1b1e21 1px solid;
-  height: 45%;
-  padding: 2% 6%;
-}
-.seg_2 .card{
-  border: #1b1e21 1px solid;
-  height: 200px;
-  width: 90%;
-  border-radius: 10px;
-}
-
-.more{
-  /*border: #1b1e21 1px solid;*/
-  width: fit-content;
+.home_body .more{
+  font-size: larger;
+  color: #1B1C1D;
+  margin-left: 75vw;
 }
