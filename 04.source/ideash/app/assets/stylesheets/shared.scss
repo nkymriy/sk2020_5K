@@ -15,7 +15,7 @@ body {
 /*header*/
 .to_home_text{
   color: teal;
-  font-size: larger;
+  margin: 0.5em auto 0 auto;
 }
 
 /*homemenu*/
@@ -55,17 +55,16 @@ body {
 .block-edit-sidebar ul {
   list-style: none;
   line-height: 1.5;
-  font-size: large;
+  margin-left: -1.5em;
 }
 
 .header-text{
-  font-size: large;
   font-weight: bolder;
 }
 
 .timer{
   height: 10%;
-  font-size: xx-large;
+  font-size: large;
   font-weight: bold;
   overflow: hidden;
 
