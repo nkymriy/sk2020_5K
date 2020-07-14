@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_114832) do
+ActiveRecord::Schema.define(version: 2020_07_14_010853) do
 
   create_table "idea_categories", force: :cascade do |t|
     t.string "idea_category_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["idea_category_name"], name: "index_idea_categories_on_idea_category_name", unique: true
   end
 
   create_table "idea_logs", force: :cascade do |t|
@@ -49,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_114832) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_ignore", default: false, null: false
     t.index ["user_id"], name: "index_user_logs_on_user_id"
   end
 
