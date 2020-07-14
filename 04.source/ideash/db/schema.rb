@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_07_14_010853) do
     t.string "idea_log"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_active", default: false, null: false
     t.index ["idea_id"], name: "index_idea_logs_on_idea_id"
   end
 
@@ -48,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_07_14_010853) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_active", default: false, null: false
     t.index ["user_id"], name: "index_user_logs_on_user_id"
   end
 
