@@ -6,11 +6,14 @@
 .creat_new_segment{
   height: 40%;
 }
-.creat_new_segment .news{
+.creat_new_segment .categories{
   height: 30vh;
 }
-.creat_new_segment .new{
+
+.category{
   background-color: #1b1e21;
+}
+.creat_new_segment .category{
   height: 30vh;
   width: 20%;
   margin: 0 2%;
@@ -36,10 +39,10 @@
 .recent_creation_segment{
   height: 30%;
 }
-.recent_creation_segment .creations{
+.recent_creation_segment .histories{
   height: 20vh;
 }
-.recent_creation_segment .creation{
+.recent_creation_segment .history{
   border: #999999 solid 1px;
   height: 20vh;
   width: 20%;
@@ -54,7 +57,6 @@
 .home_body .more{
   font-size: larger;
   font-weight: bold;
-  color: #1B1C1D;
   margin-left: 75vw;
 }
 
