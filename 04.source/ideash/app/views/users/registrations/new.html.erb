@@ -8,25 +8,37 @@
         Sign-Up to your account
       </div>
     </h2>
-    <form class="ui large form">
+    <%#= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "ui large form"}) do |f| %>
+    <%= form_for(resource, as: resource_name, url: :account_signup, html: {class: "ui large form"}) do |f| %>
+
       <div class="ui stacked segment">
+        <%= render "users/shared/error_messages", resource: resource %>
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="email" placeholder="E-mail address">
+            <%= f.email_field :email, autoforcus: true, autocomplite: "email", placeholder: "E-mail address" %>
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password">
+            <%= f.password_field :password, autoforcus: true, placeholder: "Password" %>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <%= f.password_field :password_confirmation, autoforcus: true, placeholder: "Retype password" %>
           </div>
         </div>
         <!--        TODO: 認証機能実装後に変更-->
-        <%= link_to "Sign Up", :idea_home, class: 'ui fluid large teal submit button' %>
+        <div class="actions">
+          <%= f.submit "Sign Up", class: 'ui fluid large teal submit button'%>
+        </div>
       </div>
 
       <div class="ui error message"></div>
-    </form>
+    <% end %>
   </div>
 </div>
