@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_14_025613) do
+ActiveRecord::Schema.define(version: 2020_07_14_032324) do
 
   create_table "idea_categories", force: :cascade do |t|
     t.string "idea_category_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["idea_category_name"], name: "index_idea_categories_on_idea_category_name", unique: true
   end
 
   create_table "idea_logs", force: :cascade do |t|
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_07_14_025613) do
     t.string "idea_description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.json "option"
     t.index ["idea_category_id"], name: "index_ideas_on_idea_category_id"
   end
 
