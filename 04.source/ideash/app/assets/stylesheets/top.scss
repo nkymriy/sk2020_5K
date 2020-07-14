@@ -2,8 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "semantic-ui";
-body {
-  font-family: "游ゴシック", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+
+body{
+  background-color: white;
 }
 
 /*みどり部分*/
@@ -17,12 +18,12 @@ body {
 /*大きい文字(白)*/
 .backgound_text {
   font-style: normal;
-  font-weight: 900;
-  -webkit-text-stroke: 17px #FFFFFF;
-  font-size: 330px;
-  line-height: 320px;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  font-size: 380px;
+  line-height: 300px;
+  letter-spacing: -10px;
   color: #FFFFFF;
+  padding-top: 2%;
 
   width: fit-content;
   margin: auto;
@@ -65,11 +66,11 @@ body {
   height: 19%;
   text-align: center;
   padding-top: 3%;
-  top: 43%;
+  top: 44%;
   left: 37%;
   z-index: 10;
   /*あとで背景設定したい*/
-  background-color: white;
+  //background-color: white;
   border-radius: 20px;
 }
 
@@ -147,7 +148,6 @@ p{
 .seg_5{
   position: relative;
   padding-top: 32%;
-
 }
 
 .seg_5 .headers{
