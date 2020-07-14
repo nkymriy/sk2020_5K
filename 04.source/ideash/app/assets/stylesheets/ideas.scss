@@ -59,8 +59,8 @@
 }
 
 /*category*/
-.category_segment .categorys{
-  height: 72vh;
+.category_segment .categories{
+  height: 65vh;
 }
 .category_segment .category{
   color: white;
@@ -84,4 +84,18 @@
 }
 .category_segment hr{
   margin: 0 5%;
+}
+
+/*history*/
+.history_segment .histories{
+  height: 65vh;
+}
+.history_segment .history{
+  border: #999999 solid 1px;
+  height: 20vh;
+  width: 20%;
+  margin: 2%;
+  border-radius: 10px;
+  overflow: auto;
+  float: left;
 }
