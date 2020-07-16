@@ -2,59 +2,21 @@
 #
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
 #                                  root GET    /                                                                                        top#index
-#                idea_brainstorming_new GET    /idea/brainstorming/new(.:format)                                                        brainstorming#new
-#             idea_brainstorming_replay GET    /idea/brainstorming/replay(.:format)                                                     brainstorming#replay
-#               idea_brainstorming_edit GET    /idea/brainstorming/edit(.:format)                                                       brainstorming#edit
-#                         idea_memo_new GET    /idea/memo/new(.:format)                                                                 memo#new
-#                        idea_memo_show GET    /idea/memo/show(.:format)                                                                memo#show
-#                        idea_memo_edit GET    /idea/memo/edit(.:format)                                                                memo#edit
-#                                  idea GET    /idea(.:format)                                                                          ideas#home
-#                             idea_home GET    /idea/home(.:format)                                                                     ideas#home
-#                          idea_history GET    /idea/history(.:format)                                                                  ideas#history
-#                         idea_category GET    /idea/category(.:format)                                                                 ideas#category
-#                      new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
-#                          user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
-#                  destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
-#                     new_user_password GET    /users/password/new(.:format)                                                            devise/passwords#new
-#                    edit_user_password GET    /users/password/edit(.:format)                                                           devise/passwords#edit
-#                         user_password PATCH  /users/password(.:format)                                                                devise/passwords#update
-#                                       PUT    /users/password(.:format)                                                                devise/passwords#update
-#                                       POST   /users/password(.:format)                                                                devise/passwords#create
-#              cancel_user_registration GET    /users/cancel(.:format)                                                                  devise/registrations#cancel
-#                 new_user_registration GET    /users/sign_up(.:format)                                                                 devise/registrations#new
-#                edit_user_registration GET    /users/edit(.:format)                                                                    devise/registrations#edit
-#                     user_registration PATCH  /users(.:format)                                                                         devise/registrations#update
-#                                       PUT    /users(.:format)                                                                         devise/registrations#update
-#                                       DELETE /users(.:format)                                                                         devise/registrations#destroy
-#                                       POST   /users(.:format)                                                                         devise/registrations#create
-#                 new_user_confirmation GET    /users/confirmation/new(.:format)                                                        users/confirmations#new
-#                     user_confirmation GET    /users/confirmation(.:format)                                                            users/confirmations#show
-#                                       POST   /users/confirmation(.:format)                                                            users/confirmations#create
-#                       new_user_unlock GET    /users/unlock/new(.:format)                                                              devise/unlocks#new
-#                           user_unlock GET    /users/unlock(.:format)                                                                  devise/unlocks#show
-#                                       POST   /users/unlock(.:format)                                                                  devise/unlocks#create
 #                        account_signin GET    /account/signin(.:format)                                                                users/sessions#new
 #                                       POST   /account/signin(.:format)                                                                users/sessions#create
 #                        account_signup GET    /account/signup(.:format)                                                                users/registrations#new
 #                                       POST   /account/signup(.:format)                                                                users/registrations#create
 #                       account_signout GET    /account/signout(.:format)                                                               users/sessions#destroy
 #                  account_profile_edit GET    /account/profile_edit(.:format)                                                          account#profile_edit
-#                          dbtest_index GET    /dbtest(.:format)                                                                        dbtest#index
-#                                       POST   /dbtest(.:format)                                                                        dbtest#create
-#                            new_dbtest GET    /dbtest/new(.:format)                                                                    dbtest#new
-#                           edit_dbtest GET    /dbtest/:id/edit(.:format)                                                               dbtest#edit
-#                                dbtest GET    /dbtest/:id(.:format)                                                                    dbtest#show
-#                                       PATCH  /dbtest/:id(.:format)                                                                    dbtest#update
-#                                       PUT    /dbtest/:id(.:format)                                                                    dbtest#update
-#                                       DELETE /dbtest/:id(.:format)                                                                    dbtest#destroy
-#                                 users GET    /users(.:format)                                                                         users#index
-#                                       POST   /users(.:format)                                                                         users#create
-#                              new_user GET    /users/new(.:format)                                                                     users#new
-#                             edit_user GET    /users/:id/edit(.:format)                                                                users#edit
-#                                  user GET    /users/:id(.:format)                                                                     users#show
-#                                       PATCH  /users/:id(.:format)                                                                     users#update
-#                                       PUT    /users/:id(.:format)                                                                     users#update
-#                                       DELETE /users/:id(.:format)                                                                     users#destroy
+#                     user_confirmation GET    /user/confirmation(.:format)                                                             users/confirmations#show
+#                                       POST   /user/confirmation(.:format)                                                             users/confirmations#create
+#                                  idea GET    /idea(.:format)                                                                          memo#new
+#                             idea_home GET    /idea/home(.:format)                                                                     memo#new
+#                         idea_memo_new GET    /idea/memo/new(.:format)                                                                 memo#new
+#                                       POST   /idea/memo/new(.:format)                                                                 memo#new
+#                             idea_memo POST   /idea/memo(.:format)                                                                     memo#create
+#                                       GET    /idea/memo/edit/:id(.:format)                                                            memo#edit
+#                                       PATCH  /idea/memo(.:format)                                                                     memo#update
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
 #         rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                  action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -77,27 +39,10 @@
 #                  rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  # トップページ
   root 'top#index'
 
-  get 'idea/brainstorming/new' => 'brainstorming#new'
-  get 'idea/brainstorming/replay' => 'brainstorming#replay'
-  get 'idea/brainstorming/edit' => 'brainstorming#edit'
-
-  get 'idea/memo/new' => 'memo#new'
-  get 'idea/memo/show' => 'memo#show'
-  get 'idea/memo/edit' => 'memo#edit'
-
-  get 'idea' => 'ideas#home'
-  get 'idea/home' => 'ideas#home'
-  get 'idea/history' => 'ideas#history'
-  get 'idea/category' => 'ideas#category'
-
-  devise_for :users, controllers: {
-      #     registrations: "users/registrations",
-      #     passwords: 'users/passwords',
-      confirmations: 'users/confirmations',
-      #     sessions: 'users/sessions',
-  }
+  # devise(ユーザ認証関連)
   devise_for :users, skip: :all
   devise_scope :user do
     get 'account/signin' => 'users/sessions#new'
@@ -106,11 +51,40 @@ Rails.application.routes.draw do
     post 'account/signup' => 'users/registrations#create'
     get 'account/signout' => 'users/sessions#destroy'
     get 'account/profile_edit' => 'users/edit'
+    # get 'user/confirmation/new' => 'users/confirmations#new'
+    get 'user/confirmation' => 'users/confirmations#show'
+    post 'user/confirmation' => 'users/confirmations#create'
   end
 
-  resources :dbtest
-  resources :users
+  # ユーザのホーム画面
+  # get 'idea' => 'ideas#home'
+  get 'idea' => 'memo#new'
+  # get 'idea/home' => 'ideas#home'
+  get 'idea/home' => 'memo#new'
+  # get 'idea/history' => 'ideas#history'
+  # get 'idea/category' => 'ideas#category'
+
+  # メモ
+  get 'idea/memo/new' => 'memo#new'
+  post 'idea/memo/new' => 'memo#new'
+  post 'idea/memo' => 'memo#create'
+  # get 'idea/memo/show' => 'memo#show'
+  get 'idea/memo/edit/:id' => 'memo#edit'
+  patch '/idea/memo' => 'memo#update'
 
 
+  # ブレインストーミング
+  # get 'idea/brainstorming/new' => 'brainstorming#new'
+  # get 'idea/brainstorming/replay' => 'brainstorming#replay'
+  # get 'idea/brainstorming/edit' => 'brainstorming#edit'
+
+  # developmentモードでのみ以下のルーティングが行われる
+  if Rails.env.development?
+    # 仲 メモのindexによる一覧表示のテスト用
+    # get 'idea/memo' => 'memo#index'
+    # DBのテスト用
+    # resources :dbtest
+    # resources :users
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
