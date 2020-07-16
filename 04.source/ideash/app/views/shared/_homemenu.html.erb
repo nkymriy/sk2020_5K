@@ -1,13 +1,50 @@
-<div class="ui left fixed vertical inverted menu">
-  <div class="item">
-    <%= image_tag 'icon_mini.png', class: 'ui mini imag menu_icon' %>
-  </div>
-
-  <a class="item home-menu" href="/idea/category">新規作成</a>
-  <a class="item home-menu" href="/idea/brainstorming/new">ブレインストーミング</a>
-  <a class="item home-menu" href="/idea/history">履歴</a>
-  <a class="item home-menu" href="">アカウント</a>
-  <a class="item home-menu" href="">サインアウト</a>
-
-  <small class="copyright">© 2020 by KUGATech team 5K</small>
+<div id="home_menu">
 </div>
+
+<script type="text/javascript">
+    //読み込み時の表示
+    window_load();
+    //ウィンドウサイズ変更時に更新
+    window.onresize = window_load;
+    //サイズの表示
+    function window_load() {
+        var display_Width = window.parent.screen.width;
+        var window_Width = window.innerWidth;
+        var key_Width = display_Width/3*2;
+        if (window_Width <= key_Width){
+            //document.getElementById("winsize2").innerHTML = '画面サイズが2/3以下になりました';
+            document.getElementById('home_menu').innerHTML = '<div class="ui small sidebar inverted vertical menu" id="menu_toggle">\n' +
+                '  <div class="item">\n' +
+                '    <%= image_tag "icon_mini.png", class: "ui mini imag menu_icon" %>\n' +
+                '  </div>\n' +
+                '  <a class="item home-menu" href="/idea/category">新規作成</a>\n' +
+                '  <a class="item home-menu" href="/idea/brainstorming/new">ブレインストーミング</a>\n' +
+                '  <a class="item home-menu" href="/idea/history">履歴</a>\n' +
+                '  <a class="item home-menu" href="">アカウント</a>\n' +
+                '  <a class="item home-menu" href="">サインアウト</a>\n' +
+                '  <small class="copyright">© 2020 by KUGATech team 5K</small>\n' +
+                '</div>\n' +
+                '<div class="ui fixed menu">\n' +
+                '  <div class="menu">\n' +
+                '    <div id="home-sidebar" class="item"><i class="icon large grey content"></i></div>\n' +
+                '  </div>\n' +
+                '</div>';
+        }else{
+            //document.getElementById("winsize2").innerHTML = '画面サイズが2/3より大きいです';
+            document.getElementById('home_menu').innerHTML = '<div class="ui left fixed vertical inverted menu" >\n' +
+                '  <div class="item">\n' +
+                '    <%= image_tag "icon_mini.png", class: "ui mini imag menu_icon" %>\n' +
+                '  </div>\n' +
+                '  <a class="item home-menu" href="/idea/category">新規作成</a>\n' +
+                '  <a class="item home-menu" href="/idea/brainstorming/new">ブレインストーミング</a>\n' +
+                '  <a class="item home-menu" href="/idea/history">履歴</a>\n' +
+                '  <a class="item home-menu" href="">アカウント</a>\n' +
+                '  <a class="item home-menu" href="">サインアウト</a>\n' +
+                '  <small class="copyright">© 2020 by KUGATech team 5K</small>\n';
+        }
+    }
+
+    $('#home-sidebar').click(function() {
+        $('#menu_toggle').sidebar('toggle');
+    });
+</script>
