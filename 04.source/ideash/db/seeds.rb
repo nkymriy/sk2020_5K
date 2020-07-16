@@ -32,4 +32,6 @@ if Rails.env.development?
   UserIdea.create(:user_id => 1, :idea_id => 3)
   UserIdea.create(:user_id => 2, :idea_id => 2)
   UserIdea.create(:user_id => 2, :idea_id => 4)
+
+  IdeaLog.create(:)
 end

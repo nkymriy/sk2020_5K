@@ -85,6 +85,9 @@ Rails.application.routes.draw do
     # DBのテスト用
     # resources :dbtest
     # resources :users
+
+    # 仲 ideachatのテスト用ルーティング
+    get 'ideachat/show' => 'ideachat#show'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
