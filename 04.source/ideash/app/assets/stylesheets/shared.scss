@@ -25,14 +25,17 @@ body {
 /*body*/
 .home_body{
   height: 80%;
-  margin-left: 16%;
-}
-.edit_body{
-  margin-left: 16%;
-  margin-right: 16%;
   padding: 1% 2%;
-  height: 80%;
 }
+.wide_margin{
+  margin-left: 220px;
+  margin-right: 220px;
+}
+.thin_margin{
+  margin-left: 2%;
+  margin-right: 220px;
+}
+
 
 /*header*/
 .to_home_text{
