@@ -85,6 +85,7 @@ Rails.application.routes.draw do
     # DBのテスト用
     # resources :dbtest
     # resources :users
+    get 'jquery_test/index'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
