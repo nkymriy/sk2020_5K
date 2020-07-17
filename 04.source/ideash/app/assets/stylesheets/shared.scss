@@ -36,14 +36,11 @@ body {
   margin-right: 220px;
 }
 
-
-/*header*/
-.to_home_text{
-  color: teal;
-  margin: 0.5em auto 0 auto;
-}
-
 /*homemenu*/
+.header_div{
+  height: 45px;
+  background-color: #1B1C1D;
+}
 .menu_icon{
   width: 15%;
 }
@@ -54,8 +51,6 @@ body {
   bottom: 15px;
   right: 30px;
 }
-
-
 
 /*memomenu*/
 .bleak{

@@ -57,12 +57,12 @@ Rails.application.routes.draw do
   end
 
   # ユーザのホーム画面
-  # get 'idea' => 'ideas#home'
-  get 'idea' => 'memo#new'
+  get 'idea' => 'ideas#home'
+  # get 'idea' => 'memo#new'
   # get 'idea/home' => 'ideas#home'
   get 'idea/home' => 'memo#new'
-  # get 'idea/history' => 'ideas#history'
-  # get 'idea/category' => 'ideas#category'
+  get 'idea/history' => 'ideas#history'
+  get 'idea/category' => 'ideas#category'
 
   # メモ
   get 'idea/memo/new' => 'memo#new'
@@ -74,9 +74,9 @@ Rails.application.routes.draw do
 
 
   # ブレインストーミング
-  # get 'idea/brainstorming/new' => 'brainstorming#new'
-  # get 'idea/brainstorming/replay' => 'brainstorming#replay'
-  # get 'idea/brainstorming/edit' => 'brainstorming#edit'
+  get 'idea/brainstorming/new' => 'brainstorming#new'
+  get 'idea/brainstorming/replay' => 'brainstorming#replay'
+  get 'idea/brainstorming/edit' => 'brainstorming#edit'
 
   # developmentモードでのみ以下のルーティングが行われる
   if Rails.env.development?

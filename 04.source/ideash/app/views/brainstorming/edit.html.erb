@@ -1,8 +1,6 @@
-<%= render 'shared/header' %>
 <%= render 'shared/homemenu' %>
 <%= render 'shared/editmenu' %>
 <%= render 'brainstorming/process_1' %>
-
 <script>
     //読み込み時の表示
     window_load();
@@ -17,25 +15,21 @@
         let body = document.getElementById('home_body');
 
         if (window_Width <= key_Width) {
-            document.getElementById('home_menu').innerHTML = '<div class="ui small sidebar inverted vertical menu" id="menu_toggle">\n' +
+            document.getElementById('home_menu').innerHTML = '<div class="ui small sidebar inverted vertical menu" id="menu_toggle"">\n' +
                 '  <div class="item">\n' +
                 '    <%= image_tag "icon_mini.png", class: "ui mini imag menu_icon" %>\n' +
                 '  </div>\n' +
-                '  <a class="item home-menu" href="/idea/category">新規作成</a>\n' +
-                '  <a class="item home-menu" href="/idea/brainstorming/new">ブレインストーミング</a>\n' +
-                '  <a class="item home-menu" href="/idea/history">履歴</a>\n' +
-                '  <a class="item home-menu" href="">アカウント</a>\n' +
-                '  <a class="item home-menu" href="">サインアウト</a>\n' +
+                '  <%=link_to "新しいメモ", idea_memo_new_path, class: "item"%>\n' +
+                '  <!--  <a class="item home-menu" href="#">ブレインストーミング</a>-->\n' +
+                '  <!--  <a class="item home-menu" href="#">履歴</a>-->\n' +
+                '  <!--  <a class="item home-menu" href="#">アカウント</a>-->\n' +
+                '  <%=link_to "サインアウト", account_signout_path, class: "item"%>\n' +
                 '  <small class="copyright">© 2020 by KUGATech team 5K</small>\n' +
-                '</div>\n' +
-                '<div class="ui fixed menu">\n' +
-                '  <div class="menu">\n' +
-                '    <div id="home-sidebar2" class="item"><i class="icon large grey content"></i></div>\n' +
-                '  </div>\n' +
                 '</div>';
-            //body.className = 'home_body thin_margin';
+
+            body.className = 'home_body thin_margin';
         } else {
-            document.getElementById('home_menu').innerHTML = '<div class="ui left fixed vertical inverted menu" >\n' +
+            document.getElementById('home_menu').innerHTML = '<div class="ui left fixed vertical inverted menu">\n' +
                 '  <div class="item">\n' +
                 '    <%= image_tag "icon_mini.png", class: "ui mini imag menu_icon" %>\n' +
                 '  </div>\n' +
@@ -45,12 +39,12 @@
                 '  <a class="item home-menu" href="">アカウント</a>\n' +
                 '  <a class="item home-menu" href="">サインアウト</a>\n' +
                 '  <small class="copyright">© 2020 by KUGATech team 5K</small>\n';
-            //body.className = 'home_body wide_margin';
+            body.className = 'home_body wide_margin';
         }
     }
 
     //ハンバーガー
-    $('#home-sidebar2').click(function() {
+    $('.home-sidebar').click(function() {
         $('#menu_toggle').sidebar('toggle');
     });
 </script>
