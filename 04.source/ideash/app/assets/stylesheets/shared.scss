@@ -36,8 +36,8 @@ body {
   margin-right: 220px;
 }
 .thin_margin{
-  margin-left: 2%;
-  margin-right: 220px;
+  margin-left: 184px;
+  margin-right: 185px;
 }
 
 /*homemenu*/
@@ -47,6 +47,22 @@ body {
 }
 .menu_icon{
   width: 15%;
+}
+#slideL {
+  z-index:100;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: -400px;
+  width: 400px;
+  height: auto;
+  padding: 0 40px 0 0;
+  background: #999;
+}
+#slideL .slide-inner {
+  overflow: auto;
+  overflow-x: hidden;
+  background: #ddd;
 }
 
 .copyright{
