@@ -25,7 +25,7 @@
 </head>
 <body>
 <% if Rails.env.development? %>
-  <%= render 'shared/debug_menu' %>
+  <%= render :partial => 'shared/debug_menu' %>
 <% end %>
 <%= yield %>
 </body>
