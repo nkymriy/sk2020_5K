@@ -3,7 +3,7 @@
 <div class="ui middle aligned center aligned grid">
   <div class="column">
     <h2 class="ui teal image header">
-      <%= image_tag 'icon_mini.png', class: 'image' %>
+      <%= image_tag 'icon_mini.png', class: 'image no_select' %>
       <div class="content">
         Sign-Up to your account
       </div>
@@ -11,8 +11,8 @@
     <%#= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "ui large form"}) do |f| %>
     <%= form_for(resource, as: resource_name, url: :account_signup, html: {class: "ui large form"}) do |f| %>
 
-  <div class="ui stacked segment">
-    <%= render "users/shared/error_messages", resource: resource %>
+      <div class="ui stacked segment">
+        <%= render "users/shared/error_messages", resource: resource %>
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
