@@ -10,13 +10,19 @@
 #                  account_profile_edit GET    /account/profile_edit(.:format)                                                          account#profile_edit
 #                     user_confirmation GET    /user/confirmation(.:format)                                                             users/confirmations#show
 #                                       POST   /user/confirmation(.:format)                                                             users/confirmations#create
-#                                  idea GET    /idea(.:format)                                                                          memo#new
+#                                  idea GET    /idea(.:format)                                                                          ideas#home
 #                             idea_home GET    /idea/home(.:format)                                                                     memo#new
+#                          idea_history GET    /idea/history(.:format)                                                                  ideas#history
+#                         idea_category GET    /idea/category(.:format)                                                                 ideas#category
 #                         idea_memo_new GET    /idea/memo/new(.:format)                                                                 memo#new
 #                                       POST   /idea/memo/new(.:format)                                                                 memo#new
 #                             idea_memo POST   /idea/memo(.:format)                                                                     memo#create
 #                                       GET    /idea/memo/edit/:id(.:format)                                                            memo#edit
 #                                       PATCH  /idea/memo(.:format)                                                                     memo#update
+#                idea_brainstorming_new GET    /idea/brainstorming/new(.:format)                                                        brainstorming#new
+#             idea_brainstorming_replay GET    /idea/brainstorming/replay(.:format)                                                     brainstorming#replay
+#               idea_brainstorming_edit GET    /idea/brainstorming/edit(.:format)                                                       brainstorming#edit
+#                     jquery_test_index GET    /jquery_test/index(.:format)                                                             jquery_test#index
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
 #         rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                  action_mailbox/ingresses/sendgrid/inbound_emails#create
