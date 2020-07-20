@@ -1,7 +1,6 @@
 <%= render :partial => 'shared/header' %>
-<%= render :partial => 'shared/homemenu' %>
 
-<div class="home_body">
+<div class="home_body" id="home_body">
   <div class="history_segment">
     <h1 class="header">Recent Creation (coming soon...)</h1>
     <ul class="histories">
@@ -32,3 +31,6 @@
     </ul>
   </div>
 </div>
+
+<%# JSが書かれているため最後に書くこと %>
+<%= render :partial => 'shared/homemenu' %>

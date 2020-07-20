@@ -23,20 +23,32 @@ body {
 
 /*header*/
 .home-header{
-  padding: 7px;
+  padding: 7px !important;
+  margin-top: 0 !important;
+  margin-bottom: 2px !important;
 }
 
 /*body*/
-.home_body{
+#home_body{
+  height: 90%;
+  padding: 1%;
+}
+
+#edit_body{
   height: 80%;
   padding: 1% 2%;
 }
-.wide_margin{
+
+.wide_margin_left{
   margin-left: 220px;
+}
+.wide_margin_right{
   margin-right: 220px;
 }
-.thin_margin{
+.thin_margin_left{
   margin-left: 184px;
+}
+.thin_margin_right{
   margin-right: 185px;
 }
 

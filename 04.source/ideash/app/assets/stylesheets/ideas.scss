@@ -7,17 +7,17 @@
   height: 40%;
 }
 .creat_new_segment .categories{
-  height: 30vh;
+  height: 25vh;
 }
 
 .category{
   background-color: #1b1e21;
 }
 .creat_new_segment .category{
-  height: 30vh;
+  height: 25vh;
   width: 20%;
   margin: 0 2%;
-  padding-top: 4.5%;
+  padding-top: 3%;
   border-radius: 10px;
   /*中央よせ*/
   text-align: center;
@@ -57,7 +57,8 @@
 .home_body .more{
   font-size: larger;
   font-weight: bold;
-  margin-left: 75vw;
+  //margin-top: -1%;
+  //margin-left: 65vw;
 }
 
 /*category*/
@@ -68,7 +69,7 @@
   color: white;
   background-color: #1b1e21;
   height: 60vh;
-  width: 20%;
+  width: 230px;
   margin: 0 2%;
   padding-top: 4.5%;
   border-radius: 10px;
