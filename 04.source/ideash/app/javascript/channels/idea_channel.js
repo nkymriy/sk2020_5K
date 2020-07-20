@@ -12,7 +12,8 @@ const chatChannel = consumer.subscriptions.create("IdeaChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
-    return alert(data['idea_log']);
+    // return alert(data['idea_log']);
+    return $('#idea_logs').append(data['idea_log']);
   },
 
   speak: function(idea_log) {

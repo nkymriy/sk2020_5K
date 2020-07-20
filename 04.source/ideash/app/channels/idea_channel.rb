@@ -10,6 +10,7 @@ class IdeaChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    ActionCable.server.broadcast 'idea_channel', idea_log: data['idea_log']
+    # ActionCable.server.broadcast 'idea_channel', idea_log: data['idea_log']
+    IdeaLog.create! query: {'content': data['idea_log']}
   end
 end
