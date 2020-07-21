@@ -87,9 +87,12 @@ Rails.application.routes.draw do
     # resources :users
 
     # 仲 ideachatのテスト用ルーティング
-    get 'ideachat/show' => 'ideachat#show'
+    # get 'ideachat/show' => 'ideachat#show'
     # Action Cableを有効化する
     mount ActionCable.server => '/cable'
+    # resources :ideas, only: %i[show]
+    get 'ideachat/' => 'ideachat#index'
+    get 'ideachat/:id' => 'ideachat#show', as: :ideachat_show
     # 仲 ここまでテスト用ルーティング
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

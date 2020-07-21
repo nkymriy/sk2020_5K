@@ -1,6 +1,6 @@
 <h1>Chat room</h1>
-<div id='idea_logs'>
-  <%= render partial: 'ideachat/idealogs', collection: @idealogs %>
+<div id='idea_logs'  data-idea_id="<%= @idea.id %>">
+  <%= render partial: 'ideachat/idealogs', collection: @idea_logs%>
 </div>
 
 <%= label_tag :content, 'Say something:' %>
