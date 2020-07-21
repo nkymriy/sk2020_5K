@@ -19,14 +19,14 @@ body{
 .backgound_text {
   font-style: normal;
   font-weight: 700;
-  font-size: 380px;
+  font-size: 340px;
   line-height: 300px;
-  letter-spacing: -10px;
+  letter-spacing: -17px;
   color: #FFFFFF;
-  padding-top: 2%;
+  margin-top: -5%;
 
   width: fit-content;
-  margin: auto;
+  //margin: auto;
 
   /*文字を上に*/
   position:relative;
@@ -36,9 +36,9 @@ body{
 .image_think_man {
   position: absolute;
   right: 0;
-  top: -10%;
+  top: -15%;
   /*overflow: hidden;*/
-  height: 1500px;
+  height: 1400px;
   /*filter: blur(2px)*/
 }
 
