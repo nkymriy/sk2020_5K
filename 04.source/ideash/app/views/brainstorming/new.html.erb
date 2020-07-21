@@ -20,13 +20,13 @@
         </ul>
         <h4 class="header-text  timer-setting">時間設定</h4>
         <ul>
-          <li>手順①：<input type="text">m</li>
-          <li>手順②：<input type="text">m</li>
-          <li>手順③：<input type="text">m</li>
+          <li>手順①：<%= text_field_tag 'process1'%>分</li>
+          <li>手順②：<%= text_field_tag 'process2'%>分</li>
+          <li>手順③：<%= text_field_tag 'process3'%>分</li>
         </ul>
         <h4 class="header-text  timer-setting">テーマ設定</h4>
         <ul>
-          <li><input type="text" placeholder="発想のテーマを入力してください"></li>
+          <li><%= text_field_tag 'theme', '', class: '', placeholder: "発想のテーマを入力してください",size:50 %></li>
         </ul>
         <h4 class="header-text">参加者　<a href="" class="participant-invitation">招待リンクをコピーする</a></h4>
         <div class="participant">
