@@ -4,7 +4,7 @@
   <div class="post_idea">
       <form name="brainstorming_process1_form" onsubmit="return false;">
         <div class="ui fluid action input">
-          <input type="text" name="idea_text" placeholder="思いついたことを書いていきましょう">
+          <%= text_field_tag 'idea_text', '', class: '', placeholder: "思いついたことを書いていきましょう" %>
           <button type="button" class="ui black button" onclick="click_brainstorming_OK()">OK</button>
         </div>
       </form>
