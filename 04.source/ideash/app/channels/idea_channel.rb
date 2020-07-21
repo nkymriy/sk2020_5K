@@ -2,7 +2,6 @@ class IdeaChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
     # 5.times { puts '***test***' }
-    p "----------------#{params}"
     stream_from "idea_channel_#{params['idea']}"
   end
 

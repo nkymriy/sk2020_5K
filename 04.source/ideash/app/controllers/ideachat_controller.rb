@@ -9,6 +9,5 @@ class IdeachatController < ApplicationController
     # @idealogs = IdeaLog.all
     @idea = Idea.find(params[:id])
     @idea_logs = @idea.idea_logs
-    p "----------------=#{@idea}"
   end
 end
