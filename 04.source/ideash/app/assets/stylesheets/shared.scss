@@ -1,17 +1,80 @@
 @import "semantic-ui";
 
+body {
+  font-family: "游ゴシック", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+}
+
+
+/*表示しない*/
+.display-none{
+  display:none;
+}
+
+/*水平スクロール*/
+.horizontal-list{
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+.horizontal-item{
+  display: inline-block;
+  width: 90%;
+}
+
 /*header*/
 .home-header{
+  padding: 7px !important;
+  margin-top: 0 !important;
+  margin-bottom: 2px !important;
+}
+
+/*body*/
+#home_body{
+  height: 90%;
+  padding: 1%;
+}
+
+#edit_body{
+  height: 80%;
+  padding: 1% 2%;
+}
+
+.wide_margin_left{
+  margin-left: 220px;
+}
+.wide_margin_right{
+  margin-right: 220px;
+}
+.thin_margin_left{
+  margin-left: 184px;
+}
+.thin_margin_right{
+  margin-right: 185px;
 }
 
 /*homemenu*/
-.to_home_text{
-  color: #00BAB0;
-  font-size: large;
+.header_div{
+  //height: 45px;
+  //background-color: #1B1C1D;
 }
-
 .menu_icon{
   width: 15%;
+}
+#slideL {
+  z-index:100;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: -400px;
+  width: 400px;
+  height: auto;
+  padding: 0 40px 0 0;
+  background: #999;
+}
+#slideL .slide-inner {
+  overflow: auto;
+  overflow-x: hidden;
+  background: #ddd;
 }
 
 .copyright{
@@ -20,8 +83,6 @@
   bottom: 15px;
   right: 30px;
 }
-
-
 
 /*memomenu*/
 .bleak{
@@ -40,5 +101,61 @@
 
 .memos .memo-sample{
   margin-top: -5px;
+}
+
+/*editmenu*/
+.block-edit-sidebar ul {
+  list-style: none;
+  line-height: 1.5;
+  margin-left: -1.5em;
+}
+
+.header-text{
+  font-weight: bolder;
+}
+
+.timer{
+  height: 10%;
+  font-size: large;
+  font-weight: bold;
+  overflow: hidden;
+
+}
+.timer_min,.timer_sec{
+  float: left;
+}
+.timer_min{
+  margin: 5%;
+}
+.timer_sec{
+  margin-top: 5%;
+}
+
+.explain{
+  height: 17%;
+}
+.explain-list{
+  color: #999999;
+}
+.explain .bold{
+  color: #1B1C1D;
+}
+
+.participant{
+  height: 17%;
+}
+.member{
+  height: 80%;
+  overflow: auto;
+}
+
+.memo{
+  height: 56%;
+}
+
+.memo-content{
+  margin: 5%;
+  width: 90%;
+  height: 90%;
 }
 

@@ -1,3 +1,114 @@
 // Place all the styles related to the Brainstorming controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.tech_about_body .home_body{
+  margin-right: 1% !important;
+}
+.block-tech-about{
+  width: 100% !important;
+}
+
+.techname{
+  font-weight: bold;
+  font-size: large;
+  padding: 1% 0;
+}
+
+.block-tech-about .explain{
+  list-style: none;
+  //line-height: 1.5;
+}
+
+.block-tech-about ul {
+  list-style: none;
+  //line-height: 1.5;
+}
+
+.block-tech-about .header-text {
+  padding-left: 2%;
+}
+
+.participant-invitation{
+  font-weight: normal;
+  color: teal;
+}
+.block-tech-about .participant{
+  margin-top: -1%;
+  height: 10vh;
+  overflow: auto;
+}
+
+.start-button{
+  margin: 2%;
+}
+
+/*process1*/
+.theme{
+  background-color: white;
+  font-size: large;
+  border-radius: 15px;
+  padding: 2%;
+  margin-bottom: 3%;
+}
+
+.process1_ideas{
+  height: 70vh;
+  overflow: auto;
+}
+.process1_ideas .idea{
+  font-size: larger;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.post_idea{
+  margin-bottom: 4vh;
+}
+
+/*process2*/
+.process2_ideas{
+  height: 80vh;
+  overflow: auto;
+}
+
+/*process3*/
+.process3_contents{
+  width: 100%;
+  overflow: hidden;
+}
+.group-contents{
+  height: 78vh;
+  width: 80%;
+  padding: 1%;
+
+  float: left;
+  overflow: auto;
+}
+.idea-contents{
+  height: 78vh;
+  width: 20%;
+  padding: 1%;
+
+  float: left;
+  overflow: auto;
+}
+
+.idea-contents .idea{
+  font-size: medium;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.group{
+  height: 350px;
+  background-color: white;
+  padding: 1%;
+}
+
+.idea-contents .idea{
+  height: fit-content;
+  margin-bottom: 5%;
+}
