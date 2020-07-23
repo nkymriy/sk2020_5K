@@ -6,11 +6,9 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170879736-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
         function gtag() {
             dataLayer.push(arguments);
         }
-
         gtag('js', new Date());
         gtag('config', 'UA-170879736-1');
     </script>
@@ -22,6 +20,8 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%# フォントの読み込み %>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 <% if Rails.env.development? %>
