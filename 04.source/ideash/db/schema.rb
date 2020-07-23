@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_060004) do
+ActiveRecord::Schema.define(version: 2020_07_23_011614) do
 
   create_table "idea_categories", force: :cascade do |t|
     t.string "idea_category_name", null: false
@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 2020_07_16_060004) do
 
   create_table "idea_logs", force: :cascade do |t|
     t.integer "idea_id"
+    t.string "query"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_active", default: false, null: false
-    t.json "query"
     t.index ["idea_id"], name: "index_idea_logs_on_idea_id"
   end
 
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_07_16_060004) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.json "option"
+    t.string "hash_link"
     t.index ["idea_category_id"], name: "index_ideas_on_idea_category_id"
   end
 
