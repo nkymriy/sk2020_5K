@@ -10,4 +10,7 @@
 #  is_active  :boolean          default(FALSE), not null
 #
 class IdeaLog < ApplicationRecord
+  validates :query, presence: true
+
+  after_create_commit { IdealogBroadcastJob.perform_later self }
 end

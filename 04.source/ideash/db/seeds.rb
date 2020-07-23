@@ -32,4 +32,14 @@ if Rails.env.development?
   UserIdea.create(:user_id => 1, :idea_id => 3)
   UserIdea.create(:user_id => 2, :idea_id => 2)
   UserIdea.create(:user_id => 2, :idea_id => 4)
+
+  IdeaLog.create(:idea_id =>1, :query => { 'object': '1', 'user_id': '1', 'operation': 'add', 'content': 'ユーザー1,アイデア1,object1の意見', 'time': '2020-07-17'})
+  IdeaLog.create(:idea_id =>1, :query => { 'object': '2', 'user_id': '1', 'operation': 'add', 'content': 'ユーザー1,アイデア1,object2の意見', 'time': '2020-07-17'})
+  IdeaLog.create(:idea_id =>1, :query => { 'object': '3', 'user_id': '2', 'operation': 'add', 'content': 'ユーザー2,アイデア1,object3の意見', 'time': '2020-07-17'})
+  IdeaLog.create(:idea_id =>1, :query => { 'object': '4', 'user_id': '2', 'operation': 'add', 'content': 'ユーザー2,アイデア1,object4の意見', 'time': '2020-07-17'})
+
+  IdeaLog.create(:idea_id =>2, :query => { 'object': '1', 'user_id': '2', 'operation': 'add', 'content': 'ユーザー2,アイデア2,object1の意見', 'time': '2020-07-17'})
+  IdeaLog.create(:idea_id =>2, :query => { 'object': '2', 'user_id': '2', 'operation': 'add', 'content': 'ユーザー2,アイデア2,object2の意見', 'time': '2020-07-17'})
+  IdeaLog.create(:idea_id =>2, :query => { 'object': '3', 'user_id': '1', 'operation': 'add', 'content': 'ユーザー1,アイデア2,object3の意見', 'time': '2020-07-17'})
+  IdeaLog.create(:idea_id =>2, :query => { 'object': '4', 'user_id': '1', 'operation': 'add', 'content': 'ユーザー1,アイデア2,object4の意見', 'time': '2020-07-17'})
 end

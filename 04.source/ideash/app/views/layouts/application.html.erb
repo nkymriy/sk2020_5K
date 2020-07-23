@@ -24,7 +24,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
 
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
 <% if Rails.env.development? %>
   <%= render :partial => 'shared/debug_menu' %>
 <% end %>
