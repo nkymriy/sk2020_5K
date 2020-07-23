@@ -65,8 +65,7 @@ Rails.application.routes.draw do
   # ユーザのホーム画面
   get 'idea' => 'ideas#home'
   # get 'idea' => 'memo#new'
-  # get 'idea/home' => 'ideas#home'
-  get 'idea/home' => 'memo#new'
+  get 'idea/home' => 'ideas#home'
   get 'idea/history' => 'ideas#history'
   get 'idea/category' => 'ideas#category'
 
