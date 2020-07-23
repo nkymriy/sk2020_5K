@@ -19,8 +19,8 @@ body{
 .background_text {
   font-style: normal;
   font-weight: 700;
-  font-size: 340px;
-  line-height: 300px;
+  font-size: 23vw;
+  line-height: 0.9em;
   letter-spacing: -17px;
   color: #FFFFFF;
   margin-top: -5%;
@@ -39,7 +39,7 @@ body{
   right: 0;
   top: -15%;
   /*overflow: hidden;*/
-  height: 1400px;
+  height: 100vw;
   /*filter: blur(2px)*/
 }
 
@@ -59,6 +59,11 @@ body{
 /*第1区分*/
 .seg_1 {
   position: relative;
+  text-align: center;
+}
+.seg_1 #home{
+  display: inline-block;
+  text-align: left;
 }
 
 .btns_1 {
@@ -66,7 +71,6 @@ body{
   width: 25%;
   height: 19%;
   text-align: center;
-  padding-top: 3%;
   top: 44%;
   left: 37%;
   z-index: 10;
@@ -82,10 +86,14 @@ body{
 /*第2区分*/
 .seg_2 {
   position: relative;
-  padding-top: 30%;
-  padding-left: 3%;
+  text-align: center;
+  padding-top: 50%;
 }
 
+.seg_2 #concept{
+  display: inline-block;
+  text-align: left;
+}
 .icon_1 {
   position: absolute;
   width: 25%;
@@ -113,17 +121,17 @@ body{
 
 /*説明部分のCSS*/
 h1{
-  font-size: 370%;
+  font-size: 4vw;
 }
 h2{
-  font-size: 150%;
+  font-size: 1.5vw;
   font-weight: lighter;
   margin-top: -3px;
 }
 p{
-  font-size: 150%;
+  font-size: 1.5vw;
   width: 31%;
-  line-height: 150%;
+  line-height: 1.5em;
 }
 
 
