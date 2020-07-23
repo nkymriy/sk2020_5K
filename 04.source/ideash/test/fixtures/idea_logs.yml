@@ -4,9 +4,10 @@
 #
 #  id         :integer          not null, primary key
 #  idea_id    :integer
-#  idea_log   :string
+#  query      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  is_active  :boolean          default(FALSE), not null
 #
 
 # This model initially had no columns defined. If you add columns to the

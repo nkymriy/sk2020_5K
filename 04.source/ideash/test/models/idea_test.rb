@@ -8,6 +8,8 @@
 #  idea_description :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  option           :json
+#  hash_link        :string
 #
 require 'test_helper'
 

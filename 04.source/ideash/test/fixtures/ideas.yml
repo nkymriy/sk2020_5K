@@ -8,6 +8,8 @@
 #  idea_description :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  option           :json
+#  hash_link        :string
 #
 
 # This model initially had no columns defined. If you add columns to the
