@@ -14,6 +14,10 @@
  *= require_self
  */
 
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
 /*サイドバー開閉後の背景色*/
 body.pushable>.pusher{
     background: #DADADA;

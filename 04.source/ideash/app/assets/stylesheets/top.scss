@@ -4,7 +4,7 @@
 @import "semantic-ui";
 
 body{
-  background-color: white;
+  background-color: #f5f5f5 !important;
 }
 
 /*みどり部分*/
@@ -16,17 +16,18 @@ body{
 }
 
 /*大きい文字(白)*/
-.backgound_text {
+.background_text {
   font-style: normal;
   font-weight: 700;
-  font-size: 380px;
-  line-height: 300px;
-  letter-spacing: -10px;
+  font-size: 23vw;
+  line-height: 0.9em;
+  letter-spacing: -17px;
   color: #FFFFFF;
-  padding-top: 2%;
+  margin-top: -5%;
 
   width: fit-content;
-  margin: auto;
+  //text-align: center;
+  //margin: auto;
 
   /*文字を上に*/
   position:relative;
@@ -36,9 +37,9 @@ body{
 .image_think_man {
   position: absolute;
   right: 0;
-  top: -10%;
+  top: -15%;
   /*overflow: hidden;*/
-  height: 1500px;
+  height: 100vw;
   /*filter: blur(2px)*/
 }
 
@@ -58,6 +59,11 @@ body{
 /*第1区分*/
 .seg_1 {
   position: relative;
+  text-align: center;
+}
+.seg_1 #home{
+  display: inline-block;
+  text-align: left;
 }
 
 .btns_1 {
@@ -65,7 +71,6 @@ body{
   width: 25%;
   height: 19%;
   text-align: center;
-  padding-top: 3%;
   top: 44%;
   left: 37%;
   z-index: 10;
@@ -81,9 +86,14 @@ body{
 /*第2区分*/
 .seg_2 {
   position: relative;
-  padding-top: 30%;
+  text-align: center;
+  padding-top: 50%;
 }
 
+.seg_2 #concept{
+  display: inline-block;
+  text-align: left;
+}
 .icon_1 {
   position: absolute;
   width: 25%;
@@ -94,7 +104,7 @@ body{
 /*白になるとこ*/
 
 .gradation{
-  background: linear-gradient(180deg, #26AEAF 0%, rgba(51, 178, 177, 0.916667) 28.12%, rgba(196, 196, 196, 0) 100%);  height: 40%;
+  background: linear-gradient(180deg, #26AEAF 0%, rgba(51, 178, 177, 0.916667) 28.12%, #f5f5f5 100%);  height: 40%;
   margin-top: -10px;
 }
 
@@ -102,7 +112,6 @@ body{
 .seg_3 {
   padding-top: 3%;
   padding-bottom: 3%;
-  text-align: center;
 }
 
 .icon_2 {
@@ -112,16 +121,17 @@ body{
 
 /*説明部分のCSS*/
 h1{
-  font-size: 450%;
+  font-size: 4vw;
 }
 h2{
-  font-size: 230%;
+  font-size: 1.5vw;
   font-weight: lighter;
+  margin-top: -3px;
 }
 p{
-  font-size: 170%;
+  font-size: 1.5vw;
   width: 31%;
-  line-height: 150%;
+  line-height: 1.5em;
 }
 
 
@@ -217,4 +227,8 @@ ul.footer-menu li {
   transform: scale(-1, 1);
   left: 15%;
   bottom:99.5%;
+}
+
+a:link, a:visited, a:hover, a:active{
+  color: white;
 }

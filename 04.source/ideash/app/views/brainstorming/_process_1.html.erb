@@ -1,0 +1,42 @@
+<%# ブレインストーミング　手順１　アイデア出し %>
+<div class="home_body wide_margin" id="edit_body">
+  <h3 class="theme">入力されたテーマ</h3>
+  <div class="post_idea">
+      <form name="brainstorming_process1_form" onsubmit="return false;">
+        <div class="ui fluid action input">
+          <%= text_field_tag 'idea_text', '', class: '', placeholder: "思いついたことを書いていきましょう" %>
+          <button type="button" class="ui black button" onclick="click_brainstorming_OK()">OK</button>
+        </div>
+      </form>
+  </div>
+  <div class="ui four cards process1_ideas" id="ideas">
+    <div class="teal card idea" id="0">
+      <div class="content">
+        サンプル
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    localStorage.setItem('card_id', 0);
+
+    function click_brainstorming_OK(){
+        const idea_text = document.brainstorming_process1_form.idea_text.value;
+        var id=parseInt(localStorage.getItem('card_id'))+1;
+        var div = $(
+            '<div class="teal card idea" id="'+id+'">\n' +
+            '      <div class="content">\n' +
+                      idea_text+
+            '      </div>\n' +
+            '    </div>'
+        );
+        $("#ideas").prepend(div);
+
+        $('#'+id).show( 'slide', '', 500 );
+
+
+        localStorage.setItem('card_id', id);
+    }
+</script>
+
