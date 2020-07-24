@@ -6,40 +6,41 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-IdeaCategory.create(:idea_category_name => 'メモ')
-IdeaCategory.create(:idea_category_name => 'ブレインストーミング')
+idea_categories = ['メモ',
+                   'ブレインストーミング']
+p "== create idea_categories ==================="
+for category_name in idea_categories do
+  IdeaCategory.create!(:idea_category_name => category_name)
+end
 
-if Rails.env.development?
-  User.create(:email => "develop@example.com",
-              :created_at => "2020-08-31",
-              :updated_at => "2020-08-31",
-              :password => "password",
-              :confirmed_at => "2020-8-31"
+p "== create users ============================="
+(1..10).each do |i|
+  User.create!(
+      :email => "develop#{i}@example.com",
+      :password => "password",
+      :confirmed_at => "2020-8-31"
   )
-  User.create(:email => "develop2@example.com",
-              :created_at => "2020-08-31",
-              :updated_at => "2020-08-31",
-              :password => "password",
-              :confirmed_at => "2020-8-31"
+end
+p "== create ideas, user_ideas, idea_logs ======"
+(1..10).each do |i|
+  idea = Idea.create!(
+      :idea_name => "sample_idea ##{i}",
+      :idea_description => "example ##{i}",
+      :idea_category_id => 1
   )
 
-
-  Idea.create(:idea_name => "test1", :idea_description => "example_idea", :idea_category_id => 1)
-  Idea.create(:idea_name => "test2", :idea_description => "example_idea", :idea_category_id => 1)
-  Idea.create(:idea_name => "test3", :idea_description => "example_idea", :idea_category_id => 1)
-  Idea.create(:idea_name => "test4", :idea_description => "example_idea", :idea_category_id => 1)
-  UserIdea.create(:user_id => 1, :idea_id => 1)
-  UserIdea.create(:user_id => 1, :idea_id => 3)
-  UserIdea.create(:user_id => 2, :idea_id => 2)
-  UserIdea.create(:user_id => 2, :idea_id => 4)
-
-  IdeaLog.create(:idea_id =>1, :query => { 'object': '1', 'user_id': '1', 'operation': 'add', 'content': 'ユーザー1,アイデア1,object1の意見', 'time': '2020-07-17'})
-  IdeaLog.create(:idea_id =>1, :query => { 'object': '2', 'user_id': '1', 'operation': 'add', 'content': 'ユーザー1,アイデア1,object2の意見', 'time': '2020-07-17'})
-  IdeaLog.create(:idea_id =>1, :query => { 'object': '3', 'user_id': '2', 'operation': 'add', 'content': 'ユーザー2,アイデア1,object3の意見', 'time': '2020-07-17'})
-  IdeaLog.create(:idea_id =>1, :query => { 'object': '4', 'user_id': '2', 'operation': 'add', 'content': 'ユーザー2,アイデア1,object4の意見', 'time': '2020-07-17'})
-
-  IdeaLog.create(:idea_id =>2, :query => { 'object': '1', 'user_id': '2', 'operation': 'add', 'content': 'ユーザー2,アイデア2,object1の意見', 'time': '2020-07-17'})
-  IdeaLog.create(:idea_id =>2, :query => { 'object': '2', 'user_id': '2', 'operation': 'add', 'content': 'ユーザー2,アイデア2,object2の意見', 'time': '2020-07-17'})
-  IdeaLog.create(:idea_id =>2, :query => { 'object': '3', 'user_id': '1', 'operation': 'add', 'content': 'ユーザー1,アイデア2,object3の意見', 'time': '2020-07-17'})
-  IdeaLog.create(:idea_id =>2, :query => { 'object': '4', 'user_id': '1', 'operation': 'add', 'content': 'ユーザー1,アイデア2,object4の意見', 'time': '2020-07-17'})
+  (1..2).each do |j|
+    UserIdea.create!(:idea_id => idea.id, :user_id => j)
+  end
+  50.times do |j|
+    idea.idea_logs.create!(
+        :query => {
+            :object => j,
+            :user_id => 1,
+            :mode => 'add',
+            :content => "sample content ##{j}",
+            :time => "#{Time.now + j}"
+        }
+    )
+  end
 end
