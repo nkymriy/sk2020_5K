@@ -5,89 +5,25 @@
   <%# 3 %>
   <div class="process3_contents">
     <div class="group-contents">
-      <div class="ui stacked segments group">
-        <div class="ui huge transparent input">
-          <input type="text" placeholder="GROUP1">
+      <% writers = ['GROUP１', 'GROUP２', 'GROUP３','GROUP４','GROUP５'] %>
+      <% writers.each do |writer| %>
+        <div class="ui stacked segments group">
+          <div class="ui huge transparent input">
+            <input type="text" placeholder=<%= writer %>>
+          </div>
         </div>
-      </div>
-      <div class="ui stacked segments group">
-        <div class="ui huge transparent input">
-          <input type="text" placeholder="GROUP2">
-        </div>
-      </div>
-      <div class="ui stacked segments group">
-        <div class="ui huge transparent input">
-          <input type="text" placeholder="GROUP3">
-        </div>
-      </div>
-      <div class="ui stacked segments group">
-        <div class="ui huge transparent input">
-          <input type="text" placeholder="GROUP4">
-        </div>
-      </div>
+      <% end %>
       <div class="ui black large button group-add">グループを追加する</div>
     </div>
     <div class="idea-contents">
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
-      <div class="idea">
-        <div class="ui teal large label">アイデアを表示</div>
-      </div>
+      <% writers = ['アイデア１', 'アイデア２', 'アイデア３','アイデア４','アイデア５'] %>
+      <% writers.each do |writer| %>
+        <div class="idea">
+          <div class="ui teal large label">
+            <%= writer %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
