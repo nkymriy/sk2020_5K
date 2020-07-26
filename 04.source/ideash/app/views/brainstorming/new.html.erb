@@ -6,7 +6,7 @@
         <div class="techname">ブレインストーミング(β)</div>
       </div>
       <div class="ui segment">
-        <%= form_with url: idea_brainstorming_new_path, model: @user_idea do |f| %>
+        <%= form_with url: idea_brainstorming_create_path, model: @user_idea, local:true do |f| %>
           <h4 class="header-text process">手順</h4>
           <ul>
             <li>手順①：テーマをもとに各自自由に発想する。思いついた事柄はどんどん入力していく。</li>
