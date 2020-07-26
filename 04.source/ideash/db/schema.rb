@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2020_07_24_072357) do
     t.datetime "updated_at", precision: 6, null: false
     t.json "option"
     t.string "hash_link"
-    t.index ["hash_link"], name: "index_ideas_on_hash_link", unique: true
     t.index ["idea_category_id"], name: "index_ideas_on_idea_category_id"
   end
 
