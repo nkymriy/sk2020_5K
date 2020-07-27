@@ -38,7 +38,9 @@ p "== create ideas, user_ideas, idea_logs ======"
             :object => j,
             :user_id => 1,
             :mode => 'add',
-            :content => "sample content ##{j}",
+            :add => {
+                :content => "sample content ##{j}"
+            },
             :time => "#{Time.now + j}"
         }
     )
