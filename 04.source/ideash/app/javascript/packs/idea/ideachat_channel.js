@@ -1,6 +1,7 @@
-import consumer from "./consumer"
-$(document).on("turbolinks:load",function () {
-    if ($('.ideachat.show').length > 0) {
+// import consumer from "./consumer"
+import consumer from "../../channels/consumer"
+$(document).on("turbolinks:load", function () {
+    if ($('.websocket').length > 0) {
         // const chatChannel = consumer.subscriptions.create({
         consumer.task = consumer.subscriptions.create({
             channel: 'IdeaChannel',
@@ -30,7 +31,7 @@ $(document).on("turbolinks:load",function () {
 
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
             if (event.keyCode === 13) {
-                consumer.task.speak(event.target.value);
+                consumer.task.speak({content: event.target.value});
                 event.target.value = '';
                 return event.preventDefault();
             }

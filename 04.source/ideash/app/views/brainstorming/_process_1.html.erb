@@ -2,41 +2,44 @@
 <div class="home_body wide_margin" id="edit_body">
   <h3 class="theme">テーマ: <%= idea.idea_name %></h3>
   <div class="post_idea">
-      <form name="brainstorming_process1_form" onsubmit="return false;">
-        <div class="ui fluid action input">
-          <%= text_field_tag 'idea_text', '', class: '', placeholder: "思いついたことを書いていきましょう" %>
-          <button type="button" class="ui black button" onclick="click_brainstorming_OK()">OK</button>
-        </div>
-      </form>
+    <form name="brainstorming_process1_form" onsubmit="return false;">
+      <div class="ui fluid action input">
+        <%= text_field_tag 'idea_text', '', class: '', placeholder: "思いついたことを書いていきましょう", data: {behavior: 'idea_speaker'} %>
+        <!--        <button type="button" class="ui black button" onclick="click_brainstorming_OK()">OK</button>-->
+      </div>
+    </form>
   </div>
   <div class="ui four cards process1_ideas" id="ideas">
-    <div class="teal card idea" id="0">
-      <div class="content">
-        サンプル
+    <%#= idea_logs.inspect %>
+    <% for content in idea_logs.reverse do %>
+      <div class="teal card idea" id="">
+        <div class="content">
+          <%= content.query["add"]["content"] %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
 
 <script>
     localStorage.setItem('card_id', 0);
 
-    function click_brainstorming_OK(){
-        const idea_text = document.brainstorming_process1_form.idea_text.value;
-        var id=parseInt(localStorage.getItem('card_id'))+1;
-        var div = $(
-            '<div class="teal card idea" id="'+id+'">\n' +
-            '      <div class="content">\n' +
-                      idea_text+
-            '      </div>\n' +
-            '    </div>'
-        );
-        $("#ideas").prepend(div);
-
-        $('#'+id).show( 'slide', '', 500 );
-
-
-        localStorage.setItem('card_id', id);
-    }
+    // function click_brainstorming_OK() {
+    //     const idea_text = document.brainstorming_process1_form.idea_text.value;
+    //     var id = parseInt(localStorage.getItem('card_id')) + 1;
+    //     var div = $(
+    //         '<div class="teal card idea" id="' + id + '">\n' +
+    //         '      <div class="content">\n' +
+    //         idea_text +
+    //         '      </div>\n' +
+    //         '    </div>'
+    //     );
+    //     $("#ideas").prepend(div);
+    //
+    //     $('#' + id).show('slide', '', 500);
+    //
+    //
+    //     localStorage.setItem('card_id', id);
+    // }
 </script>
 

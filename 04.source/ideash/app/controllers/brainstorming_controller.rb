@@ -4,6 +4,7 @@ class BrainstormingController < ApplicationController
 
   def edit
     @idea = Idea.find_by(id: params[:id])
+    @idea_logs = @idea.idea_logs
   end
 
   def create
