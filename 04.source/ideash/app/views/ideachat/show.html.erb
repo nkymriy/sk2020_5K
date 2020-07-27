@@ -1,7 +1,11 @@
 <h1>Chat room</h1>
-<div id='idea_logs'  data-idea_id="<%= @idea.id %>">
-  <%= render partial: 'ideachat/idealogs', collection: @idea_logs%>
+<p class="websocket"></p>
+<div id='idea_logs' data-idea_id="<%= @idea.id %>">
+
+  <%= render partial: 'ideachat/idealogs', collection: @idea_logs %>
 </div>
 
 <%= label_tag :content, 'Say something:' %>
-<%= text_field_tag :content, nil, data: { behavior: 'idea_speaker' } %>
+<%= text_field_tag :content, nil, data: {behavior: 'idea_speaker'} %>
+
+<%= javascript_pack_tag "idea/ideachat_channel" %>
