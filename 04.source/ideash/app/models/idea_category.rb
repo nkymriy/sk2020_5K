@@ -6,6 +6,7 @@
 #  idea_category_name :string           not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  manage_name        :string
 #
 class IdeaCategory < ApplicationRecord
   has_many :idea
