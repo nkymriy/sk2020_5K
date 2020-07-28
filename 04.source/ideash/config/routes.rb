@@ -11,7 +11,7 @@
 #                     user_confirmation GET    /user/confirmation(.:format)                                                             users/confirmations#show
 #                                       POST   /user/confirmation(.:format)                                                             users/confirmations#create
 #                                  idea GET    /idea(.:format)                                                                          ideas#home
-#                             idea_home GET    /idea/home(.:format)                                                                     memo#new
+#                             idea_home GET    /idea/home(.:format)                                                                     ideas#home
 #                          idea_history GET    /idea/history(.:format)                                                                  ideas#history
 #                         idea_category GET    /idea/category(.:format)                                                                 ideas#category
 #                         idea_memo_new GET    /idea/memo/new(.:format)                                                                 memo#new
@@ -21,8 +21,12 @@
 #                                       PATCH  /idea/memo(.:format)                                                                     memo#update
 #                idea_brainstorming_new GET    /idea/brainstorming/new(.:format)                                                        brainstorming#new
 #             idea_brainstorming_replay GET    /idea/brainstorming/replay(.:format)                                                     brainstorming#replay
-#               idea_brainstorming_edit GET    /idea/brainstorming/edit(.:format)                                                       brainstorming#edit
+#             idea_brainstorming_create POST   /idea/brainstorming/create(.:format)                                                     brainstorming#create
+#               idea_brainstorming_edit GET    /idea/brainstorming/edit/:id(.:format)                                                   brainstorming#edit
 #                     jquery_test_index GET    /jquery_test/index(.:format)                                                             jquery_test#index
+#                                              /cable                                                                                   #<ActionCable::Server::Base:0x0000564d50041ac0 @config=#<ActionCable::Server::Configuration:0x0000564d501c8380 @log_tags=[], @connection_class=#<Proc:0x0000564d501828a8 /home/otyua/RubymineProjects/sk2020_5K/04.source/ideash/vendor/bundle/ruby/2.7.0/gems/actioncable-6.0.3.1/lib/action_cable/engine.rb:37 (lambda)>, @worker_pool_size=4, @disable_request_forgery_protection=false, @allow_same_origin_as_host=true, @logger=#<ActiveSupport::Logger:0x0000564d4da3c758 @level=0, @progname=nil, @default_formatter=#<Logger::Formatter:0x0000564d4da3cb18 @datetime_format=nil>, @formatter=#<ActiveSupport::Logger::SimpleFormatter:0x0000564d4da3c668 @datetime_format=nil, @thread_key="activesupport_tagged_logging_tags:18480">, @logdev=#<Logger::LogDevice:0x0000564d4da3cac8 @shift_period_suffix="%Y%m%d", @shift_size=1048576, @shift_age=0, @filename="/home/otyua/RubymineProjects/sk2020_5K/04.source/ideash/log/development.log", @dev=#<File:/home/otyua/RubymineProjects/sk2020_5K/04.source/ideash/log/development.log>, @binmode=false, @mon_data=#<Monitor:0x0000564d4da3ca00>, @mon_data_owner_object_id=14040>>, @cable={"adapter"=>"async"}, @mount_path="/cable", @allowed_request_origins=/https?:\/\/localhost:\d+/>, @mutex=#<Monitor:0x0000564d50041a70>, @pubsub=nil, @worker_pool=nil, @event_loop=nil, @remote_connections=nil>
+#                              ideachat GET    /ideachat(.:format)                                                                      ideachat#index
+#                         ideachat_show GET    /ideachat/:id(.:format)                                                                  ideachat#show
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
 #         rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                  action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -67,8 +71,7 @@ Rails.application.routes.draw do
   # ユーザのホーム画面
   get 'idea' => 'ideas#home'
   # get 'idea' => 'memo#new'
-  # get 'idea/home' => 'ideas#home'
-  get 'idea/home' => 'memo#new'
+  get 'idea/home' => 'ideas#home'
   get 'idea/history' => 'ideas#history'
   get 'idea/category' => 'ideas#category'
 
@@ -84,7 +87,8 @@ Rails.application.routes.draw do
   # ブレインストーミング
   get 'idea/brainstorming/new' => 'brainstorming#new'
   get 'idea/brainstorming/replay' => 'brainstorming#replay'
-  get 'idea/brainstorming/edit' => 'brainstorming#edit'
+  post 'idea/brainstorming/create' => 'brainstorming#create'
+  get 'idea/brainstorming/edit/:id' => 'brainstorming#edit', as: :idea_brainstorming_edit
 
   # developmentモードでのみ以下のルーティングが行われる
   if Rails.env.development?
@@ -94,6 +98,15 @@ Rails.application.routes.draw do
     # resources :dbtest
     # resources :users
     get 'jquery_test/index'
+
+    # 仲 ideachatのテスト用ルーティング
+    # get 'ideachat/show' => 'ideachat#show'
+    # Action Cableを有効化する
+    mount ActionCable.server => '/cable'
+    # resources :ideas, only: %i[show]
+    get 'ideachat/' => 'ideachat#index'
+    get 'ideachat/:id' => 'ideachat#show', as: :ideachat_show
+    # 仲 ここまでテスト用ルーティング
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

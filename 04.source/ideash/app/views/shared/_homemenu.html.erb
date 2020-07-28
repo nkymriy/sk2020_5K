@@ -3,11 +3,12 @@
   <div class="item">
     <%= image_tag "icon_mini.png", class: "ui mini imag menu_icon" %>
   </div>
-  <a class="item home-menu" href="/idea/category">新規作成</a>
-  <a class="item home-menu" href="/idea/brainstorming/new">ブレインストーミング</a>
-  <a class="item home-menu" href="/idea/history">履歴</a>
-  <a class="item home-menu" href="">アカウント</a>
-  <a class="item home-menu" href="">サインアウト</a>
+  <%= link_to "新規作成", idea_category_path, class:"item home-menu" %>
+  <%= link_to "ブレインストーミング(β)", idea_brainstorming_new_path, class:"item home-menu" %>
+  <%= link_to "メモ", idea_memo_new_path, class:"item home-menu" %>
+  <%= link_to "履歴", idea_history_path, class:"item home-menu" %>
+  <%= link_to "アカウント", "#", class:"item home-menu" %>
+  <%= link_to "サインアウト", account_signout_path, class:"item home-menu" %>
   <small class="copyright">© 2020 by KUGATech team 5K</small>
 </div>
 <%# レスポンシブ対応 %>
