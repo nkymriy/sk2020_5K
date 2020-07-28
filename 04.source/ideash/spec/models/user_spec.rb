@@ -26,6 +26,23 @@
 #
 require 'rails_helper'
 
+# RSpec.describe User, type: :model do
+#   pending "add some examples to (or delete) #{__FILE__}"
+# end
+
+# describe "hogehoge" do
+#   it "1 + 1は2になること" do
+#     expect(1 + 1).to eq 2
+#   end
+# end
+
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Userモデルのバリデーションテスト' do
+    it "emailの値があれば有効" do
+      user = User.new(
+          email: "sample@example.com"
+      )
+      expect(user).to be_valid
+    end
+  end
 end
