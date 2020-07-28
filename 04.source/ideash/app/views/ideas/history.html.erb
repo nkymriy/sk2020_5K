@@ -6,9 +6,12 @@
     <ul class="histories">
 
       <% @user.idea.each do |idea| %>
-        <li class="history">
-          <div><%= idea.idea_name %></div>
-        </li>
+<!--        <a href="<%#= idea.id %>">-->
+          <li class="history">
+            <div><%= idea.idea_name %></div>
+            <div><%= @categories[idea.idea_category_id]["idea_category_name"] %></div>
+          </li>
+<!--        </a>-->
       <% end %>
 
     </ul>
