@@ -16,6 +16,37 @@
         <%= link_to "Sign Up", :account_signup, class: "ui black button" %>
         <!--        <h1>Comming soon!</h1> -->
       </div>
+      <div class="ui styled accordion release_note">
+        <div class="title accordion">
+          <i class="dropdown icon"></i>
+          リリースノート
+        </div>
+        <div class="content">
+          <%
+            datas = [
+                ['2020.07.17','release1','トップ画面が整備され見やすくなりました'],
+                ['2020.07.13','release2','アカウントの作成とメモが出来るようになりました'],
+                ['2020.07.13','release3','ティザーサイトがオープンしました']
+            ]
+          %>
+          <div class="ui list">
+            <% datas.each do |date,id,text| %>
+              <div class="item">
+                <i class="angle right icon"></i>
+                <div class="content">
+                  <a class="header" href="/releasenote#<%= id %>"><%= text %></a>
+                  <div class="description"><%= date %></div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <script>
+          $('.ui.accordion')
+              .accordion()
+          ;
+      </script>
     </div>
   </div>
   <div class="seg_2">

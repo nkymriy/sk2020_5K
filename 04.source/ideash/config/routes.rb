@@ -50,6 +50,8 @@
 Rails.application.routes.draw do
   # トップページ
   root 'top#index'
+  get '/releasenote' => 'top#releasenote'
+
 
   # devise(ユーザ認証関連)
   devise_for :users, skip: :all
