@@ -6,11 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-idea_categories = ['メモ',
-                   'ブレインストーミング']
+idea_categories = [['メモ','memo'],
+                   ['ブレインストーミング','brainstorming']]
 p "== create idea_categories ==================="
-for category_name in idea_categories do
-  IdeaCategory.create!(:idea_category_name => category_name)
+for category in idea_categories do
+  IdeaCategory.create!(:idea_category_name => category[0],
+                       :manage_name => category[1])
 end
 
 p "== create users ============================="
