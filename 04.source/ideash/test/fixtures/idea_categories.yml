@@ -6,6 +6,7 @@
 #  idea_category_name :string           not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  manage_name        :string
 #
 
 # This model initially had no columns defined. If you add columns to the
