@@ -1,0 +1,43 @@
+<%
+  function_array = [
+      ['アカウント管理機能', 'アカウントの作成、変更が可能','ログイン、ログアウトが出来るようになりました'],
+      ['メモ管理機能','新しいアイデア手法として　’メモをする’　が追加されました','作成、保存、変更が可能です']
+  ]
+ %>
+<%= render :partial => 'shared/header' %>
+
+<div class="release_note_segment">
+  <div class="ui raised segments">
+    <div class="ui segment" id="release1">
+      <h1>v0.1.0</h1>
+      <h2>2020.07.13  ティザーサイトがオープンしました</h2>
+      <div>
+        アイデア発想ツール、Ideashの記念すべき初リリースです！これからもIdeashの成長にご期待ください。
+      </div>
+    </div>
+    <div class="ui segment" id="release2">
+      <h1>v0.2.0</h1>
+      <h2>2020.07.13  アカウントの作成とメモが出来るようになりました</h2>
+      <div>
+        <div class="ui bulleted list">
+          <% function_array.each do |function,text1,text2| %>
+            <div class="item">
+              <div><%= function %></div>
+              <div class="ui list">
+                <div class="item"><%= text1 %></div>
+                <div class="item"><%= text2 %></div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="ui segment" id="release3">
+      <h1>v0.2.1</h1>
+      <h2>2020.07.17  トップ画面が整備され見やすくなりました</h2>
+      <div>
+        トップ画面のフォント、レイアウトを変更しました。
+      </div>
+    </div>
+  </div>
+</div>
