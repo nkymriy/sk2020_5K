@@ -1,3 +1,3 @@
 cd ../04.source/ideash
-# DBをリセットする
+echo 'Databaseをリセットします'
 rake db:reset
