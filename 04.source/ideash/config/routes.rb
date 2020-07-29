@@ -73,6 +73,7 @@ Rails.application.routes.draw do
   get 'idea/home' => 'ideas#home'
   get 'idea/history' => 'ideas#history'
   get 'idea/category' => 'ideas#category'
+  get 'idea/account' => 'ideas#account'
 
   # メモ
   get 'idea/memo/new' => 'memo#new'

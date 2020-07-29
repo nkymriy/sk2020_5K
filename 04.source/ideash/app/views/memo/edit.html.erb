@@ -1,16 +1,15 @@
-<%= render :partial => 'shared/homemenu' %>
+<%= render :partial => 'shared/header' %>
 
-<div class="pusher">
-  <div style="height: 15px"></div>
+<div class="home_body" id="home_body">
   <%# 右部のメモ一覧 %>
-  <div class="ui card  right floated list" style="overflow: scroll;height: 100%;background: white;padding: 10px">
+  <div class="ui right fixed vertical menu block-edit-sidebar memo_sidebar">
     <%# reverseで逆順に並べる %>
     <%= render partial: 'shared/memomenu', collection: @user_memo.reverse, as: "memo" %>
   </div>
 
   <div class="ui container">
     <div class="ui text">メモを確認しましょう。</div>
-    <%= form_with model: @memo, class: 'ui form', local: true, url: "/idea/memo?id=#{@memo.id}" do |f| %>
+    <%= form_with model: @memo, class: 'ui form memo_form', local: true, url: "/idea/memo?id=#{@memo.id}" do |f| %>
 
   <div class="fields">
         <div class="sixteen wide field">
@@ -30,6 +29,8 @@
   </div>
 </div>
 
+<%# JSが書かれているため最後に書くこと %>
+<%= render :partial => 'shared/homemenu' %>
 
 <%#= form_with model: @memo, local: true, url: idea_memo_path(@memo.id) do |f| %>
 
