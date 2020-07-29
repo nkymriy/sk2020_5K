@@ -6,6 +6,7 @@
 #  idea_category_name :string           not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  manage_name        :string
 #
 require 'test_helper'
 

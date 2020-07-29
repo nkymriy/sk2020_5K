@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_072357) do
+ActiveRecord::Schema.define(version: 2020_07_28_025739) do
 
   create_table "idea_categories", force: :cascade do |t|
     t.string "idea_category_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "manage_name"
     t.index ["idea_category_name"], name: "index_idea_categories_on_idea_category_name", unique: true
   end
 
