@@ -22,15 +22,17 @@
             }
 
             function showClock2() {
-                if ($('#RealtimeClockArea2').length === 0) {
-                    clearInterval(timerId)
-                }
+
                 var nowTime = new Date();
                 var nowHour = set2fig(nowTime.getHours());
                 var nowMin = set2fig(nowTime.getMinutes());
                 var nowSec = set2fig(nowTime.getSeconds());
                 var msg = nowHour + ":" + nowMin + ":" + nowSec;
-                document.getElementById("RealtimeClockArea2").innerHTML = msg;
+                if ($('#RealtimeClockArea2').length === 0) {
+                    clearInterval(timerId)
+                } else {
+                    document.getElementById("RealtimeClockArea2").innerHTML = msg;
+                }
             }
 
             let timerId = setInterval('showClock2()', 1000);
