@@ -24,13 +24,13 @@
         <div class="content">
           <%
             datas = [
-                ['2020.07.17','release1','トップ画面が整備され見やすくなりました'],
-                ['2020.07.13','release2','アカウントの作成とメモが出来るようになりました'],
-                ['2020.07.13','release3','ティザーサイトがオープンしました']
+                ['2020.07.17', 'release1', 'トップ画面が整備され見やすくなりました'],
+                ['2020.07.13', 'release2', 'アカウントの作成とメモが出来るようになりました'],
+                ['2020.07.13', 'release3', 'ティザーサイトがオープンしました']
             ]
           %>
           <div class="ui list">
-            <% datas.each do |date,id,text| %>
+            <% datas.each do |date, id, text| %>
               <div class="item">
                 <i class="angle right icon"></i>
                 <div class="content">
@@ -43,9 +43,8 @@
         </div>
       </div>
       <script>
-          $('.ui.accordion')
-              .accordion()
-          ;
+          <%# TODO: Ajaxで戻ってきた時にうまく作動しない？設置場所かもしれない %>
+          $('.ui.accordion').accordion('refresh')
       </script>
     </div>
   </div>
@@ -110,8 +109,14 @@
 <div class="footer">
   <%= image_tag 'thinkman.png', class: 'man no_select' %>
   <ul class="footer-menu">
-    <a href="#home"><li>home　｜　</li></a>
-    <a href="#concept"><li>concept 　｜　</li></a>
-    <a href="#about"><li>about</li></a>
+    <a href="#home">
+      <li>home　｜　</li>
+    </a>
+    <a href="#concept">
+      <li>concept 　｜　</li>
+    </a>
+    <a href="#about">
+      <li>about</li>
+    </a>
   </ul>
 </div>
