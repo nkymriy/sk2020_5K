@@ -9,10 +9,11 @@ body{
 
 /*みどり部分*/
 .top {
-  background-image: url(image_path("index_background.png"));
   background-size: 100% 100%;
   padding-bottom: 10%;
-  padding-top: 2%;
+}
+#top_img{
+  background-image: url(image_path("index_background.png"));
 }
 
 /*大きい文字(白)*/
