@@ -23,7 +23,7 @@ $(document).on("turbolinks:load", function () {
                 const idea_text = add["content"];
 
                 if (idea_text == null || idea_text == ""){
-                    exit;
+                    return false;
                 }
 
                 var id = parseInt(localStorage.getItem('card_id')) + 1;
