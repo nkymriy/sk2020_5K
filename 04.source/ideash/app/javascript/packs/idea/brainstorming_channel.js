@@ -21,6 +21,11 @@ $(document).on("turbolinks:load", function () {
                 let add = query["add"]
                 // const idea_text = document.brainstorming_process1_form.idea_text.value;
                 const idea_text = add["content"];
+
+                if (idea_text == null || idea_text == ""){
+                    exit;
+                }
+
                 var id = parseInt(localStorage.getItem('card_id')) + 1;
                 var div = $(
                     '<div class="teal card idea none" id="' + id + '">\n' +
