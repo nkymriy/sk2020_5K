@@ -92,6 +92,7 @@ Rails.application.routes.draw do
     # resources :dbtest
     # resources :users
     get 'jquery_test/index'
+    get 'top/test'=>'top#index'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
