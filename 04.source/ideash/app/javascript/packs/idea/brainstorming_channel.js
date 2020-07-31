@@ -22,7 +22,7 @@ $(document).on("turbolinks:load", function () {
                 // const idea_text = document.brainstorming_process1_form.idea_text.value;
                 const idea_text = add["content"];
 
-                if (idea_text == null || idea_text == ""){
+                if (idea_text == null || idea_text == "") {
                     return false;
                 }
 
@@ -50,9 +50,10 @@ $(document).on("turbolinks:load", function () {
 
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
             if (event.keyCode === 13) {
+                if (event.target.value === "") return false
                 let add = {
                     content: event.target.value
-                }
+                };
                 consumer.task.add(add);
                 event.target.value = '';
                 return event.preventDefault();
