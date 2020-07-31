@@ -48,12 +48,12 @@
 #                  rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
-  # トップページ
+  # INFO: トップページ
   root 'top#index'
   get '/releasenote' => 'top#releasenote'
 
 
-  # devise(ユーザ認証関連)
+  # INFO: devise(ユーザ認証関連)
   devise_for :users, skip: :all
   devise_scope :user do
     get 'account/signin' => 'users/sessions#new'
@@ -67,15 +67,14 @@ Rails.application.routes.draw do
     post 'user/confirmation' => 'users/confirmations#create'
   end
 
-  # ユーザのホーム画面
+  # INFO: ユーザのホーム画面
   get 'idea' => 'ideas#home'
-  # get 'idea' => 'memo#new'
   get 'idea/home' => 'ideas#home'
   get 'idea/history' => 'ideas#history'
   get 'idea/category' => 'ideas#category'
   get 'idea/account' => 'ideas#account'
 
-  # メモ
+  # INFO: メモ
   get 'idea/memo/new' => 'memo#new'
   post 'idea/memo/new' => 'memo#new'
   post 'idea/memo' => 'memo#create'
@@ -84,29 +83,21 @@ Rails.application.routes.draw do
   patch '/idea/memo' => 'memo#update'
 
 
-  # ブレインストーミング
+  # INFO: ブレインストーミング
   get 'idea/brainstorming/new' => 'brainstorming#new'
   get 'idea/brainstorming/replay' => 'brainstorming#replay'
   post 'idea/brainstorming/create' => 'brainstorming#create'
   get 'idea/brainstorming/edit/:id' => 'brainstorming#edit', as: :idea_brainstorming_edit
 
+  # NOTE: Action Cable の有効化
+  mount ActionCable.server => '/cable'
   # developmentモードでのみ以下のルーティングが行われる
   if Rails.env.development?
-    # 仲 メモのindexによる一覧表示のテスト用
-    # get 'idea/memo' => 'memo#index'
-    # DBのテスト用
-    # resources :dbtest
-    # resources :users
+    # NOTE: jQueryのテスト用
     get 'jquery_test/index'
-
-    # 仲 ideachatのテスト用ルーティング
-    # get 'ideachat/show' => 'ideachat#show'
-    # Action Cableを有効化する
-    mount ActionCable.server => '/cable'
-    # resources :ideas, only: %i[show]
+    # NOTE: WebSocketのテスト用チャット画面
     get 'ideachat/' => 'ideachat#index'
     get 'ideachat/:id' => 'ideachat#show', as: :ideachat_show
-    # 仲 ここまでテスト用ルーティング
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
