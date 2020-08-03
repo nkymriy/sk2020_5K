@@ -10,7 +10,36 @@
 #  query      :json
 #
 class IdeaLog < ApplicationRecord
-  validates :query, presence: true
+
+  QUERY_SCHEMA = {
+      type: 'object',
+      properties: {
+          user_id: {
+              type: 'integer'
+          },
+          time: {
+              type: 'string'
+          },
+          mode: {
+              type: 'string'
+          },
+          add: {
+              type: 'object',
+              properties: {
+                  object_id: {
+                      type: 'integer'
+                  },
+                  content: {
+                      type: 'string'
+                  },
+              },
+          },
+      },
+  }.freeze
+
+  validates :query, json: { schema: QUERY_SCHEMA }
+
+  # validates :query, presence: true
 
   after_create_commit { IdealogBroadcastJob.perform_later self }
 end
