@@ -71,17 +71,18 @@ class IdeaLog < ApplicationRecord
               type: 'object',
               required: [
                   'object_id',
-                  'name'
+                  'group_id'
               ],
               properties: {
                   object_id: {
                       type: 'integer'
                   },
-                  name: {
-                      type: 'string'
+                  group_id: {
+                      type: 'integer'
                   },
               },
           },
+
       },
   }.freeze
 
