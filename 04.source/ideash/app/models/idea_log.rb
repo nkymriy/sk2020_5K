@@ -13,6 +13,7 @@ class IdeaLog < ApplicationRecord
 
   QUERY_SCHEMA = {
       type: 'object',
+      # nullable: true,
       properties: {
           user_id: {
               type: 'integer'
@@ -34,10 +35,18 @@ class IdeaLog < ApplicationRecord
                   },
               },
           },
+          delete: {
+              type: 'object',
+              properties: {
+                  object_id: {
+                      type: 'integer'
+                  },
+              },
+          },
       },
   }.freeze
 
-  validates :query, json: { schema: QUERY_SCHEMA }
+  validates :query, json: {schema: QUERY_SCHEMA}
 
   # validates :query, presence: true
 
