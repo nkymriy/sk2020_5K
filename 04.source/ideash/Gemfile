@@ -77,8 +77,11 @@ gem 'rubocop-rails'
 #認証用
 gem 'devise'
 
+
+
 group :development, :test do
   #rspec-rails テスト用
   gem 'rspec-rails', '~> 4.0'
   gem 'factory_bot_rails'
+
 end

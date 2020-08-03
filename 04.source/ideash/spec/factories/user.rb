@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :user do
+  factory :user_test do
     user_name{'test'}
     email{'example@email.com'}
     encrypted_password{'password'}
