@@ -97,6 +97,17 @@ class IdeaLog < ApplicationRecord
                   },
               },
           },
+          chat: {
+              type: 'object',
+              required: [
+                  'content'
+              ],
+              properties: {
+                  content: {
+                      type: 'string'
+                  },
+              },
+          },
       },
   }.freeze
 
