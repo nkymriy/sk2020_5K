@@ -24,7 +24,15 @@ class IdeaLog < ApplicationRecord
               type: 'string'
           },
           mode: {
-              type: 'string'
+              type: 'string',
+              enum: [
+                  'add',
+                  'delete',
+                  'edit',
+                  'grouping',
+                  'group',
+                  'chat'
+              ]
           },
           add: {
               type: 'object',
