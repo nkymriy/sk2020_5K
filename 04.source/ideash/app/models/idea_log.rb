@@ -13,7 +13,7 @@ class IdeaLog < ApplicationRecord
 
   QUERY_SCHEMA = {
       type: 'object',
-      additionalProperties:false,
+      additionalProperties: false,
       required: [
           'mode'
       ],
@@ -37,7 +37,7 @@ class IdeaLog < ApplicationRecord
           },
           add: {
               type: 'object',
-              additionalProperties:false,
+              additionalProperties: false,
               required: [
                   'object_id',
                   'content'
@@ -53,7 +53,7 @@ class IdeaLog < ApplicationRecord
           },
           delete: {
               type: 'object',
-              additionalProperties:false,
+              additionalProperties: false,
               required: [
                   'object_id',
               ],
@@ -65,7 +65,7 @@ class IdeaLog < ApplicationRecord
           },
           edit: {
               type: 'object',
-              additionalProperties:false,
+              additionalProperties: false,
               required: [
                   'object_id',
                   'content'
@@ -81,7 +81,7 @@ class IdeaLog < ApplicationRecord
           },
           grouping: {
               type: 'object',
-              additionalProperties:false,
+              additionalProperties: false,
               required: [
                   'object_id',
                   'group_id'
@@ -97,7 +97,7 @@ class IdeaLog < ApplicationRecord
           },
           group: {
               type: 'object',
-              additionalProperties:false,
+              additionalProperties: false,
               required: [
                   'group_id',
                   'name'
@@ -113,7 +113,7 @@ class IdeaLog < ApplicationRecord
           },
           chat: {
               type: 'object',
-              additionalProperties:false,
+              additionalProperties: false,
               required: [
                   'content'
               ],
