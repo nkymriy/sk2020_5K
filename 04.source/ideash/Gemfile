@@ -78,6 +78,9 @@ gem 'rubocop-rails'
 #認証用
 gem 'devise'
 
+# json-schema
+gem 'json-schema'
+
 group :development, :test do
   #rspec-rails テスト用
   gem 'rspec-rails', '~> 4.0'
