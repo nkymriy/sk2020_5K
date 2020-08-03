@@ -82,7 +82,21 @@ class IdeaLog < ApplicationRecord
                   },
               },
           },
-
+          group: {
+              type: 'object',
+              required: [
+                  'group_id',
+                  'name'
+              ],
+              properties: {
+                  group_id: {
+                      type: 'integer'
+                  },
+                  name: {
+                      type: 'string'
+                  },
+              },
+          },
       },
   }.freeze
 
