@@ -13,7 +13,9 @@ class IdeaLog < ApplicationRecord
 
   QUERY_SCHEMA = {
       type: 'object',
-      # nullable: true,
+      required: [
+          'mode'
+      ],
       properties: {
           user_id: {
               type: 'integer'
@@ -26,6 +28,10 @@ class IdeaLog < ApplicationRecord
           },
           add: {
               type: 'object',
+              required: [
+                  'object_id',
+                  'content'
+              ],
               properties: {
                   object_id: {
                       type: 'integer'
@@ -37,12 +43,26 @@ class IdeaLog < ApplicationRecord
           },
           delete: {
               type: 'object',
+              required: [
+                  'object_id',
+              ],
               properties: {
                   object_id: {
                       type: 'integer'
                   },
               },
           },
+          # edit: {
+          #     type: 'object',
+          #     properties: {
+          #         object_id: {
+          #             type: 'integer'
+          #         },
+          #         content: {
+          #             type: 'string'
+          #         },
+          #     },
+          # },
       },
   }.freeze
 
