@@ -52,17 +52,21 @@ class IdeaLog < ApplicationRecord
                   },
               },
           },
-          # edit: {
-          #     type: 'object',
-          #     properties: {
-          #         object_id: {
-          #             type: 'integer'
-          #         },
-          #         content: {
-          #             type: 'string'
-          #         },
-          #     },
-          # },
+          edit: {
+              type: 'object',
+              required: [
+                  'object_id',
+                  'content'
+              ],
+              properties: {
+                  object_id: {
+                      type: 'integer'
+                  },
+                  content: {
+                      type: 'string'
+                  },
+              },
+          },
       },
   }.freeze
 
