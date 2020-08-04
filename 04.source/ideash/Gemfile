@@ -83,5 +83,8 @@ group :development, :test do
   #rspec-rails テスト用
   gem 'rspec-rails', '~> 4.0'
   gem 'factory_bot_rails'
+  #ダミーデータを自動生成する
+  gem 'faker'
+  gem 'rails-controller-testing'
 
 end
