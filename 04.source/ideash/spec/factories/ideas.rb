@@ -1,3 +1,5 @@
+# == Schema Information
+#
 # Table name: ideas
 #
 #  id               :integer          not null, primary key
@@ -8,12 +10,16 @@
 #  updated_at       :datetime         not null
 #  option           :json
 #  hash_link        :string
+#
+
+# , class: Idea
+
+FactoryBot.define do
+  factory :idea_test do
+    idea_category_id { 1 }
+    idea_name { "test" }
+    idea_description { "example_idea" }
+  end
+end
 
 
-# FactoryBot.define do
-#   factory :idea_test,class: Idea do
-#     idea_category_id{1}
-#     idea_name{"test"}
-#     idea_description{"example_idea"}
-#   end
-# end
