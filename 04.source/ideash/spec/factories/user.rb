@@ -1,9 +1,19 @@
+# FactoryBot.define do
+#   factory :user_test do
+#     user_name{'test'}
+#     email{'example@email.com'}
+#     encrypted_password{'password'}
+#     sign_in_count{1}
+#   end
+# end
+
 FactoryBot.define do
-  factory :user_test do
-    user_name{'test'}
-    email{'example@email.com'}
-    encrypted_password{'password'}
-    sign_in_count{1}
+
+  factory :user do
+    pass = Faker::Internet.password(min_length: 8)
+    user_name {Faker::Name.name}
+    email {Faker::Internet.email}
+    encrypted_password {pass}
   end
 end
 

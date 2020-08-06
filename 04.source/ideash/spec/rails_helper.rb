@@ -25,4 +25,12 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   #factorybotの記述を楽にする
   config.include FactoryBot::Syntax::Methods
+  #deviseのtest_helperとmacrosをコントローラーで使えるようにする
+  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include ControllerMacros, type: :controller
 end
+
+#deviseとcontroller_macrosを読み込む
+require 'devise'
+require File.expand_path("spec/support/controller_macros.rb")
