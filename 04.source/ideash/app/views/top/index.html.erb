@@ -22,23 +22,8 @@
           リリースノート
         </div>
         <div class="content">
-          <%
-            datas = [
-                ['2020.07.17', 'release1', 'トップ画面が整備され見やすくなりました'],
-                ['2020.07.13', 'release2', 'アカウントの作成とメモが出来るようになりました'],
-                ['2020.07.13', 'release3', 'ティザーサイトがオープンしました']
-            ]
-          %>
-          <div class="ui list">
-            <% datas.each do |date, id, text| %>
-              <div class="item">
-                <i class="angle right icon"></i>
-                <div class="content">
-                  <a class="header" href="/releasenote#<%= id %>"><%= text %></a>
-                  <div class="description"><%= date %></div>
-                </div>
-              </div>
-            <% end %>
+          <div class="ui list" id="output_csv_top">
+
           </div>
         </div>
       </div>
@@ -120,3 +105,5 @@
     </a>
   </ul>
 </div>
+
+<%= javascript_pack_tag 'releasenote_top', 'data-turbolinks-track': 'reload' %>
