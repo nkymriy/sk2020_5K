@@ -10,7 +10,7 @@
 #  query      :json
 #
 class IdeaLog < ApplicationRecord
-
+    # NOTE timeにValidateがかかっていないので、必要があれば以下に記述する
   QUERY_SCHEMA = {
       type: 'object',
       additionalProperties: false,

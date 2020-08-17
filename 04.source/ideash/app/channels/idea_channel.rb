@@ -22,7 +22,8 @@ class IdeaChannel < ApplicationCable::Channel
     p "-----------#{res}-----------"
     p "-----------#{res[0]}-----------"
     p "-----------#{res[0]['count(*)']}-----------"
+    p "-----------#{DateTime.now}-----------"
     # TODO Timeを保存する処理を追加する
-    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id,'mode': 'add', 'add': { 'object_id': res[0]['count(*)'], 'content': data["content"]}}
+    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id,'mode': 'add', 'add': { 'object_id': res[0]['count(*)'], 'content': data["content"]}, 'time': DateTime.now}
   end
 end
