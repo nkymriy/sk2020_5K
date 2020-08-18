@@ -1,2 +1,65 @@
-<h1>Brainstorming#new</h1>
-<p>Find me in app/views/brainstorming/new.html.erb</p>
+<%= render :partial => 'shared/header' %>
+<div class="tech_about_body">
+  <div id="home_body" class="" style="margin-top: -2px">
+    <div class="ui segments block-tech-about">
+      <div class="ui segment">
+        <div class="techname">ブレインストーミング(β)</div>
+      </div>
+      <div class="ui segment">
+        <%= form_with url: idea_brainstorming_create_path, model: @user_idea, local:true do |f| %>
+          <h4 class="header-text process">手順</h4>
+          <ul>
+            <li>手順①：テーマをもとに各自自由に発想する。思いついた事柄はどんどん入力していく。</li>
+            <li><s>手順②：①で出たアイデアをメンバー内で共有する。質問やアイデアの結合を行う。</s></li>
+            <li><s>手順③：アイデアを整理する。関連性を見つけながらグルーピングを行う。</s></li>
+            <li>※β版なので手順①のみ</li>
+          </ul>
+          <h4 class="header-text rule">ルール</h4>
+          <ul>
+            <li>批判禁止　出たいアイデアを批判したり、実現性を求めたりしないこと。</li>
+            <li>自由奔放　柔軟なアイデアを出すために固定概念や慣習に囚われないようにする。</li>
+            <li>質より量　思考の限界を超えられるよう、とにかくたくさんのアイデアを出すように心がける。</li>
+          </ul>
+          <h4 class="header-text timer-setting">時間設定</h4>
+          <ul>
+            <li>手順①：<%= f.text_field 'process1', value: '無制限', readonly: 'true' %>分</li>
+            <li>手順②：<%= f.text_field 'process2', disabled: 'true' %>分</li>
+            <li>手順③：<%= f.text_field 'process3', disabled: 'true' %>分</li>
+          </ul>
+          <h4 class="header-text  timer-setting">テーマ設定</h4>
+          <ul>
+            <li><%= f.text_field 'theme', placeholder: "発想のテーマを入力してください", size: 50 %></li>
+          </ul>
+          <h4 class="header-text">参加者　
+            <%# <a href="" class="participant-invitation">招待リンクをコピーする</a>%>
+          </h4>
+          <div class="participant">
+            <ul>
+              <li><i class="user circle icon"></i><%= current_user.email %>(自分)</li>
+              <%#
+              <li><i class="user circle icon"></i>member_name_1</li>
+              <li><i class="user circle teal icon"></i>member_name_2</li>
+              <li><i class="user circle pink icon"></i>member_name_3</li>
+              <li><i class="user circle olive icon"></i>member_name_4</li>
+              <li><i class="user circle icon"></i>member_name_5</li>
+              <li><i class="user circle teal icon"></i>member_name_6</li>
+              <li><i class="user circle pink icon"></i>member_name_7</li>
+              <li><i class="user circle olive icon"></i>member_name_8</li>
+              %>
+            </ul>
+          </div>
+          <div class="ui center aligned grid">
+            <div class="start-button">
+              <%= f.submit 'はじめる', class: 'ui black button' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# JSが書かれているため最後に書くこと %>
+<%= render :partial => 'shared/homemenu' %>
+
+

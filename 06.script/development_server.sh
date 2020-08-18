@@ -1,3 +1,3 @@
 cd ../04.source/ideash
-#サーバを起動
+echo 'serverを起動します'
 bin/rails s

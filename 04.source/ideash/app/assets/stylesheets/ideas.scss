@@ -1,3 +1,110 @@
 // Place all the styles related to the Ideas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+/*home*/
+.creat_new_segment{
+  height: 40%;
+}
+.creat_new_segment .categories{
+  height: 25vh;
+}
+
+.category{
+  background-color: #1b1e21;
+}
+.creat_new_segment .category{
+  height: 25vh;
+  width:230px;
+  margin: 0 2%;
+  padding-top: 3%;
+  border-radius: 10px;
+  /*中央よせ*/
+  text-align: center;
+}
+.techname_eng{
+  color: white;
+  font-size: xx-large;
+  margin-bottom: 3%;
+}
+.techname_ja{
+  color: white;
+  font-size: larger;
+  margin-bottom: 10%;
+}
+.techname_icon{
+  padding-left: 4%;
+}
+
+.recent_creation_segment{
+  height: 30%;
+}
+.recent_creation_segment .histories{
+  height: 20vh;
+}
+.recent_creation_segment .history{
+  border: #999999 solid 1px;
+  height: 20vh;
+  width: 20%;
+  margin: 0 2%;
+  border-radius: 10px;
+}
+.home_body .header{
+  font-size: medium;
+  font-weight: bold;
+  margin-left: 3%;
+}
+.home_body .more{
+  font-size: larger;
+  font-weight: bold;
+  //margin-top: -1%;
+  //margin-left: 65vw;
+}
+
+/*category*/
+.category_segment .categories{
+  height: 65vh;
+}
+.category_segment .category{
+  color: white;
+  background-color: #1b1e21;
+  height: 60vh;
+  width: 230px;
+  margin: 0 2%;
+  padding-top: 4.5%;
+  border-radius: 10px;
+  /*中央よせ*/
+  text-align: center;
+}
+.category_segment .recommend_num{
+  margin-top: 15%;
+}
+.category_segment .explain,.category_segment .recommend_point{
+  height: 18%;
+  width: 80%;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.category_segment hr{
+  margin: 0 5%;
+}
+
+/*history*/
+.history_segment .histories{
+  height: 65vh;
+}
+.history_segment .history{
+  border: #999999 solid 1px;
+  height: 20vh;
+  width: 20%;
+  margin: 2%;
+  border-radius: 10px;
+  overflow: auto;
+  float: left;
+}
+
+/*account*/
+.account_name{
+  font-size: large;
+  font-weight: bold;
+}

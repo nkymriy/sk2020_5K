@@ -1,2 +1,8 @@
-<h1>Brainstorming#edit</h1>
-<p>Find me in app/views/brainstorming/edit.html.erb</p>
+<%= render :partial => 'shared/header' %>
+<%= render :partial =>'shared/editmenu', locals: {users: @idea_users} %>
+<span class="websocket" id="idea_logs" data-idea_id="<%= @idea.id %>"></span>
+<%= render :partial => 'brainstorming/process_1', locals: {idea: @idea, idea_logs: @idea_logs} %>
+<%# JSが書かれているため最後に書くこと %>
+<%= render :partial => 'shared/homemenu' %>
+
+<%= javascript_pack_tag "idea/brainstorming_channel" %>

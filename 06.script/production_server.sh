@@ -1,4 +1,4 @@
 cd ../04.source/ideash
-#サーバを起動
+echo 'production環境でserverを起動します'
 bin/rails s -e production
 

@@ -18,7 +18,9 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
+gem 'redis-actionpack'
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -65,8 +67,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # semantic-ui
 gem 'semantic-ui-sass'
-#jQuery
-gem 'jquery-rails'
 
 #dotenv
 gem 'dotenv-rails'
@@ -78,6 +78,8 @@ gem 'rubocop-rails'
 #認証用
 gem 'devise'
 
+#unicorn
+gem 'unicorn'
 group :development, :test do
   #rspec-rails テスト用
   gem 'rspec-rails', '~> 4.0'
