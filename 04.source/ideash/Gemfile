@@ -81,6 +81,8 @@ gem 'devise'
 # json-schema
 gem 'json-schema'
 
+#unicorn
+gem 'unicorn'
 group :development, :test do
   #rspec-rails テスト用
   gem 'rspec-rails', '~> 4.0'
