@@ -1,0 +1,61 @@
+@startuml
+entity "m_user" {
+  user_id : TEXT <<PRIMARY KEY>>
+  user_name : TEXT <<NOT NULL>>
+  user_mail : TEXT <<NOT NULL>>
+  created_at : TEXT <<DEFAULT (DATETIME('now', 'localtime')>>
+  updated_at : TEXT <<DEFAULT (DATETIME('now', 'localtime')>>
+}
+
+entity "t_user_log" {
+  user_log_id : TEXT <<PRIMARY KEY>>
+  user_id : TEXT <<FOREIGN KEY>>
+  user_log_login_at : TEXT
+}
+
+entity "t_idea" {
+  idea_id : INTEGER <<PRIMARY KEY>>
+  idea_category_id : INTEGER <<FOREIGN KEY>>
+  idea_name : TEXT
+  idea_description : TEXT
+  created_at : TEXT <<DEFAULT (DATETIME('now', 'localtime')>>
+  updated_at : TEXT <<DEFAULT (DATETIME('now', 'localtime')>>
+}
+
+entity "t_user_idea" {
+  user_id : TEXT <<PRIMARY KEY>>
+  idea_id : INTEGER <<PRIMARY KEY>>
+  created_at : TEXT <<DEFAULT (DATETIME('now', 'localtime')>>
+  updated_at : TEXT <<DEFAULT (DATETIME('now', 'localtime')>>
+}
+
+entity "t_memo" {
+  user_id : TEXT <<PRIMARY KEY>>
+  memo_id : INTEGER <<FOREIGN KEY>>
+  memo_content : TEXT
+  created_at : TEXT <<DEFAULT (DATETIME('now', 'localtime')>>
+  updated_at : TEXT <<DEFAULT (DATETIME('now', 'localtime')>>
+}
+
+entity "t_idea_log" {
+  idea_id : INTEGER <<PRIMARY KEY>>
+  idea_id : TEXT
+  created_at : TEXT <<DEFAULT (DATETIME('now', 'localtime')>>
+  updated_at : TEXT <<DEFAULT (DATETIME('now', 'localtime')>>
+}
+
+entity "m_idea_category" {
+  idea_category_id : INTEGER <<PRIMARY KEY>>
+  idea_category_name : TEXT <<NOT NULL>>
+  created_at : TEXT <<DEFAULT (DATETIME('now', 'localtime')>>
+  updated_at : TEXT <<DEFAULT (DATETIME('now', 'localtime')>>
+}
+
+
+m_user ||--|{ t_user_log
+m_user ||--|{ t_user_idea
+m_user ||--|{ t_memo
+m_idea ||--|{ t_user_idea
+m_idea ||--|| t_idea_log
+m_idea_category ||--|{ m_idea
+@enduml

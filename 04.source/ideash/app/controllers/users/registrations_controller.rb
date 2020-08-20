@@ -64,7 +64,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # サインイン時にサインアップを開いたときのリダイレクト先
-  def after_sign_in_path_for(resoure)
+  def after_sign_in_path_for(resource)
     idea_home_path
   end
 
