@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_010802) do
+ActiveRecord::Schema.define(version: 2020_07_28_025739) do
 
   create_table "idea_categories", force: :cascade do |t|
     t.string "idea_category_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "manage_name"
     t.index ["idea_category_name"], name: "index_idea_categories_on_idea_category_name", unique: true
   end
 
   create_table "idea_logs", force: :cascade do |t|
-    t.integer "idea_id"
+    t.string "idea_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_active", default: false, null: false
@@ -28,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_07_24_010802) do
     t.index ["idea_id"], name: "index_idea_logs_on_idea_id"
   end
 
-  create_table "ideas", force: :cascade do |t|
+  create_table "ideas", id: :string, force: :cascade do |t|
     t.integer "idea_category_id"
     t.string "idea_name"
     t.string "idea_description"
@@ -36,13 +37,12 @@ ActiveRecord::Schema.define(version: 2020_07_24_010802) do
     t.datetime "updated_at", precision: 6, null: false
     t.json "option"
     t.string "hash_link"
-    t.index ["hash_link"], name: "index_ideas_on_hash_link", unique: true
     t.index ["idea_category_id"], name: "index_ideas_on_idea_category_id"
   end
 
   create_table "user_ideas", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "idea_id"
+    t.string "idea_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["idea_id"], name: "index_user_ideas_on_idea_id"

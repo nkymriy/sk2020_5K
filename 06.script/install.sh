@@ -1,7 +1,10 @@
 cd ../04.source/ideash
-#pathを指定することで環境を隔離
+
+echo '> bundle install'
 bundle install --path vendor/bundle --jobs=4
 
+echo '> yarn install'
 yarn install
 
+echo '> -rf tmp/pids/server.pid'
 rm -rf tmp/pids/server.pid

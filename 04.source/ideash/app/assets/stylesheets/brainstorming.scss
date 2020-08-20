@@ -60,14 +60,15 @@
   font-size: larger;
   height: 10vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  //justify-content: center;
+  //align-items: center;
+  text-align: center;
 }
 .post_idea{
   margin-bottom: 4vh;
 }
 
-#ideas .idea{
+#ideas .none{
   display: none;
 }
 

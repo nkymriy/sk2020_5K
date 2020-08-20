@@ -9,10 +9,11 @@ body{
 
 /*みどり部分*/
 .top {
-  background-image: url(image_path("index_background.png"));
   background-size: 100% 100%;
   padding-bottom: 10%;
-  padding-top: 2%;
+}
+#top_img{
+  background-image: url(image_path("index_background.png"));
 }
 
 /*大きい文字(白)*/
@@ -68,10 +69,10 @@ body{
 
 .btns_1 {
   position: absolute;
-  width: 25%;
+  width: fit-content;
   height: 19%;
   text-align: center;
-  top: 44%;
+  top: 40%;
   left: 37%;
   z-index: 10;
   /*あとで背景設定したい*/
@@ -81,6 +82,15 @@ body{
 
 .btns_1_1 {
   width: fit-content;
+}
+
+.release_note{
+  margin-top: 10px;
+  width: 300px !important;
+}
+
+.release_note .content{
+  text-align: left !important;
 }
 
 /*第2区分*/
@@ -229,6 +239,18 @@ ul.footer-menu li {
   bottom:99.5%;
 }
 
-a:link, a:visited, a:hover, a:active{
+.footer-menu a:link,.footer-menu a:visited,.footer-menu a:hover,.footer-menu a:active{
   color: white;
+}
+
+/*リリースノート*/
+.release_note_segment{
+  width: 80vw;
+  margin:auto;
+  padding-top: 5%;
+}
+
+.release_note_list{
+  padding-top: 0.5em !important;
+  margin-left: 2em !important;
 }

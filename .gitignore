@@ -1,2 +1,4 @@
 .idea/
 .env
+access.log
+error.log

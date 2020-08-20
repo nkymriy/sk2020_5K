@@ -11,7 +11,7 @@
 #                     user_confirmation GET    /user/confirmation(.:format)                                                             users/confirmations#show
 #                                       POST   /user/confirmation(.:format)                                                             users/confirmations#create
 #                                  idea GET    /idea(.:format)                                                                          ideas#home
-#                             idea_home GET    /idea/home(.:format)                                                                     memo#new
+#                             idea_home GET    /idea/home(.:format)                                                                     ideas#home
 #                          idea_history GET    /idea/history(.:format)                                                                  ideas#history
 #                         idea_category GET    /idea/category(.:format)                                                                 ideas#category
 #                         idea_memo_new GET    /idea/memo/new(.:format)                                                                 memo#new
@@ -21,9 +21,11 @@
 #                                       PATCH  /idea/memo(.:format)                                                                     memo#update
 #                idea_brainstorming_new GET    /idea/brainstorming/new(.:format)                                                        brainstorming#new
 #             idea_brainstorming_replay GET    /idea/brainstorming/replay(.:format)                                                     brainstorming#replay
-#               idea_brainstorming_edit GET    /idea/brainstorming/edit(.:format)                                                       brainstorming#edit
+#             idea_brainstorming_create POST   /idea/brainstorming/create(.:format)                                                     brainstorming#create
+#               idea_brainstorming_edit GET    /idea/brainstorming/edit/:id(.:format)                                                   brainstorming#edit
 #                     jquery_test_index GET    /jquery_test/index(.:format)                                                             jquery_test#index
-#                              top_test GET    /top/test(.:format)                                                                      top#index
+#                              ideachat GET    /ideachat(.:format)                                                                      ideachat#index
+#                         ideachat_show GET    /ideachat/:id(.:format)                                                                  ideachat#show
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
 #         rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                  action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -46,10 +48,12 @@
 #                  rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
-  # トップページ
+  # INFO: トップページ
   root 'top#index'
+  get '/releasenote' => 'top#releasenote'
 
-  # devise(ユーザ認証関連)
+
+  # INFO: devise(ユーザ認証関連)
   devise_for :users, skip: :all
   devise_scope :user do
     get 'account/signin' => 'users/sessions#new'
@@ -63,15 +67,14 @@ Rails.application.routes.draw do
     post 'user/confirmation' => 'users/confirmations#create'
   end
 
-  # ユーザのホーム画面
+  # INFO: ユーザのホーム画面
   get 'idea' => 'ideas#home'
-  # get 'idea' => 'memo#new'
-  # get 'idea/home' => 'ideas#home'
-  get 'idea/home' => 'memo#new'
+  get 'idea/home' => 'ideas#home'
   get 'idea/history' => 'ideas#history'
   get 'idea/category' => 'ideas#category'
+  get 'idea/account' => 'ideas#account'
 
-  # メモ
+  # INFO: メモ
   get 'idea/memo/new' => 'memo#new'
   post 'idea/memo/new' => 'memo#new'
   post 'idea/memo' => 'memo#create'
@@ -80,20 +83,21 @@ Rails.application.routes.draw do
   patch '/idea/memo' => 'memo#update'
 
 
-  # ブレインストーミング
+  # INFO: ブレインストーミング
   get 'idea/brainstorming/new' => 'brainstorming#new'
   get 'idea/brainstorming/replay' => 'brainstorming#replay'
-  get 'idea/brainstorming/edit' => 'brainstorming#edit'
+  post 'idea/brainstorming/create' => 'brainstorming#create'
+  get 'idea/brainstorming/edit/:id' => 'brainstorming#edit', as: :idea_brainstorming_edit
 
+  # NOTE: Action Cable の有効化
+  mount ActionCable.server => '/cable'
   # developmentモードでのみ以下のルーティングが行われる
   if Rails.env.development?
-    # 仲 メモのindexによる一覧表示のテスト用
-    # get 'idea/memo' => 'memo#index'
-    # DBのテスト用
-    # resources :dbtest
-    # resources :users
+    # NOTE: jQueryのテスト用
     get 'jquery_test/index'
-    get 'top/test'=>'top#index'
+    # NOTE: WebSocketのテスト用チャット画面
+    get 'ideachat/' => 'ideachat#index'
+    get 'ideachat/:id' => 'ideachat#show', as: :ideachat_show
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

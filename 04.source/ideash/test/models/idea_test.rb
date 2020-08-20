@@ -2,7 +2,7 @@
 #
 # Table name: ideas
 #
-#  id               :integer          not null, primary key
+#  id               :string           not null, primary key
 #  idea_category_id :integer
 #  idea_name        :string
 #  idea_description :string

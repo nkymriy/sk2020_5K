@@ -1,7 +1,7 @@
 <% content_for(:html_title) { 'top | Ideash' } %>
 
 <!-- 背景緑部分-->
-<div class="top">
+<div class="top" id="top_img">
   <div class="seg_1">
     <div class="background_text no_select" id="home">
       Inspiration<br>
@@ -16,6 +16,21 @@
         <%= link_to "Sign Up", :account_signup, class: "ui black button" %>
         <!--        <h1>Comming soon!</h1> -->
       </div>
+      <div class="ui styled accordion release_note">
+        <div class="title accordion">
+          <i class="dropdown icon"></i>
+          リリースノート
+        </div>
+        <div class="content">
+          <div class="ui list" id="output_csv_top">
+
+          </div>
+        </div>
+      </div>
+      <script>
+          <%# TODO: Ajaxで戻ってきた時にうまく作動しない？設置場所かもしれない %>
+          $('.ui.accordion').accordion('refresh')
+      </script>
     </div>
   </div>
   <div class="seg_2">
@@ -79,8 +94,16 @@
 <div class="footer">
   <%= image_tag 'thinkman.png', class: 'man no_select' %>
   <ul class="footer-menu">
-    <a href="#home"><li>home　｜　</li></a>
-    <a href="#concept"><li>concept 　｜　</li></a>
-    <a href="#about"><li>about</li></a>
+    <a href="#home">
+      <li>home　｜　</li>
+    </a>
+    <a href="#concept">
+      <li>concept 　｜　</li>
+    </a>
+    <a href="#about">
+      <li>about</li>
+    </a>
   </ul>
 </div>
+
+<%= javascript_pack_tag 'releasenote_top', 'data-turbolinks-track': 'reload' %>
