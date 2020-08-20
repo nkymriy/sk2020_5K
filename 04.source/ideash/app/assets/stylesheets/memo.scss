@@ -1,0 +1,22 @@
+// Place all the styles related to the Memo controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+html{
+  height: 100%
+}
+body{
+  height: 100%
+}
+
+.pusher{
+  height: 90%
+}
+
+.memo_sidebar{
+  overflow: auto;
+}
+
+.memo_form{
+  width:850px;
+}

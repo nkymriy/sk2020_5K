@@ -1,0 +1,54 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "semantic-ui";
+
+body{
+  position: relative;
+}
+
+
+/*home*/
+.block-memo{
+  position: absolute;
+  height: 95%;
+  width: 68%;
+  left: 16%;
+  right: 16%;
+  top: 5%;
+  background-color: #E5E5E5;
+}
+
+.block-center{
+  text-align:  center;
+}
+
+/* 2 */
+.memo-contents{
+  width: fit-content;
+  margin: 5% 27%;
+}
+
+/* 3 */
+.about-contents{
+  border: #1b1e21 1px solid;
+  margin: 10% 30%;
+  padding-bottom: 5%;
+}
+
+.about-text{
+  font-weight: normal;
+}
+
+.about-image{
+}
+
+
+/* 4 */
+.memo-content{
+}
+
+/* 5 */
+.save-contents{
+  margin-top: 5%;
+}

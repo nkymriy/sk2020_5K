@@ -1,0 +1,39 @@
+<%= render :partial => 'shared/header' %>
+
+<div class="home_body" id="home_body">
+  <div class="creat_new_segment">
+    <h1 class="header">Create New　　<%= link_to "more", idea_category_path %></h1>
+    <ul class="horizontal-list categories">
+      <li class="horizontal-item category">
+        <div class="techname_eng">Memo</div>
+        <div class="techname_ja">メモ</div>
+        <div><i class="edit inverted huge icon techname_icon"></i></div>
+      </li>
+      <li class="horizontal-item category">
+        <div class="techname_eng">Brainstorming</div>
+        <div class="techname_ja">ブレインストーミング</div>
+        <div><i class="tags inverted huge icon techname_icon"></i></div>
+      </li>
+    </ul>
+  </div>
+  <div class="recent_creation_segment">
+    <h1 class="header">Recent Creation (coming soon...)　　<%= link_to "more", idea_history_path %></h1>
+    <ul class="horizontal-list histories">
+      <li class="horizontal-item history">
+        <div>coming soon</div>
+      </li>
+      <li class="horizontal-item history">
+        <div>coming soon</div>
+      </li>
+      <li class="horizontal-item history">
+        <div>coming soon</div>
+      </li>
+      <li class="horizontal-item history">
+        <div>coming soon</div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<%# JSが書かれているため最後に書くこと %>
+<%= render :partial => 'shared/homemenu' %>

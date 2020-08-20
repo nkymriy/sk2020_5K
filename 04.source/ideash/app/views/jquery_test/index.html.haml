@@ -1,0 +1,17 @@
+
+
+%button(id='testBtn')
+  test button
+#test_effect.drag.test
+  #text
+    エフェクトのテスト用
+
+:javascript
+  $(function(){
+    alert($.fn.jquery);
+    alert(jQuery.ui)
+    $('#testBtn').on('click',function() {
+    alert("ボタンを押した")
+    })
+    $("#test_effect").draggable()
+  })
