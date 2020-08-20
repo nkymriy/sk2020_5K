@@ -81,4 +81,6 @@ Rails.application.configure do
       authentication: :login,
       :enable_starttls_auto => true
   }
+
+  config.force_ssl = true
 end

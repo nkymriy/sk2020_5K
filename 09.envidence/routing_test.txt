@@ -1,0 +1,27 @@
+routing test
+  アクションが実行されているかのテスト
+    ユーザー認証関連
+      get account/signin => users/sessions#new
+      post account/signin => users/sessions#create
+      get account/signup => users/registrations#new
+      post account/signup => users/registrations#create
+      get account/signout => users/sessions#destroy
+      get user/confirmation => users/confirmations#show
+      post user/confirmation => users/confirmations#create
+    ユーザのホーム画面
+      get idea => ideas#home
+      get idea/home => ideas#home
+      get idea/history => ideas#history
+      get idea/category => ideas#category
+    メモ関連
+      get idea/memo/new => memo#new
+      post idea/memo/new => memo#new
+      post idea/memo => memo#create
+      patch /idea/memo => memo#update
+    ブレインストーミング関連
+      get idea/brainstorming/new => brainstorming#new
+      get idea/brainstorming/replay => brainstorming#replay
+      post idea/brainstorming/create => brainstorming#create
+
+Finished in 0.12515 seconds (files took 10.02 seconds to load)
+18 examples, 0 failures
