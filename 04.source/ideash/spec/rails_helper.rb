@@ -28,7 +28,7 @@ RSpec.configure do |config|
   #deviseのtest_helperとmacrosをコントローラーで使えるようにする
   config.include Devise::TestHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, :type => :controller
-  config.include ControllerMacros, type: :controller
+  #config.include ControllerMacros, type: :controller
 end
 
 #deviseとcontroller_macrosを読み込む
