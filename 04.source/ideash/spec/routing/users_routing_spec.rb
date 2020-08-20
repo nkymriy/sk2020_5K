@@ -54,7 +54,7 @@ RSpec.describe "routes for Users", type: :routing do
       it 'post idea/memo => memo#create' do
         expect(post("idea/memo")).to route_to("memo#create")
       end
-      #idがないとテスト出来ないため、今後Factory-botに使って完成させる
+      #TODO: idがないとテスト出来ないため、今後Factory-botに使って完成させる
       # it 'get idea/memo/edit/:id => memo#edit' do
       #   expect(get("idea/memo/edit/:id")).to route_to("memo#edit")
       # end
@@ -73,7 +73,7 @@ RSpec.describe "routes for Users", type: :routing do
       it 'post idea/brainstorming/create => brainstorming#create' do
         expect(post("idea/brainstorming/create")).to route_to("brainstorming#create")
       end
-      #idがないとテスト出来ないため、今後Factory-botに使って完成させる
+      #TODO: idがないとテスト出来ないため、今後Factory-botに使って完成させる
       # it 'get idea/brainstorming/edit/:id => brainstorming#edit' do
       #   expect(get("idea/brainstorming/edit/:id")).to route_to("brainstorming#edit")
       # end
