@@ -4,36 +4,40 @@
   <div class="category_segment">
     <h1 class="header">Create New</h1>
     <ul class="horizontal-list categories">
-      <li class="horizontal-item category">
-        <div class="techname_eng">Memo</div>
-        <div class="techname_ja">メモ</div>
-        <div><i class="edit inverted huge icon techname_icon"></i></div>
-        <div class="recommend_num">
-          推奨人数：１人
-        </div>
-        <div class="explain">
-          考えていることを書き連ねる<br>ことで、考えを整理し発想を<br>しやすくする技法
-        </div>
-        <hr>
-        <div class="recommend_point">
-          真っ白なフィールドを思考で<br>埋めていくことで新しい発想<br>が可能
-        </div>
-      </li>
-      <li class="horizontal-item category">
-        <div class="techname_eng">Brainstorming</div>
-        <div class="techname_ja">ブレインストーミング</div>
-        <div><i class="tags inverted huge icon techname_icon"></i></div>
-        <div class="recommend_num">
-          推奨人数：２人〜
-        </div>
-        <div class="explain">
-          集団でアイデアを出し合うこ<br>とによって相互交錯の連鎖反<br>応や発想の誘発を期待する技法
-        </div>
-        <hr>
-        <div class="recommend_point">
-          アイデアを出し合い、融合さ<br>せることで、斬新で質な発想<br>が可能に<br>
-        </div>
-      </li>
+      <%= link_to idea_memo_new_path do %>
+        <li class="horizontal-item category">
+          <div class="techname_eng">Memo</div>
+          <div class="techname_ja">メモ</div>
+          <div><i class="edit inverted huge icon techname_icon"></i></div>
+          <div class="recommend_num">
+            推奨人数：１人
+          </div>
+          <div class="explain">
+            考えていることを書き連ねる<br>ことで、考えを整理し発想を<br>しやすくする技法
+          </div>
+          <hr>
+          <div class="recommend_point">
+            真っ白なフィールドを思考で<br>埋めていくことで新しい発想<br>が可能
+          </div>
+        </li>
+      <% end %>
+      <%= link_to idea_brainstorming_new_path do %>
+        <li class="horizontal-item category">
+          <div class="techname_eng">Brainstorming</div>
+          <div class="techname_ja">ブレインストーミング</div>
+          <div><i class="tags inverted huge icon techname_icon"></i></div>
+          <div class="recommend_num">
+            推奨人数：２人〜
+          </div>
+          <div class="explain">
+            集団でアイデアを出し合うこ<br>とによって相互交錯の連鎖反<br>応や発想の誘発を期待する技法
+          </div>
+          <hr>
+          <div class="recommend_point">
+            アイデアを出し合い、融合さ<br>せることで、斬新で質な発想<br>が可能に<br>
+          </div>
+        </li>
+      <% end %>
       <li class="horizontal-item category">
         <div class="techname_eng">Developing</div>
         <div class="techname_ja">開発中</div>
