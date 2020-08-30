@@ -26,7 +26,8 @@ echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_pr
 cat .bash_profile >> .zprofile
 
 # シェルの再起動
-exec $SHELL -l
+# shellcheck source=src/util.sh
+source ~/.zprofile
 
 # ruby 2.7.1をインストール
 rbenv install 2.7.1
