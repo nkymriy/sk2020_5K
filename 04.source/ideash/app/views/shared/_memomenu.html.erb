@@ -4,7 +4,7 @@
       <div class="content memo-text">
         <%= memo.idea_name %>
         <div class="sub header memo-date">
-          <%= memo.updated_at %>
+          <%= memo.updated_at.strftime("%Y-%m-%d %H:%M") %>
         </div>
       </div>
       <i class="universal access icon memo-icon"></i>
