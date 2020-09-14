@@ -1,4 +1,4 @@
-cd ../04.source/ideash
+cd ../04.source/ideash || exit
 
 echo '> bundle install'
 bundle install --path vendor/bundle --jobs=4
