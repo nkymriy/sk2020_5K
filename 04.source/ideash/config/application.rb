@@ -18,5 +18,7 @@ module Ideash
     config.autoload_paths += %W(#{config.root}/lib)
 
     config.cache_store = :redis_cache_store
+    #タイムゾーンを東京に
+    config.time_zone = 'Tokyo'
   end
 end
