@@ -15,7 +15,7 @@
       <tr>
         <td class="collapsing">
           <i class="folder icon"></i>
-          <%= idea.idea_name %>
+          <%= idea.idea_name.truncate(20, omission: '...')  %>
         </td>
         <td>
 <!--          <a href="<%#= @categories[idea.idea_category_id]['manage_name'] + "/edit/" + idea.id %>">-->
