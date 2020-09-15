@@ -115,7 +115,7 @@ body {
 }
 
 .timer{
-  height: 10%;
+  height: 80px;
   font-size: large;
   font-weight: bold;
   overflow: hidden;
@@ -132,7 +132,7 @@ body {
 }
 
 .explain{
-  height: 17%;
+  height: 135px;
 }
 .explain-list{
   color: #999999;
@@ -142,7 +142,7 @@ body {
 }
 
 .participant{
-  height: 17%;
+  height: 135px;
 }
 .member{
   height: 80%;
@@ -150,9 +150,8 @@ body {
 }
 
 .memo{
-  height: 56%;
+  height: 30%;
 }
-
 .memo-content{
   margin: 5%;
   width: 90%;
