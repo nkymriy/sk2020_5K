@@ -18,9 +18,10 @@
           <%= idea.idea_name %>
         </td>
         <td>
-          <a href="<%= @categories[idea.idea_category_id]['manage_name'] + "/edit/" + idea.id %>">
-            <%= @categories[idea.idea_category_id]["idea_category_name"] %>
-          </a>
+<!--          <a href="<%#= @categories[idea.idea_category_id]['manage_name'] + "/edit/" + idea.id %>">-->
+            <%#= @categories[idea.idea_category_id]["idea_category_name"] %>
+<!--          </a>-->
+          <%= link_to "#{@categories[idea.idea_category_id]["idea_category_name"]}", "#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}" ,local: true%>
         </td>
       </tr>
       <% end %>
@@ -30,6 +31,5 @@
 </div>
 
 <%# JSが書かれているため最後に書くこと %>
-<%= render :partial => 'shared/homemenu' %>
-
+<%= render :partial => 'shared/homemenu'%>
 

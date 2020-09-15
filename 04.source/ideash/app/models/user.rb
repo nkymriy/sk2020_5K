@@ -34,6 +34,7 @@ class User < ApplicationRecord
   has_many :user_idea
   has_many :idea, through: :user_idea
 
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email,
             presence: true,

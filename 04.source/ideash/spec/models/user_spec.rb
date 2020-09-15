@@ -27,5 +27,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'User' do
+    describe 'validation' do
+      context 'correct params' do
+        # テストデータ作成(DB登録)
+        let(:user) { create(:user) }
+        it 'is valid' do
+          # 上記テストデータの場合、以下のテストはパスする
+          expect(user).to be_valid
+        end
+      end
+    end
+  end
 end

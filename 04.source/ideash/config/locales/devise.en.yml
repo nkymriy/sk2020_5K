@@ -18,15 +18,15 @@ en:
       unconfirmed: "You have to confirm your email address before continuing."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "登録完了のお知らせ"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "パスワードリセットのお知らせ"
       unlock_instructions:
         subject: "Unlock instructions"
       email_changed:
-        subject: "Email Changed"
+        subject: "メール変更のお知らせ"
       password_change:
-        subject: "Password Changed"
+        subject: "パスワード変更のお知らせ"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."

@@ -19,8 +19,12 @@ $(document).on("turbolinks:load", function () {
             received(idea_log) {
                 let query = idea_log['idea_logs']
                 let add = query["add"]
-                // const idea_text = document.brainstorming_process1_form.idea_text.value;
-                const idea_text = add["content"];
+
+                var escapeHTML = function (val) {
+                    return $('<div />').text(val).html();
+                };
+
+                const idea_text = escapeHTML(add["content"]);
 
                 if (idea_text == null || idea_text == "") {
                     return false;

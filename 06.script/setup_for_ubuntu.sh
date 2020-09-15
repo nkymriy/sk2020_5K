@@ -22,7 +22,8 @@ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 
 
 #設定を読み込ませる
-exec $SHELL -l
+# shellcheck source=src/util.sh
+source ~/.bash_profile
 
 
 #rubyをインストールして使うバージョンを変更する
