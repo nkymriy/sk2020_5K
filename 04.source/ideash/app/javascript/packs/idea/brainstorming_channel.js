@@ -9,7 +9,6 @@ $(document).on("turbolinks:load", function () {
         }, {
             connected() {
                 // Called when the subscription is ready for use on the server
-                console.log('connected!!')
                 return this.perform('join_user');
             },
 
@@ -22,7 +21,8 @@ $(document).on("turbolinks:load", function () {
                 let query = idea_log['idea_logs']
                 if (query['mode'] == 'join') {
                     // モードがjoinのときの処理
-
+                    $('.users').append(`<li><i class="user circle icon">${query['user_mail']}</i></li>`)
+                    // return this.perform('get_user');
                 } else if (query['mode'] == 'add') {
                     // let query = idea_log['idea_logs']
                     let add = query["add"]

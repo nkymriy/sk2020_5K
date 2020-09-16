@@ -24,4 +24,9 @@ class IdeaChannel < ApplicationCable::Channel
   def join_user()
     IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'user_mail': current_user.email, 'mode': 'join'}
   end
+
+  def get_user()
+    p "--------------#{params[:idea]}-----------------"
+    p "--------------#{UserIdea.find_by(idea_id: params[:idea]).inspect}--------------------------"
+  end
 end
