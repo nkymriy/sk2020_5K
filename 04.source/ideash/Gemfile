@@ -78,6 +78,9 @@ gem 'rubocop-rails'
 #認証用
 gem 'devise'
 
+# json-schema
+gem 'json-schema'
+
 #unicorn
 gem 'unicorn'
 

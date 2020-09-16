@@ -43,10 +43,12 @@ if Rails.env.development?
     50.times do |j|
       idea.idea_logs.create!(
           :query => {
-              :object => j,
+              # TODO DBの構造について再検討
+              # :object => j,
               :user_id => 1,
               :mode => 'add',
               :add => {
+                  :object_id => j,
                   :content => "sample content ##{j}"
               },
               :time => "#{Time.now + j}"
