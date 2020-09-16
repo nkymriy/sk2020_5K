@@ -9,7 +9,8 @@ $(document).on("turbolinks:load", function () {
         }, {
             connected() {
                 // Called when the subscription is ready for use on the server
-                // console.log('test')
+                console.log('connected!!')
+                return this.perform('join_user');
             },
 
             disconnected() {
@@ -17,32 +18,38 @@ $(document).on("turbolinks:load", function () {
             },
 
             received(idea_log) {
+                console.log(idea_log)
                 let query = idea_log['idea_logs']
-                let add = query["add"]
+                if (query['mode'] == 'join') {
+                    // モードがjoinのときの処理
 
-                var escapeHTML = function (val) {
-                    return $('<div />').text(val).html();
-                };
+                } else if (query['mode'] == 'add') {
+                    // let query = idea_log['idea_logs']
+                    let add = query["add"]
 
-                const idea_text = escapeHTML(add["content"]);
+                    var escapeHTML = function (val) {
+                        return $('<div />').text(val).html();
+                    };
 
-                if (idea_text == null || idea_text == "") {
-                    return false;
+                    const idea_text = escapeHTML(add["content"]);
+
+                    if (idea_text == null || idea_text == "") {
+                        return false;
+                    }
+
+                    var id = parseInt(localStorage.getItem('card_id')) + 1;
+                    var div = $(
+                        '<div class="teal card idea none" id="' + id + '">\n' +
+                        '      <div class="content">\n' +
+                        idea_text +
+                        '      </div>\n' +
+                        '    </div>'
+                    );
+                    $("#ideas").prepend(div);
+                    $('#' + id).show('slide', '', 500);
+
+                    localStorage.setItem('card_id', id);
                 }
-
-                var id = parseInt(localStorage.getItem('card_id')) + 1;
-                var div = $(
-                    '<div class="teal card idea none" id="' + id + '">\n' +
-                    '      <div class="content">\n' +
-                    idea_text +
-                    '      </div>\n' +
-                    '    </div>'
-                );
-                $("#ideas").prepend(div);
-                $('#' + id).show('slide', '', 500);
-
-                localStorage.setItem('card_id', id);
-                // return $('#idea_logs').append(data['idea_logs']);
             },
 
             add: function (idea_log) {

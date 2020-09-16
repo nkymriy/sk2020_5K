@@ -20,4 +20,8 @@ class IdeaChannel < ApplicationCable::Channel
     # IdeaLog.create! query: {'content': data['idea_log']}
     IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id,'mode': 'add', 'add': data}
   end
+
+  def join_user()
+    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'user_mail': current_user.email, 'mode': 'join'}
+  end
 end
