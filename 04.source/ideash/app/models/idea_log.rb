@@ -125,10 +125,7 @@ class IdeaLog < ApplicationRecord
           },
       },
   }.freeze
-
+    
   validates :query, json: {schema: QUERY_SCHEMA}
-
-  # validates :query, presence: true
-
   after_create_commit { IdealogBroadcastJob.perform_later self }
 end
