@@ -9,9 +9,6 @@ module ApplicationCable
     private
 
     def find_verified_user
-      # FIXME: putもできるし動くがuser.idでエラーが出ているので要調査
-      # 恐らくActionCableの問題？
-      p env['warden'].user.id
       verified_user = User.find_by(id: env['warden'].user.id)
       return reject_unauthorized_connection unless verified_user
       verified_user
