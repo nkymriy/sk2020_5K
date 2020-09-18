@@ -36,4 +36,4 @@ require 'devise'
 require File.expand_path("spec/support/controller_macros.rb")
 
 #capybara
-require 'supports/capybara'
+require 'capybara/rspec'
