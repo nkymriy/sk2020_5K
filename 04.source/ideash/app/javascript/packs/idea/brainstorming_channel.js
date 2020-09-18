@@ -42,7 +42,6 @@ $(document).on("turbolinks:load", function () {
                 $('#' + id).show('slide', '', 500);
 
                 localStorage.setItem('card_id', id);
-                // return $('#idea_logs').append(data['idea_logs']);
             },
 
             add: function (idea_log) {
