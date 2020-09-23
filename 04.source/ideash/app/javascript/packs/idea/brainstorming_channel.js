@@ -26,15 +26,18 @@ $(document).on("turbolinks:load", function () {
 
                     for (var i = 0; i < users.length; i++) {
                         if (user_id == users[i]['id']) {
-                            console.log('loop' + i)
-                            console.log(users[i]['id'])
                             is_new_user = false
                             break
                         }
                     }
                     if (is_new_user) {
-                        $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['user_mail']}</i></li>`)
+                        $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
                     }
+
+                    // console.log($('#' + user_id).length)
+                    // if ($('#' + user_id).length === 0) {
+                    //     $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
+                    // }
                 } else if (query['mode'] == 'add') {
                     // let query = idea_log['idea_logs']
                     let add = query["add"]
