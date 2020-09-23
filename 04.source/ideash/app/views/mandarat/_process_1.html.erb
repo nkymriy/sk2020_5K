@@ -1,0 +1,26 @@
+<%# マンダラート　手順１　アイデア出し %>
+<div class="home_body wide_margin" id="edit_body">
+  <h3 class="theme">テーマ: <%= idea.idea_name %></h3>
+  <div class="post_idea">
+    <form name="brainstorming_process1_form" onsubmit="return false;">
+      <div class="ui input">
+        <%= text_field_tag 'idea_text', '', class: '', placeholder: "思いついたことを書いていきましょう", data: {behavior: 'idea_speaker'} %>
+      </div>
+    </form>
+  </div>
+  <div class="ui four cards process1_ideas" id="ideas">
+    <%#= idea_logs.inspect %>
+    <% for content in idea_logs.reverse do %>
+      <div class="teal card idea" id="">
+        <div class="content">
+          <%= content.query["add"]["content"] %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+    localStorage.setItem('card_id', 0);
+</script>
+
