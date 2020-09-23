@@ -17,12 +17,24 @@ $(document).on("turbolinks:load", function () {
             },
 
             received(idea_log) {
-                console.log(idea_log)
                 let query = idea_log['idea_logs']
                 if (query['mode'] == 'join') {
                     // モードがjoinのときの処理
-                    $('.users').append(`<li><i class="user circle icon">${query['user_mail']}</i></li>`)
-                    // return this.perform('get_user');
+                    var users = $(".users").children()
+                    var user_id = 'participant_' + query['user_id']
+                    var is_new_user = true
+
+                    for (var i = 0; i < users.length; i++) {
+                        if (user_id == users[i]['id']) {
+                            console.log('loop' + i)
+                            console.log(users[i]['id'])
+                            is_new_user = false
+                            break
+                        }
+                    }
+                    if (is_new_user) {
+                        $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['user_mail']}</i></li>`)
+                    }
                 } else if (query['mode'] == 'add') {
                     // let query = idea_log['idea_logs']
                     let add = query["add"]
