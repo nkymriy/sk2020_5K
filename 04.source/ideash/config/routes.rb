@@ -82,12 +82,17 @@ Rails.application.routes.draw do
   get 'idea/memo/edit/:id' => 'memo#edit'
   patch '/idea/memo' => 'memo#update'
 
-
   # INFO: ブレインストーミング
   get 'idea/brainstorming/new' => 'brainstorming#new'
   get 'idea/brainstorming/replay' => 'brainstorming#replay'
   post 'idea/brainstorming/create' => 'brainstorming#create'
   get 'idea/brainstorming/edit/:id' => 'brainstorming#edit', as: :idea_brainstorming_edit
+
+  # INFO: マンダラート
+  get'idea/mandarat/new' => 'mandarat#new'
+  get 'idea/mandarat/replay' => 'mandarat#replay'
+  post 'idea/mandarat/create' => 'mandarat#create'
+  get 'idea/mandarat/edit/:id' => 'mandarat#edit', as: :idea_mandarat_edit
 
   # NOTE: Action Cable の有効化
   mount ActionCable.server => '/cable'
