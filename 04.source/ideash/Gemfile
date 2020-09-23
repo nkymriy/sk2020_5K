@@ -81,6 +81,9 @@ gem 'devise'
 #unicorn
 gem 'unicorn'
 
+#定数定義
+gem 'config'
+
 group :development, :test do
   #rspec-rails テスト用
   gem 'rspec-rails', '~> 4.0'
