@@ -1,7 +1,7 @@
 #yarnをインストールする準備
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt install -y yarn
+sudo apt install -y yarn gcc make
 
 # aptのアップデート
 sudo apt update && sudo apt upgrade -y

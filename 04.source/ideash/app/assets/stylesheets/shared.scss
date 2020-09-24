@@ -4,64 +4,67 @@ body {
   font-family: 'Roboto', sans-serif !important;
 }
 
-
 /*表示しない*/
-.display-none{
-  display:none;
+.display-none {
+  display: none;
 }
 
 /*水平スクロール*/
-.horizontal-list{
+.horizontal-list {
   overflow-x: auto;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
-.horizontal-item{
+
+.horizontal-item {
   display: inline-block;
   width: 90%;
 }
 
 /*header*/
-.home-header{
+.home-header {
   padding: 7px !important;
   margin-top: 0 !important;
   margin-bottom: 2px !important;
 }
 
 /*body*/
-#home_body{
+#home_body {
   height: 90%;
   padding: 1%;
 }
 
-#edit_body{
+#edit_body {
   height: 80%;
   padding: 1% 2%;
 }
 
-.wide_margin_left{
+.wide_margin_left {
   margin-left: 220px;
 }
-.wide_margin_right{
+
+.wide_margin_right {
   margin-right: 220px;
 }
-.thin_margin_left{
+
+.thin_margin_left {
   margin-left: 184px;
 }
-.thin_margin_right{
+
+.thin_margin_right {
   margin-right: 185px;
 }
 
 /*homemenu*/
-.header_div{
-  //height: 45px;
-  //background-color: #1B1C1D;
+.header_div {
 }
-.menu_icon{
+
+.menu_icon {
   width: 15%;
 }
+
 #slideL {
-  z-index:100;
+  z-index: 100;
   cursor: pointer;
   position: fixed;
   top: 0;
@@ -71,13 +74,14 @@ body {
   padding: 0 40px 0 0;
   background: #999;
 }
+
 #slideL .slide-inner {
   overflow: auto;
   overflow-x: hidden;
   background: #ddd;
 }
 
-.copyright{
+.copyright {
   position: absolute;
   color: aliceblue;
   bottom: 15px;
@@ -85,21 +89,21 @@ body {
 }
 
 /*memomenu*/
-.bleak{
+.bleak {
   height: 5%;
   margin-bottom: 5%;
 }
 
-.memos .memo-text{
+.memos .memo-text {
   font-weight: normal;
 }
 
-.memos .memo-icon{
+.memos .memo-icon {
   float: right;
   margin-top: 1%;
 }
 
-.memos .memo-sample{
+.memos .memo-sample {
   margin-top: -5px;
 }
 
@@ -110,51 +114,57 @@ body {
   margin-left: -1.5em;
 }
 
-.header-text{
+.header-text {
   font-weight: bolder;
 }
 
-.timer{
+.timer {
   height: 80px;
   font-size: large;
   font-weight: bold;
   overflow: hidden;
 
 }
-.timer_min,.timer_sec{
+
+.timer_min, .timer_sec {
   float: left;
 }
-.timer_min{
+
+.timer_min {
   margin: 5%;
 }
-.timer_sec{
+
+.timer_sec {
   margin-top: 5%;
 }
 
-.explain{
+.explain {
   height: 135px;
 }
-.explain-list{
+
+.explain-list {
   color: #999999;
 }
-.explain .bold{
+
+.explain .bold {
   color: #1B1C1D;
 }
 
-.participant{
+.participant {
   height: 135px;
 }
-.member{
+
+.member {
   height: 80%;
   overflow: auto;
 }
 
-.memo{
+.memo {
   height: 30%;
 }
-.memo-content{
+
+.memo-content {
   margin: 5%;
   width: 90%;
   height: 90%;
 }
-

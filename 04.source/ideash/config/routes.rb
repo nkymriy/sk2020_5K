@@ -82,7 +82,6 @@ Rails.application.routes.draw do
   get 'idea/memo/edit/:id' => 'memo#edit'
   patch '/idea/memo' => 'memo#update'
 
-
   # INFO: ブレインストーミング
   get 'idea/brainstorming/new' => 'brainstorming#new'
   get 'idea/brainstorming/replay' => 'brainstorming#replay'
