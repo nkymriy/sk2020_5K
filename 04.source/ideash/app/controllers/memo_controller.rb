@@ -8,7 +8,7 @@ class MemoController < ApplicationController
   def create
     user = User.find_by(id: current_user.id)
     # @memo.idea.new(params.permit(:idea_category_id, :idea_name, :idea_description))
-    new_idea = params['idea']
+    new_idea = params[Settings.request_param_string[:new_idea]]
     user.idea.new do |memo|
 
       memo.idea_category_id = 1
