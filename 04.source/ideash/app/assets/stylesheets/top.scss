@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "semantic-ui";
 
-body{
+body {
   background-color: #f5f5f5 !important;
 }
 
@@ -12,7 +12,8 @@ body{
   background-size: 100% 100%;
   padding-bottom: 10%;
 }
-#top_img{
+
+#top_img {
   background-image: url(image_path("index_background.png"));
 }
 
@@ -25,23 +26,17 @@ body{
   letter-spacing: -17px;
   color: #FFFFFF;
   margin-top: -5%;
-
   width: fit-content;
-  //text-align: center;
-  //margin: auto;
 
   /*文字を上に*/
-  position:relative;
+  position: relative;
 }
-
 
 .image_think_man {
   position: absolute;
   right: 0;
   top: -15%;
-  /*overflow: hidden;*/
   height: 100vw;
-  /*filter: blur(2px)*/
 }
 
 .no_select {
@@ -55,14 +50,13 @@ body{
   z-index: 0;
 }
 
-
-
 /*第1区分*/
 .seg_1 {
   position: relative;
   text-align: center;
 }
-.seg_1 #home{
+
+.seg_1 #home {
   display: inline-block;
   text-align: left;
 }
@@ -84,12 +78,12 @@ body{
   width: fit-content;
 }
 
-.release_note{
+.release_note {
   margin-top: 10px;
   width: 300px !important;
 }
 
-.release_note .content{
+.release_note .content {
   text-align: left !important;
 }
 
@@ -100,10 +94,11 @@ body{
   padding-top: 50%;
 }
 
-.seg_2 #concept{
+.seg_2 #concept {
   display: inline-block;
   text-align: left;
 }
+
 .icon_1 {
   position: absolute;
   width: 25%;
@@ -112,9 +107,9 @@ body{
 }
 
 /*白になるとこ*/
-
-.gradation{
-  background: linear-gradient(180deg, #26AEAF 0%, rgba(51, 178, 177, 0.916667) 28.12%, #f5f5f5 100%);  height: 40%;
+.gradation {
+  background: linear-gradient(180deg, #26AEAF 0%, rgba(51, 178, 177, 0.916667) 28.12%, #f5f5f5 100%);
+  height: 40%;
   margin-top: -10px;
 }
 
@@ -130,63 +125,64 @@ body{
 }
 
 /*説明部分のCSS*/
-h1{
+h1 {
   font-size: 4vw;
 }
-h2{
+
+h2 {
   font-size: 1.5vw;
   font-weight: lighter;
   margin-top: -3px;
 }
-p{
+
+p {
   font-size: 1.5vw;
   width: 31%;
   line-height: 1.5em;
 }
 
-
 /*第4区分*/
-.seg_4{
+.seg_4 {
   position: relative;
   padding-top: 10%;
 }
 
-.seg_4 .headers{
+.seg_4 .headers {
   margin-left: 17%;
 }
 
-.seg_4 h2{
+.seg_4 h2 {
 
 }
 
-.seg_4 p{
+.seg_4 p {
   margin-left: 17%;
   margin-top: 5%;
 }
 
 /*第5区分*/
-.seg_5{
+.seg_5 {
   position: relative;
   padding-top: 32%;
 }
 
-.seg_5 .headers{
+.seg_5 .headers {
   margin-left: 52%;
 }
 
-.seg_5 p{
+.seg_5 p {
   margin-left: 52%;
   margin-top: 5%;
 }
 
-.sample_1{
+.sample_1 {
   position: absolute;
   width: 70%;
   top: 65%;
   left: 52%;
 }
 
-.sample_2{
+.sample_2 {
   position: absolute;
   width: 70%;
   top: 15%;
@@ -194,7 +190,7 @@ p{
 }
 
 /*第6区分*/
-.seg_6{
+.seg_6 {
   width: 100%;
   text-align: center;
   padding-top: 10%;
@@ -202,21 +198,21 @@ p{
   position: relative;
 }
 
-.seg_6 h1{
+.seg_6 h1 {
   margin-top: 6%;
 }
 
-.seg_6 .icon{
+.seg_6 .icon {
   width: 7%;
   margin-top: 2%;
 }
 
-.btn_2{
+.btn_2 {
   margin-top: 3%;
 }
 
 /*footer*/
-.footer{
+.footer {
   position: relative;
   width: 100%;
   height: 17%;
@@ -224,33 +220,35 @@ p{
   color: white;
   text-align: center;
 }
-.footer-menu{
+
+.footer-menu {
   padding-top: 2%;
 }
+
 ul.footer-menu li {
   display: inline;
 }
 
-.footer .man{
+.footer .man {
   width: 20%;
   position: absolute;
   transform: scale(-1, 1);
   left: 15%;
-  bottom:99.5%;
+  bottom: 99.5%;
 }
 
-.footer-menu a:link,.footer-menu a:visited,.footer-menu a:hover,.footer-menu a:active{
+.footer-menu a:link, .footer-menu a:visited, .footer-menu a:hover, .footer-menu a:active {
   color: white;
 }
 
 /*リリースノート*/
-.release_note_segment{
+.release_note_segment {
   width: 80vw;
-  margin:auto;
+  margin: auto;
   padding-top: 5%;
 }
 
-.release_note_list{
+.release_note_list {
   padding-top: 0.5em !important;
   margin-left: 2em !important;
 }

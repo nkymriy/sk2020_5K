@@ -13,4 +13,3 @@ listen '/tmp/unicorn.ideash.sock'
 worker_processes 2
 
 timeout 30
-

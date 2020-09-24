@@ -10,7 +10,7 @@
 #  query      :json
 #
 class IdeaLog < ApplicationRecord
-    # NOTE timeにValidateがかかっていないので、必要があれば以下に記述する
+  # NOTE timeにValidateがかかっていないので、必要があれば以下に記述する
   QUERY_SCHEMA = {
       type: 'object',
       additionalProperties: false,
@@ -125,7 +125,7 @@ class IdeaLog < ApplicationRecord
           },
       },
   }.freeze
-    
+
   validates :query, json: {schema: QUERY_SCHEMA}
   after_create_commit { IdealogBroadcastJob.perform_later self }
 end

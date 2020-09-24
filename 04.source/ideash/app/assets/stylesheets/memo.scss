@@ -2,21 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-html{
-  height: 100%
-}
-body{
+html {
   height: 100%
 }
 
-.pusher{
+body {
+  height: 100%
+}
+
+.pusher {
   height: 90%
 }
 
-.memo_sidebar{
+.memo_sidebar {
   overflow: auto;
 }
 
-.memo_form{
-  width:850px;
+.memo_form {
+  width: 850px;
 }

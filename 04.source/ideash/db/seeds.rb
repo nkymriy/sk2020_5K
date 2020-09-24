@@ -35,7 +35,6 @@ if Rails.env.development?
         :idea_description => "example ##{i}",
         :idea_category_id => 1
     )
-
     (1..2).each do |j|
       pp UserIdea.create!(:idea_id => idea.id, :user_id => j)
     end
