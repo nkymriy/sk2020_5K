@@ -64,9 +64,9 @@
       参加者
     </div>
     <div class="member">
-      <ul>
+      <ul class="users">
         <% for user in users %>
-          <li><i class=" user circle icon"><%= user.email %></i></li>
+          <li id="participant_<%= user.id %>"><i class="user circle icon"><%= user.email %></i></li>
         <% end %>
       </ul>
     </div>

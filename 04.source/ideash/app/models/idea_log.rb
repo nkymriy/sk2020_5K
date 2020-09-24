@@ -32,7 +32,8 @@ class IdeaLog < ApplicationRecord
                   'edit',
                   'grouping',
                   'group',
-                  'chat'
+                  'chat',
+                  'join'
               ]
           },
           add: {
@@ -119,6 +120,18 @@ class IdeaLog < ApplicationRecord
               ],
               properties: {
                   content: {
+                      type: 'string'
+                  },
+              },
+          },
+          join: {
+              type: 'object',
+              additionalProperties: false,
+              required: [
+                  'user_mail'
+              ],
+              properties: {
+                  user_mail: {
                       type: 'string'
                   },
               },
