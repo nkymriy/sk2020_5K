@@ -45,6 +45,9 @@ $(document).on("turbolinks:load", function () {
                     $("#ideas").prepend(div);
                     $('#' + id).show('slide', '', 500);
                     localStorage.setItem('card_id', id);
+                } else if (query['mode'] == 'chat') {
+                    this.perform('chat_send', query['chat']['content']);
+                    return $('#idea_logs').append(query['chat']['content']);
                 }
             },
             add: function (idea_log) {

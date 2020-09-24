@@ -33,6 +33,7 @@
                     document.getElementById("RealtimeClockArea2").innerHTML = msg;
                 }
             }
+
             let timerId = setInterval('showClock2()', 1000);
         }
     </script>
@@ -78,4 +79,26 @@
     </div>
     <textarea class="memo-content"></textarea>
   </div>
+
+  <!--  <div>-->
+  <!--    <h1>Chat room</h1>-->
+  <!--    <p class="websocket"></p>-->
+  <!--    <div id='idea_logs' data-idea_id="<%#= @idea.id %>">-->
+  <%#= render partial: 'shared/chat', collection: @idea_logs %>
+  <!--    </div>-->
+
+  <%#= label_tag :content, 'Say something:' %>
+  <%#= text_field_tag :content, nil, data: {behavior: 'idea_speaker'} %>
+
+  <%#= javascript_pack_tag "idea/brainstorming_channel" %>
+  <!--  </div>-->
+
+  <% for content in idea_logs.reverse do %>
+    <% if content.query['mode'] == 'chat' %>
+      <div class="content">
+        <%= content.query['chat']['content'] %>
+      </div>
+    <% end %>
+  <% end %>
+
 </div>
