@@ -1,8 +1,10 @@
 class BrainstormingController < ApplicationController
   def replay
+    check_idea_category
   end
 
   def edit
+    check_idea_category
     @idea = Idea.find_by(id: params[:id])
     @idea_logs = @idea.idea_logs
     @idea_users = @idea.user
