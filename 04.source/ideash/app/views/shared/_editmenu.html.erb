@@ -79,23 +79,10 @@
   <!--    </div>-->
   <!--    <textarea class="memo-content"></textarea>-->
   <!--  </div>-->
-
   <div>
     <h1>Chat room</h1>
-    <!--    <div id='idea_logs' data-idea_id="<%#= @idea.id %>">-->
-    <%#= render partial: 'shared/chat', collection: @idea_logs %>
-    <!--    </div>-->
-
     <%= label_tag :content, 'Say something:' %>
     <%= text_field_tag 'idea_chat', nil, data: {behavior: 'idea_speaker'} %>
-
-    <%#= render partial: 'shared/chat', collection: @idea_logs.reverse, as: "idea_log" %>
-
-
-    <!--    <ul id="chats">-->
-    <%#= render partial: 'shared/chat', collection: @idea_logs, as: "idea_log" %>
-    <!--    </ul>-->
-    <div>
       <ul class="chat_contents">
         <% for idea_log in @idea_logs %>
           <% if idea_log.query['mode'] == 'chat' %>
@@ -104,23 +91,5 @@
           <% end %>
         <% end %>
       </ul>
-    </div>
-
-    <%# for content in idea_logs.reverse do %>
-    <%# if content.query['mode'] == 'chat' %>
-    <!--        <div class="content">-->
-    <%#= content.query["chat"]["content"] %>
-    <!--        </div>-->
-    <%# end %>
-    <%# end %>
   </div>
-
-  <%# for content in @idea_logs do %>
-  <%# if content.query['mode'] == 'chat' %>
-  <!--      <div class="content">-->
-  <%#= content.query['chat']['content'] %>
-  <!--      </div>-->
-  <%# end %>
-  <%# end %>
-
 </div>

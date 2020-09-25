@@ -22,7 +22,6 @@ $(document).on("turbolinks:load", function () {
                     var user_id = 'participant_' + query['user_id']
                     if ($('#' + user_id).length === 0) {
                         $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
-                        // $('.users').append(query['join']['user_mail'])
                     }
                 } else if (query['mode'] == 'add') {
                     let add = query["add"]
@@ -49,7 +48,6 @@ $(document).on("turbolinks:load", function () {
 
                 } else if (query['mode'] == 'chat') {
                     console.log(query['chat']['content'])
-                    // $('.chat_contents').append(query['chat']['content'])
                     $('.chat_contents').append(`<li id="contributor_${query['user_id']}">${query['chat']['content']}</li>`)
                 }
             },
