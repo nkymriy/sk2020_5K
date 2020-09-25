@@ -1,15 +1,13 @@
-// import consumer from "./consumer"
 import consumer from "../../channels/consumer"
+
 $(document).on("turbolinks:load", function () {
     if ($('.websocket').length > 0) {
-        // const chatChannel = consumer.subscriptions.create({
         consumer.task = consumer.subscriptions.create({
             channel: 'IdeaChannel',
             idea: $('#idea_logs').data('idea_id')
         }, {
             connected() {
                 // Called when the subscription is ready for use on the server
-                // console.log('test')
             },
 
             disconnected() {
@@ -18,7 +16,6 @@ $(document).on("turbolinks:load", function () {
 
             received(data) {
                 // Called when there's incoming data on the websocket for this channel
-                // return alert(JSON.stringify(data));
                 return $('#idea_logs').append(data['idea_logs']);
             },
 

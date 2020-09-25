@@ -1,17 +1,19 @@
 <%= link_to "/idea/memo/edit/#{memo.id}" do %>
-  <div class="item memos">
-    <div class="ui header details">
-      <div class="content memo-text">
-        <%= memo.idea_name %>
-        <div class="sub header memo-date">
-          <%= memo.updated_at %>
+  <% if memo.idea_category_id == 1 %>
+    <div class="item memos">
+      <div class="ui header details">
+        <div class="content memo-text">
+          <%= memo.idea_name %>
+          <div class="sub header memo-date">
+            <%= memo.updated_at %>
+          </div>
         </div>
+        <i class="universal access icon memo-icon"></i>
       </div>
-      <i class="universal access icon memo-icon"></i>
+      <div class="memo-sample">
+        <%= memo.idea_description %>
+      </div>
     </div>
-    <div class="memo-sample">
-      <%= memo.idea_description %>
-    </div>
-  </div>
-  <div class="ui divider"></div>
+    <div class="ui divider"></div>
+  <% end %>
 <% end %>

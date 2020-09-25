@@ -6,24 +6,23 @@
   <div class="history_segment">
     <table class="ui celled striped table">
       <thead>
-      <tr><th colspan="3">
-        Recent Creation
-      </th>
-      </tr></thead>
+      <tr>
+        <th colspan="3">
+          Recent Creation
+        </th>
+      </tr>
+      </thead>
       <tbody>
       <% @user.idea.reverse.each do |idea| %>
-      <tr>
-        <td class="collapsing">
-          <i class="folder icon"></i>
-          <%= idea.idea_name.truncate(20, omission: '...')  %>
-        </td>
-        <td>
-<!--          <a href="<%#= @categories[idea.idea_category_id]['manage_name'] + "/edit/" + idea.id %>">-->
-            <%#= @categories[idea.idea_category_id]["idea_category_name"] %>
-<!--          </a>-->
-          <%= link_to "#{@categories[idea.idea_category_id]["idea_category_name"]}", "#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}" ,local: true%>
-        </td>
-      </tr>
+        <tr>
+          <td class="collapsing">
+            <i class="folder icon"></i>
+            <%= idea.idea_name.truncate(20, omission: '...') %>
+          </td>
+          <td>
+            <%= link_to "#{@categories[idea.idea_category_id]["idea_category_name"]}", "#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}", local: true, data: {"turbolinks" => false} %>
+          </td>
+        </tr>
       <% end %>
       </tbody>
     </table>
@@ -31,5 +30,4 @@
 </div>
 
 <%# JSが書かれているため最後に書くこと %>
-<%= render :partial => 'shared/homemenu'%>
-
+<%= render :partial => 'shared/homemenu' %>
