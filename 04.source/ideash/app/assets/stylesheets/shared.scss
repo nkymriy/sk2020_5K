@@ -159,8 +159,29 @@ body {
   overflow: auto;
 }
 
-.memo {
-  height: 30%;
+.chat {
+  height: 50%;
+}
+
+.chat-area{
+  //border: #1B1C1D 1px solid;
+  height: 90%;
+  padding-top: 1vh;
+  overflow: auto;
+}
+
+.chat-input{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.chat-username{
+  margin: 5px !important;
+}
+
+.chat-message{
+
 }
 
 .memo-content {

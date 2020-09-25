@@ -33,7 +33,6 @@
                     document.getElementById("RealtimeClockArea2").innerHTML = msg;
                 }
             }
-
             let timerId = setInterval('showClock2()', 1000);
         }
     </script>
@@ -90,5 +89,30 @@
         <% end %>
       <% end %>
     </ul>
+  <div class="item chat">
+    <div class="header-text">
+      chat
+    </div>
+    <div class="ui input mini chat-input">
+      <%= text_field_tag 'idea_text', '', class: '', placeholder: "話しかける..." %>
+    </div>
+    <div class="chat-area">
+      <div class="inline field">
+        <h6 class="chat-username">酒井</h6>
+        <div class="ui right pointing label chat-message">上に追加されていくイメージです</div>
+        <h6 class="chat-username">usename</h6>
+        <div class="ui left pointing label chat-message">(画面縦小さくしてもきれいに見える)</div>
+        <h6 class="chat-username">usename</h6>
+        <div class="ui right pointing label chat-message">hello world</div>
+        <div class="ui right pointing label chat-message">hello world</div>
+        <div class="ui right pointing label chat-message">hello world</div>
+        <div class="ui right pointing label chat-message">hello world</div>
+        <div class="ui right pointing label chat-message">hello world</div>
+        <div class="ui right pointing label chat-message">hello world</div>
+        <div class="ui right pointing label chat-message">hello world</div>
+        <div class="ui right pointing label chat-message">hello world</div>
+        <div class="ui right pointing label chat-message">hello world</div>
+      </div>
+    </div>
   </div>
 </div>
