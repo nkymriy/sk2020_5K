@@ -13,13 +13,13 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <%= f.email_field :email, autoforcus: true, autocomplite: "email", placeholder: "E-mail address" %>
+            <%= f.email_field :email, autoforcus: true, autocomplite: "email", placeholder: "E-mail address", id: "email-id"%>
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <%= f.password_field :password, autoforcus: true, placeholder: "Password" %>
+            <%= f.password_field :password, autoforcus: true, placeholder: "Password", id: "password-id"%>
           </div>
         </div>
         <%= f.submit "Sign In", class: 'ui fluid large teal submit button' %>
