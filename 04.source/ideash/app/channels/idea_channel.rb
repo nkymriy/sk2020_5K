@@ -23,6 +23,11 @@ class IdeaChannel < ApplicationCable::Channel
   end
 
   def chat_send(data)
-    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'chat', 'chat': {'content': data['content']}}
+    if (current_user.user_name != nil)
+      IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'chat', 'chat': {'user_name': current_user.user_name, 'content': data['content']}}
+    else
+      # TODO ユーザー名が登録されていない場合のユーザー名を考えておく
+      IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'chat', 'chat': {'user_name': '匿名ニャンキャット', 'content': data['content']}}
+    end
   end
 end

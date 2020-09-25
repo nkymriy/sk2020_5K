@@ -47,8 +47,7 @@ $(document).on("turbolinks:load", function () {
                     localStorage.setItem('card_id', id);
 
                 } else if (query['mode'] == 'chat') {
-                    console.log(query['chat']['content'])
-                    $('.chat_contents').append(`<li id="contributor_${query['user_id']}">${query['chat']['content']}</li>`)
+                    $('.chat_contents').append(`<li id="contributor_${query['user_id']}">名前:${query['chat']['user_name']}<br>内容:${query['chat']['content']}</li>`)
                 }
             },
             add: function (idea_log) {
