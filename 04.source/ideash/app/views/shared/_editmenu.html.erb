@@ -86,7 +86,6 @@
       <ul class="chat_contents">
         <% for idea_log in @idea_logs %>
           <% if idea_log.query['mode'] == 'chat' %>
-            <%#= idea_log.query['chat']['content'] %>
             <li id="contributor_<%= idea_log.id %>"><%= idea_log.query['chat']['content'] %></li>
           <% end %>
         <% end %>
