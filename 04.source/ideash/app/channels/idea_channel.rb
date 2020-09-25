@@ -23,6 +23,6 @@ class IdeaChannel < ApplicationCable::Channel
   end
 
   def chat_send(data)
-    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'chat', 'chat': {'content': data['chat']['content']}}
+    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'chat', 'chat': {'content': data['content']}}
   end
 end

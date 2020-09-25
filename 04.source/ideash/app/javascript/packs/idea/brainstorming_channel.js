@@ -16,14 +16,15 @@ $(document).on("turbolinks:load", function () {
             },
 
             received(idea_log) {
+                console.log(idea_log)
                 let query = idea_log['idea_logs']
                 if (query['mode'] == 'join') {
                     var user_id = 'participant_' + query['user_id']
                     if ($('#' + user_id).length === 0) {
                         $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
+                        // $('.users').append(query['join']['user_mail'])
                     }
                 } else if (query['mode'] == 'add') {
-                    // let query = idea_log['idea_logs']
                     let add = query["add"]
                     var escapeHTML = function (val) {
                         return $('<div />').text(val).html();
@@ -45,13 +46,20 @@ $(document).on("turbolinks:load", function () {
                     $("#ideas").prepend(div);
                     $('#' + id).show('slide', '', 500);
                     localStorage.setItem('card_id', id);
+
                 } else if (query['mode'] == 'chat') {
-                    this.perform('chat_send', query['chat']['content']);
-                    return $('#idea_logs').append(query['chat']['content']);
+                    console.log(query['chat']['content'])
+                    // $('.chat_contents').append(query['chat']['content'])
+                    $('.chat_contents').append(`<li id="contributor_${query['user_id']}">${query['chat']['content']}</li>`)
                 }
             },
             add: function (idea_log) {
                 return this.perform('add',
+                    idea_log
+                );
+            },
+            chat: function (idea_log) {
+                return this.perform('chat_send',
                     idea_log
                 );
             }
@@ -60,10 +68,18 @@ $(document).on("turbolinks:load", function () {
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
             if (event.keyCode === 13) {
                 if (event.target.value === "") return false
-                let add = {
-                    content: event.target.value
-                };
-                consumer.task.add(add);
+                console.log(event.target.id)
+                if (event.target.id == 'idea_add') {
+                    let add = {
+                        content: event.target.value
+                    };
+                    consumer.task.add(add);
+                } else if (event.target.id == 'idea_chat') {
+                    let chat = {
+                        content: event.target.value
+                    };
+                    consumer.task.chat(chat);
+                }
                 event.target.value = '';
                 return event.preventDefault();
             }
