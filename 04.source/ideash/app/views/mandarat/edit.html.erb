@@ -1,0 +1,3 @@
+<%= render :partial => 'shared/header' %>
+<%= render :partial =>'shared/editmenu', locals: {users: @idea_users} %>
+<span class="websocket-mandarat" id="idea_logs" data-idea_id="<%= @idea.id %>"></span>
