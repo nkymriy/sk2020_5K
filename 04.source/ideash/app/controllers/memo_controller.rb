@@ -22,10 +22,12 @@ class MemoController < ApplicationController
   end
 
   def show
+    check_idea_category
     @memo = Idea.find(params[:id])
   end
 
   def edit
+    check_idea_category
     get_user_memos
     @memo = Idea.find(params[:id])
     if @memo.user.ids[0] != current_user.id
@@ -34,6 +36,7 @@ class MemoController < ApplicationController
   end
 
   def update
+    check_idea_category
     @memo = Idea.find(params[:id])
     if @memo.user.ids[0] != current_user.id
       redirect_to idea_memo_new_path
