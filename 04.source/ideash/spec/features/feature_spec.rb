@@ -35,20 +35,21 @@ RSpec.describe "Feature", type: :feature do
     expect(current_path).to eq '/idea/memo/new'
     #headerのIdeashを押しidea/homeに戻る
     click_link 'Ideash'
-    expect(current_path).to eq '/idea'
 
     #ここから/idea/home
+    expect(current_path).to eq '/idea'
     click_link 'ブレインストーミング(β)'
 
     #ここからidea/brainstorming/new
     expect(current_path).to eq '/idea/brainstorming/new'
-    # fill_in 'theme',with: 'feature-test'
-    # click_on 'はじめる'
+    fill_in 'theme',with: 'feature-test'
+    click_on 'はじめる'
     # expect(current_path).to eq '/idea/brainstorming/edit/'
+    ##あとで
     click_link 'Ideash'
-    expect(current_path).to eq '/idea'
 
     #ここからidea/home
+    expect(current_path).to eq '/idea'
     click_link 'メモ'
 
     #ここからidea/memo/new
@@ -60,18 +61,45 @@ RSpec.describe "Feature", type: :feature do
       ##click_link 'feature-test'
       #expect(page).to have_selector 'div.memo-text',text: 'feature-test'
       #find('div.memo-text',text: 'feature-test')
-      #あとでやる
+      ##あとでやる
     end
     expect(page).to have_content 'メモを保存しました。'
     click_link 'Ideash'
-    expect(current_path).to eq '/idea'
 
     #ここからidea/home
+    expect(current_path).to eq '/idea'
     click_link '履歴'
 
     #ここからidea/history
     expect(current_path).to eq '/idea/history'
+    within all('tr.feature').first do
+      click_link 'メモ'
+    end
+
+    #ここからidea/memo/edit/:id
+    expect(page).to have_field 'タイトル',with:'feature-test'
+    expect(page).to have_field '内容',with:'feature-memo'
+    ##更新処理あとでかく
+    click_on '更新'
+    click_link '履歴'
+
+    #ここから/idea/history
+    expect(current_path).to eq '/idea/history'
+    click_link 'ブレインストーミング'
+
+    #ここからidea/brainstorming/edit/:id
+    expect(page).to have_selector 'h3', text: 'テーマ: feature-test'
+    ##あとで
+    click_link 'Ideash'
+
+    #ここからidea/home
+    expect(current_path).to eq '/idea'
+
+
+
+
+
+
 
   end
 end
-
