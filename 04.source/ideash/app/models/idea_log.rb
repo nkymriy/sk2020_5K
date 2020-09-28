@@ -33,7 +33,8 @@ class IdeaLog < ApplicationRecord
                   'grouping',
                   'group',
                   'chat',
-                  'join'
+                  'join',
+                  'editing'
               ]
           },
           add: {
@@ -133,6 +134,22 @@ class IdeaLog < ApplicationRecord
               properties: {
                   user_mail: {
                       type: 'string'
+                  },
+              },
+          },
+          editing: {
+              type: 'object',
+              additionalProperties: false,
+              required: [
+                  'object_id',
+                  'is_editing'
+              ],
+              properties: {
+                  object_id: {
+                      type: 'integer'
+                  },
+                  is_editing: {
+                      type: 'integer'
                   },
               },
           },
