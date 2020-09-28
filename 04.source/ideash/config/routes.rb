@@ -50,7 +50,7 @@
 Rails.application.routes.draw do
   # INFO: トップページ
   root 'top#index'
-  get '/releasenote' => 'top#releasenote'
+  get 'release_note' => 'top#release_note'
 
 
   # INFO: devise(ユーザ認証関連)
