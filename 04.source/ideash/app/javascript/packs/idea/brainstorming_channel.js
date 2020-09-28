@@ -48,9 +48,15 @@ $(document).on("turbolinks:load", function () {
 
                 } else if (query['mode'] == 'chat') {
                     // $('.chat_contents').append(`<li id="contributor_${query['user_id']}">名前:${query['chat']['user_name']}<br>内容:${query['chat']['content']}</li>`)
+                    // console.log($('.chat_content')[0].attr('name'))
+                    console.log($('.chat_content').first()[0])
+                    console.log($('.chat_content').first().attr('name'))
+                    // console.log(query)
                     $('.chat_contents').prepend(`
-                                  <h6 class="chat-username">${query['chat']['user_name']}</h6>
-                                  <div class="ui right pointing label chat-message">${query['chat']['content']}</div>`)
+                                  <div class=chat_content name="chatuser_${query['user_id']}">
+                                    <h6 class="chat-username">${query['chat']['user_name']}</h6>
+                                    <div class="ui right pointing label chat-message">${query['chat']['content']}</div>
+                                  </div>`)
                 }
             },
             add: function (idea_log) {

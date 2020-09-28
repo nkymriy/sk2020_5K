@@ -82,14 +82,14 @@
 
 
   <%#= text_field_tag 'idea_chat', nil, data: {behavior: 'idea_speaker'} %>
-<!--  <ul class="chat_contents">-->
-    <%# for idea_log in @idea_logs %>
-      <%# if idea_log.query['mode'] == 'chat' %>
-<!--        <li id="contributor_<%#= idea_log.id %>">名前:<%#= idea_log.query['chat']['user_name'] %>-->
-<!--          <br>内容:<%#= idea_log.query['chat']['content'] %></li>-->
-      <%# end %>
-    <%# end %>
-<!--  </ul>-->
+  <!--  <ul class="chat_contents">-->
+  <%# for idea_log in @idea_logs %>
+  <%# if idea_log.query['mode'] == 'chat' %>
+  <!--        <li id="contributor_<%#= idea_log.id %>">名前:<%#= idea_log.query['chat']['user_name'] %>-->
+  <!--          <br>内容:<%#= idea_log.query['chat']['content'] %></li>-->
+  <%# end %>
+  <%# end %>
+  <!--  </ul>-->
 
   <div class="item chat">
     <div class="header-text">
@@ -103,8 +103,10 @@
         <div class="chat_contents">
           <% for idea_log in @idea_logs.reverse %>
             <% if idea_log.query['mode'] == 'chat' %>
-              <h6 class="chat-username"><%= idea_log.query['chat']['user_name'] %></h6>
-              <div class="ui right pointing label chat-message"><%= idea_log.query['chat']['content'] %></div>
+              <div class=chat_content  name="chatuser_<%= idea_log.query['user_id'] %>">
+                <h6 class="chat-username"><%= idea_log.query['chat']['user_name'] %></h6>
+                <div class="ui right pointing label chat-message"><%= idea_log.query['chat']['content'] %></div>
+              </div>
             <% end %>
           <% end %>
         </div>
