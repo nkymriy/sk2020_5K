@@ -48,7 +48,7 @@ $(document).on("turbolinks:load", function () {
 
                 } else if (query['mode'] == 'chat') {
                     // $('.chat_contents').append(`<li id="contributor_${query['user_id']}">名前:${query['chat']['user_name']}<br>内容:${query['chat']['content']}</li>`)
-                    $('.chat_contents').append(`
+                    $('.chat_contents').prepend(`
                                   <h6 class="chat-username">${query['chat']['user_name']}</h6>
                                   <div class="ui right pointing label chat-message">${query['chat']['content']}</div>`)
                 }

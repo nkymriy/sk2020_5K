@@ -101,7 +101,7 @@
     <div class="chat-area">
       <div class="inline field">
         <div class="chat_contents">
-          <% for idea_log in @idea_logs %>
+          <% for idea_log in @idea_logs.reverse %>
             <% if idea_log.query['mode'] == 'chat' %>
               <h6 class="chat-username"><%= idea_log.query['chat']['user_name'] %></h6>
               <div class="ui right pointing label chat-message"><%= idea_log.query['chat']['content'] %></div>
