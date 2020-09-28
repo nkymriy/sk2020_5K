@@ -12,7 +12,7 @@
       </tr></thead>
       <tbody>
       <% @user.idea.reverse.each do |idea| %>
-      <tr>
+      <tr class="feature">
         <td class="collapsing">
           <i class="folder icon"></i>
           <%= idea.idea_name.truncate(20, omission: '...')  %>
