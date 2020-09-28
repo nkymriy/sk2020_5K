@@ -3,13 +3,10 @@
 <div class="home_body" id="home_body">
   <%# 右部のメモ一覧 %>
   <div class="ui right fixed vertical menu block-edit-sidebar memo_sidebar">
-    <%# reverseで逆順に並べる %>
     <%= render partial: 'shared/memomenu', collection: @user_memo.reverse, as: "memo" %>
   </div>
   <%#TODO 左側が空いているのが気になる %>
   <div class="ui container">
-
-    <%# infoメッセージ %>
     <% if @info_message.present? %>
       <div class="ui info message">
         <i class="close icon"></i>
@@ -28,7 +25,6 @@
             })
         ;
     </script>
-
     <%= form_with model: @memo, class: 'ui form memo_form', local: true, url: idea_memo_path do |f| %>
       <div class="fields">
         <div class="sixteen wide field">
@@ -46,7 +42,6 @@
       <%= f.submit '保存 ', class: "ui black button" %>
     <% end %>
   </div>
-
 </div>
 
 <%# JSが書かれているため最後に書くこと %>
