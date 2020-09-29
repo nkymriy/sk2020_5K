@@ -49,21 +49,53 @@ $(document).on("turbolinks:load", function () {
                 } else if (query['mode'] == 'chat') {
                     // $('.chat_contents').append(`<li id="contributor_${query['user_id']}">名前:${query['chat']['user_name']}<br>内容:${query['chat']['content']}</li>`)
                     // console.log($('.chat_content')[0].attr('name'))
+                    console.log($('#user_id').val())
                     console.log($('.chat_content').first()[0])
                     console.log($('.chat_content').first().attr('name'))
-                    // console.log(query)
+                    console.log($('.chat-username').first()[0])
+                    console.log(query['user_id'])
+
+                    var user_id = 'chatuser_' + query['user_id']
+                    var chat_text
+                    if ($('#user_id').val() == query['user_id']) {
+                        chat_text = `<div class="ui right pointing label chat-message">${query['chat']['content']}</div>`
+                    } else {
+                        chat_text = `<div class="ui left pointing label chat-message">${query['chat']['content']}</div>`
+                    }
+
+                    // if (user_id == $('.chat_content').first().attr('name')) {
+                    //     $('.chat-username').first()[0].remove()
+                    //     $('.chat_contents').prepend(`
+                    //               <div class="chat_content" name="chatuser_${query['user_id']}">
+                    //                 <h6 class="chat-username">${query['chat']['user_name']}</h6>
+                    //                 ${chat_text}
+                    //               </div>`)
+                    // } else {
+                    //     $('.chat_contents').prepend(`
+                    //               <div class="chat_content" name="chatuser_${query['user_id']}">
+                    //                 <h6 class="chat-username">${query['chat']['user_name']}</h6>
+                    //                 ${chat_text}
+                    //               </div>`)
+                    // }
+
+                    if (user_id == $('.chat_content').first().attr('name')) {
+                        $('.chat-username').first()[0].remove()
+                    }
                     $('.chat_contents').prepend(`
-                                  <div class=chat_content name="chatuser_${query['user_id']}">
+                                  <div class="chat_content" name="chatuser_${query['user_id']}">
                                     <h6 class="chat-username">${query['chat']['user_name']}</h6>
-                                    <div class="ui right pointing label chat-message">${query['chat']['content']}</div>
+                                    ${chat_text}
                                   </div>`)
+                    console.log('ok')
                 }
-            },
+            }
+            ,
             add: function (idea_log) {
                 return this.perform('add',
                     idea_log
                 );
-            },
+            }
+            ,
             chat: function (idea_log) {
                 return this.perform('chat_send',
                     idea_log

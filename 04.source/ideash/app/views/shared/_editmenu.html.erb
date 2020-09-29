@@ -1,3 +1,4 @@
+<input type="hidden" id="user_id" value="<%= current_user.id %>">
 <!-- 1 -->
 <div class="ui right fixed vertical menu block-edit-sidebar" id="edit_menu">
   <!-- 2 -->
@@ -98,34 +99,51 @@
     <div class="ui input mini chat-input">
       <%= text_field_tag 'idea_chat', nil, placeholder: '話しかける...', data: {behavior: 'idea_speaker'} %>
     </div>
+
     <div class="chat-area">
       <div class="inline field">
+
+        <!--        <div class="chat_contents">-->
+        <%# for idea_log in @idea_logs.reverse %>
+        <%# if idea_log.query['mode'] == 'chat' %>
+        <!--              <div class="chat_content" name="chatuser_<%#= idea_log.query['user_id'] %>">-->
+        <!--                <h6 class="chat-username"><%#= idea_log.query['chat']['user_name'] %></h6>-->
+        <!--                <div class="ui right pointing label chat-message"><%#= idea_log.query['chat']['content'] %></div>-->
+        <!--              </div>-->
+        <%# end %>
+        <%# end %>
+        <!--        </div>-->
+
         <div class="chat_contents">
           <% for idea_log in @idea_logs.reverse %>
             <% if idea_log.query['mode'] == 'chat' %>
-              <div class=chat_content  name="chatuser_<%= idea_log.query['user_id'] %>">
+              <div class="chat_content" name="chatuser_<%#= idea_log.query['user_id'] %>">
                 <h6 class="chat-username"><%= idea_log.query['chat']['user_name'] %></h6>
-                <div class="ui right pointing label chat-message"><%= idea_log.query['chat']['content'] %></div>
               </div>
+              <% if current_user.id == idea_log.query['user_id'] %>
+                <div class="ui right pointing label chat-message"><%= idea_log.query['chat']['content'] %></div>
+              <% else %>
+                <div class="ui left pointing label chat-message"><%= idea_log.query['chat']['content'] %></div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
 
 
-        <h6 class="chat-username">酒井</h6>
-        <div class="ui right pointing label chat-message">上に追加されていくイメージです</div>
-        <h6 class="chat-username">usename</h6>
-        <div class="ui left pointing label chat-message">(画面縦小さくしてもきれいに見える)</div>
-        <h6 class="chat-username">usename</h6>
-        <div class="ui right pointing label chat-message">hello world</div>
-        <div class="ui right pointing label chat-message">hello world</div>
-        <div class="ui right pointing label chat-message">hello world</div>
-        <div class="ui right pointing label chat-message">hello world</div>
-        <div class="ui right pointing label chat-message">hello world</div>
-        <div class="ui right pointing label chat-message">hello world</div>
-        <div class="ui right pointing label chat-message">hello world</div>
-        <div class="ui right pointing label chat-message">hello world</div>
-        <div class="ui right pointing label chat-message">hello world</div>
+        <!--        <h6 class="chat-username">酒井</h6>-->
+        <!--        <div class="ui right pointing label chat-message">上に追加されていくイメージです</div>-->
+        <!--        <h6 class="chat-username">usename</h6>-->
+        <!--        <div class="ui left pointing label chat-message">(画面縦小さくしてもきれいに見える)</div>-->
+        <!--        <h6 class="chat-username">usename</h6>-->
+        <!--        <div class="ui right pointing label chat-message">hello world</div>-->
+        <!--        <div class="ui right pointing label chat-message">hello world</div>-->
+        <!--        <div class="ui right pointing label chat-message">hello world</div>-->
+        <!--        <div class="ui right pointing label chat-message">hello world</div>-->
+        <!--        <div class="ui right pointing label chat-message">hello world</div>-->
+        <!--        <div class="ui right pointing label chat-message">hello world</div>-->
+        <!--        <div class="ui right pointing label chat-message">hello world</div>-->
+        <!--        <div class="ui right pointing label chat-message">hello world</div>-->
+        <!--        <div class="ui right pointing label chat-message">hello world</div>-->
       </div>
     </div>
   </div>
