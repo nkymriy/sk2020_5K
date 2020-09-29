@@ -17,38 +17,72 @@ $(document).on("turbolinks:load", function () {
             },
 
             received(idea_log) {
+
                 let query = idea_log['idea_logs']
-                let add = query["add"]
+                if (query['mode'] == 'join') {
+                    var user_id = 'participant_' + query['user_id']
+                    if ($('#' + user_id).length === 0) {
+                        $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
+                    }
+                } else if (query['mode'] == 'add') {
+                    // let query = idea_log['idea_logs']
+                    let add = query["add"]
+                    var escapeHTML = function (val) {
+                        return $('<div />').text(val).html();
+                    };
+                    const idea_text = escapeHTML(add["content"]);
 
-                var escapeHTML = function (val) {
-                    return $('<div />').text(val).html();
-                };
+                    if (idea_text == null || idea_text == "") {
+                        return false;
+                    }
 
-                const idea_text = escapeHTML(add["content"]);
-
-                if (idea_text == null || idea_text == "") {
-                    return false;
+                    var id = parseInt(localStorage.getItem('card_id')) + 1;
+                    var div = $(
+                        '<div class="teal card idea none" id="' + id + '">\n' +
+                        '      <div class="content">\n' +
+                        idea_text +
+                        '      </div>\n' +
+                        '    </div>'
+                    );
+                    $("#ideas").prepend(div);
+                    $('#' + id).show('slide', '', 500);
+                    localStorage.setItem('card_id', id);
                 }
 
-                var id = parseInt(localStorage.getItem('card_id')) + 1;
-                var div = $(
-                    '<div class="teal card idea none" id="' + id + '">\n' +
-                    '      <div class="content">\n' +
-                    idea_text +
-                    '      </div>\n' +
-                    '    </div>'
-                );
-                $("#ideas").prepend(div);
-                $('#' + id).show('slide', '', 500);
-
-                localStorage.setItem('card_id', id);
+                // let query = idea_log['idea_logs']
+                // let add = query["add"]
+                //
+                // var escapeHTML = function (val) {
+                //     return $('<div />').text(val).html();
+                // };
+                //
+                // const idea_text = escapeHTML(add["content"]);
+                //
+                // if (idea_text == null || idea_text == "") {
+                //     return false;
+                // }
+                //
+                // var id = parseInt(localStorage.getItem('card_id')) + 1;
+                // var div = $(
+                //     '<div class="teal card idea none" id="' + id + '">\n' +
+                //     '      <div class="content">\n' +
+                //     idea_text +
+                //     '      </div>\n' +
+                //     '    </div>'
+                // );
+                // $("#ideas").prepend(div);
+                // $('#' + id).show('slide', '', 500);
+                // localStorage.setItem('card_id', id);
                 // return $('#idea_logs').append(data['idea_logs']);
             },
-
             add: function (idea_log) {
                 return this.perform('add',
                     idea_log
                 );
+            },
+            editing: function (idea_log) {
+                return this.perform('editing',
+                    idea_log);
             }
         });
 
@@ -73,21 +107,26 @@ $(document).on("turbolinks:load", function () {
         // });
 
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
-            if (document.getElementById('textbox').style.backgroundColor == '#C0C0C0') {
-                //特定の背景色の時サーバーに飛ばす
-                return this.perform('add', idea_log);
-            }
+            // if (document.getElementById('textbox').style.backgroundColor == '#C0C0C0') {
+            //     //特定の背景色の時サーバーに飛ばす
+
+
+            //console.log("-------------------");
+            //document.getElementById('idea_text').style.backgroundColor = '#ff0000';
+            //console.log("-------------------");
+
+            // }
             if (event.keyCode === 13) {
                 if (event.target.value === "") return false
                 let add = {
                     content: event.target.value
                 };
-                consumer.task.add(add);
+                //consumer.task.add(add);
                 event.target.value = '';
+                consumer.task.editing(add);
                 return event.preventDefault();
             }
         });
-
     } else {
         if (consumer.task) {
             consumer.task.unsubscribe()
