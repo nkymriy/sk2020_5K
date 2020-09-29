@@ -2,22 +2,29 @@
   <table class="ui teal table release_note_table">
     <thead>
     <tr>
-      <th>バージョン</th>
+      <th>Version</th>
       <th>更新日付</th>
       <th>更新内容</th>
-      <th>詳細</th>
+      <th>追加機能</th>
     </tr>
     </thead>
     <tbody>
-    <% @csv.each do |row| %>
+    <% @release_note.each do |row| %>
       <tr>
         <td><%= row["version"] %></td>
         <td><%= row["date"] %></td>
-        <td><%= row["content"] %></td>
-        <td><%= row["description"] %></td>
+        <td>
+          <% for description in row["description"].split("//") do %>
+            <%= description %><br>
+          <% end %>
+        </td>
+        <td>
+          <% for function in row["function"].split("//") do %>
+            <%= function %><br>
+          <% end %>
+        </td>
       </tr>
     <% end %>
     </tbody>
   </table>
 </div>
-<%#= javascript_pack_tag 'release_note', 'data-turbolinks-track': 'reload' %>
