@@ -3,10 +3,16 @@ class TopController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @csv = CSV.read("app/assets/csv/release_note.csv", headers: true, return_headers: false)
+    @release_note = read_release_note_csv
   end
 
   def release_note
-    @csv = CSV.read("app/assets/csv/release_note.csv", headers: true, return_headers: false)
+    @release_note = read_release_note_csv
+  end
+
+  private
+
+  def read_release_note_csv
+    CSV.read("app/assets/csv/release_note.csv", headers: true, return_headers: false)
   end
 end
