@@ -21,11 +21,11 @@
         </div>
         <div class="content">
           <div class="ui list">
-            <% @csv.each do |row| %>
+            <% @release_note.each do |row| %>
               <div class="item">
                 <i class="angle right icon"></i>
                 <div class="release_note_content">
-                  <%= link_to row['content'], release_note_path, class: 'header' %>
+                  <%= link_to row['description'].split("//")[0], release_note_path, class: 'header' %>
                   <div class="description"><%= row['date'] %></div>
                 </div>
               </div>
