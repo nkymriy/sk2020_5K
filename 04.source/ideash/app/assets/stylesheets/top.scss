@@ -83,8 +83,9 @@ body {
   width: 300px !important;
 }
 
-.release_note.content {
+.release_note_content {
   text-align: left !important;
+  display: table-cell;
 }
 
 /*第2区分*/

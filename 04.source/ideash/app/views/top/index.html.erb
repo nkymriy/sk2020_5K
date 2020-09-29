@@ -24,7 +24,7 @@
             <% @csv.each do |row| %>
               <div class="item">
                 <i class="angle right icon"></i>
-                <div class="content">
+                <div class="release_note_content">
                   <%= link_to row['content'], release_note_path, class: 'header' %>
                   <div class="description"><%= row['date'] %></div>
                 </div>
