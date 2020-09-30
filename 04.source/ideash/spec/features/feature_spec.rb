@@ -5,7 +5,7 @@ RSpec.describe "Feature", type: :feature do
     #user作成
     User.create(email:'develop1@example.com',password:'password')
   end
-  scenario "ブラウザ操作をシュミレートする" do
+  scenario "ブラウザ操作をシュミレートする", js:true do
     #トップページにアクセス
     visit root_path
 
@@ -47,8 +47,9 @@ RSpec.describe "Feature", type: :feature do
     #idea/brainstorming/edit/:id
     ##部屋には入ってるあとは入力
     expect(page).to have_selector 'h3', text: 'テーマ: feature-test'
-    fill_in('思いついたことを書いていきましょう',with: 'feature-bra')
-    #expect(page).to have_content 'feature-bra'
+    fill_in '思いついたことを書いていきましょう', with: 'feature-bra'
+    find('#feature-brainstorming').native.send_keys(:return)
+    expect(page).to have_selector 'div.content',text: 'feature-bra'
     click_link 'Ideash'
 
     #ここからidea/home
@@ -98,7 +99,7 @@ RSpec.describe "Feature", type: :feature do
 
     #ここからidea/brainstorming/edit/:id
     expect(page).to have_selector 'h3', text: 'テーマ: feature-test'
-    ##上のブレストの処理が終わってからやる
+    expect(page).to have_selector 'div.content',text: 'feature-bra'
     click_link 'Ideash'
 
     #ここからidea/home
