@@ -45,7 +45,6 @@ RSpec.describe "Feature", type: :feature do
     fill_in 'theme',with: 'feature-test'
     click_on 'はじめる'
     #idea/brainstorming/edit/:id
-    ##部屋には入ってるあとは入力
     expect(page).to have_selector 'h3', text: 'テーマ: feature-test'
     fill_in '思いついたことを書いていきましょう', with: 'feature-bra'
     find('#feature-brainstorming').native.send_keys(:return)
