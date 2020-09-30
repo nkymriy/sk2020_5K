@@ -68,14 +68,12 @@ $(document).on("turbolinks:load", function () {
                         </div>
                     `)
                 }
-            }
-            ,
+            },
             add: function (idea_log) {
                 return this.perform('add',
                     idea_log
                 );
-            }
-            ,
+            },
             chat: function (idea_log) {
                 return this.perform('chat_send',
                     idea_log
@@ -87,16 +85,13 @@ $(document).on("turbolinks:load", function () {
             if (event.keyCode === 13) {
                 if (event.target.value === "") return false
                 console.log(event.target.id)
+                let content = {
+                    content: event.target.value
+                };
                 if (event.target.id == 'idea_add') {
-                    let add = {
-                        content: event.target.value
-                    };
-                    consumer.task.add(add);
+                    consumer.task.add(content);
                 } else if (event.target.id == 'idea_chat') {
-                    let chat = {
-                        content: event.target.value
-                    };
-                    consumer.task.chat(chat);
+                    consumer.task.chat(content);
                 }
                 event.target.value = '';
                 return event.preventDefault();
