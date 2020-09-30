@@ -26,8 +26,8 @@ class IdeaChannel < ApplicationCable::Channel
     if (current_user.user_name != nil)
       IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'chat', 'chat': {'user_name': current_user.user_name, 'content': data['content']}}
     else
-      # TODO ユーザー名が登録されていない場合のユーザー名を考えておく
-      IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'chat', 'chat': {'user_name': '匿名ニャンキャット', 'content': data['content']}}
+      # NOTE: ユーザ名が設定されていない場合Anonymousで登録する
+      IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'chat', 'chat': {'user_name': 'Anonymous', 'content': data['content']}}
     end
   end
 end
