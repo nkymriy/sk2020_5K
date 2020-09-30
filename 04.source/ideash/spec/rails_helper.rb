@@ -37,3 +37,6 @@ require File.expand_path("spec/support/controller_macros.rb")
 
 #capybara
 require 'capybara/rspec'
+
+#screenshot
+require 'capybara-screenshot/rspec'
