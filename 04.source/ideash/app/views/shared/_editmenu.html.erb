@@ -81,7 +81,7 @@
           <% preview_user_id = nil %>
           <% for idea_log in @idea_logs.reverse %>
             <% if idea_log.query['mode'] == 'chat' %>
-              <div class="chat_content" name="chatuser_<%#= idea_log.query['user_id'] %>">
+              <div class="chat_content" name="chatuser_<%= idea_log.query['user_id'] %>">
                 <% if preview_user_id != idea_log.query['user_id'] %>
                   <h6 class="chat-username"><%= idea_log.query['chat']['user_name'] %></h6>
                 <% end %>
