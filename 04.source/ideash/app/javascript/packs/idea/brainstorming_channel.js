@@ -23,7 +23,6 @@ $(document).on("turbolinks:load", function () {
                     if ($('#' + user_id).length === 0) {
                         $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
                     }
-
                 } else if (query['mode'] == 'add') {
                     let add = query["add"]
                     var escapeHTML = function (val) {
@@ -46,7 +45,6 @@ $(document).on("turbolinks:load", function () {
                     $("#ideas").prepend(div);
                     $('#' + id).show('slide', '', 500);
                     localStorage.setItem('card_id', id);
-
                 } else if (query['mode'] == 'chat') {
                     var user_id = 'chatuser_' + query['user_id']
                     var chat_text
