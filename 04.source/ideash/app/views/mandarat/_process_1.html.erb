@@ -10,16 +10,38 @@
       </div>
     </form>
   </div>
-  <div class="ui four cards process1_ideas" id="ideas">
+
+    <meta charset="utf-8" />
+    <title>sample</title>
+
+  <table>
+    <tr>
+      <td><%= text_field_tag 'idea_text', '', class: '', data: {behavior: 'idea_speaker', id: 'idea_text'} %></td>
+      <td><%= text_field_tag 'idea_text', '', class: '', data: {behavior: 'idea_speaker', id: 'idea_text'} %></td>
+      <td><%= text_field_tag 'idea_text', '', class: '', data: {behavior: 'idea_speaker', id: 'idea_text'} %></td>
+    </tr>
+    <tr>
+      <td><%= text_field_tag 'idea_text', '', class: '', data: {behavior: 'idea_speaker', id: 'idea_text'} %></td>
+      <td><%= text_field_tag 'idea_text', '', class: '', data: {behavior: 'idea_speaker', id: 'idea_text'} %></td>
+      <td><%= text_field_tag 'idea_text', '', class: '', data: {behavior: 'idea_speaker', id: 'idea_text'} %></td>
+    </tr>
+    <tr>
+      <td><%= text_field_tag 'idea_text', '', class: '', data: {behavior: 'idea_speaker', id: 'idea_text'} %></td>
+      <td><%= text_field_tag 'idea_text', '', class: '', data: {behavior: 'idea_speaker', id: 'idea_text'} %></td>
+      <td><%= text_field_tag 'idea_text', '', class: '', data: {behavior: 'idea_speaker', id: 'idea_text'} %></td>
+    </tr>
+  </table>
+
+<!--  <div class="ui four cards process1_ideas" id="ideas">-->
     <%#= idea_logs.inspect %>
-    <% for content in idea_logs.reverse do %>
-      <div class="teal card idea" id="">
-        <div class="content">
-          <%= content.query["add"]["content"] %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+    <%# for content in idea_logs.reverse do %>
+<!--      <div class="teal card idea" id="">-->
+<!--        <div class="content">-->
+          <%#= content.query["add"]["content"] %>
+<!--        </div>-->
+<!--      </div>-->
+    <%# end %>
+<!--  </div>-->
 </div>
 
 <script>
