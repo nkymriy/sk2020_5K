@@ -3,13 +3,12 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "semantic-ui";
 
-body{
+body {
   position: relative;
 }
 
-
 /*home*/
-.block-memo{
+.block-memo {
   position: absolute;
   height: 95%;
   width: 68%;
@@ -19,36 +18,35 @@ body{
   background-color: #E5E5E5;
 }
 
-.block-center{
-  text-align:  center;
+.block-center {
+  text-align: center;
 }
 
 /* 2 */
-.memo-contents{
+.memo-contents {
   width: fit-content;
   margin: 5% 27%;
 }
 
 /* 3 */
-.about-contents{
+.about-contents {
   border: #1b1e21 1px solid;
   margin: 10% 30%;
   padding-bottom: 5%;
 }
 
-.about-text{
+.about-text {
   font-weight: normal;
 }
 
-.about-image{
+.about-image {
 }
 
-
 /* 4 */
-.memo-content{
+.memo-content {
 }
 
 /* 5 */
-.save-contents{
+.save-contents {
   margin-top: 5%;
 }

@@ -14,15 +14,15 @@
  *= require_self
  */
 
-body{
+body {
     font-family: 'Roboto', sans-serif;
 }
 
 /*サイドバー開閉後の背景色*/
-body.pushable>.pusher{
+body.pushable > .pusher {
     background: #DADADA;
 }
+
 body, input, textarea {
     font-family: 'Roboto', sans-serif;
 }
-

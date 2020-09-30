@@ -2,6 +2,7 @@
 #
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
 #                                  root GET    /                                                                                        top#index
+#                          release_note GET    /release_note(.:format)                                                                  top#release_note
 #                        account_signin GET    /account/signin(.:format)                                                                users/sessions#new
 #                                       POST   /account/signin(.:format)                                                                users/sessions#create
 #                        account_signup GET    /account/signup(.:format)                                                                users/registrations#new
@@ -14,6 +15,7 @@
 #                             idea_home GET    /idea/home(.:format)                                                                     ideas#home
 #                          idea_history GET    /idea/history(.:format)                                                                  ideas#history
 #                         idea_category GET    /idea/category(.:format)                                                                 ideas#category
+#                          idea_account GET    /idea/account(.:format)                                                                  ideas#account
 #                         idea_memo_new GET    /idea/memo/new(.:format)                                                                 memo#new
 #                                       POST   /idea/memo/new(.:format)                                                                 memo#new
 #                             idea_memo POST   /idea/memo(.:format)                                                                     memo#create
@@ -50,7 +52,7 @@
 Rails.application.routes.draw do
   # INFO: トップページ
   root 'top#index'
-  get '/releasenote' => 'top#releasenote'
+  get 'release_note' => 'top#release_note', as: 'release_note'
 
 
   # INFO: devise(ユーザ認証関連)
@@ -81,7 +83,6 @@ Rails.application.routes.draw do
   # get 'idea/memo/show' => 'memo#show'
   get 'idea/memo/edit/:id' => 'memo#edit'
   patch '/idea/memo' => 'memo#update'
-
 
   # INFO: ブレインストーミング
   get 'idea/brainstorming/new' => 'brainstorming#new'

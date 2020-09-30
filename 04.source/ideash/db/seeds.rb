@@ -35,7 +35,6 @@ if Rails.env.development? || Rails.env.test?
         :idea_description => "example ##{i}",
         :idea_category_id => 1
     )
-
     (1..2).each do |j|
       pp UserIdea.create!(:idea_id => idea.id, :user_id => j)
     end
@@ -43,10 +42,12 @@ if Rails.env.development? || Rails.env.test?
     50.times do |j|
       idea.idea_logs.create!(
           :query => {
-              :object => j,
+              # TODO DBの構造について再検討
+              # :object => j,
               :user_id => 1,
               :mode => 'add',
               :add => {
+                  :object_id => j,
                   :content => "sample content ##{j}"
               },
               :time => "#{Time.now + j}"

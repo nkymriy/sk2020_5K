@@ -10,7 +10,152 @@
 #  query      :json
 #
 class IdeaLog < ApplicationRecord
-  validates :query, presence: true
+  # NOTE timeにValidateがかかっていないので、必要があれば以下に記述する
+  QUERY_SCHEMA = {
+      type: 'object',
+      additionalProperties: false,
+      required: [
+          'mode'
+      ],
+      properties: {
+          user_id: {
+              type: 'integer'
+          },
+          time: {
+              type: 'string'
+          },
+          mode: {
+              type: 'string',
+              enum: [
+                  'add',
+                  'delete',
+                  'edit',
+                  'grouping',
+                  'group',
+                  'chat',
+                  'join',
+                  'editing'
+              ]
+          },
+          add: {
+              type: 'object',
+              additionalProperties: false,
+              required: [
+                  'object_id',
+                  'content'
+              ],
+              properties: {
+                  object_id: {
+                      type: 'integer'
+                  },
+                  content: {
+                      type: 'string'
+                  },
+              },
+          },
+          delete: {
+              type: 'object',
+              additionalProperties: false,
+              required: [
+                  'object_id',
+              ],
+              properties: {
+                  object_id: {
+                      type: 'integer'
+                  },
+              },
+          },
+          edit: {
+              type: 'object',
+              additionalProperties: false,
+              required: [
+                  'object_id',
+                  'content'
+              ],
+              properties: {
+                  object_id: {
+                      type: 'integer'
+                  },
+                  content: {
+                      type: 'string'
+                  },
+              },
+          },
+          grouping: {
+              type: 'object',
+              additionalProperties: false,
+              required: [
+                  'object_id',
+                  'group_id'
+              ],
+              properties: {
+                  object_id: {
+                      type: 'integer'
+                  },
+                  group_id: {
+                      type: 'integer'
+                  },
+              },
+          },
+          group: {
+              type: 'object',
+              additionalProperties: false,
+              required: [
+                  'group_id',
+                  'name'
+              ],
+              properties: {
+                  group_id: {
+                      type: 'integer'
+                  },
+                  name: {
+                      type: 'string'
+                  },
+              },
+          },
+          chat: {
+              type: 'object',
+              additionalProperties: false,
+              required: [
+                  'content'
+              ],
+              properties: {
+                  content: {
+                      type: 'string'
+                  },
+              },
+          },
+          join: {
+              type: 'object',
+              additionalProperties: false,
+              required: [
+                  'user_mail'
+              ],
+              properties: {
+                  user_mail: {
+                      type: 'string'
+                  },
+              },
+          },
+          editing: {
+              type: 'object',
+              additionalProperties: false,
+              required: [
+                  'object_id',
+                  'is_editing'
+              ],
+              properties: {
+                  object_id: {
+                      type: 'integer'
+                  },
+                  is_editing: {
+                      type: 'integer'
+                  },
+              },
+          },
+      },
+  }.freeze
 
+  validates :query, json: {schema: QUERY_SCHEMA}
   after_create_commit { IdealogBroadcastJob.perform_later self }
 end

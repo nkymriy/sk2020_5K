@@ -1,0 +1,30 @@
+<div class="release_note_segment">
+  <table class="ui teal table release_note_table">
+    <thead>
+    <tr>
+      <th>Version</th>
+      <th>更新日付</th>
+      <th>更新内容</th>
+      <th>追加機能</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @release_note.each do |row| %>
+      <tr>
+        <td><%= row["version"] %></td>
+        <td><%= row["date"] %></td>
+        <td>
+          <% for description in row["description"].split("//") do %>
+            <%= description %><br>
+          <% end %>
+        </td>
+        <td>
+          <% for function in row["function"].split("//") do %>
+            <%= function %><br>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -81,8 +81,14 @@ gem 'rubocop-rails'
 #認証用
 gem 'devise'
 
+# json-schema
+gem 'json-schema'
+
 #unicorn
 gem 'unicorn'
+
+#定数定義
+gem 'config'
 
 group :development, :test do
   #rspec-rails テスト用

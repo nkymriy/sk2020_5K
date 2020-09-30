@@ -8,7 +8,7 @@
         Sign-In to your account
       </div>
     </h2>
-    <%= form_for(resource, as: resource_name, url: :account_signin,html:{class: "ui large form"}) do |f| %>
+    <%= form_for(resource, as: resource_name, url: :account_signin, html: {class: "ui large form"}) do |f| %>
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
@@ -29,7 +29,6 @@
 
     <div class="ui message">
       New to us? <%= link_to 'Sign Up', :account_signup %></a>
-
     </div>
   </div>
 </div>
