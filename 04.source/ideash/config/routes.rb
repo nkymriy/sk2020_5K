@@ -70,7 +70,6 @@ Rails.application.routes.draw do
   end
 
   # INFO: ユーザのホーム画面
-  get 'idea' => 'ideas#home'
   get 'idea/home' => 'ideas#home'
   get 'idea/history' => 'ideas#history'
   get 'idea/category' => 'ideas#category'
