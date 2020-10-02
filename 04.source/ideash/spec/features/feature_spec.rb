@@ -37,7 +37,7 @@ RSpec.describe "Feature", type: :feature do
     click_link 'Ideash'
 
     #ここから/idea/home
-    expect(current_path).to eq '/idea'
+    expect(current_path).to eq '/idea/home'
     click_link 'ブレインストーミング(β)'
 
     #ここからidea/brainstorming/new
@@ -52,7 +52,7 @@ RSpec.describe "Feature", type: :feature do
     click_link 'Ideash'
 
     #ここからidea/home
-    expect(current_path).to eq '/idea'
+    expect(current_path).to eq '/idea/home'
     click_link 'メモ'
 
     #ここからidea/memo/new
@@ -69,7 +69,7 @@ RSpec.describe "Feature", type: :feature do
     click_link 'Ideash'
 
     #ここからidea/home
-    expect(current_path).to eq '/idea'
+    expect(current_path).to eq '/idea/home'
     click_link '履歴'
 
     #ここからidea/history
@@ -102,7 +102,7 @@ RSpec.describe "Feature", type: :feature do
     click_link 'Ideash'
 
     #ここからidea/home
-    expect(current_path).to eq '/idea'
+    expect(current_path).to eq '/idea/home'
     click_link 'アカウント'
 
     #ここからidea/account
@@ -114,7 +114,7 @@ RSpec.describe "Feature", type: :feature do
     click_link 'Ideash'
 
     #ここからidea/home
-    expect(current_path).to eq '/idea'
+    expect(current_path).to eq '/idea/home'
     click_link 'サインアウト'
 
     #ここからtop/index
@@ -146,7 +146,7 @@ RSpec.describe "Feature", type: :feature do
     click_link 'Ideash'
 
     #ここからidea/home
-    expect(current_path).to eq '/idea'
+    expect(current_path).to eq '/idea/home'
     click_link 'Brainstorming'
 
     #ここからidea/brainstorming/new
@@ -154,7 +154,7 @@ RSpec.describe "Feature", type: :feature do
     click_link 'Ideash'
 
     #ここからidea/home
-    expect(current_path).to eq '/idea'
+    expect(current_path).to eq '/idea/home'
     within('div.creat_new_segment') do
       click_link 'more'
     end
@@ -168,7 +168,7 @@ RSpec.describe "Feature", type: :feature do
     click_link 'Ideash'
 
     #ここからidea/home
-    expect(current_path).to eq '/idea'
+    expect(current_path).to eq '/idea/home'
     within('div.creat_new_segment') do
       click_link 'more'
     end
@@ -182,7 +182,7 @@ RSpec.describe "Feature", type: :feature do
     click_link 'Ideash'
 
     #ここからidea/home
-    expect(current_path).to eq '/idea'
+    expect(current_path).to eq '/idea/home'
     within('div.recent_creation_segment') do
       click_link 'more'
     end
@@ -192,6 +192,6 @@ RSpec.describe "Feature", type: :feature do
     click_link 'Ideash'
 
     #ここからidea/home
-    expect(current_path).to eq '/idea'
+    expect(current_path).to eq '/idea/home'
   end
 end
