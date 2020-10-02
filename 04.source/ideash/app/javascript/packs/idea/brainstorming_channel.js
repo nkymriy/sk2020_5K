@@ -15,8 +15,8 @@ $(document).on("turbolinks:load", function () {
                 // Called when the subscription has been terminated by the server
             },
 
-            received(idea_log) {
-                let query = idea_log['idea_logs']
+            received(json_idea_log) {
+                let query = json_idea_log['idea_logs']
                 if (query['mode'] == 'join') {
                     var user_id = 'participant_' + query['user_id']
                     if ($('#' + user_id).length === 0) {
@@ -47,9 +47,9 @@ $(document).on("turbolinks:load", function () {
                     localStorage.setItem('card_id', id);
                 }
             },
-            add: function (idea_log) {
+            add: function (json_idea_log) {
                 return this.perform('add',
-                    idea_log
+                    json_idea_log
                 );
             }
         });
