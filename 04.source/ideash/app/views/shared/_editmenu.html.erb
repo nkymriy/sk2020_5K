@@ -81,21 +81,22 @@
           <% preview_user_id = nil %>
           <% for idea_log in @idea_logs.reverse %>
             <% if idea_log.query['mode'] == 'chat' %>
-              <div class="chat_content" name="chatuser_<%= idea_log.query['user_id'] %>">
-                <% if preview_user_id != idea_log.query['user_id'] %>
-                  <h6 class="chat-username"><%= idea_log.query['chat']['user_name'] %></h6>
-                <% end %>
-              </div>
+              <% if preview_user_id != idea_log.query['user_id'] %>
+                </div>
+                <div class="chat_content" name="chatuser_<%= idea_log.query['user_id'] %>">
+                  <h6 class="chat_username"><%= idea_log.query['chat']['user_name'] %></h6>
+              <% end %>
               <% if current_user.id == idea_log.query['user_id'] %>
-                <div class="ui right pointing label chat-message"><%= idea_log.query['chat']['content'] %></div>
+                <div class="ui right pointing label chat_message"><%= idea_log.query['chat']['content'] %></div>
               <% else %>
-                <div class="ui left pointing label chat-message"><%= idea_log.query['chat']['content'] %></div>
+                <div class="ui left pointing label chat_message"><%= idea_log.query['chat']['content'] %></div>
               <% end %>
               <% preview_user_id = idea_log.query['user_id'] %>
             <% end %>
           <% end %>
-        </div>
-      </div>
+          </div>
+          </div>
     </div>
   </div>
+</div>
 </div>

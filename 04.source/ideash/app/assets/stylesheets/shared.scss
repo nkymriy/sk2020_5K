@@ -176,12 +176,13 @@ body {
   margin-bottom: 5px;
 }
 
-.chat-username{
+.chat_username{
   margin: 5px !important;
 }
 
-.chat-message{
-
+.chat_message
+{
+  display: block !important;
 }
 
 .memo-content {

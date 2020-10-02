@@ -52,19 +52,18 @@ $(document).on("turbolinks:load", function () {
                     if ($('#user_id').val() == query['user_id']) {
                         chat_text = `<div class="ui right pointing label chat-message">${query['chat']['content']}</div>`
                     } else {
-                        chat_text = `<div class="ui left pointing label chat-message">${query['chat']['content']}</div>`
+                        chat_text = `<div class="ui left pointing label chat_message">${query['chat']['content']}</div>`
                     }
 
-                    if (user_id == $('.chat_content').first().attr('name')) {
-                        $('.chat-username').first()[0].remove()
-                    }
-
-                    $('.chat_contents').prepend(`
+                    if (user_id != $('.chat_content').first().attr('name')) {
+                        $('.chat_contents').first().prepend(`
                         <div class="chat_content" name="chatuser_${query['user_id']}">
-                            <h6 class="chat-username">${query['chat']['user_name']}</h6>
-                            ${chat_text}
+                            <h6 class="chat_username">${query['chat']['user_name']}</h6>
                         </div>
                     `)
+                    }
+                    $('.chat_username').first().append(chat_text)
+
                 }
             },
             add: function (idea_log) {
