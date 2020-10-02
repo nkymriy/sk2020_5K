@@ -153,6 +153,22 @@ class IdeaLog < ApplicationRecord
                   },
               },
           },
+          system: {
+              type: 'object',
+              additionalProperties: false,
+              required: [
+                  'operation',
+                  'option'
+              ],
+              properties: {
+                  operation: {
+                      type: 'string'
+                  },
+                  option: {
+                      type: 'string'
+                  },
+              },
+          },
       },
   }.freeze
 
