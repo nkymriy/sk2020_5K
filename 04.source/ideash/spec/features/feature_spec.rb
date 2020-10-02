@@ -19,8 +19,8 @@ RSpec.describe "Feature", type: :feature do
     expect(page).to have_content 'Sign-In to your account'
     expect(current_path).to eq '/account/signin'
     #loginフォームにemailとpasswordを入力する
-    fill_in 'email-id',with: 'develop1@example.com'
-    fill_in 'password-id',with: 'password'
+    fill_in 'feature-test-email',with: 'develop1@example.com'
+    fill_in 'feature-test-password',with: 'password'
     click_on 'Sign In'
 
     #ここから/idea/home
@@ -47,7 +47,7 @@ RSpec.describe "Feature", type: :feature do
     #idea/brainstorming/edit/:id
     expect(page).to have_selector 'h3', text: 'テーマ: feature-test'
     fill_in '思いついたことを書いていきましょう', with: 'feature-bra'
-    find('#feature-brainstorming').native.send_keys(:return)
+    find('#feature-test-brainstorming').native.send_keys(:return)
     expect(page).to have_selector 'div.content',text: 'feature-bra'
     click_link 'Ideash'
 
@@ -74,7 +74,7 @@ RSpec.describe "Feature", type: :feature do
 
     #ここからidea/history
     expect(current_path).to eq '/idea/history'
-    within all('tr.feature').first do
+    within all('tr.feature-test-history').first do
       click_link 'メモ'
     end
 
@@ -133,8 +133,8 @@ RSpec.describe "Feature", type: :feature do
     #ここからaccount/signin再度ログイン
     expect(current_path).to eq '/account/signin'
     #loginフォームにemailとpasswordを入力する
-    fill_in 'email-id',with: 'develop1@example.com'
-    fill_in 'password-id',with: 'password'
+    fill_in 'feature-test-email',with: 'develop1@example.com'
+    fill_in 'feature-test-password',with: 'password'
     click_on 'Sign In'
 
     #ここからidea/home
