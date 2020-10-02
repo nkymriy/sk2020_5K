@@ -18,7 +18,7 @@ for category in idea_categories do
   pp IdeaCategory.create!(:idea_category_name => category[0],
                           :manage_name => category[1])
 end
-if Rails.env.development?
+if Rails.env.development? || Rails.env.test?
   pp "== debug data ==============================="
   pp "== create users ============================="
   (1..10).each do |i|
