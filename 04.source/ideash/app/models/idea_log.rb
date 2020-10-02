@@ -34,7 +34,8 @@ class IdeaLog < ApplicationRecord
                   'group',
                   'chat',
                   'join',
-                  'editing'
+                  'editing',
+                  'system'
               ]
           },
           add: {
