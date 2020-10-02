@@ -47,7 +47,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   #error表示を変更
-  gem 'better_errors'
+  gem 'better_errors', '~> 2.7.1'
   gem 'binding_of_caller'
 
   #DBのスキーマを表示してくれる
