@@ -5,9 +5,9 @@
     <form name="brainstorming_process1_form" onsubmit="return false;">
       <div class="ui fluid action input">
         <% if Rails.env.test? %>
-          <%= text_field_tag 'idea_text', '', id: 'feature-test-brainstorming', placeholder: "思いついたことを書いていきましょう", data: {behavior: 'idea_speaker'} %>
+          <%= text_field_tag 'idea_add', '', id: 'feature-test-brainstorming', placeholder: "思いついたことを書いていきましょう", data: {behavior: 'idea_speaker'} %>
         <% else %>
-          <%= text_field_tag 'idea_text', '', placeholder: "思いついたことを書いていきましょう", data: {behavior: 'idea_speaker'} %>
+          <%= text_field_tag 'idea_add', '', placeholder: "思いついたことを書いていきましょう", data: {behavior: 'idea_speaker'} %>
         <% end %>
       </div>
     </form>

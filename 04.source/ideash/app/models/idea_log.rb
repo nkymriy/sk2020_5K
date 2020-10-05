@@ -117,9 +117,13 @@ class IdeaLog < ApplicationRecord
               type: 'object',
               additionalProperties: false,
               required: [
+                  'user_name',
                   'content'
               ],
               properties: {
+                  user_name: {
+                      type: 'string'
+                  },
                   content: {
                       type: 'string'
                   },
