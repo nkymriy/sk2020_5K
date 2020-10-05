@@ -13,14 +13,22 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <%= f.email_field :email, autoforcus: true, autocomplite: "email", placeholder: "E-mail address" %>
+            <% if Rails.env.test? %>
+              <%= f.email_field :email, autoforcus: true, autocomplite: "email", placeholder: "E-mail address", id: "feature-test-email" %>
+            <% else %>
+              <%= f.email_field :email, autoforcus: true, autocomplite: "email", placeholder: "E-mail address" %>
+            <% end %>
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <%= f.password_field :password, autoforcus: true, placeholder: "Password" %>
-          </div>
+            <% if Rails.env.test? %>
+              <%= f.password_field :password, autoforcus: true, placeholder: "Password", id: "feature-test-password" %>
+            <% else %>
+              <%= f.password_field :password, autoforcus: true, placeholder: "Password" %>
+            <% end %>
+              </div>
         </div>
         <%= f.submit "Sign In", class: 'ui fluid large teal submit button' %>
       </div>
