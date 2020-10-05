@@ -1,26 +1,103 @@
-<%# マンダラート　手順１　アイデア出し %>
-<div class="home_body wide_margin" id="edit_body">
-  <h3 class="theme">テーマ: <%= idea.idea_name %></h3>
-  <div class="post_idea">
-    <form name="brainstorming_process1_form" onsubmit="return false;">
-      <div class="ui input">
-        <%= text_field_tag 'idea_text', '', class: '', placeholder: "思いついたことを書いていきましょう", data: {behavior: 'idea_speaker', id: 'idea_text'} %>
-      </div>
-    </form>
-  </div>
-  <div class="ui four cards process1_ideas" id="ideas">
-    <%#= idea_logs.inspect %>
-    <% for content in idea_logs.reverse do %>
-      <div class="teal card idea" id="">
-        <div class="content">
-          <%= content.query["add"]["content"] %>
-        </div>
-      </div>
-    <% end %>
+<%# マンダラート　全体表示画面 %>
+<div class="edit_body" id="edit_body">
+  <div class="mandarat-overview">
+    <table>
+      <tr>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-1">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-2">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-3">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-4">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-5">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-6">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-7">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-8">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-9">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>
-
-<script>
-    localStorage.setItem('card_id', 0);
-</script>
-

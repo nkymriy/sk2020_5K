@@ -106,3 +106,26 @@
   background-color: white;
 }
 
+/*main2*/
+.mandarat-overview{
+  border: solid 1px black;
+  width: fit-content;
+  margin: auto;
+}
+.mandarat-overview table{
+  border-collapse: collapse;
+}
+
+.main-theme-block{
+  width: 30vh;
+  height: 30vh;
+  background-color: white;
+  padding: 0 !important;
+}
+
+.sub-theme-block td{
+  width: 10vh;
+  height: 10vh;
+  border: solid 1px #666666;
+  background-color: white;
+}
