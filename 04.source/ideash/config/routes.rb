@@ -11,11 +11,12 @@
 #                  account_profile_edit GET    /account/profile_edit(.:format)                                                          account#profile_edit
 #                     user_confirmation GET    /user/confirmation(.:format)                                                             users/confirmations#show
 #                                       POST   /user/confirmation(.:format)                                                             users/confirmations#create
+#                          profile_edit GET    /account/edit(.:format)                                                                  users/registrations#profile_edit
+#                        profile_update PATCH  /profile_update(.:format)                                                                users/registrations#profile_update
 #                                  idea GET    /idea(.:format)                                                                          ideas#home
 #                             idea_home GET    /idea/home(.:format)                                                                     ideas#home
 #                          idea_history GET    /idea/history(.:format)                                                                  ideas#history
 #                         idea_category GET    /idea/category(.:format)                                                                 ideas#category
-#                          idea_account GET    /idea/account(.:format)                                                                  ideas#account
 #                         idea_memo_new GET    /idea/memo/new(.:format)                                                                 memo#new
 #                                       POST   /idea/memo/new(.:format)                                                                 memo#new
 #                             idea_memo POST   /idea/memo(.:format)                                                                     memo#create
@@ -57,6 +58,7 @@ Rails.application.routes.draw do
 
   # INFO: devise(ユーザ認証関連)
   devise_for :users, skip: :all
+  # devise_for :users
   devise_scope :user do
     get 'account/signin' => 'users/sessions#new'
     post 'account/signin' => 'users/sessions#create'
@@ -67,6 +69,10 @@ Rails.application.routes.draw do
     # get 'user/confirmation/new' => 'users/confirmations#new'
     get 'user/confirmation' => 'users/confirmations#show'
     post 'user/confirmation' => 'users/confirmations#create'
+    # INFO: アカウント設定
+    # get 'account/edit' => 'users/registrations#edit'
+    get 'account/edit', to: 'users/registrations#profile_edit', as: 'profile_edit'
+    patch 'profile_update', to: 'users/registrations#profile_update', as: 'profile_update'
   end
 
   # INFO: ユーザのホーム画面
@@ -74,7 +80,7 @@ Rails.application.routes.draw do
   get 'idea/home' => 'ideas#home'
   get 'idea/history' => 'ideas#history'
   get 'idea/category' => 'ideas#category'
-  get 'idea/account' => 'ideas#account'
+  # get 'idea/account' => 'ideas#account'
 
   # INFO: メモ
   get 'idea/memo/new' => 'memo#new'

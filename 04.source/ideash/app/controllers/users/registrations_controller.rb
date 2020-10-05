@@ -67,4 +67,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_sign_in_path_for(resource)
     idea_home_path
   end
+
+  def profile_edit
+    render('ideas/account')
+  end
+
+  def profile_update
+    current_user.assign_attributes(account_update_params)
+    if current_user.save
+      redirect_to profile_edit_path
+    else
+      render "ideas/account"
+    end
+  end
+
+  protected
+
+  before_action :configure_account_update_params
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:user_name])
+  end
 end
