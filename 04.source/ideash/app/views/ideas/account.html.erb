@@ -1,40 +1,27 @@
 <%= render :partial => 'shared/header' %>
-
-<div class="home_body" id="home_body">
-  <div class="account_segment">
-    <div class="account_name">username</div>
-    <div class="account_setting">
-      <table class="ui very basic table">
-        <tbody>
-        <tr>
-          <td>Name</td>
-          <td>
-            <div class="ui input">
-              <input type="text">
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>E-mail address</td>
-          <td>
-            <div class="ui input">
-              <input type="text">
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Pass word</td>
-          <td>
-            <div class="ui input">
-              <input type="password">
-            </div>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+<%= form_for current_user, url: {action: 'profile_update'} do |f| %>
+  <div class="home_body" id="home_body">
+    <div class="account_segment">
+      <div class="account_name">アカウント設定</div>
+      <div class="account_setting">
+        <table class="ui very basic table">
+          <tbody>
+          <tr>
+            <td><%= f.label :user_name %></td>
+            <td>
+              <div class="ui input">
+                <%= f.text_field :user_name %>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="actions">
+          <%= f.submit "Update", class: "ui primary button" %>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
+<% end %>
 <%# JSが書かれているため最後に書くこと %>
 <%= render :partial => 'shared/homemenu' %>

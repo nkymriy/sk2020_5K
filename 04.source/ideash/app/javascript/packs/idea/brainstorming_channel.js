@@ -25,9 +25,7 @@ $(document).on("turbolinks:load", function () {
                     }
                 } else if (query['mode'] == 'add') {
                     let add = query["add"]
-                    var escapeHTML = function (val) {
-                        return $('<div />').text(val).html();
-                    };
+
                     const idea_text = escapeHTML(add["content"]);
 
                     if (idea_text == null || idea_text == "") {
@@ -47,22 +45,22 @@ $(document).on("turbolinks:load", function () {
                     localStorage.setItem('card_id', id);
                 } else if (query['mode'] == 'chat') {
                     var user_id = 'chatuser_' + query['user_id']
-                    var chat_text
-
+                    var user_name = escapeHTML(query['chat']['user_name'])
+                    var chat_text = escapeHTML(query['chat']['content']);
+                    var chat_div;
                     if ($('#user_id').val() == query['user_id']) {
-                        chat_text = `<div class="ui right pointing label chat-message">${query['chat']['content']}</div>`
+                        chat_div = `<div class="ui right pointing label chat_message">${chat_text}</div>`
                     } else {
-                        chat_text = `<div class="ui left pointing label chat_message">${query['chat']['content']}</div>`
+                        chat_div = `<div class="ui left pointing label chat_message">${chat_text}</div>`
                     }
-
                     if (user_id != $('.chat_content').first().attr('name')) {
                         $('.chat_contents').first().prepend(`
                         <div class="chat_content" name="chatuser_${query['user_id']}">
-                            <h6 class="chat_username">${query['chat']['user_name']}</h6>
+                            <h6 class="chat_username">${user_name}</h6>
                         </div>
                     `)
                     }
-                    $('.chat_username').first().append(chat_text)
+                    $('.chat_username').first().after(chat_div)
 
                 }
             },
@@ -77,11 +75,9 @@ $(document).on("turbolinks:load", function () {
                 );
             }
         });
-
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
             if (event.keyCode === 13) {
                 if (event.target.value === "") return false
-                console.log(event.target.id)
                 let content = {
                     content: event.target.value
                 };
@@ -100,3 +96,8 @@ $(document).on("turbolinks:load", function () {
         }
     }
 });
+
+// NOTE: エスケープ処理
+const escapeHTML = function (val) {
+    return $('<div />').text(val).html();
+};
