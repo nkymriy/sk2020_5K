@@ -35,7 +35,35 @@ class IdeaChannel < ApplicationCable::Channel
     end
   end
 
-  def set_timer()
-    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'sample_operation', 'option': 'sample_option'}}
+  #TODO: 現在の内容は一時的なものなので機能しない
+  def pause()
+    p Time.now
+    res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system'")
+    p "-------------------#{res}---------------------"
+    p "-------------------#{res[0]}---------------------"
+    p "-------------------#{JSON.parse(res[0]['query'])['system']}---------------------"
+    p "-------------------#{JSON.parse(res[0]['query'])['system']['operation']}---------------------"
+    p "-------------------#{JSON.parse(res[0]['query'])['system']['option']}---------------------"
+    timer(20) do
+    # timer(10 * 60) do
+      ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'stop', 'option': 'sample_option'}}
+    end
   end
+
+  def timer(arg, &proc)
+    x = case arg
+        when Numeric then
+          arg
+        when Time then
+          arg - Time.now
+        when String then
+          Time.parse(arg) - Time.now
+        else
+          raise
+        end
+
+    sleep x if block_given?
+    yield
+  end
+
 end

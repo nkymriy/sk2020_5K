@@ -8,7 +8,8 @@ $(document).on("turbolinks:load", function () {
         }, {
             connected() {
                 // Called when the subscription is ready for use on the server
-                return this.perform('join_user');
+                this.perform('join_user');
+                return this.perform('pause');
             },
 
             disconnected() {
@@ -16,7 +17,10 @@ $(document).on("turbolinks:load", function () {
             },
 
             received(json_idea_log) {
+                console.log(json_idea_log)
                 let query = json_idea_log['idea_logs']
+                console.log(query)
+                console.log(query['mode'])
                 if (query['mode'] == 'join') {
                     var user_id = 'participant_' + query['user_id']
                     if ($('#' + user_id).length === 0) {
@@ -61,6 +65,9 @@ $(document).on("turbolinks:load", function () {
                     }
                     $('.chat_username').first().after(chat_div)
 
+                } else if (query['mode'] == 'system'){
+                    $('#process_1')[0].style.display = "none";
+                    $('#process_2')[0].style.display = "block";
                 }
             },
             add: function (json_idea_log) {
