@@ -7,14 +7,14 @@
 <input type="button" value="ボタン1" onclick="clickBtn1()" />
 <input type="button" value="ボタン2" onclick="clickBtn2()" />
 <input type="button" value="ボタン3" onclick="clickBtn3()" />
-<div>
-<div id="process_1"><%= render :partial => 'brainstorming/process_1', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
-<div id="process_2"><%= render :partial => 'brainstorming/process_2', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
-<div id="process_3"><%= render :partial => 'brainstorming/process_3', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
+<div id="edit_body">
+  <div id="process_1"><%= render :partial => 'brainstorming/process_1', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
+  <div id="process_2"><%= render :partial => 'brainstorming/process_2', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
+  <div id="process_3"><%= render :partial => 'brainstorming/process_3', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
 </div>
 <script>
     //初期表示は非表示
-    document.getElementById("process_1").style.display = "none";
+    // document.getElementById("process_1").style.display = "none";
     document.getElementById("process_2").style.display = "none";
     document.getElementById("process_3").style.display = "none";
 
