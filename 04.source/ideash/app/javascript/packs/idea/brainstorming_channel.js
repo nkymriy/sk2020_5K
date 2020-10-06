@@ -68,9 +68,9 @@ $(document).on("turbolinks:load", function () {
                     json_idea_log
                 );
             },
-            chat: function (idea_log) {
+            chat: function (json_idea_log) {
                 return this.perform('chat_send',
-                    idea_log
+                    json_idea_log
                 );
             }
         });
