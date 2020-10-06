@@ -1,50 +1,103 @@
-<%# マンダラート　手順１　アイデア出し %>
-<div class="home_body wide_margin" id="edit_body">
-  <h3 class="theme">テーマ: <%= idea.idea_name %></h3>
-  <div class="post_idea">
-    <form name="brainstorming_process1_form" onsubmit="return false;">
-      <div class="ui input">
-        <%= text_field_tag 'idea_text', '', class: '', placeholder: "思いついたことを書いていきましょう",
-                           data: {behavior: 'idea_speaker', id: 'idea_text'
-        } %>
-      </div>
-    </form>
+<%# マンダラート　全体表示画面 %>
+<div class="edit_body" id="edit_body">
+  <div class="mandarat-overview">
+    <table>
+      <tr>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-1">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-2">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-3">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-4">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-5">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-6">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-7">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-8">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+        <td class="main-theme-block">
+          <div class="sub-theme-block" id="sub-theme-block-9">
+            <table border="1">
+              <!--あとで書き換える-->
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
-
-  <table>
-    <tr>
-<!--      <td><%#= text_field_tag 'idea_text1', '', class: '', data: {behavior: 'idea_speaker', id: 'idea_text'} %></td>-->
-<!--      <td><%#= text_field_tag 'idea_text2', '', class: '', data: {behavior: 'idea_speaker', id: 'idea_text'} %></td>-->
-<!--      <td><%#= text_field_tag 'idea_text3', '', class: '', data: {behavior: 'idea_speaker', id: 'idea_text'} %></td>-->
-      <td><div><input type="text" id="zoom_1" class="t1"></div></td>
-      <td><div><input type="text" id="zoom_2" class="t2"></div></td>
-      <td><div><input type="text" id="zoom_3" class="t3"></div></td>
-    </tr>
-    <tr>
-      <td><div><input type="text" id="zoom_4" class="t4"></div></td>
-      <td><div><input type="text" id="zoom_5" class="t5"></div></td>
-      <td><div><input type="text" id="zoom_6" class="t6"></div></td>
-    </tr>
-    <tr>
-      <td><div><input type="text" id="zoom_7" class="t7"></div></td>
-      <td><div><input type="text" id="zoom_8" class="t8"></div></td>
-      <td><div><input type="text" id="zoom_9" class="t9"></div></td>
-    </tr>
-  </table>
-</body>
-<!--  <div class="ui four cards process1_ideas" id="ideas">-->
-    <%#= idea_logs.inspect %>
-    <%# for content in idea_logs.reverse do %>
-<!--      <div class="teal card idea" id="">-->
-<!--        <div class="content">-->
-          <%#= content.query["add"]["content"] %>
-<!--        </div>-->
-<!--      </div>-->
-    <%# end %>
-<!--  </div>-->
 </div>
-
-<script>
-    localStorage.setItem('card_id', 0);
-</script>
-
