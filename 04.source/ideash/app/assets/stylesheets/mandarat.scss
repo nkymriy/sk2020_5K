@@ -101,9 +101,14 @@
 
 .mandarat-blocks td{
   width: 20vw;
-  height: 23vh;
+  height: 23vh !important;
   border: solid 1px black;
   background-color: white;
+  padding: 3%;
+}
+
+.mandarat-blocks .off{
+  background-color: #DADADA;
 }
 
 /*main2*/
