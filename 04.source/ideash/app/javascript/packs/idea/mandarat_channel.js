@@ -20,19 +20,19 @@ $(document).on("turbolinks:load", function () {
 
                 let query = idea_log['idea_logs']
                 if (query['mode'] == 'join') {
-                    var user_id = 'participant_' + query['user_id']
+                    let user_id = 'participant_' + query['user_id']
                     if ($('#' + user_id).length === 0) {
                         $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
                     }
                 } else if (query['mode'] == 'add') {
                     // let query = idea_log['idea_logs']
                     let add = query["add"]
-                    var escapeHTML = function (val) {
+                    let escapeHTML = function (val) {
                         return $('<div />').text(val).html();
                     };
                     const idea_text = escapeHTML(add["content"]);
 
-                    if (idea_text == null || idea_text == "") {
+                    if (idea_text == null || idea_text === "") {
                         return false;
                     }
 
@@ -47,6 +47,15 @@ $(document).on("turbolinks:load", function () {
                     $("#ideas").prepend(div);
                     $('#' + id).show('slide', '', 500);
                     localStorage.setItem('card_id', id);
+
+                } else if (query['mode'] === 'editing') {
+                    //IdeaLog.where(is_editing: '1')
+                    $('.t1').css('background-color', '#C0C0C0');
+                    console.log("focusin");
+                } else if (query['mode'] === 'edit') {
+                    console.log("focusout");
+                    $('.t1').css('background-color', '#FFFFFF');
+                    document.getElementById( "zoom_1" ).value = query["edit"]["content"] ;
                 }
 
                 // let query = idea_log['idea_logs']
@@ -80,50 +89,60 @@ $(document).on("turbolinks:load", function () {
                     idea_log
                 );
             },
-            editing: function (idea_log) {
+            editing: function (object_id) {
                 return this.perform('editing',
-                    idea_log);
+                    object_id);
+            },
+            edit: function (object_id) {
+                return this.perform('edit',
+                    object_id);
             }
         });
 
-        // $(document).on('keyup','[data-behavior~=idea_speaker]', function (event) {
-        //     var timer = false;
-        //     var form = document.getElementById('idea_text');
-        //         if (timer != false)  clearTimeout(timer);
-        //         timer = setTimeout(function() {
-        //
-        //             if (event.target.value === "") return false
-        //             let add = {
-        //                 content: event.target.value
-        //             };
-        //             consumer.task.add(add);
-        //             event.target.value = '';
-        //             return event.preventDefault();
-        //
-        //             form.value = '';
-        //             timer = false;
-        //         }, 2000);
-        //
+        $(function() {
+            for(let i=0; i<=80; i++) {
+                $('#zoom_'+i)
+                    //テキストボックスにフォーカス時
+                    .focusin(function(e) {
+                        //console.log("text"+i)
+                        consumer.task.editing();
+                    })
+                    //テキストボックスからフォーカス外したとき
+                    .focusout(function(e) {
+                        let content = { content: event.target.value };
+                        consumer.task.edit(content);
+                    });
+            }
+
+        });
+        // $('#text1').on('focus', '[data-behavior~=idea_speaker]', function (event) {
+        //     //console.log($(this).css("background-color"));
+        //     //document.getElementById("text1").focus();
+        //     console.log("----------")
+        // });
+        // $(document).on('focus', '[data-behavior~=idea_speaker]', function (event) {
+        //     console.log($(this).css("background-color"));
+        //     let content = {
+        //         content: event.target.value
+        //     };
+        //     consumer.task.editing(content);
         // });
 
+
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
-            // if (document.getElementById('textbox').style.backgroundColor == '#C0C0C0') {
-            //     //特定の背景色の時サーバーに飛ばす
 
-
-            //console.log("-------------------");
-            //document.getElementById('idea_text').style.backgroundColor = '#ff0000';
-            //console.log("-------------------");
-
-            // }
             if (event.keyCode === 13) {
+
+                // console.log("--------------------")
+                // console.log($(this).css("background-color"));
+
                 if (event.target.value === "") return false
-                let add = {
+                let content = {
                     content: event.target.value
                 };
                 //consumer.task.add(add);
                 event.target.value = '';
-                consumer.task.editing(add);
+                consumer.task.editing(content);
                 return event.preventDefault();
             }
         });
