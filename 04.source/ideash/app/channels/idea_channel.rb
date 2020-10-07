@@ -35,18 +35,45 @@ class IdeaChannel < ApplicationCable::Channel
     end
   end
 
-  #TODO: 現在の内容は一時的なものなので機能しない
   def pause()
     p Time.now
-    res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system'")
+    res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 4")
     p "-------------------#{res}---------------------"
     p "-------------------#{res[0]}---------------------"
+    p "-------------------#{res[1]}---------------------"
+    p "-------------------#{res[2]}---------------------"
     p "-------------------#{JSON.parse(res[0]['query'])['system']}---------------------"
     p "-------------------#{JSON.parse(res[0]['query'])['system']['operation']}---------------------"
     p "-------------------#{JSON.parse(res[0]['query'])['system']['option']}---------------------"
-    timer(20) do
-    # timer(10 * 60) do
-      ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'stop', 'option': 'sample_option'}}
+    p "-------------------#{res[3].class}---------------------"
+
+    # TODO: ループを利用したコードへの短縮が可能に見えるので、余裕ができたら短縮を試みる
+    if (res[3].nil?)
+      IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'start', 'option': 'sample_option'}}
+      # NOTE: プロセス1,2,3における時間を設定する
+      process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
+      process2 = {'id' => res[1]['id'], 'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
+      process3 = {'id' => res[2]['id'], 'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
+
+      # プロセス1の処理
+      timer(process1['time']) do
+        idea_log = IdeaLog.find_by(id: process1['id'])
+        idea_log.update(is_active: 1)
+        ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'stop', 'option': 'process1'}}
+      end
+      # プロセス2の処理
+      timer(process2['time']) do
+        idea_log = IdeaLog.find_by(id: process2['id'])
+        idea_log.update(is_active: 1)
+        ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'stop', 'option': 'process2'}}
+      end
+      # プロセス3の処理
+      timer(process3['time']) do
+        idea_log = IdeaLog.find_by(id: process3['id'])
+        idea_log.update(is_active: 1)
+        ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'stop', 'option': 'process3'}}
+      end
+
     end
   end
 

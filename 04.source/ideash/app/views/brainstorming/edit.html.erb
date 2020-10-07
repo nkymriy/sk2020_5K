@@ -1,53 +1,67 @@
 <%= render :partial => 'shared/header' %>
 <%= render :partial => 'shared/editmenu', locals: {users: @idea_users} %>
 <span class="websocket" id="idea_logs" data-idea_id="<%= @idea.id %>"></span>
-<input type="button" value="ボタン1" onclick="clickBtn11()" />
-<input type="button" value="ボタン2" onclick="clickBtn22()" />
-<input type="button" value="ボタン3" onclick="clickBtn33()" />
-<input type="button" value="ボタン1" onclick="clickBtn1()" />
-<input type="button" value="ボタン2" onclick="clickBtn2()" />
-<input type="button" value="ボタン3" onclick="clickBtn3()" />
 <div id="edit_body">
+  <input type="button" value="ボタン1" onclick="clickBtn1()"/>
+  <input type="button" value="ボタン2" onclick="clickBtn2()"/>
+  <input type="button" value="ボタン3" onclick="clickBtn3()"/>
   <div id="process_1"><%= render :partial => 'brainstorming/process_1', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
   <div id="process_2"><%= render :partial => 'brainstorming/process_2', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
   <div id="process_3"><%= render :partial => 'brainstorming/process_3', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
 </div>
 <script>
-    document.getElementById("process_1").style.display = "block";
-    document.getElementById("process_2").style.display = "none";
-    document.getElementById("process_3").style.display = "none";
+    <% res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{@idea.id}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 3")%>
+    var is_process1 = <%= res[0]['is_active'] %>
+    var is_process2 = <%= res[1]['is_active'] %>
+    var is_process3 = <%= res[2]['is_active'] %>
+    console.log(is_process1)
+    if(!is_process1){
+        document.getElementById("process_1").style.display = "block";
+        document.getElementById("process_2").style.display = "none";
+        document.getElementById("process_3").style.display = "none";
+    }else if(!is_process2){
+        document.getElementById("process_1").style.display = "none";
+        document.getElementById("process_2").style.display = "block";
+        document.getElementById("process_3").style.display = "none";
+    }else{
+        document.getElementById("process_1").style.display = "none";
+        document.getElementById("process_2").style.display = "none";
+        document.getElementById("process_3").style.display = "block";
+    }
 
-    function clickBtn1(){
+    function clickBtn1() {
         const p1 = document.getElementById("process_1");
 
-        if(p1.style.display=="block"){
+        if (p1.style.display === "block") {
             // noneで非表示
-            p1.style.display ="none";
-        }else{
+            p1.style.display = "none";
+        } else {
             // blockで表示
-            p1.style.display ="block";
+            p1.style.display = "block";
         }
     }
-    function clickBtn2(){
+
+    function clickBtn2() {
         const p2 = document.getElementById("process_2");
 
-        if(p2.style.display=="block"){
+        if (p2.style.display === "block") {
             // noneで非表示
-            p2.style.display ="none";
-        }else{
+            p2.style.display = "none";
+        } else {
             // blockで表示
-            p2.style.display ="block";
+            p2.style.display = "block";
         }
     }
-    function clickBtn3(){
+
+    function clickBtn3() {
         const p3 = document.getElementById("process_3");
 
-        if(p3.style.display=="block"){
+        if (p3.style.display === "block") {
             // noneで非表示
-            p3.style.display ="none";
-        }else{
+            p3.style.display = "none";
+        } else {
             // blockで表示
-            p3.style.display ="block";
+            p3.style.display = "block";
         }
     }
 </script>

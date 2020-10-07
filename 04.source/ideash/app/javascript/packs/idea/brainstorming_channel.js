@@ -66,8 +66,22 @@ $(document).on("turbolinks:load", function () {
                     $('.chat_username').first().after(chat_div)
 
                 } else if (query['mode'] == 'system'){
-                    $('#process_1')[0].style.display = "none";
-                    $('#process_2')[0].style.display = "block";
+                    console.log(query['mode'])
+                    if(query['system']['operation'] == 'stop'){
+                        console.log(query['system']['operation'])
+                        if(query['system']['option'] == 'process1') {
+                            console.log(query['system']['option'])
+                            alert('プロセス2に移行します!!')
+                            $('#process_1')[0].style.display = "none";
+                            $('#process_2')[0].style.display = "block";
+                        }else if(query['system']['option'] == 'process2'){
+                            alert('プロセス3に移行します!!')
+                            $('#process_2')[0].style.display = "none";
+                            $('#process_3')[0].style.display = "block";
+                        }else if(query['system']['option'] == 'process3'){
+                            alert('終了!!お疲れさまでした!!')
+                        }
+                    }
                 }
             },
             add: function (json_idea_log) {
