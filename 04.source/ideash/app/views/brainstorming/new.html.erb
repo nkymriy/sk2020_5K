@@ -35,7 +35,7 @@
           </h4>
           <div class="participant">
             <ul>
-              <li><i class="user circle icon"></i><%= current_user.user_name == "" ? "Anonymous" :user.user_name %>(自分)</li>
+              <li><i class="user circle icon"></i><%= current_user.user_name.blank? ? "Anonymous" : current_user.user_name %>(自分)</li>
               <%#
               <li><i class="user circle icon"></i>member_name_1</li>
               <li><i class="user circle teal icon"></i>member_name_2</li>

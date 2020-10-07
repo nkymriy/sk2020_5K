@@ -62,7 +62,7 @@
     <div class="member">
       <ul class="users">
         <% for user in users %>
-          <li id="participant_<%= user.id %>"><i class="user circle icon"><%= user.user_name.empty? ? "Anonymous" :user.user_name %></i></li>
+          <li id="participant_<%= user.id %>"><i class="user circle icon"></i><%= user.user_name.blank? ? "Anonymous" : user.user_name.to_s %></li>
         <% end %>
       </ul>
     </div>
