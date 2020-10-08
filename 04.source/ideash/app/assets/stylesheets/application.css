@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import "~fomantic-ui-css";
 
 body {
     font-family: 'Roboto', sans-serif;
