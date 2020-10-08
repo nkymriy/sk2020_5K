@@ -32,9 +32,9 @@ class IdeaChannel < ApplicationCable::Channel
   def edit(data)
     p "-------------"
     p data["object_id"]
-    p data["object_id"]
+    p data["content"]
     p "-------------"
-    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'edit', 'edit': {'object_id': data["object_id"], 'content': ""}, 'time': DateTime.now}
+    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'edit', 'edit': {'object_id': data["object_id"], 'content': data["content"]}, 'time': DateTime.now}
     # is_editingを0にする
 
   end
