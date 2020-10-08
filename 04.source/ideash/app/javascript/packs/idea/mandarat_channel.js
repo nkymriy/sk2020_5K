@@ -50,12 +50,20 @@ $(document).on("turbolinks:load", function () {
 
                 } else if (query['mode'] === 'editing') {
                     //IdeaLog.where(is_editing: '1')
-                    $('.t1').css('background-color', '#C0C0C0');
+                    let first = '.t'; let sel_num = query["editing"]["object_id"];
+                    let sel_class = first + sel_num;
+                    //console.log (sel_class);
+                    $(sel_class).css('background-color', '#C0C0C0');
                     console.log("focusin");
                 } else if (query['mode'] === 'edit') {
+                    let first1 = '.t'; let first2 = 'zoom_'; let sel_num = query["edit"]["object_id"];
+                    let sel_class = first1 + sel_num;
+                    let sel_id = first2 + sel_num;
+                    $(sel_class).css('background-color', '#FFFFFF');
+                    //console.log(sel_class);
+                    document.getElementById(sel_id).value = query["edit"]["content"];
+                    //console.log(sel_id);
                     console.log("focusout");
-                    $('.t1').css('background-color', '#FFFFFF');
-                    document.getElementById( "zoom_1" ).value = query["edit"]["content"] ;
                 }
 
                 // let query = idea_log['idea_logs']
@@ -89,13 +97,13 @@ $(document).on("turbolinks:load", function () {
                     idea_log
                 );
             },
-            editing: function (object_id) {
+            editing: function (content) {
                 return this.perform('editing',
-                    object_id);
+                    content);
             },
-            edit: function (object_id) {
+            edit: function (content) {
                 return this.perform('edit',
-                    object_id);
+                    content);
             }
         });
 
@@ -103,49 +111,21 @@ $(document).on("turbolinks:load", function () {
             for(let i=0; i<=80; i++) {
                 $('#zoom_'+i)
                     //テキストボックスにフォーカス時
-                    .focusin(function(e) {
-                        //console.log("text"+i)
-                        consumer.task.editing();
+                    .focusin(function(event) {
+                        let content = { object_id: i };
+                        //console.log(content)
+                        consumer.task.editing(content);
                     })
                     //テキストボックスからフォーカス外したとき
-                    .focusout(function(e) {
-                        let content = { content: event.target.value };
+                    .focusout(function(event) {
+                        let content = { object_id: i, content: event.target.text };
+                        //console.log(content);
                         consumer.task.edit(content);
                     });
             }
 
         });
-        // $('#text1').on('focus', '[data-behavior~=idea_speaker]', function (event) {
-        //     //console.log($(this).css("background-color"));
-        //     //document.getElementById("text1").focus();
-        //     console.log("----------")
-        // });
-        // $(document).on('focus', '[data-behavior~=idea_speaker]', function (event) {
-        //     console.log($(this).css("background-color"));
-        //     let content = {
-        //         content: event.target.value
-        //     };
-        //     consumer.task.editing(content);
-        // });
 
-
-        $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
-
-            if (event.keyCode === 13) {
-
-                // console.log("--------------------")
-                // console.log($(this).css("background-color"));
-
-                if (event.target.value === "") return false
-                let content = {
-                    content: event.target.value
-                };
-                //consumer.task.add(add);
-                event.target.value = '';
-                consumer.task.editing(content);
-                return event.preventDefault();
-            }
-        });
     } else {
         if (consumer.task) {
             consumer.task.unsubscribe()
