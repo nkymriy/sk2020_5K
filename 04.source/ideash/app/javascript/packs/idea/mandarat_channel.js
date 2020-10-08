@@ -35,9 +35,9 @@ $(document).on("turbolinks:load", function () {
                     let sel_class = first1 + sel_num;
                     let sel_id = first2 + sel_num;
                     $(sel_class).css('background-color', '#FFFFFF');
-                    console.log(sel_class);
+                    //console.log(sel_class);
                     document.getElementById(sel_id).value = query["edit"]["content"];
-                    console.log(sel_id);
+                    //console.log(sel_id);
                     console.log("focusout");
                 }
             },
