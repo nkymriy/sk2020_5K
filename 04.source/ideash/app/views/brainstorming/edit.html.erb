@@ -11,10 +11,8 @@
 </div>
 <script>
     <% res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{@idea.id}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 3")%>
-    var is_process1 =
-    <%= res[0]['is_active'] %>
-    var is_process2 =
-    <%= res[1]['is_active'] %>
+    var is_process1 = <%= res[0]['is_active'] %>
+    var is_process2 = <%= res[1]['is_active'] %>
     var is_process3 = <%= res[2]['is_active'] %>
 
     var p1 = document.getElementById("process_1")
