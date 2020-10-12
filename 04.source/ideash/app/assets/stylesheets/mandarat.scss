@@ -32,12 +32,29 @@
 }
 
 .current-location-area td{
-  padding: 18px;
+  //padding: 18px;
+  width: 35px;
+  height: 38px;
+  padding: 0;
   border: solid 1px black;
   background-color: white;
 }
 
-.current-location-area .on{
+.current-location-area .radiobutton {
+  display: none;
+  width: 35px;
+  height: 35px;
+}
+
+.current-location-area label {
+  background-color: white;
+  padding: 10px 18px 11px 18px;
+  width: 0px;
+  height: 0px;
+
+}
+
+.current-location-area .radiobutton:checked + label {
   background-color: #26AEAF;
 }
 
@@ -51,6 +68,7 @@
 .themes-area .active{
   margin-bottom: 4px;
 }
+
 
 /*main*/
 .mandarat-main{
