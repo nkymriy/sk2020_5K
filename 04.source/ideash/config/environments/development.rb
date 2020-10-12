@@ -23,7 +23,8 @@ Rails.application.configure do
         'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
-    config.action_controller.perform_caching = false
+    config.action_controller.perform_caching = true
+    config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :null_store
   end
@@ -49,7 +50,20 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  # config.assets.debug = true
+
+  #Assetsの事前コンパイル
+  # コンパイル済みアセットを圧縮するかどうかを指定。圧縮することで、データ容量を減らし、高速化をする
+  config.assets.compress = true
+
+  # JavaScriptの圧縮に使用するプログラムを定義。:uglifierが最も圧縮率が高い
+  config.assets.js_compressor = :uglifier
+
+  # CSSの圧縮に使用するプログラムを定義
+  config.assets.css_compressor = :scss
+
+  # 動的なSprocketsコンパイルをするかどうかを指定
+  config.assets.compile = false
+
   config.assets.debug = false
 
   # Suppress logger output for asset requests.
