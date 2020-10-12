@@ -2,11 +2,8 @@
 <%= render :partial => 'shared/editmenu', locals: {users: @idea_users} %>
 <span class="websocket" id="idea_logs" data-idea_id="<%= @idea.id %>"></span>
 <div id="edit_body">
-  <input type="button" value="アイデア出し" onclick="clickBtn1()"/>
-  <input type="button" value="意見だし" onclick="clickBtn2()"/>
-  <input type="button" value="グルーピング" onclick="clickBtn3()"/>
+  <input type="button" value="アイデア出し/グルーピング切り替え" onclick="changeBtn()"/>
   <div id="process_1"><%= render :partial => 'brainstorming/process_1', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
-  <div id="process_2"><%= render :partial => 'brainstorming/process_2', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
   <div id="process_3"><%= render :partial => 'brainstorming/process_3', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
 </div>
 <script>
@@ -15,39 +12,21 @@
     var is_process2 = <%= res[1]['is_active'] %>
     var is_process3 = <%= res[2]['is_active'] %>
 
-    var p1 = document.getElementById("process_1")
-    var p2 = document.getElementById("process_2")
-    var p3 = document.getElementById("process_3")
-
     if (!is_process1) {
-        p1.style.display = "block";
-        p2.style.display = "none";
-        p3.style.display = "none";
+        $('#process_3').hide()
     } else if (!is_process2) {
-        p1.style.display = "none";
-        p2.style.display = "block";
-        p3.style.display = "none";
+        $('#process_3').hide()
+        $('#idea_add').prop('disabled', true)
     } else {
-        p1.style.display = "none";
-        p2.style.display = "none";
-        p3.style.display = "block";
+        $('#process_1').hide()
+        $('#process_3').show()
     }
 
-    function clickBtn1() {
-        p1.style.display = "block";
-        p2.style.display = "none";
-        p3.style.display = "none";
+    function changeBtn() {
+        $('#process_1').toggle();
+        $('#process_3').toggle();
     }
-    function clickBtn2() {
-        p1.style.display = "none";
-        p2.style.display = "block";
-        p3.style.display = "none";
-    }
-    function clickBtn3() {
-        p1.style.display = "none";
-        p2.style.display = "none";
-        p3.style.display = "block";
-    }
+
 </script>
 <%# JSが書かれているため最後に書くこと %>
 <%= render :partial => 'shared/homemenu' %>

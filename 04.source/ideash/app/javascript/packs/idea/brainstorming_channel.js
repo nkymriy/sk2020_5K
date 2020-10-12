@@ -71,15 +71,18 @@ $(document).on("turbolinks:load", function () {
                         console.log(query['system']['operation'])
                         if(query['system']['option'] == 'process1') {
                             console.log(query['system']['option'])
-                            alert('プロセス2に移行します!!')
-                            $('#process_1')[0].style.display = "none";
-                            $('#process_2')[0].style.display = "block";
+                            alert('プロセス2に移行します!!\n' +
+                                'メンバー内でアイデアを共有し、\n' +
+                                '質問やアイデアの結合を行いましょう!!')
+                            $('#idea_add').prop('disabled', true)
                         }else if(query['system']['option'] == 'process2'){
                             alert('プロセス3に移行します!!')
-                            $('#process_2')[0].style.display = "none";
-                            $('#process_3')[0].style.display = "block";
+                            $('#process_1').hide()
+                            $('#process_3').show()
+                            $('#idea_add').prop('disabled', false)
                         }else if(query['system']['option'] == 'process3'){
-                            alert('終了!!お疲れさまでした!!')
+                            alert('終了!!\n' +
+                                'お疲れさまでした!!')
                         }
                     }
                 }
