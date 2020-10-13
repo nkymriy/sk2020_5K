@@ -1,4 +1,5 @@
 <% content_for(:html_title) { 'top | Ideash' } %>
+<%#= javascript_pack_tag 'top', 'data-turbolinks-track': 'reload' %>
 <!-- 背景緑部分 -->
 <div class="top" id="top_img">
   <div class="seg_1">
@@ -33,10 +34,6 @@
           </div>
         </div>
       </div>
-      <script>
-          <%# TODO: Ajaxで戻ってきた時にうまく作動しない？設置場所かもしれない %>
-          $('.ui.accordion').accordion('refresh')
-      </script>
     </div>
   </div>
   <div class="seg_2">
@@ -111,7 +108,3 @@
   </ul>
 </div>
 
-<%#= javascript_pack_tag 'releasenote_top', 'data-turbolinks-track': 'reload' %>
-<script>
-    $('.top').draggable();
-</script>
