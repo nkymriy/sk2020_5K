@@ -1,4 +1,3 @@
-<% cache do %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -17,6 +16,7 @@
     </script>
   <% end %>
 
+  <% cache do %>
   <title><%= content_for?(:html_title) ? yield(:html_title) : "Ideash" %></title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -31,6 +31,7 @@
 
   <%# フォントの読み込み %>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
+  <% end %>
 
 </head>
 <body class="<%= controller_name %> <%= action_name %>">
@@ -40,4 +41,3 @@
 <%= yield %>
 </body>
 </html>
-<% end %>
