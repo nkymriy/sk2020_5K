@@ -56,13 +56,13 @@ Rails.application.configure do
   config.assets.compress = true
 
   # JavaScriptの圧縮に使用するプログラムを定義。:uglifierが最も圧縮率が高い
-  config.assets.js_compressor = :uglifier
+  # config.assets.js_compressor = :uglifier
 
   # CSSの圧縮に使用するプログラムを定義
   config.assets.css_compressor = :scss
 
   # 動的なSprocketsコンパイルをするかどうかを指定
-  config.assets.compile = false
+  # config.assets.compile = false
 
   config.assets.debug = false
 
