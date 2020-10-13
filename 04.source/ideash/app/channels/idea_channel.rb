@@ -93,4 +93,22 @@ class IdeaChannel < ApplicationCable::Channel
     yield
   end
 
+  def group_add()
+    res = ActiveRecord::Base.connection.execute("select count(*) from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'group' ")
+    group_id = res[0]['count(*)'] + 1
+    group_name = 'グループ' + group_id.to_s
+    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': group_id, 'name': group_name}}
+  end
+
+  def group_rename(data)
+    res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'group'")
+    data = data['content']
+    group_id = data['group_id'].to_i
+    group_name = data['name']
+    res_id = group_id-1
+    if IdeaLog.find(res[res_id]['id']).update! query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': group_id, 'name': group_name}}
+      ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'group_rename', 'option': {'group_id': group_id, 'name': group_name}}}
+    end
+  end
+
 end

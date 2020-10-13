@@ -42,6 +42,9 @@ class BrainstormingController < ApplicationController
         IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process3', 'option': (params[:process3].to_i * 60).to_s}}
       end
 
+      IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': 1, 'name': 'グループ1'}}
+      IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': 2, 'name': 'グループ2'}}
+
       logger.debug "create new idea: #{new_idea.inspect}"
       redirect_to idea_brainstorming_edit_url(id: new_idea.id)
     else

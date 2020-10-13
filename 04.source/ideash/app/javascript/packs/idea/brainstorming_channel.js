@@ -17,21 +17,17 @@ $(document).on("turbolinks:load", function () {
             },
 
             received(json_idea_log) {
-                console.log(json_idea_log)
                 let query = json_idea_log['idea_logs']
-                console.log(query)
-                console.log(query['mode'])
-                if (query['mode'] == 'join') {
+                if (query['mode'] === 'join') {
                     var user_id = 'participant_' + query['user_id']
                     if ($('#' + user_id).length === 0) {
                         $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
                     }
-                } else if (query['mode'] == 'add') {
+                } else if (query['mode'] === 'add') {
                     let add = query["add"]
-
                     const idea_text = escapeHTML(add["content"]);
 
-                    if (idea_text == null || idea_text == "") {
+                    if (idea_text === null || idea_text === "") {
                         return false;
                     }
 
@@ -46,17 +42,27 @@ $(document).on("turbolinks:load", function () {
                     $("#ideas").prepend(div);
                     $('#' + id).show('slide', '', 500);
                     localStorage.setItem('card_id', id);
-                } else if (query['mode'] == 'chat') {
+
+                    var p3_div = $(
+                        '<div class="idea">\n' +
+                        '       <div class="ui teal large label">\n' +
+                        idea_text +
+                        '       </div>\n' +
+                        '</div>'
+                    );
+                    $("#p3_ideas").prepend(p3_div);
+
+                } else if (query['mode'] === 'chat') {
                     var user_id = 'chatuser_' + query['user_id']
                     var user_name = escapeHTML(query['chat']['user_name'])
                     var chat_text = escapeHTML(query['chat']['content']);
                     var chat_div;
-                    if ($('#user_id').val() == query['user_id']) {
+                    if ($('#user_id').val() === query['user_id']) {
                         chat_div = `<div class="ui right pointing label chat_message">${chat_text}</div>`
                     } else {
                         chat_div = `<div class="ui left pointing label chat_message">${chat_text}</div>`
                     }
-                    if (user_id != $('.chat_content').first().attr('name')) {
+                    if (user_id !== $('.chat_content').first().attr('name')) {
                         $('.chat_contents').first().prepend(`
                         <div class="chat_content" name="chatuser_${query['user_id']}">
                             <h6 class="chat_username">${user_name}</h6>
@@ -65,26 +71,37 @@ $(document).on("turbolinks:load", function () {
                     }
                     $('.chat_username').first().after(chat_div)
 
-                } else if (query['mode'] == 'system'){
-                    console.log(query['mode'])
-                    if(query['system']['operation'] == 'stop'){
-                        console.log(query['system']['operation'])
-                        if(query['system']['option'] == 'process1') {
-                            console.log(query['system']['option'])
+                } else if (query['mode'] === 'system') {
+                    if (query['system']['operation'] === 'stop') {
+                        if (query['system']['option'] === 'process1') {
                             alert('プロセス2に移行します!!\n' +
                                 'メンバー内でアイデアを共有し、\n' +
                                 '質問やアイデアの結合を行いましょう!!')
                             $('#idea_add').prop('disabled', true)
-                        }else if(query['system']['option'] == 'process2'){
+                        } else if (query['system']['option'] === 'process2') {
                             alert('プロセス3に移行します!!')
                             $('#process_1').hide()
                             $('#process_3').show()
                             $('#idea_add').prop('disabled', false)
-                        }else if(query['system']['option'] == 'process3'){
+                        } else if (query['system']['option'] === 'process3') {
                             alert('終了!!\n' +
                                 'お疲れさまでした!!')
                         }
+                    }else if(query['system']['operation'] === 'group_rename'){
+                        var id = "#brain_rename_" + query['system']['option']['group_id'].toString()
+                        var name = query['system']['option']['name']
+                        $(id).attr('placeholder', name)
                     }
+                } else if (query['mode'] === 'group') {
+                    var group_id = escapeHTML(query['group']['group_id'])
+                    var group_name = escapeHTML(query['group']['name'])
+                    $('.group-contents').append(`
+                        <div class="ui stacked segments group">
+                            <div class="ui huge transparent input">
+                                <input type="text" name="brain_rename_${group_id}" id="brain_rename_${group_id}" placeholder="${group_name}" data-behavior="idea_speaker"}>
+                            </div>
+                        </div>
+                    `)
                 }
             },
             add: function (json_idea_log) {
@@ -96,22 +113,43 @@ $(document).on("turbolinks:load", function () {
                 return this.perform('chat_send',
                     json_idea_log
                 );
-            }
+            },
+            group_add: function () {
+                return this.perform('group_add');
+            },
+            group_rename: function (json_idea_log) {
+                return this.perform('group_rename',
+                    json_idea_log
+                );
+            },
         });
+
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
             if (event.keyCode === 13) {
                 if (event.target.value === "") return false
-                let content = {
+                var content = {
                     content: event.target.value
                 };
-                if (event.target.id == 'idea_add') {
+                if (event.target.id === 'idea_add') {
                     consumer.task.add(content);
-                } else if (event.target.id == 'idea_chat') {
+                } else if (event.target.id === 'idea_chat') {
                     consumer.task.chat(content);
+                } else if (event.target.id.startsWith('brain_rename_')) {
+                    content = {
+                        content: {
+                            group_id: event.target.id.replace(/[^0-9]/g, ''),
+                            name: event.target.value
+                        }
+                    }
+                    consumer.task.group_rename(content);
                 }
                 event.target.value = '';
                 return event.preventDefault();
             }
+        });
+
+        $('#group_add').on('click', function () {
+            consumer.task.group_add();
         });
     } else {
         if (consumer.task) {
