@@ -93,6 +93,7 @@ Rails.application.routes.draw do
   get 'idea/mandarat/replay' => 'mandarat#replay'
   post 'idea/mandarat/create' => 'mandarat#create'
   get 'idea/mandarat/edit/:id' => 'mandarat#edit', as: :idea_mandarat_edit
+  get 'idea/mandarat/_process_1' => 'mandarat#_process_1'
 
   # NOTE: Action Cable の有効化
   mount ActionCable.server => '/cable'
