@@ -77,7 +77,7 @@ $(document).on("turbolinks:load", function () {
         });
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
             if (event.keyCode === 13) {
-                if (event.target.value === "") return false
+                if (!event.target.value.match(/\S/g)) return false
                 let content = {
                     content: event.target.value
                 };
