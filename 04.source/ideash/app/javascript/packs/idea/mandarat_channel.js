@@ -53,12 +53,14 @@ $(document).on("turbolinks:load", function () {
         });
 
         $(function() {
-            for(let i=0; i<=80; i++) {
+            for(let i=0; i<=8; i++) {
                 $('#zoom_'+i)
                     //テキストボックスにフォーカス時
                     .focusin(function(event) {
+                        var val = localStorage.getItem('radio_value');
+                        console.log(val);
                         let content = { object_id: i };
-                        console.log(content)
+                        console.log(content);
                         consumer.task.editing(content);
                     })
                     //テキストボックスからフォーカス外したとき
@@ -69,6 +71,24 @@ $(document).on("turbolinks:load", function () {
                     });
             }
         });
+
+        $('input:radio[name="hoge"]').change(function() {
+            const value = $('input:radio[name="hoge"]:checked').val();
+            console.log(value);
+            localStorage.setItem('radio_value', value);
+        });
+        $('input[value="40"]').prop('checked', true).change();
+
+        // let element = document.getElementById( "target" );
+        // console.log(element);
+        // let radioNodeList = element.hoge;
+        // console.log(radioNodeList);
+        // let radio_num = radioNodeList.value;
+        // if ( radio_num === "" ) {
+        //     // 未選択状態
+        // } else {
+        //     console.log( radio_num );
+        // }
 
     } else {
         if (consumer.task) {
