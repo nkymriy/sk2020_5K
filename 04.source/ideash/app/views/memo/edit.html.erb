@@ -23,8 +23,30 @@
           <%= f.text_area :idea_description, placeholder: "メモを書きましょう", :required => true, id: 'memo-contents'%>
         </div>
       </div>
-      <%= f.submit '更新', class: "ui black button" %>
+      <%= f.submit '更新', class: "ui black button", id: 'memo-submit'%>
     <% end %>
+
+    <script>
+
+        $("input[id='memo-title'],[id='memo-contents']").blur(function(){
+            if(!$(this).val().match(/\S/g)){
+                $(this).css("background-color", "#FEF4F8");
+                $('#memo-submit').prop('disabled', true);
+                $('body')
+                    .toast({
+                        title: 'CAUTION',
+                        message: 'スペース、空白のみでの入力はできません',
+                        showProgress: 'bottom',
+                        classProgress: 'red'
+                    });
+            }else{
+                $(this).css("background-color", "#FaFEFF");
+                $('#memo-submit').prop('disabled', false)
+            }
+        });
+
+    </script>
+
   </div>
 </div>
 
