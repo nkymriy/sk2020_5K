@@ -16,9 +16,16 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 require 'capybara/rspec'
+
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.include Capybara::DSL
+  # ドライバを設定(デフォルトは:rack_test)
+  Capybara.default_driver = :rack_test
+
+  # jsオプション有効時のドライバを設定(デフォルトは:selenium)
+  Capybara.javascript_driver = :selenium
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

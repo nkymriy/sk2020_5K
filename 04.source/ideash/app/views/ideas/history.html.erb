@@ -14,13 +14,17 @@
       </thead>
       <tbody>
       <% @user.idea.reverse.each do |idea| %>
+      <% if Rails.env.test? %>
+        <tr class="feature-test-history">
+      <% else %>
         <tr>
+      <% end %>
           <td class="collapsing">
             <i class="folder icon"></i>
-            <%= idea.idea_name.truncate(20, omission: '...') %>
+            <%= idea.idea_name.truncate(20, omission: '...')  %>
           </td>
           <td>
-            <%= link_to "#{@categories[idea.idea_category_id]["idea_category_name"]}", "#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}", local: true, data: {"turbolinks" => false} %>
+            <%= link_to "#{@categories[idea.idea_category_id]["idea_category_name"]}", "#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}" ,local: true, data: {"turbolinks" => false}%>
           </td>
         </tr>
       <% end %>

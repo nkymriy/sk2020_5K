@@ -7,20 +7,29 @@
       w /<br>
       Ideash<br>
     </div>
-    <%= image_tag 'index_thinkman.png', class: 'image_think_man no_select' %>
+    <%= image_tag 'thinkman.png', class: 'image_think_man no_select' %>
     <div class="btns_1">
       <div class="ui massive buttons btns_1_1">
         <%= link_to "Sign In", :account_signin, class: "ui inverted button" %>
         <div class="or"></div>
         <%= link_to "Sign Up", :account_signup, class: "ui black button" %>
       </div>
-      <div class="ui styled accordion release_note">
+      <div class="ui styled accordion release_note_accordion">
         <div class="title accordion">
           <i class="dropdown icon"></i>
           リリースノート
         </div>
         <div class="content">
-          <div class="ui list" id="output_csv_top">
+          <div class="ui list">
+            <% @release_note.each do |row| %>
+              <div class="item">
+                <i class="angle right icon"></i>
+                <div class="release_note_content">
+                  <%= link_to row['description'].split("//")[0], release_note_path, class: 'header' %>
+                  <div class="description"><%= row['date'] %></div>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -102,4 +111,4 @@
   </ul>
 </div>
 
-<%= javascript_pack_tag 'releasenote_top', 'data-turbolinks-track': 'reload' %>
+<%#= javascript_pack_tag 'releasenote_top', 'data-turbolinks-track': 'reload' %>

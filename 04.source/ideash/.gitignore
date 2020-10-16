@@ -22,6 +22,7 @@
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
+tmp/capybara/*
 
 # Ignore uploaded files in development.
 /storage/*

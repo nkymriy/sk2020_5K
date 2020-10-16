@@ -34,7 +34,7 @@ body {
 
 .image_think_man {
   position: absolute;
-  right: 0;
+  right: -20%;
   top: -15%;
   height: 100vw;
 }
@@ -78,13 +78,14 @@ body {
   width: fit-content;
 }
 
-.release_note {
+.release_note_accordion {
   margin-top: 10px;
   width: 300px !important;
 }
 
-.release_note .content {
+.release_note_content {
   text-align: left !important;
+  display: table-cell;
 }
 
 /*第2区分*/
@@ -244,11 +245,11 @@ ul.footer-menu li {
 /*リリースノート*/
 .release_note_segment {
   width: 80vw;
-  margin: auto;
+  margin: 0 10% 0 10%;
   padding-top: 5%;
 }
 
 .release_note_list {
   padding-top: 0.5em !important;
-  margin-left: 2em !important;
+  margin: 0 0 0 2em !important;
 }
