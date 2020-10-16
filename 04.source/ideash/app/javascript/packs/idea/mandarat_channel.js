@@ -10,6 +10,7 @@ $(document).on("turbolinks:load", function () {
             connected() {
                 // Called when the subscription is ready for use on the server
                 // console.log('test')
+                this.perform('join_user');
             },
 
             disconnected() {
@@ -17,6 +18,12 @@ $(document).on("turbolinks:load", function () {
             },
 
             received(idea_log) {
+                if (query['mode'] == 'join') {
+                    var user_id = 'participant_' + query['user_id']
+                    if ($('#' + user_id).length === 0) {
+                        $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
+                    }
+                }
 
                 let query = idea_log['idea_logs']
                 let val = parseInt(localStorage.getItem('radio_value'));
@@ -40,6 +47,7 @@ $(document).on("turbolinks:load", function () {
                     $(sel_class).css('background-color', '#FFFFFF');
                     //console.log(sel_class);
                     document.getElementById(sel_id).value = query["edit"]["content"];
+                    document.getElementById("1").value = query["edit"]["content"];
                     //console.log(sel_id);
                     console.log("focusout");
                 }
@@ -81,6 +89,8 @@ $(document).on("turbolinks:load", function () {
             localStorage.setItem('radio_value', value);
         });
         $('input[value="40"]').prop('checked', true).change();
+
+
 
         // let element = document.getElementById( "target" );
         // console.log(element);
