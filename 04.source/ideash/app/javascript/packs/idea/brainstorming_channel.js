@@ -1,4 +1,5 @@
 import consumer from "../../channels/consumer"
+require('jquery-ui-dist/jquery-ui')
 
 $(document).on("turbolinks:load", function () {
     if ($('.websocket').length > 0) {
@@ -44,7 +45,7 @@ $(document).on("turbolinks:load", function () {
                     localStorage.setItem('card_id', id);
 
                     var p3_div = $(
-                        '<div class="idea">\n' +
+                        '<div class="idea" draggable="true">\n' +
                         '       <div class="ui teal large label">\n' +
                         idea_text +
                         '       </div>\n' +
