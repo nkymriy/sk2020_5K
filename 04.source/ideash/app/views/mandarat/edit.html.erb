@@ -2,8 +2,20 @@
 <%= render :partial =>'shared/editmenu', locals: {users: @idea_users} %>
 <span class="websocket-mandarat" id="idea_logs" data-idea_id="<%= @idea.id %>"></span>
 
-<%= render :partial => 'mandarat/process_2', locals: {idea: @idea, idea_logs: @idea_logs} %>
+<div id="process_2"><%= render :partial => 'mandarat/process_2', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
+<div id="process_1"><%= render :partial => 'mandarat/process_1', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
 
+<script>
+    $('#process_1').hide()
+  function allview() {
+      $('#process_2').hide()
+      $('#process_1').show()
+  }
+  function zoomview() {
+      $('#process_1').hide()
+      $('#process_2').show()
+  }
+</script>
 <%# JSが書かれているため最後に書くこと %>
 <%= render :partial => 'shared/homemenu' %>
 <%= javascript_pack_tag "idea/mandarat_channel" %>
