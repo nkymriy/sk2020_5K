@@ -27,6 +27,25 @@
         $('#process_3').toggle();
     }
 
+
+    $('.idea').on('dragstart', onDragStart);
+    $('.group').on('dragover', onDragOver);
+    $('.group').on('drop', onDrop);
+
+    function onDragStart(e) {
+        e.originalEvent.dataTransfer.setData('text', this.id);
+    }
+
+    function onDragOver(e) {
+        e.preventDefault();
+        this.textContent = 'onDragOver';
+    }
+
+    function onDrop(e) {
+        e.preventDefault();
+        this.textContent = 'onDrop';
+    }
+
 </script>
 <%# JSが書かれているため最後に書くこと %>
 <%= render :partial => 'shared/homemenu' %>
