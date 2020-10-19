@@ -10,7 +10,6 @@
     "fomantic-ui-css": "^2.8.7",
     "jquery": "^3.5.1",
     "jquery-ui": "^1.12.1",
-    "jquery-ui-dist": "^1.12.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
