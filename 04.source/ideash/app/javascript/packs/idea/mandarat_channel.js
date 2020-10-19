@@ -43,7 +43,6 @@ $(document).on("turbolinks:load", function () {
                     let text = query["edit"]["content"];
                     let first1 = '.t'; let first2 = 'zoom_';
                     let bigid = query["edit"]["object_id"];
-
                     let minid = bigid - val;
                     let sel_class = first1 + minid;
                     let sel_id = first2 + minid;
@@ -52,19 +51,24 @@ $(document).on("turbolinks:load", function () {
                     document.getElementById(sel_id).value = text;
                     $('#'+bigid).text(text);
                     console.log(bigid);
+                    let left = String(bigid).slice(0,1);
                     let right = String(bigid).slice(-1);
-                    // parseInt(bigid);
-                    console.log(right);
                     //console.log(sel_id);
                     console.log("focusout");
 
-                    //for(let i=4; i<=84; i+=10){
-                        if(bigid == '44') {
-                            $('#main').text(text);
-                            //break;
-                        }
-
-                    //}
+                    //メインテーマ,サブテーマを表示させるとこ
+                    if(bigid == '44') {
+                        $('#main').text(text);
+                    }
+                    else if(bigid == '4') {
+                        $('#theme0').text(text);
+                    }
+                    else if (left ==  '4') {
+                        $('#theme'+right).text(text);
+                    }
+                    else if(bigid % 10 == 4){
+                        $('#theme'+left).text(text);
+                    }
                 }
             },
 
