@@ -1,5 +1,5 @@
-$(function () {
-    console.debug("top.js です。")
-    console.log(`jquery-ui is ${$.ui}`)
-    $('.accordion').ui.accordion()
+require('fomantic-ui-css/semantic.min');
+
+$(document).on("turbolinks:load", function () {
+    $('.accordion').accordion()
 });
