@@ -18,12 +18,12 @@ $(document).on("turbolinks:load", function () {
             },
 
             received(idea_log) {
-                if (query['mode'] == 'join') {
-                    var user_id = 'participant_' + query['user_id']
-                    if ($('#' + user_id).length === 0) {
-                        $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
-                    }
-                }
+                // if (query['mode'] == 'join') {
+                //     var user_id = 'participant_' + query['user_id']
+                //     if ($('#' + user_id).length === 0) {
+                //         $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
+                //     }
+                // }
 
                 let query = idea_log['idea_logs']
                 let val = parseInt(localStorage.getItem('radio_value'));
@@ -40,16 +40,31 @@ $(document).on("turbolinks:load", function () {
                 }
                 //確定時
                 else if (query['mode'] === 'edit') {
+                    let text = query["edit"]["content"];
                     let first1 = '.t'; let first2 = 'zoom_';
-                    let sel_num = parseInt(query["edit"]["object_id"])-val;
-                    let sel_class = first1 + sel_num;
-                    let sel_id = first2 + sel_num;
+                    let bigid = query["edit"]["object_id"];
+
+                    let minid = bigid - val;
+                    let sel_class = first1 + minid;
+                    let sel_id = first2 + minid;
                     $(sel_class).css('background-color', '#FFFFFF');
                     //console.log(sel_class);
-                    document.getElementById(sel_id).value = query["edit"]["content"];
-                    document.getElementById("1").value = query["edit"]["content"];
+                    document.getElementById(sel_id).value = text;
+                    $('#'+bigid).text(text);
+                    console.log(bigid);
+                    let right = String(bigid).slice(-1);
+                    // parseInt(bigid);
+                    console.log(right);
                     //console.log(sel_id);
                     console.log("focusout");
+
+                    //for(let i=4; i<=84; i+=10){
+                        if(bigid == '44') {
+                            $('#main').text(text);
+                            //break;
+                        }
+
+                    //}
                 }
             },
 
