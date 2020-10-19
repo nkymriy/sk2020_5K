@@ -1,4 +1,5 @@
 <%= render :partial => 'shared/header' %>
+<%= javascript_pack_tag 'memo/memo_new' %>
 
 <div class="home_body" id="home_body">
   <%# 右部のメモ一覧 %>
@@ -15,16 +16,6 @@
         </div>
       </div>
     <% end %>
-    <script>
-        $('.message .close')
-            .on('click', function () {
-                $(this)
-                    .closest('.message')
-                    .transition('fade')
-                ;
-            })
-        ;
-    </script>
     <%= form_with model: @memo, class: 'ui form memo_form', local: true, url: idea_memo_path do |f| %>
       <div class="fields">
         <div class="sixteen wide field">
