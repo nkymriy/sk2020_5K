@@ -1,16 +1,16 @@
-const { environment } = require('@rails/webpacker')
+const {environment} = require('@rails/webpacker')
 
 const webpack = require('webpack')
 environment.plugins.prepend('Provide',
     new webpack.ProvidePlugin({
         $: 'jquery',
-        jQuery: 'jquery'
+        jQuery: 'jquery',
     })
-);
+)
 
 const aliasConfig = {
     'jquery': 'jquery/src/jquery',
-    'jquery-ui': 'jquery-ui-dist/jquery-ui.js'
+    'jquery-ui': 'jquery-ui'
 };
 
 environment.config.set('resolve.alias', aliasConfig);
