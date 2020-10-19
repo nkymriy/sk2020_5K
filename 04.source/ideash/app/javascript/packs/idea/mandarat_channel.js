@@ -57,18 +57,10 @@ $(document).on("turbolinks:load", function () {
                     console.log("focusout");
 
                     //メインテーマ,サブテーマを表示させるとこ
-                    if(bigid == '44') {
-                        $('#main').text(text);
-                    }
-                    else if(bigid == '4') {
-                        $('#theme0').text(text);
-                    }
-                    else if (left ==  '4') {
-                        $('#theme'+right).text(text);
-                    }
-                    else if(bigid % 10 == 4){
-                        $('#theme'+left).text(text);
-                    }
+                    if(bigid == '44') { $('#main').text(text); }
+                    else if(bigid == '4') { $('#theme0').text(text); }
+                    else if (left ==  '4') { $('#theme'+right).text(text); }
+                    else if(bigid % 10 == 4){ $('#theme'+left).text(text); }
                 }
             },
 
@@ -82,6 +74,7 @@ $(document).on("turbolinks:load", function () {
             }
         });
 
+        //ズームイン画面の処理
         $(function() {
             for(let i=0; i<=8; i++) {
                 $('#zoom_'+i)
@@ -102,6 +95,7 @@ $(document).on("turbolinks:load", function () {
             }
         });
 
+        //左上のミニマップ選択された後
         $('input:radio[name="hoge"]').change(function() {
             const value = $('input:radio[name="hoge"]:checked').val();
             console.log(value);
@@ -109,18 +103,37 @@ $(document).on("turbolinks:load", function () {
         });
         $('input[value="40"]').prop('checked', true).change();
 
-
-
-        // let element = document.getElementById( "target" );
-        // console.log(element);
-        // let radioNodeList = element.hoge;
-        // console.log(radioNodeList);
-        // let radio_num = radioNodeList.value;
-        // if ( radio_num === "" ) {
-        //     // 未選択状態
-        // } else {
-        //     console.log( radio_num );
-        // }
+        //矢印ボタンでミニマップを移動
+        $(function(){
+            $('#to-up-button').on('click', upbtn);
+            $('#to-left-button').on('click', leftbtn);
+            $('#to-right-button').on('click', rightbtn);
+            $('#to-down-button').on('click', downbtn);
+            function upbtn() {
+                let radioval = parseInt(localStorage.getItem('radio_value'))-30;
+                if(radioval >= 0) {
+                    $('input[value='+radioval+']').prop('checked', true).change();
+                }
+            }
+            function leftbtn() {
+                let radioval = parseInt(localStorage.getItem('radio_value'))-10;
+                if(radioval % 30 !== 20) {
+                    $('input[value='+radioval+']').prop('checked', true).change();
+                }
+            }
+            function rightbtn() {
+                let radioval = parseInt(localStorage.getItem('radio_value'))+10;
+                if(radioval % 30 !== 0) {
+                    $('input[value=' + radioval + ']').prop('checked', true).change();
+                }
+            }
+            function downbtn() {
+                let radioval = parseInt(localStorage.getItem('radio_value'))+30;
+                if(radioval <= 80) {
+                    $('input[value=' + radioval + ']').prop('checked', true).change();
+                }
+            }
+        });
 
     } else {
         if (consumer.task) {
