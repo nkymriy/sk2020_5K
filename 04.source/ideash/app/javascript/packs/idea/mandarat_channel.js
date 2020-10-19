@@ -46,17 +46,17 @@ $(document).on("turbolinks:load", function () {
                     let minid = bigid - val;
                     let sel_class = first1 + minid;
                     let sel_id = first2 + minid;
-                    $(sel_class).css('background-color', '#FFFFFF');
+                    //$(sel_class).css('background-color', '#FFFFFF');
                     //console.log(sel_class);
                     document.getElementById(sel_id).value = text;
                     $('#'+bigid).text(text);
                     console.log(bigid);
-                    let left = String(bigid).slice(0,1);
-                    let right = String(bigid).slice(-1);
                     //console.log(sel_id);
                     console.log("focusout");
 
                     //メインテーマ,サブテーマを表示させるとこ
+                    let left = String(bigid).slice(0,1);
+                    let right = String(bigid).slice(-1);
                     if(bigid == '44') { $('#main').text(text); }
                     else if(bigid == '4') { $('#theme0').text(text); }
                     else if (left ==  '4') { $('#theme'+right).text(text); }
@@ -132,6 +132,21 @@ $(document).on("turbolinks:load", function () {
                 if(radioval <= 80) {
                     $('input[value=' + radioval + ']').prop('checked', true).change();
                 }
+            }
+        });
+
+        //全体面とズーム画面の切替
+        $('#process_1').hide()
+        $(function() {
+            $('#allview').on('click', allview);
+            $('#zoomview').on('click', zoomview);
+            function allview() {
+                $('#process_2').hide()
+                $('#process_1').show()
+            }
+            function zoomview() {
+                $('#process_1').hide()
+                $('#process_2').show()
             }
         });
 
