@@ -159,6 +159,11 @@ body {
 
 .chat {
   height: 50%;
+  background-color: white !important;
+  border: 1px solid !important;
+  border-color: darkgray !important;
+  z-index: 0;
+
 }
 
 .chat-area {
@@ -191,3 +196,4 @@ body {
   width: 90%;
   height: 90%;
 }
+
