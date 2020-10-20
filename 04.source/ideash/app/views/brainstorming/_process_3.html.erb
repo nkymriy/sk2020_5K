@@ -8,7 +8,7 @@
       <% for content in idea_logs do %>
         <% if content.query['mode'] == 'group' %>
           <div class="group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
-            <div class="ui stacked segments group" id="group_id_<%=content.query["group"]["group_id"]%>">
+            <div class="ui stacked segments group" id="group_id_<%= content.query["group"]["group_id"] %>">
               <div class="ui huge transparent input">
                 <%= text_field_tag 'brain_rename_' + content.query["group"]["group_id"].to_s, '', placeholder: content.query["group"]["name"], data: {behavior: 'idea_speaker'} %>
               </div>
@@ -19,13 +19,17 @@
     </div>
     <div class="idea-contents">
       <div class="ideas" id="p3_ideas">
-        <% for content in idea_logs.reverse do %>
-          <% if content.query['mode'] == 'add' %>
-            <div class="idea" id="object_id_<%= content.query["add"]["object_id"] %>" draggable="true" ondragstart="dragstart_handler(event)">
-              <div class="ui teal large label">
-                <%= content.query["add"]["content"] %>
+        <% for group_content in idea_logs.reverse do %>
+          <%= JSON.parse(JSON.generate(group_content.query))['grouping'] %>
+          <%= JSON.parse(JSON.generate(JSON.parse(JSON.generate(group_content.query))['grouping'])['object_id']) %>
+          <% for content in idea_logs.reverse do %>
+            <% if content.query['mode'] == 'add' %>
+              <div class="idea" id="object_id_<%= content.query["add"]["object_id"] %>" draggable="true" ondragstart="dragstart_handler(event)">
+                <div class="ui teal large label">
+                  <%= content.query["add"]["content"] %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
