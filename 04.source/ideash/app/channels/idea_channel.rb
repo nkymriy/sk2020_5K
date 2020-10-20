@@ -16,6 +16,8 @@ class IdeaChannel < ApplicationCable::Channel
     res = ActiveRecord::Base.connection.execute("select count(*) from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'add' ")
     # TODO Timeを保存する処理を追加する
     IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'add', 'add': {'object_id': res[0]['count(*)'], 'content': data["content"]}, 'time': DateTime.now}
+    # TODO グループIDの初期値は後々話し合う
+    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'grouping', 'grouping': {'object_id': res[0]['count(*)'], 'group_id': 999}}
   end
 
   def join_user()
@@ -105,10 +107,36 @@ class IdeaChannel < ApplicationCable::Channel
     data = data['content']
     group_id = data['group_id'].to_i
     group_name = data['name']
-    res_id = group_id-1
+    res_id = group_id - 1
     if IdeaLog.find(res[res_id]['id']).update! query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': group_id, 'name': group_name}}
       ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'group_rename', 'option': {'group_id': group_id, 'name': group_name}}}
     end
   end
 
+  def grouping(data)
+    data = data['content']
+    object_id = data['object_id'].to_i
+    group_id = data['group_id'].to_i
+    add_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'add'")
+    grouping_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'grouping'")
+    p "---------------#{data}---------------------"
+    p "---------------#{object_id}--------------------"
+    p "---------------#{group_id}---------------------"
+    p "---------------#{add_res[0]['query']['add']}---------------------"
+    p "---------------#{JSON.parse(add_res[0]['query'])['add']}---------------------"
+    p "---------------#{add_res.select { |hoge| JSON.parse(hoge['query'])['add']['object_id'] === object_id }}-------------"
+    p "---------------#{add_res.select { |hoge| JSON.parse(hoge['query'])['add']['object_id'] === object_id }[0]['id']}-------------"
+    p "---------------#{grouping_res.select { |hoge| JSON.parse(hoge['query'])['grouping']['object_id'] === object_id }.last['id']}-------------"
+    # p "---------------#{request}-------------"
+
+    grouping_id = grouping_res.select { |hoge| JSON.parse(hoge['query'])['grouping']['object_id'] === object_id }[0]['id']
+    if IdeaLog.find(grouping_id).update! query: {'user_id': current_user.id, 'mode': 'grouping', 'grouping': {'object_id': object_id, 'group_id': group_id}}
+      # ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'group_rename', 'option': {'group_id': group_id, 'name': group_name}}}
+    end
+    # IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'grouping', 'grouping': {'object_id': object_id, 'group_id': group_id}}
+    # add_idea_id = res.select { |hoge| JSON.parse(hoge['query'])['add']['object_id'] === object_id }[0]['id']
+    # if IdeaLog.find(add_idea_id).update! is_active: 1
+    #   ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'group_rename', 'option': {'group_id': group_id, 'name': group_name}}}
+    # end
+  end
 end

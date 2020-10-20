@@ -27,26 +27,28 @@
         $('#process_3').toggle();
     }
 
-
-    $('.idea').on('dragstart', onDragStart);
-    $('.group').on('dragover', onDragOver);
-    $('.group').on('drop', onDrop);
-
-    function onDragStart(e) {
-        e.originalEvent.dataTransfer.setData('text', this.id);
+    function dragstart_handler(ev) {
+        // 対象となる要素の id を DataTransfer オブジェクトに追加する
+        ev.dataTransfer.setData("application/my-app", ev.target.id);
+        ev.dataTransfer.dropEffect = "move";
     }
-
-    function onDragOver(e) {
-        e.preventDefault();
-        this.textContent = 'onDragOver';
+    function dragover_handler(ev) {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = "move"
     }
-
-    function onDrop(e) {
-        e.preventDefault();
-        this.textContent = 'onDrop';
+    function drop_handler(ev) {
+        console.log(ev)
+        console.log(ev.target.id)
+        if(ev.target.id.indexOf('group_id') === 0){
+            ev.preventDefault();
+            // 移動された要素の id を取得して、その要素を target の DOM に追加する
+            const data = ev.dataTransfer.getData("application/my-app");
+            ev.target.appendChild(document.getElementById(data));
+            console.log(data)
+        }
     }
-
 </script>
+
 <%# JSが書かれているため最後に書くこと %>
 <%= render :partial => 'shared/homemenu' %>
 <%= javascript_pack_tag "idea/brainstorming_channel" %>

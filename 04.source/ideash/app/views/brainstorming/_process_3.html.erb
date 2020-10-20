@@ -7,8 +7,8 @@
     <div class="group-contents">
       <% for content in idea_logs do %>
         <% if content.query['mode'] == 'group' %>
-          <div class="group">
-            <div class="ui stacked segments group">
+          <div class="group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
+            <div class="ui stacked segments group" id="group_id_<%=content.query["group"]["group_id"]%>">
               <div class="ui huge transparent input">
                 <%= text_field_tag 'brain_rename_' + content.query["group"]["group_id"].to_s, '', placeholder: content.query["group"]["name"], data: {behavior: 'idea_speaker'} %>
               </div>
@@ -17,11 +17,11 @@
         <% end %>
       <% end %>
     </div>
-    <div class="idea-contents" id="p3_ideas">
-      <div class="ideas">
+    <div class="idea-contents">
+      <div class="ideas" id="p3_ideas">
         <% for content in idea_logs.reverse do %>
           <% if content.query['mode'] == 'add' %>
-            <div class="idea" draggable="true">
+            <div class="idea" id="object_id_<%= content.query["add"]["object_id"] %>" draggable="true" ondragstart="dragstart_handler(event)">
               <div class="ui teal large label">
                 <%= content.query["add"]["content"] %>
               </div>

@@ -1,4 +1,5 @@
 import consumer from "../../channels/consumer"
+
 require('jquery-ui-dist/jquery-ui')
 
 $(document).on("turbolinks:load", function () {
@@ -43,9 +44,9 @@ $(document).on("turbolinks:load", function () {
                     $("#ideas").prepend(div);
                     $('#' + id).show('slide', '', 500);
                     localStorage.setItem('card_id', id);
-
+                    var object_id = "object_id_" + query['add']['object_id']
                     var p3_div = $(
-                        '<div class="idea" draggable="true">\n' +
+                        `<div class="idea" id=${object_id} draggable="true" ondragstart="dragstart_handler(event)">\n` +
                         '       <div class="ui teal large label">\n' +
                         idea_text +
                         '       </div>\n' +
@@ -88,7 +89,7 @@ $(document).on("turbolinks:load", function () {
                             alert('終了!!\n' +
                                 'お疲れさまでした!!')
                         }
-                    }else if(query['system']['operation'] === 'group_rename'){
+                    } else if (query['system']['operation'] === 'group_rename') {
                         var id = "#brain_rename_" + query['system']['option']['group_id'].toString()
                         var name = query['system']['option']['name']
                         $(id).attr('placeholder', name)
@@ -123,6 +124,11 @@ $(document).on("turbolinks:load", function () {
                     json_idea_log
                 );
             },
+            grouping: function (json_idea_log) {
+                return this.perform('grouping',
+                    json_idea_log
+                );
+            },
         });
 
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
@@ -151,6 +157,22 @@ $(document).on("turbolinks:load", function () {
 
         $('#group_add').on('click', function () {
             consumer.task.group_add();
+        });
+
+        $('.group-contents').on("drop", function (event) {
+            console.log(event.target.lastChild.id)
+            console.log(event.target.id.indexOf('group_id'))
+            console.log(location.href)
+            if (event.target.id.indexOf('group_id') === 0) {
+                event.preventDefault();
+                var content = {
+                    content: {
+                        object_id: event.target.lastChild.id.replace(/[^0-9]/g, ''),
+                        group_id: event.target.id.replace(/[^0-9]/g, '')
+                    }
+                }
+                consumer.task.grouping(content);
+            }
         });
     } else {
         if (consumer.task) {
