@@ -303,11 +303,6 @@ GEM
     ruby_parser (3.15.0)
       sexp_processor (~> 4.9)
     rubyzip (2.3.0)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -321,8 +316,6 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    semantic-ui-sass (2.4.2.0)
-      sass (>= 3.2)
     sexp_processor (4.15.1)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
@@ -407,7 +400,6 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (>= 6)
   selenium-webdriver
-  semantic-ui-sass
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
