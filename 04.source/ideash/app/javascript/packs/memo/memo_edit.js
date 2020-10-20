@@ -1,6 +1,6 @@
 require('fomantic-ui-css/semantic.min');
 
-$("input[id='memo-title'],[id='memo-contents']").blur(function(){
+$("input[id='memo-title'],[id='memo-content']").blur(function(){
     if(!$(this).val().match(/\S/g)){
         $(this).css("background-color", "#FEF4F8");
         $('#memo-submit').prop('disabled', true);

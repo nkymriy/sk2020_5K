@@ -1,5 +1,5 @@
 <%= render :partial => 'shared/header' %>
-<%= javascript_pack_tag 'memo/memo_edit' %>
+<%= javascript_pack_tag 'memo/memo_new' %>
 
 <div class="home_body" id="home_body">
   <%# 右部のメモ一覧 %>
@@ -20,8 +20,8 @@
       <div class="fields">
         <%= f.hidden_field :idea_category_id, :value => 1 %>
         <div class="sixteen wide field">
-          <label for="memo-contents">内容</label>
-          <%= f.text_area :idea_description, placeholder: "メモを書きましょう", :required => true, id: 'memo-contents'%>
+          <label for="memo-content">内容</label>
+          <%= f.text_area :idea_description, placeholder: "メモを書きましょう", :required => true, id: 'memo-content'%>
         </div>
       </div>
       <%= f.submit '更新', class: "ui black button", id: 'memo-submit'%>
