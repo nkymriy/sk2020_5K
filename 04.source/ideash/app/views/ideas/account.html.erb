@@ -1,4 +1,6 @@
 <%= render :partial => 'shared/header' %>
+<%= javascript_pack_tag 'user/account' %>
+<input type=hidden id="is_updated" value=<%= @is_updated %>>
 <%= form_for current_user, url: {action: 'profile_update'} do |f| %>
   <div class="home_body" id="home_body">
     <div class="account_segment">
