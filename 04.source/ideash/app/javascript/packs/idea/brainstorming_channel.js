@@ -90,9 +90,21 @@ $(document).on("turbolinks:load", function () {
                                 'お疲れさまでした!!')
                         }
                     } else if (query['system']['operation'] === 'group_rename') {
-                        var id = "#brain_rename_" + query['system']['option']['group_id'].toString()
+                        var id = '#brain_rename_' + query['system']['option']['group_id'].toString()
                         var name = query['system']['option']['name']
                         $(id).attr('placeholder', name)
+                    } else if (query['system']['operation'] === 'grouping') {
+                        var object_id = 'object_id_' + query['system']['option']['object_id']
+                        var group_id = 'group_id_' + query['system']['option']['group_id']
+                        var div = $(
+                            `<div class="idea" id=${object_id} draggable="true" ondragstart="dragstart_handler(event)">\n` +
+                            '       <div class="ui teal large label">\n' +
+                            query['system']['option']['content'] +
+                            '       </div>\n' +
+                            '</div>'
+                        );
+                        $('#' + object_id).remove();
+                        $('#' + group_id).append(div);
                     }
                 } else if (query['mode'] === 'group') {
                     var group_id = escapeHTML(query['group']['group_id'])
@@ -160,6 +172,8 @@ $(document).on("turbolinks:load", function () {
         });
 
         $('.group-contents').on("drop", function (event) {
+            console.log(event.target.lastChild.innerText)
+            console.log(event.target.lastChild)
             console.log(event.target.lastChild.id)
             console.log(event.target.id.indexOf('group_id'))
             console.log(location.href)
@@ -168,6 +182,7 @@ $(document).on("turbolinks:load", function () {
                 var content = {
                     content: {
                         object_id: event.target.lastChild.id.replace(/[^0-9]/g, ''),
+                        content: event.target.lastChild.innerText,
                         group_id: event.target.id.replace(/[^0-9]/g, '')
                     }
                 }
