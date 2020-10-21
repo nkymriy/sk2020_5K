@@ -179,4 +179,23 @@ class IdeaLog < ApplicationRecord
 
   validates :query, json: {schema: QUERY_SCHEMA}
   after_create_commit { IdealogBroadcastJob.perform_later self }
+
+  def self.get_group_object_id(idea_id)
+      add_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'add'")
+      group_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'group'")
+      grouping_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'grouping'")
+      # p "---------------#{add_res.select { |res| JSON.parse(res['query'])['add']['object_id'] }}--------------"
+      # p "---------------#{group_res.select { |res| JSON.parse(res['query'])['group']['group_id'] }.length}----------"
+      # p "---------------#{grouping_res.select { |res| JSON.parse(res['query'])['grouping']['group_id'] }}----"
+
+      for num in 0..group_res.select { |res| JSON.parse(res['query'])['group']['group_id'] }.length-1
+          p "--------------------------#{grouping_res.select { |res| JSON.parse(res['query'])['grouping']['group_id'] === num}}---------"
+          temp_array = {
+              'group_id': num,
+              'object': {
+
+              }
+          }
+      end
+  end
 end

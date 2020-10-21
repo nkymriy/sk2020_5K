@@ -19,17 +19,13 @@
     </div>
     <div class="idea-contents">
       <div class="ideas" id="p3_ideas">
-        <% for group_content in idea_logs.reverse do %>
-          <%= JSON.parse(JSON.generate(group_content.query))['grouping'] %>
-          <%= JSON.parse(JSON.generate(JSON.parse(JSON.generate(group_content.query))['grouping'])['object_id']) %>
-          <% for content in idea_logs.reverse do %>
-            <% if content.query['mode'] == 'add' %>
-              <div class="idea" id="object_id_<%= content.query["add"]["object_id"] %>" draggable="true" ondragstart="dragstart_handler(event)">
-                <div class="ui teal large label">
-                  <%= content.query["add"]["content"] %>
-                </div>
+        <% for content in idea_logs.reverse do %>
+          <% if content.query['mode'] == 'add' %>
+            <div class="idea" id="object_id_<%= content.query["add"]["object_id"] %>" draggable="true" ondragstart="dragstart_handler(event)">
+              <div class="ui teal large label">
+                <%= content.query["add"]["content"] %>
               </div>
-            <% end %>
+            </div>
           <% end %>
         <% end %>
       </div>
