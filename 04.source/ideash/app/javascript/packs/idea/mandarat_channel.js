@@ -27,6 +27,8 @@ $(document).on("turbolinks:load", function () {
 
                 let query = idea_log['idea_logs']
                 let val = parseInt(localStorage.getItem('radio_value'));
+                console.log(query);
+                console.log(idea_log);
 
                 //編集時
                 if (query['mode'] === 'editing') {
@@ -83,8 +85,9 @@ $(document).on("turbolinks:load", function () {
             }
         });
 
-        let array = [];
+        //let query = idea_log['idea_logs']
 
+        let array = [];
 
         //ズームイン画面の処理
         $(function() {
@@ -110,7 +113,7 @@ $(document).on("turbolinks:load", function () {
                             console.log(content);
                             consumer.task.editing(content);
                             flg = !flg;
-                            console.log(turnnum);
+                            //console.log(turnnum);
                         }
                         //console.log('in'+flg);
                     })
@@ -138,15 +141,38 @@ $(document).on("turbolinks:load", function () {
                         }
                         //console.log('out'+flg);
                         //contentデータ保持
-                        console.log(array);
+                        //console.log(array);
+                        //console.log(array[0]);
                     });
             }
         });
 
         //左上のミニマップ選択された後
         $('input:radio[name="hoge"]').change(function() {
-            console.log()
             const value = $('input:radio[name="hoge"]:checked').val();
+            let valueleft = String(value).slice(0,1);
+            //初期化
+            for(let i=0; i<9; i++) {
+                //$('#zoom_'+i).text('');
+                //$('#zoom_0').text("aaa");
+                document.getElementById('zoom_'+i).value = '';
+            }
+            console.log(array);
+            for(let i=0; i<array.length; i++) {
+                if(String(array[i][0])=='1') {
+                    document.getElementById('zoom_'+array[i][0]).value = array[i][1];
+                }
+                else if(String(array [i][0]).slice(0,1)==valueleft) {
+                    let valueright = String(array[i][0]).slice(-1);
+                    //$('#zoom_'+valueright).text(array[i][1]);
+                    document.getElementById('zoom_'+valueright).value = array[i][1];
+                    // console.log("----------");
+                    // console.log(array [i][0]);
+                    // console.log(array [i][1]);
+                    // console.log("----------");
+                    // console.log(array);
+                }
+            }
             console.log(value);
             localStorage.setItem('radio_value', value);
         });
