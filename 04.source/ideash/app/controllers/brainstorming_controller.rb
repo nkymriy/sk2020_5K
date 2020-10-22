@@ -20,6 +20,8 @@ class BrainstormingController < ApplicationController
       end
       p user_idea.save
     end
+
+    @idea_logs.get_group_object_id(@idea.id)
   end
 
   def create
