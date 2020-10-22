@@ -202,8 +202,17 @@ class IdeaLog < ApplicationRecord
 
     grouping_contents = {}
     grouping_res.select do |g_res|
-      grouping_contents.merge!(JSON.parse(g_res['query'])['grouping']['group_id'] => {})
-      grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']].merge!(JSON.parse(g_res['query'])['grouping']['object_id'] => JSON.parse(g_res['query'])['grouping']['object_id'])
+      # grouping_contents.merge!(JSON.parse(g_res['query'])['grouping']['group_id'] => {
+      #     'name' => group_contents[JSON.parse(g_res['query'])['grouping']['group_id']],
+      #     'objects' => {}
+      # })
+      grouping_contents.store(JSON.parse(g_res['query'])['grouping']['group_id'], {})
+      grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']].store('name', group_contents[JSON.parse(g_res['query'])['grouping']['group_id']])
+      grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']].store('objects', {})
+      grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']]['objects'].store(JSON.parse(g_res['query'])['grouping']['object_id'], add_contents[JSON.parse(g_res['query'])['grouping']['object_id']])
+      # grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']['objects']].store(JSON.parse(g_res['query'])['grouping']['object_id'], add_contents[JSON.parse(g_res['query'])['grouping']['object_id']])
+      # grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']]['objects'].store(JSON.parse(g_res['query'])['grouping']['object_id'], add_contents[JSON.parse(g_res['query'])['grouping']['object_id']])
+      # grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']]['objects'].merge!(JSON.parse(g_res['query'])['grouping']['object_id'] => add_contents[JSON.parse(g_res['query'])['grouping']['object_id']])
       # grouping_contents.merge(JSON.parse(g_res['query'])['grouping']['group_id'] => JSON.parse(g_res['query'])['grouping']['object_id'])
     end
     p "-------------------------#{add_contents}------------------------------"
