@@ -1,8 +1,10 @@
+<% cache do %>
 <%# サイドバー %>
 <div class="ui left fixed vertical inverted menu" id="home_menu">
   <div class="item">
     <%= image_tag "icon_mini.png", class: "ui mini imag menu_icon" %>
   </div>
+  <%= link_to "ホーム", idea_home_path, class: "item home-menu" %>
   <%= link_to "新規作成", idea_category_path, class: "item home-menu" %>
   <div class="menu">
     <%= link_to "ブレインストーミング(β)", idea_brainstorming_new_path, class: "item home-menu" %>
@@ -15,3 +17,4 @@
 </div>¬
 <%# レスポンシブ対応 %>
 <%= javascript_pack_tag 'shared', 'data-turbolinks-track': 'reload' %>
+<% end %>

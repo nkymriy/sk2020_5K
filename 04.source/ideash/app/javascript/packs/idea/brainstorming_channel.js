@@ -147,8 +147,8 @@ $(document).on("turbolinks:load", function () {
 
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
             if (event.keyCode === 13) {
-                if (event.target.value === "") return false
-                var content = {
+                if (!event.target.value.match(/\S/g)) return false
+                let content = {
                     content: event.target.value
                 };
                 if (event.target.id === 'idea_add') {
