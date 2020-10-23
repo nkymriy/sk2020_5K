@@ -68,14 +68,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     idea_home_path
   end
 
-  def profile_edit()
+  def profile_edit
     render('ideas/account')
   end
 
   def profile_update
     current_user.assign_attributes(account_update_params)
     @is_updated = current_user.save
-    @is_updated_check = true
     render('ideas/account')
   end
 
