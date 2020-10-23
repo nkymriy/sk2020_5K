@@ -21,7 +21,7 @@ class BrainstormingController < ApplicationController
       p user_idea.save
     end
 
-    @idea_logs.get_group_object_id(@idea.id)
+    @grouping_contents = @idea_logs.get_group_object_id(@idea.id)
   end
 
   def create
@@ -44,6 +44,7 @@ class BrainstormingController < ApplicationController
         IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process3', 'option': (params[:process3].to_i * 60).to_s}}
       end
 
+      IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': 0, 'name': 'no_grouped'}}
       IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': 1, 'name': 'グループ1'}}
       IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': 2, 'name': 'グループ2'}}
 

@@ -4,7 +4,7 @@
 <div id="edit_body">
   <input type="button" value="アイデア出し/グルーピング切り替え" onclick="changeBtn()"/>
   <div id="process_1"><%= render :partial => 'brainstorming/process_1', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
-  <div id="process_3"><%= render :partial => 'brainstorming/process_3', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
+  <div id="process_3"><%= render :partial => 'brainstorming/process_3', locals: {idea: @idea, idea_logs: @idea_logs, grouping_contents: @grouping_contents} %></div>
 </div>
 <script>
     <% res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{@idea.id}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 3")%>

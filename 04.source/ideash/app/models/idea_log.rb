@@ -181,43 +181,33 @@ class IdeaLog < ApplicationRecord
   after_create_commit { IdealogBroadcastJob.perform_later self }
 
   def self.get_group_object_id(idea_id)
+    add_contents = {}
+    group_contents = {}
+    grouping_contents = {}
     add_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'add'")
     group_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'group'")
     grouping_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'grouping'")
 
-    # p "---------------#{add_res.select { |res| JSON.parse(res['query'])['add']['object_id'] }}--------------"
-    # p "---------------#{group_res.select { |res| JSON.parse(res['query'])['group']['group_id'] }.length }----------"
-    # p "---------------#{grouping_res.select { |res| JSON.parse(res['query'])['grouping']['group_id'] }}----"
-
-    add_contents = {}
-    add_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'add'")
     add_res.select do |a_res|
       add_contents.merge!(JSON.parse(a_res['query'])['add']['object_id'] => JSON.parse(a_res['query'])['add']['content'])
     end
 
-    group_contents = {}
     group_res.select do |g_res|
       group_contents.merge!(JSON.parse(g_res['query'])['group']['group_id'] => JSON.parse(g_res['query'])['group']['name'])
+      grouping_contents.store(JSON.parse(g_res['query'])['group']['group_id'], {})
+      grouping_contents[JSON.parse(g_res['query'])['group']['group_id']].store('name', group_contents[JSON.parse(g_res['query'])['group']['group_id']])
+      grouping_contents[JSON.parse(g_res['query'])['group']['group_id']].store('objects', {})
     end
 
-    grouping_contents = {}
     grouping_res.select do |g_res|
-      # grouping_contents.merge!(JSON.parse(g_res['query'])['grouping']['group_id'] => {
-      #     'name' => group_contents[JSON.parse(g_res['query'])['grouping']['group_id']],
-      #     'objects' => {}
-      # })
-      grouping_contents.store(JSON.parse(g_res['query'])['grouping']['group_id'], {})
-      grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']].store('name', group_contents[JSON.parse(g_res['query'])['grouping']['group_id']])
-      grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']].store('objects', {})
       grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']]['objects'].store(JSON.parse(g_res['query'])['grouping']['object_id'], add_contents[JSON.parse(g_res['query'])['grouping']['object_id']])
-      # grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']['objects']].store(JSON.parse(g_res['query'])['grouping']['object_id'], add_contents[JSON.parse(g_res['query'])['grouping']['object_id']])
-      # grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']]['objects'].store(JSON.parse(g_res['query'])['grouping']['object_id'], add_contents[JSON.parse(g_res['query'])['grouping']['object_id']])
-      # grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']]['objects'].merge!(JSON.parse(g_res['query'])['grouping']['object_id'] => add_contents[JSON.parse(g_res['query'])['grouping']['object_id']])
-      # grouping_contents.merge(JSON.parse(g_res['query'])['grouping']['group_id'] => JSON.parse(g_res['query'])['grouping']['object_id'])
+      p "-------------------------#{grouping_contents}------------------------------"
     end
     p "-------------------------#{add_contents}------------------------------"
     p "-------------------------#{group_contents}------------------------------"
     p "-------------------------#{grouping_contents}------------------------------"
+
+    return grouping_contents
 
     # idea_logs_content = {
     #     group_id: {
@@ -229,23 +219,5 @@ class IdeaLog < ApplicationRecord
     #         },
     #     },
     # }
-
-    # idea_logs_content = {}
-    # temp_objects = {}
-    # for group_group_id in 0..group_res.select { |res| JSON.parse(res['query'])['group']['group_id'] }.length - 1
-    #   p "--------------------------#{grouping_res.select { |res| JSON.parse(res['query'])['grouping']['group_id'] === num }}---------"
-    #   idea_logs_content.merge!(group_group_id => {
-    #       'name': 'group_name',
-    #       'objects': {}
-    #   })
-    #   grouping_res.select do |g_res|
-    #     grouping_group_id = JSON.parse(g_res['query'])['grouping']['group_id']
-    #     grouping_object_id = JSON.parse(g_res['query'])['grouping']['object_id']
-    #     if grouping_group_id === group_group_id
-    #       temp_objects.merge()
-    #     end
-    #   end
-    # end
-
   end
 end
