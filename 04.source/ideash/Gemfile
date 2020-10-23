@@ -94,3 +94,10 @@ group :development, :test do
   gem 'rails-controller-testing'
 
 end
+
+#パフォーマンス計測用
+gem 'rack-mini-profiler'
+gem 'memory_profiler'
+# For call-stack profiling flamegraphs
+gem 'flamegraph'
+gem 'stackprof'

@@ -23,6 +23,7 @@
   <meta property="og:description" content="発想を助けるWebアプリ"/>
   <meta property="og:image" content= "https://drive.google.com/uc?export=view&id=1hANEoLgfRL8g1sJ3tsiuPWbrW331dE8R" />
 
+  <% cache do %>
   <title><%= content_for?(:html_title) ? yield(:html_title) : "Ideash" %></title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -31,6 +32,10 @@
 
   <%# フォントの読み込み %>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
+  <% end %>
+
+  <%# faviconの設定 %>
+  <%= favicon_link_tag('favicon.ico') %>
 
 </head>
 <body class="<%= controller_name %> <%= action_name %>">

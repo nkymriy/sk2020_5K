@@ -1,3 +1,4 @@
+<% cache do %>
 <%= javascript_pack_tag 'shared/_editmenu' %>
 <input type="hidden" id="user_id" value="<%= current_user.id %>">
 <!-- 1 -->
@@ -30,6 +31,7 @@
     <div class="header-text">
       参加者
     </div>
+<% end %>
     <div class="member">
       <ul class="users">
         <% for user in users %>
