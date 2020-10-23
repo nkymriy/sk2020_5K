@@ -1,7 +1,6 @@
 require('fomantic-ui-css/semantic.min');
 $(function(){
     let is_updated = $('#is_updated').val();
-    console.log (is_updated);
     let user_name = $('#account_input').val();
 
     if (is_updated){
