@@ -1,6 +1,6 @@
 import consumer from "../../channels/consumer"
 
-require('jquery-ui-dist/jquery-ui')
+require('jquery/src/jquery')
 
 $(document).on("turbolinks:load", function () {
     if ($('.websocket').length > 0) {
