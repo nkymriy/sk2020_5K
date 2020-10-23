@@ -40,14 +40,6 @@ class IdeaChannel < ApplicationCable::Channel
   def pause()
     p Time.now
     res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 4")
-    p "-------------------#{res}---------------------"
-    p "-------------------#{res[0]}---------------------"
-    p "-------------------#{res[1]}---------------------"
-    p "-------------------#{res[2]}---------------------"
-    p "-------------------#{JSON.parse(res[0]['query'])['system']}---------------------"
-    p "-------------------#{JSON.parse(res[0]['query'])['system']['operation']}---------------------"
-    p "-------------------#{JSON.parse(res[0]['query'])['system']['option']}---------------------"
-    p "-------------------#{res[3].class}---------------------"
 
     # TODO: ループを利用したコードへの短縮が可能に見えるので、余裕ができたら短縮を試みる
     if (res[3].nil?)
@@ -98,7 +90,7 @@ class IdeaChannel < ApplicationCable::Channel
   def group_add()
     res = ActiveRecord::Base.connection.execute("select count(*) from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'group' ")
     group_id = res[0]['count(*)'] + 1
-    group_name = 'グループ' + group_id.to_s
+    group_name = 'グループ' + res[0]['count(*)'].to_s
     IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': group_id, 'name': group_name}}
   end
 
@@ -118,21 +110,11 @@ class IdeaChannel < ApplicationCable::Channel
     object_id = data['object_id'].to_i
     group_id = data['group_id'].to_i
     content = data['content']
-    add_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'add'")
     grouping_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'grouping'")
-    # p "---------------#{data}---------------------"
-    # p "---------------#{object_id}--------------------"
-    # p "---------------#{group_id}---------------------"
-    # p "---------------#{add_res[0]['query']['add']}---------------------"
-    # p "---------------#{JSON.parse(add_res[0]['query'])['add']}---------------------"
-    # p "---------------#{add_res.select { |hoge| JSON.parse(hoge['query'])['add']['object_id'] === object_id }}-------------"
-    # p "---------------#{add_res.select { |hoge| JSON.parse(hoge['query'])['add']['object_id'] === object_id }[0]['id']}-------------"
-    # p "---------------#{grouping_res.select { |hoge| JSON.parse(hoge['query'])['grouping']['object_id'] === object_id }.last['id']}-------------"
-    # p "---------------#{request}-------------"
 
     grouping_id = grouping_res.select { |hoge| JSON.parse(hoge['query'])['grouping']['object_id'] === object_id }[0]['id']
     if IdeaLog.find(grouping_id).update! query: {'user_id': current_user.id, 'mode': 'grouping', 'grouping': {'object_id': object_id, 'group_id': group_id}}
-      ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'grouping', 'option': {'content':content ,'object_id': object_id ,'group_id': group_id}}}
+      ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'grouping', 'option': {'content': content, 'object_id': object_id, 'group_id': group_id}}}
     end
   end
 end

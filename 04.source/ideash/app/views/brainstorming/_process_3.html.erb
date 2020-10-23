@@ -5,8 +5,6 @@
   <div class="ui black large button group-add" id="group_add">グループを追加する</div>
   <div class="process3_contents">
     <div class="group-contents">
-      <%#= grouping_contents %>
-      <%# for content in grouping_contents do %>
 
       <% group_zero = {} %>
       <% grouping_contents.each { |group_id, group| %>
@@ -14,7 +12,7 @@
           <% group_zero = group %>
           <% next %>
         <% end %>
-
+        
         <div class="group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
           <div class="ui stacked segments group" id="group_id_<%= group_id %>">
             <div class="ui huge transparent input">
@@ -30,30 +28,6 @@
           </div>
         </div>
       <% } %>
-
-      <%# for content in grouping_contents do %>
-      <%#= grouping_contents %>
-      <%#= grouping_contents[1] %>
-      <!--        <div class="group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">-->
-      <!--          <div class="ui stacked segments group" id="group_id_<%#= content.query["group"]["group_id"] %>">-->
-      <!--            <div class="ui huge transparent input">-->
-      <%#= text_field_tag 'brain_rename_' + content.query["group"]["group_id"].to_s, '', placeholder: content.query["group"]["name"], data: {behavior: 'idea_speaker'} %>
-      <!--            </div>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <%# end %>
-
-      <%# for content in idea_logs do %>
-      <%# if content.query['mode'] == 'group' %>
-      <!--          <div class="group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">-->
-      <!--            <div class="ui stacked segments group" id="group_id_<%#= content.query["group"]["group_id"] %>">-->
-      <!--              <div class="ui huge transparent input">-->
-      <%#= text_field_tag 'brain_rename_' + content.query["group"]["group_id"].to_s, '', placeholder: content.query["group"]["name"], data: {behavior: 'idea_speaker'} %>
-      <!--              </div>-->
-      <!--            </div>-->
-      <!--          </div>-->
-      <%# end %>
-      <%# end %>
     </div>
 
     <div class="idea-contents">
@@ -66,21 +40,7 @@
           </div>
         <% } %>
       </div>
+
     </div>
-
-
-    <!--    <div class="idea-contents">-->
-    <!--      <div class="ideas" id="p3_ideas">-->
-    <%# for content in idea_logs.reverse do %>
-    <%# if content.query['mode'] == 'add' %>
-    <!--            <div class="idea" id="object_id_<%#= content.query["add"]["object_id"] %>" draggable="true" ondragstart="dragstart_handler(event)">-->
-    <!--              <div class="ui teal large label">-->
-    <%#= content.query["add"]["content"] %>
-    <!--              </div>-->
-    <!--            </div>-->
-    <%# end %>
-    <%# end %>
-    <!--      </div>-->
-    <!--    </div>-->
   </div>
 </div>

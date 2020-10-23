@@ -107,7 +107,6 @@ $(document).on("turbolinks:load", function () {
                         $('#' + group_id).append(div);
                     }
                 } else if (query['mode'] === 'group') {
-                    console.log(query)
                     var group_id = escapeHTML(query['group']['group_id'])
                     var group_name = escapeHTML(query['group']['name'])
                     $('.group-contents').append(`
@@ -175,11 +174,8 @@ $(document).on("turbolinks:load", function () {
         });
 
         $('.group-contents').on("drop", function (event) {
-            console.log(event.target.lastChild.innerText)
-            console.log(event.target.lastChild)
-            console.log(event.target.lastChild.id)
+            console.log("ドラッグしたアイデアの内容:" + event.target.lastChild.innerText)
             console.log(event.target.id.indexOf('group_id'))
-            console.log(location.href)
             if (event.target.id.indexOf('group_id') === 0) {
                 event.preventDefault();
                 var content = {

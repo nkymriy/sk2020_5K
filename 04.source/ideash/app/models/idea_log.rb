@@ -201,15 +201,12 @@ class IdeaLog < ApplicationRecord
 
     grouping_res.select do |g_res|
       grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']]['objects'].store(JSON.parse(g_res['query'])['grouping']['object_id'], add_contents[JSON.parse(g_res['query'])['grouping']['object_id']])
-      p "-------------------------#{grouping_contents}------------------------------"
     end
-    p "-------------------------#{add_contents}------------------------------"
-    p "-------------------------#{group_contents}------------------------------"
-    p "-------------------------#{grouping_contents}------------------------------"
 
     return grouping_contents
 
-    # idea_logs_content = {
+    # NOTE: grouping_contentの形式
+    # grouping_content = {
     #     group_id: {
     #         'name': 'hoge',
     #         'objects': {
