@@ -58,7 +58,6 @@ $(document).on("turbolinks:load", function () {
                     if (localStorage.getItem('flg') !== '0') {
                         //document.getElementById(sel_id).value = text;
                         if (left == '4' || right == '4' && bigid !== '44' && bigid !== '4') {
-                            //alert('a');
                             localStorage.setItem('flg', '0');
                         }
                     } else if (localStorage.getItem('flg') == '0') {
@@ -96,7 +95,9 @@ $(document).on("turbolinks:load", function () {
         for (let i = 0; i <= 8; i++){
             for (let j = 0; j<=8; j++){
                 let x = i * 10 + j;
-                array[x] = $('input:hidden[name="read_' + x + '"]').val();
+                let text = $('input:hidden[name="read_' + x + '"]').val();
+                array[x] = text;
+                $('#' + x).text(text);
             }
         }
 
