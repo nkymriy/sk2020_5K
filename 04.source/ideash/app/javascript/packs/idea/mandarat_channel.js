@@ -47,6 +47,8 @@ $(document).on("turbolinks:load", function () {
                     let first2 = 'zoom_';
                     let bigid = query["edit"]["object_id"];
                     let minid = bigid - val;
+                    console.log(bigid);
+                    console.log(minid);
                     let sel_class = first1 + minid;
                     let sel_id = first2 + minid;
                     $(sel_class).css('background-color', '#FFFFFF');
@@ -57,12 +59,17 @@ $(document).on("turbolinks:load", function () {
 
                     if (localStorage.getItem('flg') !== '0') {
                         document.getElementById(sel_id).value = text;
-                        if (left == '4' || right == '4' && bigid !== '44' && bigid !== '4') {
+                        array[bigid]=text;
+                        console.log("１回目");
+                        // if (left == '4' || right == '4' && bigid !== '44' && bigid !== '4') {
+                        if (((Math.floor(bigid / 10) === 4) || (bigid % 10 === 4)) && bigid !== 44){
                             localStorage.setItem('flg', '0');
                         }
                     } else if (localStorage.getItem('flg') == '0') {
                         //let sel_id2 = first2 + left;
-                        document.getElementById(sel_id).value = text;
+                        //document.getElementById(sel_id).value = text;
+                        array[bigid]=text;
+                        console.log("２回目");
                         localStorage.setItem('flg', '1');
                     }
                     //メインテーマ,サブテーマを表示させるとこ
@@ -89,6 +96,7 @@ $(document).on("turbolinks:load", function () {
             }
         });
 
+        localStorage.setItem('flg','1');
         let array = {};
         for (let i = 0; i <= 8; i++){
             for (let j = 0; j<=8; j++){
@@ -96,6 +104,13 @@ $(document).on("turbolinks:load", function () {
                 let text = $('input:hidden[name="read_' + x + '"]').val();
                 array[x] = text;
                 $('#' + x).text(text);
+                if (x == '44') {
+                    $('#main').text(text);
+                } else if (x == '4') {
+                    $('#theme0').text(text);
+                } else if (j == '4') {
+                    $('#theme' + j).text(text);
+                }
             }
         }
 
@@ -144,7 +159,7 @@ $(document).on("turbolinks:load", function () {
                         let objid = val + i;
                         let content = {object_id: objid, content: text};
                         //contentデータ保持
-                        array[objid]=text;
+                        //array[objid]=text;
                         console.log(content);
                         consumer.task.edit(content);
                         if (flg) {
@@ -159,7 +174,7 @@ $(document).on("turbolinks:load", function () {
                             let pairObjid = Math.floor(objid / 10) + objid % 10 * 10;
                             let content = {object_id: pairObjid, content: text};
                             //contentデータ保持
-                            array[pairObjid]=text;
+                            //array[pairObjid]=text;
                             console.log(content);
                             consumer.task.edit(content);
                             flg = !flg;
