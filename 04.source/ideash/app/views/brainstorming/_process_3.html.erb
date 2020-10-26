@@ -12,7 +12,7 @@
           <% group_zero = group %>
           <% next %>
         <% end %>
-        
+
         <div class="group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
           <div class="ui stacked segments group" id="group_id_<%= group_id %>">
             <div class="ui huge transparent input">
@@ -32,13 +32,15 @@
 
     <div class="idea-contents">
       <div class="ideas" id="p3_ideas">
-        <% group_zero['objects'].each { |object_id, content| %>
-          <div class="idea" id="object_id_<%= object_id %>" draggable="true" ondragstart="dragstart_handler(event)">
-            <div class="ui teal large label">
-              <%= content %>
+        <% if group_zero.nil? %>
+          <% group_zero['objects'].each { |object_id, content| %>
+            <div class="idea" id="object_id_<%= object_id %>" draggable="true" ondragstart="dragstart_handler(event)">
+              <div class="ui teal large label">
+                <%= content %>
+              </div>
             </div>
-          </div>
-        <% } %>
+          <% } %>
+        <% end %>
       </div>
 
     </div>
