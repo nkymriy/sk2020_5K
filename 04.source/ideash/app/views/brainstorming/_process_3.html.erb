@@ -32,7 +32,6 @@
 
     <div class="idea-contents">
       <div class="ideas" id="p3_ideas">
-        <% if group_zero.nil? %>
           <% group_zero['objects'].each { |object_id, content| %>
             <div class="idea" id="object_id_<%= object_id %>" draggable="true" ondragstart="dragstart_handler(event)">
               <div class="ui teal large label">
@@ -40,9 +39,7 @@
               </div>
             </div>
           <% } %>
-        <% end %>
       </div>
-
     </div>
   </div>
 </div>
