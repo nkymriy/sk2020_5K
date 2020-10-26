@@ -18,16 +18,17 @@ $(document).on("turbolinks:load", function () {
             },
 
             received(idea_log) {
-                // if (query['mode'] == 'join') {
-                //     var user_id = 'participant_' + query['user_id']
-                //     if ($('#' + user_id).length === 0) {
-                //         $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
-                //     }
-                // }
 
                 let query = idea_log['idea_logs']
                 let val = parseInt(localStorage.getItem('radio_value'));
 
+                //作成時
+                if (query['mode'] == 'join') {
+                    let user_id = 'participant_' + query['user_id']
+                    if ($('#' + user_id).length === 0) {
+                        $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
+                    }
+                }
                 //編集時
                 if (query['mode'] === 'editing') {
                     //IdeaLog.where(is_editing: '1')
@@ -89,13 +90,13 @@ $(document).on("turbolinks:load", function () {
             }
         });
 
-        console.log('1');
-
-
+        let i = 0;
+        console.log($('input:hidden[name="read_' + i + '"]').val());
         let array = {};
         for (let i = 0; i <= 8; i++){
             for (let j = 0; j<=8; j++){
-                array[i * 10 + j] = "";
+                let x = i * 10 + j;
+                array[x] = $('input:hidden[name="read_' + x + '"]').val();
             }
         }
 
