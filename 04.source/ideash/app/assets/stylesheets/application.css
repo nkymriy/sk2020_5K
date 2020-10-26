@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+@import "~fomantic-ui-css/semantic.min.css";
+
 body {
     font-family: 'Roboto', sans-serif;
 }
