@@ -56,13 +56,13 @@ $(document).on("turbolinks:load", function () {
                     let right = String(bigid).slice(-1);
 
                     if (localStorage.getItem('flg') !== '0') {
-                        //document.getElementById(sel_id).value = text;
+                        document.getElementById(sel_id).value = text;
                         if (left == '4' || right == '4' && bigid !== '44' && bigid !== '4') {
                             localStorage.setItem('flg', '0');
                         }
                     } else if (localStorage.getItem('flg') == '0') {
-                        let sel_id2 = first2 + left;
-                        //document.getElementById(sel_id2).value = text;
+                        //let sel_id2 = first2 + left;
+                        document.getElementById(sel_id).value = text;
                         localStorage.setItem('flg', '1');
                     }
                     //メインテーマ,サブテーマを表示させるとこ
@@ -89,8 +89,6 @@ $(document).on("turbolinks:load", function () {
             }
         });
 
-        let i = 0;
-        console.log($('input:hidden[name="read_' + i + '"]').val());
         let array = {};
         for (let i = 0; i <= 8; i++){
             for (let j = 0; j<=8; j++){
