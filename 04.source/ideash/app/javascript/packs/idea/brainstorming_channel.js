@@ -37,7 +37,7 @@ $(document).on("turbolinks:load", function () {
                     var div = $(
                         '<div class="teal card idea none" id="' + id + '">\n' +
                         '      <div class="content">\n' +
-                        idea_text +
+                                    idea_text +
                         '      </div>\n' +
                         '    </div>'
                     );
@@ -48,7 +48,7 @@ $(document).on("turbolinks:load", function () {
                     var p3_div = $(
                         `<div class="idea" id=${object_id} draggable="true" ondragstart="dragstart_handler(event)">\n` +
                         '       <div class="ui teal large label">\n' +
-                        idea_text +
+                                    idea_text +
                         '       </div>\n' +
                         '</div>'
                     );
@@ -99,7 +99,7 @@ $(document).on("turbolinks:load", function () {
                         var div = $(
                             `<div class="idea" id=${object_id} draggable="true" ondragstart="dragstart_handler(event)">\n` +
                             '       <div class="ui teal large label">\n' +
-                            query['system']['option']['content'] +
+                                        query['system']['option']['content'] +
                             '       </div>\n' +
                             '</div>'
                         );
@@ -181,8 +181,8 @@ $(document).on("turbolinks:load", function () {
                 var content = {
                     content: {
                         object_id: event.target.lastChild.id.replace(/[^0-9]/g, ''),
-                        content: event.target.lastChild.innerText,
-                        group_id: event.target.id.replace(/[^0-9]/g, '')
+                        group_id: event.target.id.replace(/[^0-9]/g, ''),
+                        content: event.target.lastChild.innerText
                     }
                 }
                 consumer.task.grouping(content);
