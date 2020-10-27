@@ -109,8 +109,7 @@ $(document).on("turbolinks:load", function () {
                     //テキストボックスにフォーカス時
                     .focusin(function (event) {
                         //入力中にミニマップと矢印で移動できないように
-                        let inputElement = $('input[name="hoge"]');
-                        inputElement.prop('disabled', true);
+                        $('#radio-btn').addClass('btn-invalid');
                         $('#to-up-button').addClass('btn-invalid');
                         $('#to-left-button').addClass('btn-invalid');
                         $('#to-right-button').addClass('btn-invalid');
@@ -150,12 +149,11 @@ $(document).on("turbolinks:load", function () {
                             flg = !flg;
                         }
                         //入力中にミニマップと矢印で移動できないようにを解除
+                        $('#radio-btn').removeClass('btn-invalid');
                         $('#to-up-button').removeClass('btn-invalid');
                         $('#to-left-button').removeClass('btn-invalid');
                         $('#to-right-button').removeClass('btn-invalid');
                         $('#to-down-button').removeClass('btn-invalid');
-                        let inputElement = $('input[name="hoge"]');
-                        inputElement.prop('disabled', false);
                         console.log('focusout');
                     });
             }
