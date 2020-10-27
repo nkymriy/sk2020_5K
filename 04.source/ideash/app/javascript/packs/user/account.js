@@ -11,7 +11,7 @@ $(function(){
                 showProgress: 'bottom',
                 classProgress: 'blue'
             });
-    }else if (is_updated === false){
+    }else if (!is_updated){
         $('body')
             .toast({
                 title: 'FAILURE',
