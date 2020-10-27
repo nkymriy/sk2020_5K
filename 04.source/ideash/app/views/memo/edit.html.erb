@@ -12,15 +12,15 @@
 
       <div class="fields">
         <div class="sixteen wide field">
-          <label>タイトル</label>
-          <%= f.text_field :idea_name, placeholder: "メモに名前をつけてください", class: 'field', :required => true %>
+          <label for="memo-title">タイトル</label>
+          <%= f.text_field :idea_name, placeholder: "メモに名前をつけてください", class: 'field',:required => true, id: 'memo-title' %>
         </div>
       </div>
       <div class="fields">
         <%= f.hidden_field :idea_category_id, :value => 1 %>
         <div class="sixteen wide field">
-          <label>内容</label>
-          <%= f.text_area :idea_description, placeholder: "メモを書きましょう", :required => true %>
+          <label for="memo-contents">内容</label>
+          <%= f.text_area :idea_description, placeholder: "メモを書きましょう", :required => true, id: 'memo-contents'%>
         </div>
       </div>
       <%= f.submit '更新', class: "ui black button" %>

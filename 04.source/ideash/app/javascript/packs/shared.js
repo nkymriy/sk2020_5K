@@ -45,5 +45,9 @@ function window_load() {
         if (idea_card != null) {
             idea_card.classList.replace('two', 'four');
         }
+
+        $('#home_body').fadeIn(500);
+
+
     }
 }
