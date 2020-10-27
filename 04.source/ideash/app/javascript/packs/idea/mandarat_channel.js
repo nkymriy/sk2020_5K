@@ -122,12 +122,15 @@ $(document).on("turbolinks:load", function () {
         $(function () {
             for (let i = 0; i <= 8; i++) {
                 let flg = false;
-                let inputElement = $('input[name="hoge"]');
                 $('#zoom_' + i)
                     //テキストボックスにフォーカス時
                     .focusin(function (event) {
+                        let inputElement = $('input[name="hoge"]');
                         inputElement.prop('disabled', true);
-                        //$('#to-up-button').addClass('btn-invalid');
+                        $('#to-up-button').addClass('btn-invalid');
+                        $('#to-left-button').addClass('btn-invalid');
+                        $('#to-right-button').addClass('btn-invalid');
+                        $('#to-down-button').addClass('btn-invalid');
                         let val = parseInt(localStorage.getItem('radio_value'));
                         let objid = val + i;
                         let content = {object_id: objid};
@@ -161,14 +164,12 @@ $(document).on("turbolinks:load", function () {
                     })
                     //テキストボックスからフォーカス外したとき
                     .focusout(function (event) {
-                        // let inputElement = $('input[name="hoge"]');
-                        // inputElement.prop('disabled', false);
+                        let inputElement = $('input[name="hoge"]');
+                        inputElement.prop('disabled', false);
                         let val = parseInt(localStorage.getItem('radio_value'));
                         let text = event.delegateTarget.value;
                         let objid = val + i;
                         let content = {object_id: objid, content: text};
-                        //contentデータ保持
-                        //array[objid]=text;
                         console.log(content);
                         consumer.task.edit(content);
                         if (flg) {
@@ -188,7 +189,10 @@ $(document).on("turbolinks:load", function () {
                             consumer.task.edit(content);
                             flg = !flg;
                         }
-                        //$('#to-up-button').removeClass('btn-invalid');
+                        $('#to-up-button').removeClass('btn-invalid');
+                        $('#to-left-button').removeClass('btn-invalid');
+                        $('#to-right-button').removeClass('btn-invalid');
+                        $('#to-down-button').removeClass('btn-invalid');
                         console.log('focusout');
                     });
             }
