@@ -7,45 +7,44 @@ body {
 }
 
 /*home*/
-.block-memo {
-  position: absolute;
-  height: 95%;
-  width: 68%;
-  left: 16%;
-  right: 16%;
-  top: 5%;
-  background-color: #E5E5E5;
+
+.home_center{
+  background-color: #2E2F30;
+  height: 90vh;
+  width: 80%;
+  float: left;
+}
+.ideash_explain{
+  background-color: #666666;
+  height: 70%;
+}
+.text_content{
+  background-color: #1B1C1D;
+  height: 10%;
+}
+.advertisement{
+  background-color: #666666;
+  height: 20%;
 }
 
-.block-center {
-  text-align: center;
+.home_right{
+  height: 90vh;
+  width: 18%;
+  float: left;
+  margin-left: 1vw;
 }
-
-/* 2 */
-.memo-contents {
-  width: fit-content;
-  margin: 5% 27%;
+.release_info{
+  background-color: #666666;
+  height: 40%;
 }
-
-/* 3 */
-.about-contents {
-  border: #1b1e21 1px solid;
-  margin: 10% 30%;
-  padding-bottom: 5%;
+.twitter_window{
+  height: 40%;
 }
-
-.about-text {
-  font-weight: normal;
+.twitter-timeline{
+  width:100%;
+  height:100%;
 }
-
-.about-image {
-}
-
-/* 4 */
-.memo-content {
-}
-
-/* 5 */
-.save-contents {
-  margin-top: 5%;
+.about_us{
+  background-color: #666666;
+  height: 20%;
 }
