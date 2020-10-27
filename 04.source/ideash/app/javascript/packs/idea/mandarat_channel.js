@@ -35,10 +35,7 @@ $(document).on("turbolinks:load", function () {
                     let first = '.t';
                     let sel_num = +parseInt(query["editing"]["object_id"]) - val;
                     let sel_class = first + sel_num;
-                    //console.log (sel_class);
-
                     $(sel_class).css('background-color', '#C0C0C0');
-                    //console.log("focusin");
                 }
                 //確定時
                 else if (query['mode'] === 'edit') {
@@ -54,26 +51,12 @@ $(document).on("turbolinks:load", function () {
                     let sel_id = first2 + minid;
                     $(sel_class).css('background-color', '#FFFFFF');
                     $('#' + bigid).text(text);
-                    array[bigid]=text;
-                    if(minid>=0 && minid<=8){
+                    array[bigid] = text;
+                    if (minid >= 0 && minid <= 8) {
                         document.getElementById(sel_id).value = text;
                         console.log("表示");
                     }
-                    // if (localStorage.getItem('flg') == '1') {
-                    //     if(parseInt(localStorage.getItem('radio_value'))===val){
-                    //         document.getElementById(sel_id).value = text;
-                    //     }
-                    //     array[bigid]=text;
-                    //     console.log("１回目");
-                    //     if (((Math.floor(bigid / 10) === 4) || (bigid % 10 === 4)) && bigid !== 44){
-                    //         localStorage.setItem('flg', '0');
-                    //     }
-                    // } else if (localStorage.getItem('flg') == '0') {
-                    //     //document.getElementById(sel_id).value = text;
-                    //     array[bigid]=text;
-                    //     console.log("２回目");
-                    //     localStorage.setItem('flg', '1');
-                    // }
+
                     let left = String(bigid).slice(0, 1);
                     let right = String(bigid).slice(-1);
                     //メインテーマ,サブテーマを表示させるとこ
@@ -86,7 +69,6 @@ $(document).on("turbolinks:load", function () {
                     } else if (bigid % 10 == 4) {
                         $('#theme' + left).text(text);
                     }
-                    //console.log("focusout");
                 }
             },
 
@@ -100,10 +82,11 @@ $(document).on("turbolinks:load", function () {
             }
         });
 
-        localStorage.setItem('flg','1');
+        //初回読み込み時の処理
+        localStorage.setItem('flg', '1');
         let array = {};
-        for (let i = 0; i <= 8; i++){
-            for (let j = 0; j<=8; j++){
+        for (let i = 0; i <= 8; i++) {
+            for (let j = 0; j <= 8; j++) {
                 let x = i * 10 + j;
                 let text = $('input:hidden[name="read_' + x + '"]').val();
                 array[x] = text;
@@ -149,20 +132,7 @@ $(document).on("turbolinks:load", function () {
                             consumer.task.editing(content)
                             flg = !flg;
                         }
-                        // let left = String(objid).slice(0,1);
-                        // let right = String(objid).slice(-1);
-                        // if((left=='4'||right=='4')&& objid !== 44) {
-                        //     let turnnum = right + left;
-                        //     if(objid==40) { turnnum = 4 }
-                        //     else if(objid==4) { turnnum = 40 }
-                        //     turnnum = parseInt(turnnum);
-                        //     content = { object_id: turnnum };
-                        //     console.log(content);
-                        //     consumer.task.editing(content);
-                        //     flg = !flg;
-                        // }
                         console.log('focusin');
-                        //console.log('in'+flg);
                     })
                     //テキストボックスからフォーカス外したとき
                     .focusout(function (event) {
@@ -173,18 +143,8 @@ $(document).on("turbolinks:load", function () {
                         console.log(content);
                         consumer.task.edit(content);
                         if (flg) {
-                            // let left = String(val + i).slice(0, 1);
-                            // let right = String(val + i).slice(-1);
-                            // let objid = right + left;
-                            // if (objid.length == '1') {
-                            //     objid = i
-                            // }
-                            // objid = parseInt(objid);
-
                             let pairObjid = Math.floor(objid / 10) + objid % 10 * 10;
                             let content = {object_id: pairObjid, content: text};
-                            //contentデータ保持
-                            //array[pairObjid]=text;
                             console.log(content);
                             consumer.task.edit(content);
                             flg = !flg;
@@ -205,18 +165,9 @@ $(document).on("turbolinks:load", function () {
         $('input:radio[name="hoge"]').change(function () {
             const value = $('input:radio[name="hoge"]:checked').val();
             console.log(array);
-            // for (let i = 0; i < array.length; i++) {
-            //     if (String(array[i][0]).length == '1') {
-            //         document.getElementById('zoom_' + array[i][0]).value = array[i][1];
-            //     } else if (String(array [i][0]).slice(0, 1) == valueleft) {
-            //         let valueright = String(array[i][0]).slice(-1);
-            //         //$('#zoom_'+valueright).text(array[i][1]);
-            //         document.getElementById('zoom_' + valueright).value = array[i][1];
-            //     }
-            // }
             //初期化と連想配列内の値表示
-            for (let i = 0; i < 9; i++){
-                let aryid = parseInt(value)+i;
+            for (let i = 0; i < 9; i++) {
+                let aryid = parseInt(value) + i;
                 document.getElementById('zoom_' + i).value = '';
                 document.getElementById('zoom_' + i).value = array[aryid];
             }
