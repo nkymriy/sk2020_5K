@@ -74,11 +74,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def profile_update
     current_user.assign_attributes(account_update_params)
-    if current_user.save
-      redirect_to profile_edit_path
-    else
-      render "ideas/account"
-    end
+    @is_updated = current_user.save
+    render('ideas/account')
   end
 
   protected
