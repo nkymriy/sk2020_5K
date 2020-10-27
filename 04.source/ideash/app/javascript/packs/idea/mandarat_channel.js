@@ -48,30 +48,34 @@ $(document).on("turbolinks:load", function () {
                     let bigid = query["edit"]["object_id"];
                     let minid = bigid - val;
                     console.log(bigid);
+                    console.log(val);
                     console.log(minid);
                     let sel_class = first1 + minid;
                     let sel_id = first2 + minid;
                     $(sel_class).css('background-color', '#FFFFFF');
                     $('#' + bigid).text(text);
-
+                    array[bigid]=text;
+                    if(minid>=0 && minid<=8){
+                        document.getElementById(sel_id).value = text;
+                        console.log("表示");
+                    }
+                    // if (localStorage.getItem('flg') == '1') {
+                    //     if(parseInt(localStorage.getItem('radio_value'))===val){
+                    //         document.getElementById(sel_id).value = text;
+                    //     }
+                    //     array[bigid]=text;
+                    //     console.log("１回目");
+                    //     if (((Math.floor(bigid / 10) === 4) || (bigid % 10 === 4)) && bigid !== 44){
+                    //         localStorage.setItem('flg', '0');
+                    //     }
+                    // } else if (localStorage.getItem('flg') == '0') {
+                    //     //document.getElementById(sel_id).value = text;
+                    //     array[bigid]=text;
+                    //     console.log("２回目");
+                    //     localStorage.setItem('flg', '1');
+                    // }
                     let left = String(bigid).slice(0, 1);
                     let right = String(bigid).slice(-1);
-
-                    if (localStorage.getItem('flg') !== '0') {
-                        document.getElementById(sel_id).value = text;
-                        array[bigid]=text;
-                        console.log("１回目");
-                        // if (left == '4' || right == '4' && bigid !== '44' && bigid !== '4') {
-                        if (((Math.floor(bigid / 10) === 4) || (bigid % 10 === 4)) && bigid !== 44){
-                            localStorage.setItem('flg', '0');
-                        }
-                    } else if (localStorage.getItem('flg') == '0') {
-                        //let sel_id2 = first2 + left;
-                        //document.getElementById(sel_id).value = text;
-                        array[bigid]=text;
-                        console.log("２回目");
-                        localStorage.setItem('flg', '1');
-                    }
                     //メインテーマ,サブテーマを表示させるとこ
                     if (bigid == '44') {
                         $('#main').text(text);
@@ -118,9 +122,12 @@ $(document).on("turbolinks:load", function () {
         $(function () {
             for (let i = 0; i <= 8; i++) {
                 let flg = false;
+                let inputElement = $('input[name="hoge"]');
                 $('#zoom_' + i)
                     //テキストボックスにフォーカス時
                     .focusin(function (event) {
+                        inputElement.prop('disabled', true);
+                        //$('#to-up-button').addClass('btn-invalid');
                         let val = parseInt(localStorage.getItem('radio_value'));
                         let objid = val + i;
                         let content = {object_id: objid};
@@ -154,6 +161,8 @@ $(document).on("turbolinks:load", function () {
                     })
                     //テキストボックスからフォーカス外したとき
                     .focusout(function (event) {
+                        // let inputElement = $('input[name="hoge"]');
+                        // inputElement.prop('disabled', false);
                         let val = parseInt(localStorage.getItem('radio_value'));
                         let text = event.delegateTarget.value;
                         let objid = val + i;
@@ -179,6 +188,7 @@ $(document).on("turbolinks:load", function () {
                             consumer.task.edit(content);
                             flg = !flg;
                         }
+                        //$('#to-up-button').removeClass('btn-invalid');
                         console.log('focusout');
                     });
             }
@@ -217,6 +227,7 @@ $(document).on("turbolinks:load", function () {
             function upbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) - 30;
                 if (radioval >= 0) {
+                    console.log("変えるよ")
                     $('input[value=' + radioval + ']').prop('checked', true).change();
                 }
             }
