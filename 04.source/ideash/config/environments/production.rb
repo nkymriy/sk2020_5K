@@ -27,7 +27,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -134,4 +134,19 @@ Rails.application.configure do
       authentication: :login,
       :enable_starttls_auto => true
   }
+
+  #Assetsの事前コンパイル
+  # コンパイル済みアセットを圧縮するかどうかを指定。圧縮することで、データ容量を減らし、高速化をする
+  config.assets.compress = true
+
+  # JavaScriptの圧縮に使用するプログラムを定義。:uglifierが最も圧縮率が高い
+  # config.assets.js_compressor = :uglifier
+
+  # CSSの圧縮に使用するプログラムを定義
+  config.assets.css_compressor = :scss
+
+  # 動的なSprocketsコンパイルをするかどうかを指定
+  # config.assets.compile = false
+
+  config.assets.debug = false
 end

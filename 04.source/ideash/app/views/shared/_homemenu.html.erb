@@ -1,3 +1,4 @@
+<% cache do %>
 <%# サイドバー %>
 <div class="ui left fixed vertical inverted menu" id="home_menu">
   <div class="item">
@@ -11,8 +12,8 @@
   </div>
   <%= link_to "履歴", idea_history_path, class: "item home-menu" %>
   <%= link_to "アカウント", profile_edit_path, class: "item home-menu" %>
-  <%= link_to "サインアウト", account_signout_path, class: "item home-menu" %>
   <small class="copyright">© 2020 by KUGATech team 5K</small>
 </div>
 <%# レスポンシブ対応 %>
 <%= javascript_pack_tag 'shared', 'data-turbolinks-track': 'reload' %>
+<% end %>

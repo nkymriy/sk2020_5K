@@ -1,4 +1,5 @@
 <!-- デバッグメニュー -->
+<%=javascript_pack_tag 'shared/_debug_menu' %>
 <div class="ui modal" id="debug-modal-window">
   <div class="ui segments">
     <div class="ui segment">
@@ -39,15 +40,3 @@
     </div>
   </div>
 </div>
-
-<script>
-    $('body').keydown(function (e) {
-        // alert(JSON.stringify(e.keyCode))
-        // Shift + d を入力するとデバッグメニューを表示する
-        if (e.shiftKey) {
-            if (e.keyCode === 68) {
-                $('#debug-modal-window').modal('show');
-            }
-        }
-    });
-</script>
