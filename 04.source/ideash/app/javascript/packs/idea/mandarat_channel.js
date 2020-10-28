@@ -23,7 +23,7 @@ $(document).on("turbolinks:load", function () {
                 let val = parseInt(localStorage.getItem('radio_value'));
 
                 //作成時
-                if (query['mode'] == 'join') {
+                if (query['mode'] === 'join') {
                     let user_id = 'participant_' + query['user_id']
                     if ($('#' + user_id).length === 0) {
                         $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
@@ -60,15 +60,35 @@ $(document).on("turbolinks:load", function () {
                     let left = String(bigid).slice(0, 1);
                     let right = String(bigid).slice(-1);
                     //メインテーマ,サブテーマを表示させるとこ
-                    if (bigid == '44') {
+                    if (bigid === '44') {
                         $('#main').text(text);
-                    } else if (bigid == '4') {
+                    } else if (bigid === '4') {
                         $('#theme0').text(text);
-                    } else if (left == '4') {
+                    } else if (left === '4') {
                         $('#theme' + right).text(text);
-                    } else if (bigid % 10 == 4) {
+                    } else if (bigid % 10 === 4) {
                         $('#theme' + left).text(text);
                     }
+                }
+                else if (query['mode'] === 'chat') {
+                    var user_id = 'chatuser_' + query['user_id']
+                    var user_name = escapeHTML(query['chat']['user_name'])
+                    var chat_text = escapeHTML(query['chat']['content']);
+                    var chat_div;
+                    if ($('#user_id').val() === query['user_id']) {
+                        chat_div = `<div class="ui right pointing label chat_message">${chat_text}</div>`
+                    } else {
+                        chat_div = `<div class="ui left pointing label chat_message">${chat_text}</div>`
+                    }
+                    if (user_id != $('.chat_content').first().attr('name')) {
+                        $('.chat_contents').first().prepend(`
+                        <div class="chat_content" name="chatuser_${query['user_id']}">
+                            <h6 class="chat_username">${user_name}</h6>
+                        </div>
+                    `)
+                    }
+                    $('.chat_username').first().after(chat_div)
+
                 }
             },
 
@@ -79,6 +99,11 @@ $(document).on("turbolinks:load", function () {
             edit: function (content) {
                 return this.perform('edit',
                     content);
+            },
+            chat: function (idea_log) {
+                return this.perform('chat_send',
+                    idea_log
+                );
             }
         });
 
@@ -91,11 +116,9 @@ $(document).on("turbolinks:load", function () {
                 let text = $('input:hidden[name="read_' + x + '"]').val();
                 array[x] = text;
                 $('#' + x).text(text);
-                if (x == '44') {
+                if (x === 44) {
                     $('#main').text(text);
-                } else if (x == '4') {
-                    $('#theme0').text(text);
-                } else if (j == '4') {
+                } else if (i === 4) {
                     $('#theme' + j).text(text);
                 }
             }
@@ -210,6 +233,21 @@ $(document).on("turbolinks:load", function () {
             }
         });
 
+        //チャット
+        $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
+            if (event.keyCode === 13) {
+                if (!event.target.value.match(/\S/g)) return false
+                let content = {
+                    content: event.target.value
+                };
+                if (event.target.id === 'idea_chat') {
+                    consumer.task.chat(content);
+                }
+                event.target.value = '';
+                return event.preventDefault();
+            }
+        });
+
         //全体面とズーム画面の切替
         $('#process_1').hide()
         $(function () {
@@ -233,3 +271,8 @@ $(document).on("turbolinks:load", function () {
         }
     }
 });
+
+// NOTE: エスケープ処理
+const escapeHTML = function (val) {
+    return $('<div />').text(val).html();
+};

@@ -1,4 +1,4 @@
-$(document).on("turbolinks:load", function () {
+$(function () {
     require('jquery-ui/ui/widgets/draggable')
     $('.chat').draggable();
 
@@ -13,7 +13,7 @@ $(document).on("turbolinks:load", function () {
         return ret;
     }
 
-    const showClock2 = function(){
+    const showClock2 = function () {
         var nowTime = new Date();
         var nowHour = set2fig(nowTime.getHours());
         var nowMin = set2fig(nowTime.getMinutes());
@@ -25,9 +25,6 @@ $(document).on("turbolinks:load", function () {
             document.getElementById("RealtimeClockArea2").innerHTML = msg;
         }
     }
-    console.log("test:1")
-    if ($(".brainstorming.edit").length > 0) {
-        console.log("test:2")
-        let timerId = setInterval(showClock2, 1000);
-    }
+    let timerId = setInterval(showClock2, 1000);
+
 });
