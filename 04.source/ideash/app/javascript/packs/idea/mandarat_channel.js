@@ -44,9 +44,6 @@ $(document).on("turbolinks:load", function () {
                     let first2 = 'zoom_';
                     let bigid = query["edit"]["object_id"];
                     let minid = bigid - val;
-                    console.log(bigid);
-                    console.log(val);
-                    console.log(minid);
                     let sel_class = first1 + minid;
                     let sel_id = first2 + minid;
                     $(sel_class).css('background-color', '#FFFFFF');
@@ -54,9 +51,8 @@ $(document).on("turbolinks:load", function () {
                     array[bigid] = text;
                     if (minid >= 0 && minid <= 8) {
                         document.getElementById(sel_id).value = text;
-                        console.log("表示");
-                    }
 
+                    }
                     let left = String(bigid).slice(0, 1);
                     let right = String(bigid).slice(-1);
                     //メインテーマ,サブテーマを表示させるとこ
@@ -69,8 +65,7 @@ $(document).on("turbolinks:load", function () {
                     } else if (bigid % 10 === 4) {
                         $('#theme' + left).text(text);
                     }
-                }
-                else if (query['mode'] === 'chat') {
+                } else if (query['mode'] === 'chat') {
                     var user_id = 'chatuser_' + query['user_id']
                     var user_name = escapeHTML(query['chat']['user_name'])
                     var chat_text = escapeHTML(query['chat']['content']);
@@ -88,7 +83,6 @@ $(document).on("turbolinks:load", function () {
                     `)
                     }
                     $('.chat_username').first().after(chat_div)
-
                 }
             },
 
@@ -137,24 +131,18 @@ $(document).on("turbolinks:load", function () {
                         $('#to-left-button').addClass('btn-invalid');
                         $('#to-right-button').addClass('btn-invalid');
                         $('#to-down-button').addClass('btn-invalid');
-
                         let val = parseInt(localStorage.getItem('radio_value'));
                         let objid = val + i;
                         let content = {object_id: objid};
-                        console.log(content);
                         consumer.task.editing(content);
-
                         //上か下一桁が4
                         if (((Math.floor(objid / 10) === 4) || (objid % 10 === 4)) && objid !== 44) {
                             //値の1桁目と2桁目を入れ替える
                             let pairObjid = Math.floor(objid / 10) + objid % 10 * 10;
                             content = {object_id: pairObjid};
-                            console.log(objid !== 44);
-                            console.log(content);
                             consumer.task.editing(content)
                             flg = !flg;
                         }
-                        console.log('focusin');
                     })
                     //テキストボックスからフォーカス外したとき
                     .focusout(function (event) {
@@ -162,12 +150,10 @@ $(document).on("turbolinks:load", function () {
                         let text = event.delegateTarget.value;
                         let objid = val + i;
                         let content = {object_id: objid, content: text};
-                        console.log(content);
                         consumer.task.edit(content);
                         if (flg) {
                             let pairObjid = Math.floor(objid / 10) + objid % 10 * 10;
                             let content = {object_id: pairObjid, content: text};
-                            console.log(content);
                             consumer.task.edit(content);
                             flg = !flg;
                         }
@@ -177,7 +163,6 @@ $(document).on("turbolinks:load", function () {
                         $('#to-left-button').removeClass('btn-invalid');
                         $('#to-right-button').removeClass('btn-invalid');
                         $('#to-down-button').removeClass('btn-invalid');
-                        console.log('focusout');
                     });
             }
         });
@@ -185,7 +170,6 @@ $(document).on("turbolinks:load", function () {
         //左上のミニマップ選択された後
         $('input:radio[name="hoge"]').change(function () {
             const value = $('input:radio[name="hoge"]:checked').val();
-            console.log(array);
             //初期化と連想配列内の値表示
             for (let i = 0; i < 9; i++) {
                 let aryid = parseInt(value) + i;
@@ -202,7 +186,6 @@ $(document).on("turbolinks:load", function () {
             $('#to-left-button').on('click', leftbtn);
             $('#to-right-button').on('click', rightbtn);
             $('#to-down-button').on('click', downbtn);
-
             function upbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) - 30;
                 if (radioval >= 0) {
@@ -258,13 +241,11 @@ $(document).on("turbolinks:load", function () {
                 $('#process_2').hide()
                 $('#process_1').show()
             }
-
             function zoomview() {
                 $('#process_1').hide()
                 $('#process_2').show()
             }
         });
-
     } else {
         if (consumer.task) {
             consumer.task.unsubscribe()
