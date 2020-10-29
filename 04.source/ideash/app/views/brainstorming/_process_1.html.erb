@@ -1,5 +1,5 @@
 <%# ブレインストーミング　手順１　アイデア出し %>
-<div class="home_body wide_margin" id="edit_body">
+<div class="home_body wide_margin">
   <h3 class="theme">テーマ: <%= idea.idea_name %></h3>
   <div class="post_idea">
     <form name="brainstorming_process1_form" onsubmit="return false;">
@@ -13,19 +13,14 @@
     </form>
   </div>
   <div class="ui four cards process1_ideas" id="ideas">
-    <%#= idea_logs.inspect %>
     <% for content in idea_logs.reverse do %>
       <% if content.query['mode'] == 'add' %>
-      <div class="teal card idea" id="">
-        <div class="content">
-          <%= content.query["add"]["content"] %>
+        <div class="teal card idea" id="">
+          <div class="content">
+            <%= content.query["add"]["content"] %>
+          </div>
         </div>
-      </div>
       <% end %>
     <% end %>
   </div>
 </div>
-
-<script>
-    localStorage.setItem('card_id', 0);
-</script>
