@@ -1,7 +1,58 @@
 <%= render :partial => 'shared/header' %>
 <%= render :partial => 'shared/editmenu', locals: {users: @idea_users} %>
 <span class="websocket" id="idea_logs" data-idea_id="<%= @idea.id %>"></span>
-<%= render :partial => 'brainstorming/process_1', locals: {idea: @idea, idea_logs: @idea_logs} %>
+<div id="edit_body">
+  <input type="button" value="アイデア出し/グルーピング切り替え" onclick="changeBtn()"/>
+  <div id="process_1"><%= render :partial => 'brainstorming/process_1', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
+  <div id="process_3"><%= render :partial => 'brainstorming/process_3', locals: {idea: @idea, idea_logs: @idea_logs, grouping_contents: @grouping_contents} %></div>
+</div>
+<script>
+    <% res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{@idea.id}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 3")%>
+    var is_process1 =
+    <%= res[0]['is_active'] %>
+    var is_process2 =
+    <%= res[1]['is_active'] %>
+    var is_process3 =
+    <%= res[2]['is_active'] %>
+
+    if (!is_process1) {
+        $('#process_3').hide()
+    } else if (!is_process2) {
+        $('#process_3').hide()
+        $('#idea_add').prop('disabled', true)
+    } else {
+        $('#process_1').hide()
+        $('#process_3').show()
+    }
+
+    function changeBtn() {
+        $('#process_1').toggle();
+        $('#process_3').toggle();
+    }
+
+    function dragstart_handler(ev) {
+        // 対象となる要素の id を DataTransfer オブジェクトに追加する
+        ev.dataTransfer.setData("application/my-app", ev.target.id);
+        ev.dataTransfer.dropEffect = "move";
+    }
+
+    function dragover_handler(ev) {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = "move"
+    }
+
+    function drop_handler(ev) {
+        console.log("ドロップした先のgroup_id: " + ev.target.id)
+        if (ev.target.id.indexOf('group_id') === 0) {
+            ev.preventDefault();
+            // 移動された要素の id を取得して、その要素を target の DOM に追加する
+            const data = ev.dataTransfer.getData("application/my-app");
+            ev.target.appendChild(document.getElementById(data));
+            console.log("ドラッグしたアイデアのobject_id:" + data)
+        }
+    }
+</script>
+
 <%# JSが書かれているため最後に書くこと %>
 <%= render :partial => 'shared/homemenu' %>
 <%= javascript_pack_tag "idea/brainstorming_channel" %>

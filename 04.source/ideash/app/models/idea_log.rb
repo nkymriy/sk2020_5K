@@ -34,7 +34,8 @@ class IdeaLog < ApplicationRecord
                   'group',
                   'chat',
                   'join',
-                  'editing'
+                  'editing',
+                  'system'
               ]
           },
           add: {
@@ -157,9 +158,63 @@ class IdeaLog < ApplicationRecord
                   },
               },
           },
+          system: {
+              type: 'object',
+              additionalProperties: false,
+              required: [
+                  'operation',
+                  'option'
+              ],
+              properties: {
+                  operation: {
+                      type: 'string'
+                  },
+                  option: {
+                      type: 'string'
+                  },
+              },
+          },
       },
   }.freeze
 
   validates :query, json: {schema: QUERY_SCHEMA}
   after_create_commit { IdealogBroadcastJob.perform_later self }
+
+  def self.get_group_object_id(idea_id)
+    add_contents = {}
+    group_contents = {}
+    grouping_contents = {}
+    add_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'add'")
+    group_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'group'")
+    grouping_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'grouping'")
+
+    add_res.select do |a_res|
+      add_contents.merge!(JSON.parse(a_res['query'])['add']['object_id'] => JSON.parse(a_res['query'])['add']['content'])
+    end
+
+    group_res.select do |g_res|
+      group_contents.merge!(JSON.parse(g_res['query'])['group']['group_id'] => JSON.parse(g_res['query'])['group']['name'])
+      grouping_contents.store(JSON.parse(g_res['query'])['group']['group_id'], {})
+      grouping_contents[JSON.parse(g_res['query'])['group']['group_id']].store('name', group_contents[JSON.parse(g_res['query'])['group']['group_id']])
+      grouping_contents[JSON.parse(g_res['query'])['group']['group_id']].store('objects', {})
+    end
+
+    grouping_res.select do |g_res|
+      grouping_contents[JSON.parse(g_res['query'])['grouping']['group_id']]['objects'].store(JSON.parse(g_res['query'])['grouping']['object_id'], add_contents[JSON.parse(g_res['query'])['grouping']['object_id']])
+    end
+
+    return grouping_contents
+
+    # NOTE: grouping_contentの形式
+    # grouping_content = {
+    #     group_id: {
+    #         'name': 'hoge',
+    #         'objects': {
+    #             object_id: 'content',
+    #             object_id: 'content',
+    #             object_id: 'content',
+    #         },
+    #     },
+    # }
+  end
 end
