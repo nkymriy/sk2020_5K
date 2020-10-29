@@ -38,7 +38,6 @@ class IdeaChannel < ApplicationCable::Channel
   end
 
   def pause()
-    p Time.now
     res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 4")
 
     # TODO: ループを利用したコードへの短縮が可能に見えるので、余裕ができたら短縮を試みる
