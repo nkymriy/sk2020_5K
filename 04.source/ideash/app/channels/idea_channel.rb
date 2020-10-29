@@ -27,19 +27,11 @@ class IdeaChannel < ApplicationCable::Channel
   end
 
   def editing(data)
-    p "-------------"
-    p data["object_id"]
-    p "-------------"
     IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'editing', 'editing': {'object_id': data["object_id"], 'is_editing': 1}, 'time': DateTime.now}
   end
 
   def edit(data)
-    p "-------------"
-    p data["object_id"]
-    p data["content"]
-    p "-------------"
     IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'edit', 'edit': {'object_id': data["object_id"], 'content': data["content"]}, 'time': DateTime.now}
-    # is_editingを0にする
   end
   def chat_send(data)
     if (current_user.user_name != nil)

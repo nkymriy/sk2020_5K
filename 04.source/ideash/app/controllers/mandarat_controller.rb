@@ -8,11 +8,6 @@ class MandaratController < ApplicationController
     @idea = Idea.find_by(id: params[:id])
     @idea_logs = @idea.idea_logs
     @idea_users = @idea.user
-    p'----------------'
-    p @idea
-    p @idea_logs
-    p @idea_users
-    p'----------------'
     # 既に登録されているかどうか
     is_added_user = @idea_users.where(id: current_user.id).exists?
     unless is_added_user
@@ -26,8 +21,8 @@ class MandaratController < ApplicationController
       p user_idea.save
     end
   end
+
   def create
-    p params
     user = User.find_by(id: current_user.id)
     new_idea = user.idea.new do |idea|
       idea.idea_category_id = 3
@@ -37,7 +32,6 @@ class MandaratController < ApplicationController
       logger.debug "create new idea: #{new_idea.inspect}"
       redirect_to idea_mandarat_edit_url(id: new_idea.id)
     else
-
     end
   end
 end
