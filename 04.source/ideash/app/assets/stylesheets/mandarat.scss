@@ -1,0 +1,158 @@
+// Place all the styles related to the Ideas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+/*shared*/
+.mandarat-shared{
+  height: 90vh;
+  width: 25%;
+  margin-top: 4%;
+  margin-left: 5%;
+  //background-color: #1B1C1D;
+  //border: #1B1C1D 1px solid;
+  float: left;
+}
+
+#to_while_link{
+  //margin: auto;
+}
+
+#to_while_link .content{
+  color: grey !important;
+}
+
+.current-location-area{
+  margin-top: 13%;
+}
+
+.current-location-area table{
+  border-collapse: collapse;
+  //margin: auto;
+}
+
+.current-location-area td{
+  //padding: 18px;
+  width: 35px;
+  height: 38px;
+  padding: 0;
+  border: solid 1px black;
+  background-color: white;
+}
+
+.current-location-area .radiobutton {
+  display: none;
+  width: 35px;
+  height: 35px;
+}
+
+.current-location-area label {
+  background-color: white;
+  padding: 10px 18px 11px 18px;
+  width: 0px;
+  height: 0px;
+
+}
+
+.current-location-area .radiobutton:checked + label {
+  background-color: #26AEAF;
+}
+
+.themes-area{
+  margin-top: 15%;
+  //background-color: #666666;
+  height: 75%;
+  width: 90%;
+}
+
+.themes-area .active{
+  margin-bottom: 4px;
+}
+
+
+/*main*/
+.mandarat-main{
+  margin-top: 4%;
+  height: 90vh;
+  width: 70%;
+  float: left;
+}
+
+.to-up-area ,.to-down-area{
+  height: 56px;
+  width: calc(80% + 122px);
+}
+
+.to-left-area ,.to-right-area{
+  height: 69vh;
+  width: 56px;
+  float: left;
+  padding-top: 31vh;
+}
+
+.to-down-area{
+  margin-top:69vh;
+}
+
+#to-up-button ,#to-down-button{
+  width: fit-content;
+  margin: auto;
+}
+
+#to-left-button ,#to-right-button{
+  height: fit-content;
+}
+
+.to-left-area{
+  margin-right: 10px !important;
+}
+
+.mandarat-blocks{
+  height: 69vh;
+  width: 80%;
+  float: left;
+}
+
+.mandarat-blocks table{
+  border-collapse: collapse;
+}
+
+.mandarat-blocks td{
+  width: 20vw;
+  height: 23vh !important;
+  border: solid 1px black;
+  background-color: white;
+  padding: 3%;
+}
+
+.mandarat-blocks .off{
+  background-color: #DADADA;
+}
+
+/*main2*/
+.mandarat-overview{
+  border: solid 1px black;
+  width: fit-content;
+  margin: auto;
+}
+.mandarat-overview table{
+  border-collapse: collapse;
+}
+
+.main-theme-block{
+  width: 30vh;
+  height: 30vh;
+  background-color: white;
+  padding: 0 !important;
+}
+
+.sub-theme-block td{
+  width: 10vh;
+  height: 10vh;
+  border: solid 1px #666666;
+  background-color: white;
+}
+
+.btn-invalid {
+  pointer-events: none;
+}

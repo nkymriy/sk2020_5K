@@ -1,0 +1,62 @@
+<%# マンダラート　メイン編集画面 %>
+<div class="edit_body" id="edit_body">
+  <%= render :partial => 'mandarat/shared' %>
+  <div class="mandarat-main">
+    <div class="to-up-area">
+      <div id="to-up-button"><i class="caret down vertically flipped huge icon"></i></div>
+    </div>
+    <div class="to-left-area">
+      <div id="to-left-button"><i class="caret down clockwise rotated huge icon"></i></div>
+    </div>
+    <div class="mandarat-blocks" id="zoom">
+      <table border="1">
+        <!--
+        あとで書き換える
+        縦に伸びてくから文字数制限つけて欲しい
+        -->
+        <tr>
+          <td><input class="t0" id="zoom_0"></td>
+          <td><input class="t1" id="zoom_1"></td>
+          <td><input class="t2" id="zoom_2"></td>
+        </tr>
+        <tr>
+          <td><input class="t3" id="zoom_3"></td>
+          <td><input class="t4" id="zoom_4"></td>
+          <td><input class="t5" id="zoom_5"></td>
+        </tr>
+        <tr>
+          <td><input class="t6" id="zoom_6"></td>
+          <td><input class="t7" id="zoom_7"></td>
+          <td><input class="t8" id="zoom_8"></td>
+        </tr>
+      </table>
+    </div>
+
+    <!--hiddenで無理やり-->
+    <dev hidden>
+      <% result = Hash.new %>
+      <% for i in 0..8 do %>
+        <% for j in 0..8 do %>
+          <% result.store(i * 10 + j, "") %>
+        <% end %>
+      <% end %>
+      <% for content in idea_logs do %>
+        <% if content.query['mode'] == 'edit' %>
+          <%= result[content.query["edit"]["object_id"]] = content.query["edit"]["content"] %>
+        <% end %>
+      <% end %>
+      <% for i in 0..8 do %>
+        <% for j in 0..8 do %>
+          <input type="hidden" name="read_<%= i * 10 + j %>" value="<%= result[i * 10 + j] %>">
+        <% end %>
+      <% end %>
+    </dev>
+
+    <div class="to-right-area">
+      <div id="to-right-button"><i class="caret down counterclockwise rotated huge icon"></i></div>
+    </div>
+    <div class="to-down-area">
+      <div id="to-down-button"><i class="caret down huge icon"></i></div>
+    </div>
+  </div>
+</div>

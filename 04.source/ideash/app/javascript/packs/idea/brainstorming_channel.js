@@ -53,7 +53,6 @@ $(document).on("turbolinks:load", function () {
                         '</div>'
                     );
                     $("#p3_ideas").prepend(p3_div);
-
                 } else if (query['mode'] === 'chat') {
                     var user_id = 'chatuser_' + query['user_id']
                     var user_name = escapeHTML(query['chat']['user_name'])

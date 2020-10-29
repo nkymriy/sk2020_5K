@@ -28,6 +28,13 @@ class IdeaChannel < ApplicationCable::Channel
     IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'join', 'join': {'user_mail': current_user.email}}
   end
 
+  def editing(data)
+    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'editing', 'editing': {'object_id': data["object_id"], 'is_editing': 1}, 'time': DateTime.now}
+  end
+
+  def edit(data)
+    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'edit', 'edit': {'object_id': data["object_id"], 'content': data["content"]}, 'time': DateTime.now}
+  end
   def chat_send(data)
     if (current_user.user_name != nil)
       IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'chat', 'chat': {'user_name': current_user.user_name, 'content': data['content']}}
