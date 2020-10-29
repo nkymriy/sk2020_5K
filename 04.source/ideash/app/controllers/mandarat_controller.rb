@@ -25,7 +25,7 @@ class MandaratController < ApplicationController
   def create
     user = User.find_by(id: current_user.id)
     new_idea = user.idea.new do |idea|
-      idea.idea_category_id = 3
+      idea.idea_category_id = Settings.idea_category_id.mandarat
       idea.idea_name = params[:theme]
     end
     if new_idea.save!
