@@ -155,7 +155,7 @@ RSpec.describe "Feature", type: :feature do
 
     #ここからidea/home
     expect(current_path).to eq '/idea/home'
-    within('div.create_new_segment') do
+    within('div.creat_new_segment') do
       click_link 'more'
     end
 
@@ -169,7 +169,7 @@ RSpec.describe "Feature", type: :feature do
 
     #ここからidea/home
     expect(current_path).to eq '/idea/home'
-    within('div.create_new_segment') do
+    within('div.creat_new_segment') do
       click_link 'more'
     end
 
