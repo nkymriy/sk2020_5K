@@ -18,7 +18,7 @@ class BrainstormingController < ApplicationController
         idea.user_id = user.id
         idea.idea_id = @idea.id
       end
-      p user_idea.save
+      user_idea.save
     end
 
     @grouping_contents = @idea_logs.get_group_object_id(@idea.id)
