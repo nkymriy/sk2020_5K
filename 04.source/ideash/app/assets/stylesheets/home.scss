@@ -14,12 +14,6 @@ body {
   float: left;
 }
 
-.home_background{
-  background-image: url(image_path("index_background.png"));
-  height: calc(100% - 38px);
-  //width: 100%;
-}
-
 .ideash_explain{
   background-color: #26AEAF;
   border: 7px white solid;
@@ -28,11 +22,22 @@ body {
   width: 95%;
   margin: auto;
 }
+
 .step_content{
   height: 22%;
   width: 95%;
-  padding: 2% 0;
+  padding: 3% 0;
   margin: auto;
+}
+.step_content h5{
+  margin-bottom: 1% !important;
+}
+.step_content .steps{
+  width: 100%;
+  margin-top: 0 !important;
+}
+.step_content .step{
+  width: 25%  !important;
 }
 .advertisement{
   height: 25%;
