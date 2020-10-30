@@ -105,8 +105,7 @@ class IdeaChannel < ApplicationCable::Channel
     data = data['content']
     group_id = data['group_id'].to_i
     group_name = data['name']
-    res_id = group_id - 1
-    if IdeaLog.find(res[res_id]['id']).update! query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': group_id, 'name': group_name}}
+    if IdeaLog.find(res[group_id]['id']).update! query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': group_id, 'name': group_name}}
       ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'group_rename', 'option': {'group_id': group_id, 'name': group_name}}}
     end
   end
