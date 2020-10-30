@@ -9,22 +9,39 @@ body {
 /*home*/
 
 .home_center{
-  background-color: #2E2F30;
   height: 90vh;
   width: 80%;
   float: left;
 }
-.ideash_explain{
-  background-color: #666666;
-  height: 70%;
+
+.home_background{
+  background-image: url(image_path("index_background.png"));
+  height: calc(100% - 38px);
+  //width: 100%;
 }
-.text_content{
-  background-color: #1B1C1D;
-  height: 10%;
+
+.ideash_explain{
+  background-color: #26AEAF;
+  border: 7px white solid;
+  border-radius: 10px;
+  height: 50%;
+  width: 95%;
+  margin: auto;
+}
+.step_content{
+  height: 22%;
+  width: 95%;
+  padding: 2% 0;
+  margin: auto;
 }
 .advertisement{
-  background-color: #666666;
-  height: 20%;
+  height: 25%;
+  width: 95%;
+  margin: auto;
+}
+.advertisement .ad{
+  margin-top: 1% !important;
+  width: 100% !important;
 }
 
 .home_right{
@@ -34,10 +51,16 @@ body {
   margin-left: 1vw;
 }
 .release_info{
-  background-color: #666666;
-  height: 40%;
+  background-color: white;
+  border-radius: 5px;
+  height: 35%;
+  margin-bottom: 4%;
+  padding: 7%;
+  overflow: auto;
+
 }
 .twitter_window{
+  border-radius: 5px;
   height: 40%;
 }
 .twitter-timeline{
@@ -45,6 +68,8 @@ body {
   height:100%;
 }
 .about_us{
-  background-color: #666666;
-  height: 20%;
+  background-color: #1B1C1D;
+  border-radius: 5px;
+  margin-top: 3%;
+  height: 23%;
 }
