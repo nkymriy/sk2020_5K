@@ -1,4 +1,5 @@
 $(function () {
+    require('fomantic-ui-css/semantic.min');
     require('jquery-ui/ui/widgets/draggable')
     $('.chat').draggable();
     // let clipboard = new Clipboard('.copy');
@@ -27,12 +28,17 @@ $(function () {
         document.getSelection().selectAllChildren(tmp);
 
         // クリップボードにコピー
-        var result = document.execCommand("copy");
-
+        if (document.execCommand("copy")) {
+            $('body')
+                .toast({
+                    title: 'COPIED INVITE LINK!',
+                    message: '招待リンクをコピーしました！友達に送ろう！',
+                    showProgress: 'bottom',
+                    classProgress: 'blue'
+                });
+        }
         // 要素削除
         document.body.removeChild(tmp);
-
-        return result;
     });
 });
 
