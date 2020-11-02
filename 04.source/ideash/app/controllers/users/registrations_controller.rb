@@ -73,7 +73,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def profile_update
-    params[:user][:user_name] = params[:user][:user_name].strip
+    params[:user][:user_name] = params[:user][:user_name].gsub(/[[:space:]]/, '')
     current_user.assign_attributes(account_update_params)
     @is_updated = current_user.save
     render('ideas/account')
