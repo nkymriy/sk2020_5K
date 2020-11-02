@@ -31,10 +31,8 @@ class BrainstormingController < ApplicationController
       idea.idea_name = params[:theme]
     end
 
-    p "------------------------#{params[:is_unlimited]}--------------------------"
-
     if new_idea.save!
-      if params[:is_unlimited]
+      if !params[:is_unlimited]
         IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process1', 'option': '0'}}
         IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process2', 'option': '0'}}
         IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process3', 'option': '0'}}
