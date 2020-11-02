@@ -156,3 +156,11 @@
 .btn-invalid {
   pointer-events: none;
 }
+
+.tab td div{
+  font-size: 98%; //日本語５文字
+  max-width:100%;
+  height:1.1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
