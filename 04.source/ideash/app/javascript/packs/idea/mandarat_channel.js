@@ -33,7 +33,7 @@ $(document).on("turbolinks:load", function () {
                 if (query['mode'] === 'editing') {
                     //IdeaLog.where(is_editing: '1')
                     let first = '.t';
-                    let sel_num = +parseInt(query["editing"]["object_id"]) - val;
+                    let sel_num = parseInt(query["editing"]["object_id"]) - val;
                     let sel_class = first + sel_num;
                     $(sel_class).css('background-color', '#C0C0C0');
                 }
@@ -46,13 +46,12 @@ $(document).on("turbolinks:load", function () {
                     let minid = bigid - val;
                     let sel_class = first1 + minid;
                     let sel_id = first2 + minid;
-                    $(sel_class).css('background-color', '#FFFFFF');
                     $('#' + bigid).text(text);
                     array[bigid] = text;
                     if (minid >= 0 && minid <= 8) {
                         document.getElementById(sel_id).value = text;
-
                     }
+                    $(sel_class).css('background-color', '#FFFFFF');
                     let left = String(bigid).slice(0, 1);
                     let right = String(bigid).slice(-1);
                     //メインテーマ,サブテーマを表示させるとこ
@@ -85,7 +84,6 @@ $(document).on("turbolinks:load", function () {
                     $('.chat_username').first().after(chat_div)
                 }
             },
-
             editing: function (content) {
                 return this.perform('editing',
                     content);
@@ -124,7 +122,7 @@ $(document).on("turbolinks:load", function () {
                 let flg = false;
                 $('#zoom_' + i)
                     //テキストボックスにフォーカス時
-                    .focusin(function (event) {
+                    .focusin(function () {
                         //入力中にミニマップと矢印で移動できないように
                         $('#radio-btn').addClass('btn-invalid');
                         $('#to-up-button').addClass('btn-invalid');
@@ -146,6 +144,12 @@ $(document).on("turbolinks:load", function () {
                     })
                     //テキストボックスからフォーカス外したとき
                     .focusout(function (event) {
+                        //入力中にミニマップと矢印で移動できないようにを解除
+                        $('#radio-btn').removeClass('btn-invalid');
+                        $('#to-up-button').removeClass('btn-invalid');
+                        $('#to-left-button').removeClass('btn-invalid');
+                        $('#to-right-button').removeClass('btn-invalid');
+                        $('#to-down-button').removeClass('btn-invalid');
                         let val = parseInt(localStorage.getItem('radio_value'));
                         let text = event.delegateTarget.value;
                         let objid = val + i;
@@ -157,16 +161,9 @@ $(document).on("turbolinks:load", function () {
                             consumer.task.edit(content);
                             flg = !flg;
                         }
-                        //入力中にミニマップと矢印で移動できないようにを解除
-                        $('#radio-btn').removeClass('btn-invalid');
-                        $('#to-up-button').removeClass('btn-invalid');
-                        $('#to-left-button').removeClass('btn-invalid');
-                        $('#to-right-button').removeClass('btn-invalid');
-                        $('#to-down-button').removeClass('btn-invalid');
                     });
             }
         });
-
         //左上のミニマップ選択された後
         $('input:radio[name="hoge"]').change(function () {
             const value = $('input:radio[name="hoge"]:checked').val();
@@ -193,21 +190,18 @@ $(document).on("turbolinks:load", function () {
                     $('input[value=' + radioval + ']').prop('checked', true).change();
                 }
             }
-
             function leftbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) - 10;
                 if (radioval % 30 !== 20) {
                     $('input[value=' + radioval + ']').prop('checked', true).change();
                 }
             }
-
             function rightbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) + 10;
                 if (radioval % 30 !== 0) {
                     $('input[value=' + radioval + ']').prop('checked', true).change();
                 }
             }
-
             function downbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) + 30;
                 if (radioval <= 80) {
