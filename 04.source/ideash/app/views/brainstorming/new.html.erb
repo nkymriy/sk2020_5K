@@ -20,14 +20,18 @@
             <li>質より量　思考の限界を超えられるよう、とにかくたくさんのアイデアを出すように心がける。</li>
           </ul>
           <h4 class="header-text timer-setting">時間設定</h4>
+
+          <% time_limit = []
+             for num in 1..30
+               time_limit.push ["#{num}分", num]
+             end
+             time_limit.push ["無制限", 0] %>
+
           <ul>
-            <% time_limit = []
-               for num in 1..30
-                 time_limit.push ["#{num}分", num]
-               end %>
             <li>手順①: <%= f.select 'process1', time_limit, selected: 30 %> </li>
             <li>手順②: <%= f.select 'process2', time_limit, selected: 30 %> </li>
             <li>手順③: <%= f.select 'process3', time_limit, selected: 30 %> </li>
+            <li>※いずれかの手順で無制限を選択した場合、無制限モードになります。</li>
           </ul>
           <h4 class="header-text  timer-setting">テーマ設定</h4>
           <ul>

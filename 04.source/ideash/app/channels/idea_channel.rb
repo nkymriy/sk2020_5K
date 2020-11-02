@@ -35,6 +35,7 @@ class IdeaChannel < ApplicationCable::Channel
   def edit(data)
     IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'edit', 'edit': {'object_id': data["object_id"], 'content': data["content"]}, 'time': DateTime.now}
   end
+
   def chat_send(data)
     if (current_user.user_name != nil)
       IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'chat', 'chat': {'user_name': current_user.user_name, 'content': data['content']}}
@@ -54,6 +55,10 @@ class IdeaChannel < ApplicationCable::Channel
       process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
       process2 = {'id' => res[1]['id'], 'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
       process3 = {'id' => res[2]['id'], 'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
+
+      if process1['time'] == 0 || process2['time'] == 0 || process3['time'] == 0
+        return
+      end
 
       # プロセス1の処理
       timer(process1['time']) do
