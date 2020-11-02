@@ -16,38 +16,16 @@ function window_load() {
     let idea_card = document.getElementById('ideas');
 
     if (window_Width <= key_Width) {
-        home_menu.className = 'ui left fixed vertical inverted small menu';
-
-        if (home_body != null) {
-            home_body.className = 'home_body thin_margin_left';
-        }
-        if (edit_body != null) {
-            edit_body.className = 'home_body thin_margin_right thin_margin_left';
-        }
-        if (edit_menu != null) {
-            edit_menu.className = 'ui right fixed vertical small menu block-edit-sidebar';
-        }
-        if (idea_card != null) {
-            idea_card.classList.replace('four', 'two');
-        }
+        if (home_body) home_body.className = 'home_body thin_margin_left';
+        if (edit_body) edit_body.className = 'home_body thin_margin_right thin_margin_left';
+        if (edit_menu) edit_menu.className = 'ui right fixed vertical small menu block-edit-sidebar';
+        if (idea_card) idea_card.classList.replace('four', 'two');
     } else {
         home_menu.className = 'ui left fixed vertical inverted menu';
-
-        if (home_body != null) {
-            home_body.className = 'home_body wide_margin_left';
-        }
-        if (edit_body != null) {
-            edit_body.className = 'home_body wide_margin_right wide_margin_left';
-        }
-        if (edit_menu != null) {
-            edit_menu.className = 'ui right fixed vertical menu block-edit-sidebar';
-        }
-        if (idea_card != null) {
-            idea_card.classList.replace('two', 'four');
-        }
-
-        $('#home_body').fadeIn(500);
-
-
+        if (home_body) home_body.className = 'home_body wide_margin_left';
+        if (edit_body) edit_body.className = 'home_body wide_margin_right wide_margin_left';
+        if (edit_menu) edit_menu.className = 'ui right fixed vertical menu block-edit-sidebar';
+        if (idea_card) idea_card.classList.replace('two', 'four');
     }
+    $('#home_body').fadeIn(500);
 }
