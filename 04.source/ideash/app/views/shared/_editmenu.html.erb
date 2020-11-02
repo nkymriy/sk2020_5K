@@ -44,6 +44,9 @@
             <i class="user circle icon"></i><%= user.user_name.blank? ? "Anonymous" : user.user_name %></li>
         <% end %>
       </ul>
+      <button class="ui small button" id='copy_invite_link' value="<%= request.url %>">
+        招待<i class="clipboard outline icon"></i>
+      </button>
     </div>
   </div>
 
