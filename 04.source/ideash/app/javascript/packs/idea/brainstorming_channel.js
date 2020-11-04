@@ -23,7 +23,8 @@ $(document).on("turbolinks:load", function () {
                 if (query['mode'] === 'join') {
                     var user_id = 'participant_' + query['user_id']
                     if ($('#' + user_id).length === 0) {
-                        $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
+                        $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon"></i>${query['join']['user_name']}</li>`)
+                        // $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon"></i><%= user.user_name.blank? ? "Anonymous" : user.user_name %></li>`)
                     }
                 } else if (query['mode'] === 'add') {
                     let add = query["add"]

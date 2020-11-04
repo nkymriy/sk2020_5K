@@ -25,7 +25,12 @@ class IdeaChannel < ApplicationCable::Channel
     if res[0]['count(*)'] > 0
       return
     end
-    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'join', 'join': {'user_mail': current_user.email}}
+    if (current_user.user_name != nil)
+      IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'join', 'join': {'user_name': current_user.user_name }}
+    else
+      # NOTE: ユーザ名が設定されていない場合Anonymousで登録する
+      IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'join', 'join': {'user_name': 'Anonymous' }}
+    end
   end
 
   def editing(data)
