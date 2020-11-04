@@ -22,6 +22,16 @@ body {
   width: 95%;
   margin: auto;
 }
+.home_text{
+  margin-top: 1%;
+  margin-left: 7%;
+}
+.home_text p{
+  font-size: 7vw;
+  font-weight: bolder;
+  color: whitesmoke;
+  line-height: 1.1em;
+}
 
 .step_content{
   height: 22%;
@@ -65,7 +75,9 @@ body {
   padding: 7%;
   overflow: auto;
 }
-
+.release_info::-webkit-scrollbar {
+  display:none;
+}
 .twitter_window{
   border-radius: 5px;
   height: 40%;
@@ -80,4 +92,9 @@ body {
   border-radius: 5px;
   margin-top: 3%;
   height: 23%;
+  padding: 12% 7%;
+  font-size: smaller;
+}
+.link_icons{
+  margin-top: 5%;
 }

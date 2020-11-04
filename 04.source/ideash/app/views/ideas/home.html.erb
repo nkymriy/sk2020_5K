@@ -3,12 +3,16 @@
 <div class="home_body" id="home_body">
     <div class="home_center">
       <div class="ideash_explain">
-        Inspiration<br>
-        w /<br>
-        Ideash<br>
+        <div class="home_text">
+          <p>
+            Inspiration<br>
+            with<br>
+            Ideash<br>
+          </p>
+        </div>
       </div>
       <div class="step_content">
-        <h5>Ideashはたったの3step　早速発想してみましょう</h5>
+        <h5>how to use</h5>
         <div class="ui steps">
           <div class="link step">
             <i class="gem icon"></i>
@@ -48,7 +52,7 @@
     <div class="home_right">
       <div class="release_info">
         <div class="ui tiny list">
-          <% @release_note.each do |row| %>
+          <% @release_note.reverse_each do |row| %>
             <div class="item">
               <i class="angle right icon"></i>
               <div class="release_note_content">
@@ -63,7 +67,12 @@
         <a class="twitter-timeline" data-chrome="noheader nofooter noborders" data-width="100%" data-height="100%" data-border-color="#2E2F30" href="https://twitter.com/Ideash_5k?ref_src=twsrc%5Etfw">Tweets by Ideash_5k</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
       <div class="about_us">
-
+        Ideashは5Kという専門学生5名のチームによって開発されています。
+        ご意見等はTwitterまたはGithubにお願いいたします。
+        <div class="link_icons">
+          <i class="github link black big icon"></i>Github　　
+          <i class="twitter link blue big icon"></i>Twitter
+        </div>
       </div>
     </div>
 </div>
