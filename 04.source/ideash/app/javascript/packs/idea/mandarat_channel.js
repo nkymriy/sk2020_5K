@@ -103,6 +103,8 @@ $(document).on("turbolinks:load", function () {
 
         //初回読み込み時の処理
         localStorage.setItem('flg', '1');
+        let maintheme = $('44_main_theme').val();
+        $('#main').text(maintheme);
         let array = {};
         for (let i = 0; i <= 8; i++) {
             for (let j = 0; j <= 8; j++) {
