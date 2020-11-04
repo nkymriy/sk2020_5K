@@ -21,16 +21,32 @@ body {
   height: 50%;
   width: 95%;
   margin: auto;
+  position: relative;
+  overflow: hidden;
+
 }
 .home_text{
   margin-top: 1%;
   margin-left: 7%;
+  z-index: 20;
 }
 .home_text p{
   font-size: 7vw;
   font-weight: bolder;
   color: whitesmoke;
   line-height: 1.1em;
+  z-index: 20;
+}
+.home_image{
+  position: absolute;
+  height: 100%;
+  top: -5%;
+  left: 60%;
+  z-index: 10;
+}
+.image_home_think_man {
+  height: 150%;
+  z-index: 10;
 }
 
 .step_content{
