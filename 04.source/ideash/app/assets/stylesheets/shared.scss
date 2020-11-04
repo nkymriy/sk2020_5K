@@ -30,6 +30,7 @@ body {
 #home_body {
   height: 90%;
   padding: 1%;
+  display:none;
 }
 
 #edit_body {
@@ -159,6 +160,11 @@ body {
 
 .chat {
   height: 50%;
+  background-color: white !important;
+  border: 1px solid !important;
+  border-color: darkgray !important;
+  z-index: 0;
+
 }
 
 .chat-area {
@@ -190,4 +196,8 @@ body {
   margin: 5%;
   width: 90%;
   height: 90%;
+}
+
+#copy_invite_link {
+  width: 100%;
 }

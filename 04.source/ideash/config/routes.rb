@@ -95,6 +95,13 @@ Rails.application.routes.draw do
   post 'idea/brainstorming/create' => 'brainstorming#create'
   get 'idea/brainstorming/edit/:id' => 'brainstorming#edit', as: :idea_brainstorming_edit
 
+  # INFO: マンダラート
+  get'idea/mandarat/new' => 'mandarat#new'
+  get 'idea/mandarat/replay' => 'mandarat#replay'
+  post 'idea/mandarat/create' => 'mandarat#create'
+  get 'idea/mandarat/edit/:id' => 'mandarat#edit', as: :idea_mandarat_edit
+  get 'idea/mandarat/_process_1' => 'mandarat#_process_1'
+
   # NOTE: Action Cable の有効化
   mount ActionCable.server => '/cable'
   # developmentモードでのみ以下のルーティングが行われる

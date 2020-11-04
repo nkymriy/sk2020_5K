@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'shared/_editmenu' %>
 <input type="hidden" id="user_id" value="<%= current_user.id %>">
 <!-- 1 -->
 <div class="ui right fixed vertical menu block-edit-sidebar" id="edit_menu">
@@ -7,53 +8,30 @@
     <!-- 時計 -->
     <small>現在時刻</small><br>
     <div id="RealtimeClockArea2" class="timer_min"></div>
-    <script>
-        if ($(".brainstorming.edit").length > 0) {
-            function set2fig(num) {
-                // 桁数が1桁だったら先頭に0を加えて2桁に調整する
-                var ret;
-                if (num < 10) {
-                    ret = "0" + num;
-                } else {
-                    ret = num;
-                }
-                return ret;
-            }
-
-            function showClock2() {
-                var nowTime = new Date();
-                var nowHour = set2fig(nowTime.getHours());
-                var nowMin = set2fig(nowTime.getMinutes());
-                var nowSec = set2fig(nowTime.getSeconds());
-                var msg = nowHour + ":" + nowMin + ":" + nowSec;
-                if ($('#RealtimeClockArea2').length === 0) {
-                    clearInterval(timerId)
-                } else {
-                    document.getElementById("RealtimeClockArea2").innerHTML = msg;
-                }
-            }
-
-            let timerId = setInterval('showClock2()', 1000);
-        }
-    </script>
-
   </div>
-  <!-- 3 -->
-  <div class="item explain">
-    <div class="header-text">
-      <i class="question circle outline icon"></i>ブレインストーミング
+  <% if controller_name == 'brainstorming' then %>
+    <%# ブレインストーミング %>
+    <div class="item explain">
+      <div class="header-text">
+        <i class="question circle outline icon"></i>ブレインストーミング
+      </div>
+      <ul class="explain-list">
+        <li class="bold">アイデア出し： 無制限</li>
+        <li><s>意見だし　　：</s></li>
+        <li><s>グルーピング：</s></li>
+      </ul>
     </div>
-    <ul class="explain-list">
-      <li class="bold">アイデア出し： 無制限</li>
-      <li><s>意見だし　　：</s></li>
-      <li><s>グルーピング：</s></li>
-      <%#
-      <li class="bold">アイデア出し：30m</li>
-      <li>意見だし　　：10m</li>
-      <li>グルーピング：10m</li>
-      %>
-    </ul>
-  </div>
+  <% elsif controller_name == 'mandarat' %>
+    <%# マンダラート %>
+    <div class="item explain">
+      <div class="header-text">
+        <i class="question circle outline icon"></i>マンダラート
+      </div>
+      <ul class="explain-list">
+        <li class="bold">アイデア出し： 無制限</li>
+      </ul>
+    </div>
+  <% end %>
   <!-- 4 -->
   <div class="item participant">
     <div class="header-text">
@@ -62,14 +40,19 @@
     <div class="member">
       <ul class="users">
         <% for user in users %>
-          <li id="participant_<%= user.id %>"><i class="user circle icon"></i><%= user.user_name.blank? ? "Anonymous" : user.user_name %></li>
+          <li id="participant_<%= user.id %>">
+            <i class="user circle icon"></i><%= user.user_name.blank? ? "Anonymous" : user.user_name %></li>
         <% end %>
       </ul>
     </div>
   </div>
 
+  <button class="ui small button" id='copy_invite_link' value="<%= request.url %>">
+    招待<i class="clipboard outline icon"></i>
+  </button>
+
   <div class="item chat">
-    <div class="header-text">
+    <div class="header-text" title="ドラッグして移動">
       chat
     </div>
     <div class="ui input mini chat-input">
@@ -98,5 +81,4 @@
           </div>
     </div>
   </div>
-</div>
 </div>

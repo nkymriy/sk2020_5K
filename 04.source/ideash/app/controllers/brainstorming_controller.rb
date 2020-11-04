@@ -18,8 +18,10 @@ class BrainstormingController < ApplicationController
         idea.user_id = user.id
         idea.idea_id = @idea.id
       end
-      p user_idea.save
+      user_idea.save
     end
+
+    @grouping_contents = @idea_logs.get_group_object_id(@idea.id)
   end
 
   def create
@@ -28,7 +30,30 @@ class BrainstormingController < ApplicationController
       idea.idea_category_id = 2
       idea.idea_name = params[:theme]
     end
+
     if new_idea.save!
+      if !params[:is_unlimited]
+        IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process1', 'option': '0'}}
+        IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process2', 'option': '0'}}
+        IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process3', 'option': '0'}}
+      else
+        if Rails.env.development?
+          # テスト用(秒単位)
+          IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process1', 'option': (params[:process1].to_i).to_s}}
+          IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process2', 'option': (params[:process2].to_i).to_s}}
+          IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process3', 'option': (params[:process3].to_i).to_s}}
+        else
+          # 本番用(分単位)
+          IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process1', 'option': (params[:process1].to_i * 60).to_s}}
+          IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process2', 'option': (params[:process2].to_i * 60).to_s}}
+          IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process3', 'option': (params[:process3].to_i * 60).to_s}}
+        end
+      end
+
+      IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': 0, 'name': 'no_grouped'}}
+      IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': 1, 'name': 'グループ1'}}
+      IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': 2, 'name': 'グループ2'}}
+
       logger.debug "create new idea: #{new_idea.inspect}"
       redirect_to idea_brainstorming_edit_url(id: new_idea.id)
     else
