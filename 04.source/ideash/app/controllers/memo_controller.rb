@@ -42,7 +42,7 @@ class MemoController < ApplicationController
       redirect_to idea_memo_new_path
     end
     @memo.update(params.require(:idea).permit(:idea_name, :idea_description))
-    redirect_to idea_memo_new_path(info_message: "メモを更新しました")
+    redirect_to idea_memo_new_path(info_message: "メモを更新しました。")
   end
 
   protected
