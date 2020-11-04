@@ -170,6 +170,12 @@ $(document).on("turbolinks:load", function () {
         //左上のミニマップ選択された後
         $('input:radio[name="hoge"]').change(function () {
             const value = $('input:radio[name="hoge"]:checked').val();
+            //編集不可
+            if (value === "40") {
+                $('#zoom_4').prop('disabled', true);
+            } else {
+                $('#zoom_4').prop('disabled', false);
+            }
             //初期化と連想配列内の値表示
             for (let i = 0; i < 9; i++) {
                 let aryid = parseInt(value) + i;
@@ -186,10 +192,10 @@ $(document).on("turbolinks:load", function () {
             $('#to-left-button').on('click', leftbtn);
             $('#to-right-button').on('click', rightbtn);
             $('#to-down-button').on('click', downbtn);
+
             function upbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) - 30;
                 if (radioval >= 0) {
-                    console.log("変えるよ")
                     $('input[value=' + radioval + ']').prop('checked', true).change();
                 }
             }
@@ -241,6 +247,7 @@ $(document).on("turbolinks:load", function () {
                 $('#process_2').hide()
                 $('#process_1').show()
             }
+
             function zoomview() {
                 $('#process_1').hide()
                 $('#process_2').show()
