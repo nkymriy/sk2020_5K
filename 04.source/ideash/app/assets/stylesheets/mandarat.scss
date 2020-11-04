@@ -157,10 +157,14 @@
   pointer-events: none;
 }
 
-.tab td div{
+.tab td div {
   font-size: 9pt;
   max-width:100%;
   height:1.1em;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.btn-area {
+  text-align: center;
 }
