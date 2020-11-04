@@ -21,15 +21,15 @@
           </ul>
           <h4 class="header-text timer-setting">時間設定</h4>
           <ul>
-            <li>手順①：<%= f.text_field 'process1', value: '無制限', readonly: 'true' %>分</li>
-            <li>手順②：<%= f.text_field 'process2', disabled: 'true' %>分</li>
-            <li>手順③：<%= f.text_field 'process3', disabled: 'true' %>分</li>
+            <li>手順①：<%= f.select 'process1', ['無制限'], selected: 0 %> </li>
+            <li>手順②：<%= f.select 'process2', ['無制限'], selected: 0 %> </li>
+            <li>手順③：<%= f.select 'process3', ['無制限'], selected: 0 %> </li>
           </ul>
           <h4 class="header-text  timer-setting">テーマ設定</h4>
           <ul>
             <li><%= f.text_field 'theme', placeholder: "発想のテーマを入力してください", size: 50 %></li>
           </ul>
-          <h4 class="header-text">参加者(※招待する場合、開始後のURLをコピーして参加者に伝えてください。)</h4>
+          <h4 class="header-text">参加者(※招待する場合、開始後に右側に表示される招待ボタンをクリックしてURLをコピーし、他の参加者に伝えてください。)</h4>
           <div class="participant">
             <ul>
               <li>
