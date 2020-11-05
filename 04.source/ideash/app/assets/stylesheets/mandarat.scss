@@ -115,6 +115,7 @@
 
 .mandarat-blocks table{
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .mandarat-blocks td{
@@ -122,7 +123,7 @@
   height: 23vh !important;
   border: solid 1px black;
   background-color: white;
-  padding: 3%;
+  //padding: 3%;
 }
 
 .mandarat-blocks .off{
@@ -167,4 +168,16 @@
 
 .btn-area {
   text-align: center;
+}
+
+@for $i from 0 through 8 {
+  .t#{$i} {
+    border:none;
+    background:none;
+    -webkit-appearance:none;
+    width: 12vw;
+    height: 23vh !important;
+    border-radius: 0;
+    outline: none;
+  }
 }
