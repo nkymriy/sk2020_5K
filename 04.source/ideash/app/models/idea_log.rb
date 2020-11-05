@@ -133,11 +133,11 @@ class IdeaLog < ApplicationRecord
           join: {
               type: 'object',
               additionalProperties: false,
-              required: [
-                  'user_mail'
-              ],
               properties: {
                   user_mail: {
+                      type: 'string'
+                  },
+                  user_name: {
                       type: 'string'
                   },
               },

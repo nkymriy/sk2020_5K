@@ -7,45 +7,110 @@ body {
 }
 
 /*home*/
-.block-memo {
+
+.home_center{
+  height: 90vh;
+  width: 80%;
+  float: left;
+}
+
+.ideash_explain{
+  background-image: url(image_path("index_background.png"));
+  border: 7px white solid;
+  border-radius: 10px;
+  height: 50%;
+  width: 95%;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+
+}
+.home_text{
+  margin-top: 1%;
+  margin-left: 7%;
+  z-index: 20;
+}
+.home_text p{
+  font-size: 7vw;
+  font-weight: bolder;
+  color: whitesmoke;
+  line-height: 1.1em;
+  z-index: 20;
+}
+.home_image{
   position: absolute;
-  height: 95%;
-  width: 68%;
-  left: 16%;
-  right: 16%;
-  top: 5%;
-  background-color: #E5E5E5;
+  height: 100%;
+  top: -5%;
+  left: 60%;
+  z-index: 10;
+}
+.image_home_think_man {
+  height: 150%;
+  z-index: 10;
 }
 
-.block-center {
-  text-align: center;
+.step_content{
+  height: 22%;
+  width: 95%;
+  padding: 3% 0;
+  margin: auto;
+}
+.step_content h5{
+  margin-bottom: 1% !important;
+}
+.step_content .steps{
+  width: 100%;
+  margin-top: 0 !important;
+}
+.step_content .step{
+  width: 25%  !important;
 }
 
-/* 2 */
-.memo-contents {
-  width: fit-content;
-  margin: 5% 27%;
+.advertisement{
+  height: 25%;
+  width: 95%;
+  margin: auto;
+}
+.advertisement .ad{
+  margin-top: 1% !important;
+  width: 100% !important;
 }
 
-/* 3 */
-.about-contents {
-  border: #1b1e21 1px solid;
-  margin: 10% 30%;
-  padding-bottom: 5%;
+.home_right{
+  height: 90vh;
+  width: 18%;
+  float: left;
+  margin-left: 1vw;
 }
 
-.about-text {
-  font-weight: normal;
+.release_info{
+  background-color: white;
+  border-radius: 5px;
+  height: 35%;
+  margin-bottom: 4%;
+  padding: 7%;
+  overflow: auto;
+}
+.release_info::-webkit-scrollbar {
+  display:none;
+}
+.twitter_window{
+  border-radius: 5px;
+  height: 40%;
+}
+.twitter-timeline{
+  width:100%;
+  height:100%;
 }
 
-.about-image {
+.about_us{
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 3%;
+  height: 23%;
+  padding: 12% 7%;
+  font-size: smaller;
 }
-
-/* 4 */
-.memo-content {
-}
-
-/* 5 */
-.save-contents {
+.link_icons{
   margin-top: 5%;
 }
