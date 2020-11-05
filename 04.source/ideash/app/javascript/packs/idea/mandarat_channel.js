@@ -51,14 +51,11 @@ $(document).on("turbolinks:load", function () {
                     array[bigid] = text;
                     if (minid >= 0 && minid <= 8) {
                         document.getElementById(sel_id).value = text;
-
                     }
                     let left = String(bigid).slice(0, 1);
                     let right = String(bigid).slice(-1);
-                    //メインテーマ,サブテーマを表示させるとこ
-                    if (bigid === '44') {
-                        $('#main').text(text);
-                    } else if (bigid === '4') {
+                    //左のサブテーマを表示させるとこ
+                    if (bigid === '4') {
                         $('#theme0').text(text);
                     } else if (left === '4') {
                         $('#theme' + right).text(text);
@@ -103,8 +100,6 @@ $(document).on("turbolinks:load", function () {
 
         //初回読み込み時の処理
         localStorage.setItem('flg', '1');
-        let maintheme = $('44_main_theme').val();
-        $('#main').text(maintheme);
         let array = {};
         for (let i = 0; i <= 8; i++) {
             for (let j = 0; j <= 8; j++) {
@@ -112,13 +107,13 @@ $(document).on("turbolinks:load", function () {
                 let text = $('input:hidden[name="read_' + x + '"]').val();
                 array[x] = text;
                 $('#' + x).text(text);
-                if (x === 44) {
-                    $('#main').text(text);
-                } else if (i === 4) {
+                if (i === 4 && i !== 44) {
                     $('#theme' + j).text(text);
                 }
             }
         }
+        let maintheme = $('#44_main_theme').val();
+        $('#main').text(maintheme);
 
         //ズームイン画面の処理
         $(function () {
