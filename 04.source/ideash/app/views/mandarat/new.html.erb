@@ -39,7 +39,7 @@
           </div>
           <div class="ui center aligned grid">
             <div class="start-button">
-              <%= f.submit 'はじめる', class: 'ui black button' %>
+              <%= f.submit 'はじめる', class: 'ui black button', id: 'start_button', disabled: true %>
             </div>
           </div>
         <% end %>
@@ -47,5 +47,5 @@
     </div>
   </div>
 </div>
-
+<%= javascript_pack_tag 'mandarat/new' %>
 <%= render :partial => 'shared/homemenu' %>
