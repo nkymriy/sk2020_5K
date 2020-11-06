@@ -15,9 +15,9 @@ class MemoController < ApplicationController
       logger.debug "params => #{new_idea}"
     end
     if user.save!
-      redirect_to idea_memo_new_path(info_message: "メモを保存しました。")
+      redirect_to idea_memo_new_path(info_message: "success")
     else
-      redirect_to idea_memo_new_path(info_message: "メモの保存に失敗しました。再度やり直してください。")
+      redirect_to idea_memo_new_path(info_message: "fail")
     end
   end
 
@@ -42,7 +42,7 @@ class MemoController < ApplicationController
       redirect_to idea_memo_new_path
     end
     @memo.update(params.require(:idea).permit(:idea_name, :idea_description))
-    redirect_to idea_memo_new_path(info_message: "メモを更新しました。")
+    redirect_to idea_memo_new_path(info_message: "update")
   end
 
   protected

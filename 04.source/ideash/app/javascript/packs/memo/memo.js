@@ -29,7 +29,7 @@ $(function () {
 
 function memo_save() {
     let info_message = $('#memo_save').val();
-    if(info_message === 'メモを保存しました。'){
+    if(info_message === 'success'){
         $('body')
             .toast({
                 title: 'SUCCESS',
@@ -37,7 +37,7 @@ function memo_save() {
                 showProgress: 'bottom',
                 classProgress: 'blue'
             });
-    }else if (info_message === 'メモを更新しました。'){
+    }else if (info_message === 'update'){
         $('body')
             .toast({
                 title: 'SUCCESS',
@@ -45,7 +45,7 @@ function memo_save() {
                 showProgress: 'bottom',
                 classProgress: 'green'
             });
-    }else if (info_message === 'メモの保存に失敗しました。再度やり直してください。'){
+    }else if (info_message === 'fail'){
         $('body')
             .toast({
                 title: 'CAUTION',
