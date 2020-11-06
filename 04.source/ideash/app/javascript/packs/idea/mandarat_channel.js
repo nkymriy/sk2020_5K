@@ -31,7 +31,6 @@ $(document).on("turbolinks:load", function () {
                 }
                 //編集時
                 if (query['mode'] === 'editing') {
-                    //IdeaLog.where(is_editing: '1')
                     let first = '.t';
                     let sel_num = parseInt(query["editing"]["object_id"]) - val;
                     let sel_class = first + sel_num;
@@ -52,15 +51,8 @@ $(document).on("turbolinks:load", function () {
                         document.getElementById(sel_id).value = text;
                     }
                     $(sel_class).css('background-color', '#FFFFFF');
-                    let left = String(bigid).slice(0, 1);
-                    let right = String(bigid).slice(-1);
-                    //左のサブテーマを表示させるとこ
-                    if (bigid === '4') {
-                        $('#theme0').text(text);
-                    } else if (left === '4') {
-                        $('#theme' + right).text(text);
-                    } else if (bigid % 10 === 4) {
-                        $('#theme' + left).text(text);
+                    if (Math.floor(bigid / 10) === 4) {
+                        $('#theme' + bigid % 40).text(text);
                     }
                 } else if (query['mode'] === 'chat') {
                     var user_id = 'chatuser_' + query['user_id']
@@ -98,7 +90,6 @@ $(document).on("turbolinks:load", function () {
         });
 
         //初回読み込み時の処理
-        localStorage.setItem('flg', '1');
         let array = {};
         for (let i = 0; i <= 8; i++) {
             for (let j = 0; j <= 8; j++) {
@@ -106,7 +97,7 @@ $(document).on("turbolinks:load", function () {
                 let text = $('input:hidden[name="read_' + x + '"]').val();
                 array[x] = text;
                 $('#' + x).text(text);
-                if (i === 4 && i !== 44) {
+                if (i === 4 && x !== 44) {
                     $('#theme' + j).text(text);
                 }
             }
@@ -194,18 +185,21 @@ $(document).on("turbolinks:load", function () {
                     $('input[value=' + radioval + ']').prop('checked', true).change();
                 }
             }
+
             function leftbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) - 10;
                 if (radioval % 30 !== 20) {
                     $('input[value=' + radioval + ']').prop('checked', true).change();
                 }
             }
+
             function rightbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) + 10;
                 if (radioval % 30 !== 0) {
                     $('input[value=' + radioval + ']').prop('checked', true).change();
                 }
             }
+
             function downbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) + 30;
                 if (radioval <= 80) {
