@@ -40,6 +40,8 @@
           <% result.store(i * 10 + j, "") %>
         <% end %>
       <% end %>
+      <% result.store(44,idea.idea_name) %>
+      <input type="hidden" id="44_main_theme" value=<%= idea.idea_name %>>
       <% for content in idea_logs do %>
         <% if content.query['mode'] == 'edit' %>
           <%= result[content.query["edit"]["object_id"]] = content.query["edit"]["content"] %>
