@@ -40,6 +40,10 @@ $(function () {
         // 要素削除
         document.body.removeChild(tmp);
     });
+
+    $('#reset_chat_position').on('click', function () {
+        $('.item').removeAttr('style')
+    })
 });
 
 function set2fig(num) {

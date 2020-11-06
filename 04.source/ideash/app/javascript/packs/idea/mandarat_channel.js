@@ -51,14 +51,11 @@ $(document).on("turbolinks:load", function () {
                     array[bigid] = text;
                     if (minid >= 0 && minid <= 8) {
                         document.getElementById(sel_id).value = text;
-
                     }
                     let left = String(bigid).slice(0, 1);
                     let right = String(bigid).slice(-1);
-                    //メインテーマ,サブテーマを表示させるとこ
-                    if (bigid === '44') {
-                        $('#main').text(text);
-                    } else if (bigid === '4') {
+                    //左のサブテーマを表示させるとこ
+                    if (bigid === '4') {
                         $('#theme0').text(text);
                     } else if (left === '4') {
                         $('#theme' + right).text(text);
@@ -110,13 +107,13 @@ $(document).on("turbolinks:load", function () {
                 let text = $('input:hidden[name="read_' + x + '"]').val();
                 array[x] = text;
                 $('#' + x).text(text);
-                if (x === 44) {
-                    $('#main').text(text);
-                } else if (i === 4) {
+                if (i === 4 && i !== 44) {
                     $('#theme' + j).text(text);
                 }
             }
         }
+        let maintheme = $('#44_main_theme').val();
+        $('#main').text(maintheme);
 
         //ズームイン画面の処理
         $(function () {
@@ -170,6 +167,12 @@ $(document).on("turbolinks:load", function () {
         //左上のミニマップ選択された後
         $('input:radio[name="hoge"]').change(function () {
             const value = $('input:radio[name="hoge"]:checked').val();
+            //編集不可
+            if (value === "40") {
+                $('#zoom_4').prop('disabled', true);
+            } else {
+                $('#zoom_4').prop('disabled', false);
+            }
             //初期化と連想配列内の値表示
             for (let i = 0; i < 9; i++) {
                 let aryid = parseInt(value) + i;
@@ -186,10 +189,10 @@ $(document).on("turbolinks:load", function () {
             $('#to-left-button').on('click', leftbtn);
             $('#to-right-button').on('click', rightbtn);
             $('#to-down-button').on('click', downbtn);
+
             function upbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) - 30;
                 if (radioval >= 0) {
-                    console.log("変えるよ")
                     $('input[value=' + radioval + ']').prop('checked', true).change();
                 }
             }
@@ -241,6 +244,7 @@ $(document).on("turbolinks:load", function () {
                 $('#process_2').hide()
                 $('#process_1').show()
             }
+
             function zoomview() {
                 $('#process_1').hide()
                 $('#process_2').show()

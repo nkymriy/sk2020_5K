@@ -47,13 +47,18 @@
     </div>
   </div>
 
-  <button class="ui small button" id='copy_invite_link' value="<%= request.url %>">
+  <button class="ui small button" id="copy_invite_link" value="<%= request.url %>">
     招待<i class="clipboard outline icon"></i>
+  </button>
+
+  <button class="ui small button" id="reset_chat_position">
+    チャットの位置リセット
   </button>
 
   <div class="item chat">
     <div class="header-text" title="ドラッグして移動">
       chat
+      <%= image_tag "draggable.svg", id: "draggable_svg" %>
     </div>
     <div class="ui input mini chat-input">
       <%= text_field_tag 'idea_chat', nil, placeholder: '話しかける...', data: {behavior: 'idea_speaker'} %>
