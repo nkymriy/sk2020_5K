@@ -30,7 +30,7 @@ body {
 #home_body {
   height: 90%;
   padding: 1%;
-  display:none;
+  display: none;
 }
 
 #edit_body {
@@ -198,3 +198,17 @@ body {
   height: 90%;
 }
 
+#copy_invite_link {
+  width: 100%;
+}
+
+#reset_chat_position {
+  width: 100%;
+}
+
+#draggable_svg {
+  float: right;
+  width: 1em;
+  padding: 2px;
+  border: 1px solid gray;
+}
