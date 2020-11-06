@@ -14,3 +14,15 @@ $("input[id='theme']").blur(function () {
 $('#theme').keydown(function (event) {
     $('#start_button').prop('disabled', false)
 })
+
+$('#is_unlimited').click(function() {
+    if (this.checked) {
+        $('#process1').prop('disabled', true)
+        $('#process2').prop('disabled', true)
+        $('#process3').prop('disabled', true)
+    } else {
+        $('#process1').prop('disabled', false)
+        $('#process2').prop('disabled', false)
+        $('#process3').prop('disabled', false)
+    }
+})
