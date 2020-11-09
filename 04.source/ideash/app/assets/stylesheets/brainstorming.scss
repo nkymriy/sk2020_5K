@@ -10,6 +10,11 @@
   width: 100% !important;
 }
 
+.change_process{
+  margin-bottom: 2% !important;
+  margin-left: 1% !important;
+}
+
 .techname {
   font-weight: bold;
   font-size: large;
@@ -49,7 +54,6 @@
   font-size: large;
   border-radius: 15px;
   padding: 2%;
-  margin-bottom: 3%;
 }
 
 .process1_ideas {
@@ -92,8 +96,12 @@
   overflow: hidden;
 }
 
+#group_add{
+  margin-left: 1%;
+}
+
 .group-contents {
-  height: 78vh;
+  height: 70vh;
   width: 80%;
   padding: 1%;
 
@@ -102,7 +110,7 @@
 }
 
 .idea-contents {
-  height: 78vh;
+  height: 70vh;
   width: 20%;
   padding: 1%;
 
@@ -119,7 +127,7 @@
 }
 
 .group {
-  height: 350px;
+  height: 200px;
   background-color: white;
   padding: 1%;
 }
