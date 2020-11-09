@@ -14,6 +14,12 @@
             <li>手順③：出てきた語句からアイデアへと繋がりそうなものを拾い上げていく</li>
           </ul>
           <h4 class="header-text rule">ルール</h4>
+
+          <% time_limit = []
+             for num in 1..30
+               time_limit.push ["#{num}分", num]
+             end %>
+
           <ul>
             <li>批判禁止　出たいアイデアを批判したり、実現性を求めたりしないこと。</li>
             <li>自由奔放　柔軟なアイデアを出すために固定概念や慣習に囚われないようにする。</li>
@@ -21,9 +27,11 @@
           </ul>
           <h4 class="header-text timer-setting">時間設定</h4>
           <ul>
-            <li>手順①：<%= f.select 'process1', ['無制限'], selected: 0 %> </li>
-            <li>手順②：<%= f.select 'process2', ['無制限'], selected: 0 %> </li>
-            <li>手順③：<%= f.select 'process3', ['無制限'], selected: 0 %> </li>
+            <li>手順①：<%= f.select 'process1', time_limit, selected: 30 %> </li>
+            <li>手順②：<%= f.select 'process2', time_limit, selected: 30 %> </li>
+            <li>手順③：<%= f.select 'process3', time_limit, selected: 30 %> </li>
+            <li><%= f.check_box 'is_unlimited' %> 無制限モード</li>
+            <li>※ 無制限モードでは設定した時間による強制的なプロセスの進行が行われないため、時間を気にせずアイデア発想を行うことができます。</li>
           </ul>
           <h4 class="header-text  timer-setting">テーマ設定</h4>
           <ul>
@@ -47,5 +55,5 @@
     </div>
   </div>
 </div>
-<%= javascript_pack_tag 'mandarat/new' %>
+<%= javascript_pack_tag 'common/new' %>
 <%= render :partial => 'shared/homemenu' %>
