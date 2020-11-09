@@ -5,25 +5,23 @@
 
 /*shared*/
 .mandarat-shared{
-  height: 90vh;
-  width: 25%;
-  margin-top: 4%;
-  margin-left: 5%;
+  height: 80vh;
+  width: 18%;
+  margin-top: 3%;
+  margin-left: 2%;
   //background-color: #1B1C1D;
   //border: #1B1C1D 1px solid;
   float: left;
 }
 
-#to_while_link{
+#to_while_link a{
   //margin: auto;
-}
-
-#to_while_link .content{
-  color: grey !important;
+  color: black;
+  font-size: small !important;
 }
 
 .current-location-area{
-  margin-top: 13%;
+  margin-top: 3%;
 }
 
 .current-location-area table{
@@ -62,18 +60,24 @@
   margin-top: 15%;
   //background-color: #666666;
   height: 75%;
-  width: 90%;
+  width: 100%;
+}
+#main,#theme0,#theme1,#theme2,#theme3,#theme4,#theme5,#theme6,#theme7,#theme8{
+  font-size: small;
+  color: #1B1C1D;
+  width: 100%;
 }
 
 .themes-area .active{
-  margin-bottom: 4px;
+  margin-bottom: 5%;
+  color: #666666 !important;
 }
 
 
 /*main*/
 .mandarat-main{
-  margin-top: 4%;
-  height: 90vh;
+  margin-top: 1%;
+  height: 80vh;
   width: 70%;
   float: left;
 }
@@ -123,6 +127,10 @@
   height: 23vh !important;
   border: solid 1px black;
   background-color: white;
+}
+
+.mandarat-blocks input{
+  text-align: center;
 }
 
 .mandarat-blocks .off{
