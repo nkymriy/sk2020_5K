@@ -157,24 +157,19 @@
 .sub-theme-block td{
   width: 10vh;
   height: 10vh;
-  border: solid 1px #666666;
+  border: solid 1px #000000;
   background-color: white;
+  text-align: center;
 }
-
 .btn-invalid {
   pointer-events: none;
 }
-
 .tab td div {
   font-size: 9pt;
   max-width:100%;
   height:1.1em;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.btn-area {
-  text-align: center;
 }
 
 @for $i from 0 through 8 {
