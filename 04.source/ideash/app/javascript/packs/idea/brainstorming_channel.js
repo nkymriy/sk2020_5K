@@ -1,8 +1,7 @@
 import consumer from "../../channels/consumer"
 
 require('jquery/src/jquery')
-
-$(document).on("turbolinks:load", function () {
+$(function () {
     if ($('.websocket').length > 0) {
         consumer.task = consumer.subscriptions.create({
             channel: 'IdeaChannel',

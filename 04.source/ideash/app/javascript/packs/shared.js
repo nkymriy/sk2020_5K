@@ -13,6 +13,14 @@ $(function () {
         $('#left_icon_menu').show()
     });
 
+    $('#right_menu_show_button').on('click', function () {
+        $('#right_menu').show();
+        $('#right_icon_menu').hide()
+    });
+    $('#right_menu_hide_button').on('click', function () {
+        $('#right_menu').hide();
+        $('#right_icon_menu').show()
+    });
 
 //     window_load();
 // //ウィンドウサイズ変更時に更新

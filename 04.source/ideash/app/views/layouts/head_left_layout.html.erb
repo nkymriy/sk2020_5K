@@ -44,13 +44,14 @@
   <%= render :partial => 'shared/debug_menu' %>
 <% end %>
 <div id="header">
-  <%=render :partial => 'shared/header' %>
+  <%= render :partial => 'shared/header' %>
 </div>
 <div id="wrap">
-    <%= render :partial => 'shared/left_menu' %>
+  <%= render :partial => 'shared/left_menu' %>
   <div id="main_content">
-    <%= yield  %>
+    <%= yield %>
   </div>
+  <%= yield :right_menu %>
 </div>
 </body>
 </html>

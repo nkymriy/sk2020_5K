@@ -33,11 +33,6 @@ body {
   display: none;
 }
 
-#edit_body {
-  height: 80%;
-  padding: 1% 2%;
-}
-
 .wide_margin_left {
   margin-left: 220px;
 }
@@ -230,8 +225,10 @@ body {
     margin: 0;
   }
 
-  #left_menu{
+  #left_menu {
     min-width: 200px;
+    width: 15vh;
+
   }
 
   #left_icon_menu {
@@ -239,14 +236,26 @@ body {
   }
 
   #main_content {
+    width: inherit;
     margin: 10px;
-    //display: none;
+  }
+
+  .right_menu {
+    position: sticky;
+    display: block;
+    float: right;
+    margin: 0;
   }
 
   #right_menu {
-    position: sticky;
-    float: right;
+    width: 20vh;
   }
+
+  #right_icon_menu {
+    display: none;
+    height: fit-content;
+  }
+
 }
 
 @media screen and(max-width: 1024px) {
@@ -258,5 +267,14 @@ body {
     #left_icon_menu {
       display: block;
     }
+
+    #right_menu {
+      display: none;
+    }
+
+    #right_icon_menu {
+      display: block;
+    }
   }
+
 }

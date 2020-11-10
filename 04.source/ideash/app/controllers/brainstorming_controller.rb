@@ -1,4 +1,5 @@
 class BrainstormingController < ApplicationController
+  layout 'head_left_layout'
   def replay
     check_idea_category
   end

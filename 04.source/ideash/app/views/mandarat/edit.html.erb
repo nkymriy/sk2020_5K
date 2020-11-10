@@ -1,10 +1,9 @@
-<%= render :partial => 'shared/header' %>
-<%= render :partial =>'shared/right_menu', locals: {users: @idea_users} %>
+<%= javascript_pack_tag "idea/mandarat_channel" %>
 <span class="websocket-mandarat" id="idea_logs" data-idea_id="<%= @idea.id %>"></span>
 
 <div id="process_2"><%= render :partial => 'mandarat/process_2', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
 <div id="process_1"><%= render :partial => 'mandarat/process_1', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
 
-<%# JSが書かれているため最後に書くこと %>
-<%= render :partial => 'shared/left_menu' %>
-<%= javascript_pack_tag "idea/mandarat_channel" %>
+<%= content_for :right_menu do %>
+  <%= render :partial => 'shared/right_menu', locals: {users: @idea_users} %>
+<% end %>
