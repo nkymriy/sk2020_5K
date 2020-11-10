@@ -1,0 +1,2 @@
+class WordGachaController < ApplicationController
+end
