@@ -3,7 +3,7 @@ require('fomantic-ui-css/semantic.min');
 $(function () {
     //読み込み時の表示
     $('#main_content').fadeIn(500);
-    console.log($("#main_content"))
+    $('.popup').popup();
     $('#left_menu_show_button').on('click', function () {
         $('#left_menu').show();
         $('#left_icon_menu').hide()
@@ -13,7 +13,7 @@ $(function () {
         $('#left_icon_menu').show()
     });
 
-    console.log($('.popup').popup());
+
 //     window_load();
 // //ウィンドウサイズ変更時に更新
 //     window.onresize = window_load;
