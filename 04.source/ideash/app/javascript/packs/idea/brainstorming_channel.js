@@ -95,10 +95,8 @@ $(function () {
                         var object_id = 'object_id_' + query['system']['option']['object_id']
                         var group_id = 'group_id_' + query['system']['option']['group_id']
                         var div = $(
-                            `<div class="idea" id=${object_id} draggable="true" ondragstart="dragstart_handler(event)">\n` +
-                            '       <div class="ui teal large label">\n' +
+                            `<div class="idea ui teal large label" id=${object_id} draggable="true" ondragstart="dragstart_handler(event)">\n` +
                             query['system']['option']['content'] +
-                            '       </div>\n' +
                             '</div>'
                         );
                         $('#' + object_id).remove();

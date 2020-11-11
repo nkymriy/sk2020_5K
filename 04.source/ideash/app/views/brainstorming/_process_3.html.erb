@@ -2,7 +2,7 @@
 <div class="home_body wide_margin">
   <h3 class="theme">テーマ: <%= idea.idea_name %></h3>
   <%# 3 %>
-  <div class="ui black large button group-add" id="group_add">グループを追加する</div>
+  <div class="ui teal button group-add" id="group_add">グループを追加する</div>
   <div class="process3_contents">
     <div class="group-contents">
       <% group_zero = {} %>
@@ -13,14 +13,12 @@
         <% end %>
         <div class="group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
           <div class="ui stacked segments group" id="group_id_<%= group_id %>">
-            <div class="ui huge transparent input">
+            <div class="group_name ui huge transparent input">
               <%= text_field_tag "brain_rename_#{group_id}", '', placeholder: group["name"], data: {behavior: 'idea_speaker'} %>
             </div>
             <% group['objects'].each { |object_id, content| %>
-              <div class="idea" id="object_id_<%= object_id %>" draggable="true" ondragstart="dragstart_handler(event)">
-                <div class="ui teal large label">
-                  <%= content %>
-                </div>
+              <div class="idea ui teal large label" id="object_id_<%= object_id %>" draggable="true" ondragstart="dragstart_handler(event)">
+                <%= content %>
               </div>
             <% } %>
           </div>
