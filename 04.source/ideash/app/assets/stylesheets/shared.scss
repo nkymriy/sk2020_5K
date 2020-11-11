@@ -33,11 +33,6 @@ body {
   display: none;
 }
 
-#edit_body {
-  height: 80%;
-  padding: 1% 2%;
-}
-
 .wide_margin_left {
   margin-left: 220px;
 }
@@ -54,12 +49,12 @@ body {
   margin-right: 185px;
 }
 
-/*homemenu*/
+/*left_menu*/
 .header_div {
 }
 
 .menu_icon {
-  width: 15%;
+  width: 40px;
 }
 
 #slideL {
@@ -106,7 +101,7 @@ body {
   margin-top: -5px;
 }
 
-/*editmenu*/
+/*left_menu*/
 .block-edit-sidebar ul {
   list-style: none;
   line-height: 1.5;
@@ -211,4 +206,79 @@ body {
   width: 1em;
   padding: 2px;
   border: 1px solid gray;
+}
+
+#header {
+  height: 40px !important;
+  text-align: center;
+}
+
+#wrap {
+  height: calc(100% - 40px);
+  width: 100%;
+  display: flex;
+
+  .left_menu {
+    position: sticky;
+    display: block;
+    float: left;
+    margin: 0;
+  }
+
+  #left_menu {
+    min-width: 200px;
+    width: 15vh;
+
+  }
+
+  #left_icon_menu {
+    display: none;
+  }
+
+  #main_content {
+    width: inherit;
+    margin: 10px;
+  }
+
+  .fade_object{
+    display: none;
+  }
+
+  .right_menu {
+    position: sticky;
+    display: block;
+    float: right;
+    margin: 0;
+  }
+
+  #right_menu {
+    width: 20vh;
+  }
+
+  #right_icon_menu {
+    display: none;
+    height: fit-content;
+  }
+
+}
+
+@media screen and(max-width: 1024px) {
+  #wrap {
+    #left_menu {
+      display: none;
+    }
+
+    #left_icon_menu {
+      display: block;
+    }
+
+    #right_menu {
+      display: none;
+    }
+
+    #right_icon_menu {
+      display: block;
+    }
+  }
+
 }
