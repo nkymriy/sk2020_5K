@@ -82,32 +82,32 @@
   float: left;
 }
 
-.to-up-area ,.to-down-area{
+.mandarat-main .to-up-area ,.mandarat-main .to-down-area{
   height: 56px;
   width: calc(80% + 122px);
 }
 
-.to-left-area ,.to-right-area{
+.mandarat-main .to-left-area ,.mandarat-main .to-right-area{
   height: 69vh;
   width: 56px;
   float: left;
   padding-top: 31vh;
 }
 
-.to-down-area{
+.mandarat-main .to-down-area{
   margin-top:69vh;
 }
 
-#to-up-button ,#to-down-button{
+.mandarat-main #to-up-button ,.mandarat-main #to-down-button{
   width: fit-content;
   margin: auto;
 }
 
-#to-left-button ,#to-right-button{
+.mandarat-main #to-left-button ,.mandarat-main #to-right-button{
   height: fit-content;
 }
 
-.to-left-area{
+.mandarat-main .to-left-area{
   margin-right: 10px !important;
 }
 
