@@ -1,88 +1,81 @@
-<%= render :partial => 'shared/header' %>
-
-<div class="home_body" id="home_body">
-  <div class="home_center">
-    <div class="ideash_explain">
-      <div class="home_image">
-        <%= image_tag 'thinkman.webp', class: 'image_home_think_man' %>
-      </div>
-      <div class="home_text">
-        <p>
-          Inspiration<br>
-          with<br>
-          Ideash<br>
-        </p>
-      </div>
+<div class="home_center">
+  <div class="ideash_explain">
+    <div class="home_image">
+      <%= image_tag 'thinkman.webp', class: 'image_home_think_man' %>
     </div>
-    <div class="step_content">
-      <h5>how to use</h5>
-      <div class="ui steps">
-        <div class="link step">
-          <i class="gem icon"></i>
-          <div class="content">
-            <div class="title">Choose</div>
-            <div class="description">発想手法を選ぶ</div>
-          </div>
-        </div>
-        <div class="link step">
-          <i class="handshake icon"></i>
-          <div class="content">
-            <div class="title">Get together</div>
-            <div class="description">参加者を集める</div>
-          </div>
-        </div>
-        <div class="step">
-          <i class="gem icon"></i>
-          <div class="content">
-            <div class="title">Follow us</div>
-            <div class="description">Ideashに従う</div>
-          </div>
-        </div>
-        <div class="step">
-          <i class="lightbulb outline teal icon"></i>
-          <div class="content">
-            <div class="title">Inspiration !</div>
-            <div class="description">アイデアを思いつく</div>
-          </div>
-        </div>
-      </div>
+    <div class="home_text">
+      <p>
+        Inspiration<br>
+        with<br>
+        Ideash<br>
+      </p>
     </div>
-    <% if Rails.env.development? %>
-      <div class="advertisement">
-        <div class="ui large leaderboard test ad" data-text="Large Leaderboard">*develop modeでのみ表示</div>
-        <div class="ui large leaderboard test ad" data-text="Large Leaderboard">*develop modeでのみ表示</div>
-      </div>
-    <% end %>
   </div>
-  <div class="home_right">
-    <div class="release_info">
-      <div class="ui tiny list">
-        <% @release_note.reverse_each do |row| %>
-          <div class="item">
-            <i class="angle right icon"></i>
-            <div class="release_note_content">
-              <%= link_to row['description'].split("//")[0], release_note_path, class: 'header' %>
-              <div class="description"><%= row['date'] %></div>
-            </div>
+  <div class="step_content">
+    <h5>how to use</h5>
+    <div class="ui steps">
+      <div class="link step">
+        <i class="gem icon"></i>
+        <div class="content">
+          <div class="title">Choose</div>
+          <div class="description">発想手法を選ぶ</div>
+        </div>
+      </div>
+      <div class="link step">
+        <i class="handshake icon"></i>
+        <div class="content">
+          <div class="title">Get together</div>
+          <div class="description">参加者を集める</div>
+        </div>
+      </div>
+      <div class="step">
+        <i class="gem icon"></i>
+        <div class="content">
+          <div class="title">Follow us</div>
+          <div class="description">Ideashに従う</div>
+        </div>
+      </div>
+      <div class="step">
+        <i class="lightbulb outline teal icon"></i>
+        <div class="content">
+          <div class="title">Inspiration !</div>
+          <div class="description">アイデアを思いつく</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if Rails.env.development? %>
+    <div class="advertisement">
+      <div class="ui large leaderboard test ad" data-text="Large Leaderboard">*develop modeでのみ表示</div>
+      <div class="ui large leaderboard test ad" data-text="Large Leaderboard">*develop modeでのみ表示</div>
+    </div>
+  <% end %>
+</div>
+<div class="home_right">
+  <div class="release_info">
+    <div class="ui tiny list">
+      <% @release_note.reverse_each do |row| %>
+        <div class="item">
+          <i class="angle right icon"></i>
+          <div class="release_note_content">
+            <%= link_to row['description'].split("//")[0], release_note_path, class: 'header' %>
+            <div class="description"><%= row['date'] %></div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
-    <div class="twitter_window">
-      <a class="twitter-timeline" data-chrome="noheader nofooter noborders" data-width="100%" data-height="100%" data-border-color="#2E2F30" href="https://twitter.com/Ideash_5k?ref_src=twsrc%5Etfw">Tweets
-        by Ideash_5k</a>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
-    <div class="about_us">
-      Ideashは5Kという専門学生5名のチームによって開発されています。
-      ご意見等はTwitterまたはGithubにお願いいたします。
-      <div class="link_icons">
-        <i class="github link purple big icon"></i>Github　　
-        <i class="twitter link blue big icon"></i>Twitter
-      </div>
+  </div>
+  <div class="twitter_window">
+    <a class="twitter-timeline" data-chrome="noheader nofooter noborders" data-width="100%" data-height="100%" data-border-color="#2E2F30" href="https://twitter.com/Ideash_5k?ref_src=twsrc%5Etfw">Tweets
+      by Ideash_5k</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+  <div class="about_us">
+    Ideashは5Kという専門学生5名のチームによって開発されています。
+    ご意見等はTwitterまたはGithubにお願いいたします。
+    <div class="link_icons">
+      <i class="github link purple big icon"></i>Github　　
+      <i class="twitter link blue big icon"></i>Twitter
     </div>
   </div>
 </div>
-
-<%# JSが書かれているため最後に書くこと %>
-<%= render :partial => 'shared/homemenu' %>

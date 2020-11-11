@@ -1,10 +1,8 @@
-<%= render :partial => 'shared/header' %>
 <%= javascript_pack_tag 'user/account' %>
 <input type=hidden id="is_updated" value=<%= @is_updated %>>
 
 <%= form_for current_user, url: {action: 'profile_update'} do |f| %>
-  <div class="home_body" id="home_body">
-    <div class="account_segment">
+    <div class="ui raised segment">
       <div class="account_name">アカウント設定</div>
       <div class="account_setting">
         <table class="ui very basic table">
@@ -22,15 +20,11 @@
         <div class="actions">
           <%= f.submit "Update", class: "ui primary button" %>
         </div>
-        <br><hr><br>
       </div>
-      <div class="account_signout">
-        <div class="actions">
-          <%= link_to "サインアウト", account_signout_path, class: "ui orange button" %>
-        </div>
-      </div>
+    </div>
+  <div class="ui raised segment">
+    <div class="actions">
+      <%= link_to "サインアウト", account_signout_path, class: "ui orange button" %>
     </div>
   </div>
 <% end %>
-<%# JSが書かれているため最後に書くこと %>
-<%= render :partial => 'shared/homemenu' %>

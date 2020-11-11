@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%# 本番環境でのみGoogleアナリティクスを有効化する %>
+  <% if Rails.env.production? %>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170879736-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'UA-170879736-1');
+    </script>
+  <% end %>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@Ideash_5k"/>
+  <meta property="og:url" content="https://team5.work/"/>
+  <meta property="og:title" content="Ideash"/>
+  <meta property="og:description" content="発想を助けるWebアプリ"/>
+  <meta property="og:image" content="https://drive.google.com/uc?export=view&id=1hANEoLgfRL8g1sJ3tsiuPWbrW331dE8R"/>
+
+  <title><%= content_for?(:html_title) ? yield(:html_title) : "Ideash" %></title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'shared', 'data-turbolinks-track': 'reload' %>
+  <!-- fomantic-ui -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css">
+
+  <%# フォントの読み込み %>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
+
+  <%# faviconの設定 %>
+  <%= favicon_link_tag('icon.svg') %>
+
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+<% if Rails.env.development? %>
+  <%= render :partial => 'shared/debug_menu' %>
+<% end %>
+<div id="header">
+  <%= render :partial => 'shared/header' %>
+</div>
+<div id="wrap">
+  <%= render :partial => 'shared/left_menu' %>
+  <div id="main_content" class="fade_object">
+    <%= yield %>
+  </div>
+  <div class="fade_object">
+    <%= yield :right_menu %>
+  </div>
+</div>
+</body>
+</html>

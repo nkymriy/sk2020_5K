@@ -1,37 +1,29 @@
-<%= render :partial => 'shared/header' %>
-
 <%# TODO: サムネイル表示に対応する %>
-
-<div class="home_body" id="home_body">
-  <div class="history_segment">
-    <table class="ui celled striped table">
-      <thead>
-      <tr>
-        <th colspan="3">
-          Recent Creation
-        </th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @user.idea.reverse.each do |idea| %>
+<div class="ui container">
+  <table class="ui celled striped table">
+    <thead>
+    <tr>
+      <th colspan="3">
+        Recent Creation
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @user.idea.reverse.each do |idea| %>
       <% if Rails.env.test? %>
         <tr class="feature-test-history">
       <% else %>
         <tr>
       <% end %>
-          <td class="collapsing">
-            <i class="folder icon"></i>
-            <%= idea.idea_name.truncate(20, omission: '...')  %>
-          </td>
-          <td>
-            <%= link_to "#{@categories[idea.idea_category_id]["idea_category_name"]}", "#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}" ,local: true, data: {"turbolinks" => false}%>
-          </td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
+      <td class="collapsing">
+        <i class="folder icon"></i>
+        <%= idea.idea_name.truncate(20, omission: '...') %>
+      </td>
+      <td>
+        <%= link_to "#{@categories[idea.idea_category_id]["idea_category_name"]}", "#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}", local: true, data: {"turbolinks" => false} %>
+      </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>
-
-<%# JSが書かれているため最後に書くこと %>
-<%= render :partial => 'shared/homemenu' %>
