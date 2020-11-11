@@ -1,8 +1,8 @@
 require('fomantic-ui-css/semantic.min');
 
-$(function () {
+document.addEventListener("turbolinks:load", function () {
     //読み込み時の表示
-    $('#main_content').fadeIn(500);
+    $('.fade_object').fadeIn(500);
     $('.popup').popup();
 
     //サイドバーの開閉ボタン

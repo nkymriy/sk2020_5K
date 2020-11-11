@@ -48,10 +48,12 @@
 </div>
 <div id="wrap">
   <%= render :partial => 'shared/left_menu' %>
-  <div id="main_content">
+  <div id="main_content" class="fade_object">
     <%= yield %>
   </div>
-  <%= yield :right_menu %>
+  <div class="fade_object">
+    <%= yield :right_menu %>
+  </div>
 </div>
 </body>
 </html>
