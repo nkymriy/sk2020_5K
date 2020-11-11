@@ -1,3 +1,48 @@
 // Place all the styles related to the word_gacha controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.word-cards{
+  height: 70vh;
+  width: 40vw;
+  margin: auto;
+  padding-top: 15vh;
+}
+
+.to-previous-area,.to-next-area{
+  height: 100%;
+  width: 20%;
+  float: left;
+  position:relative;
+}
+
+.to-previous-button,.to-next-button{
+  position:absolute;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+}
+.word-card{
+  height: 90%;
+  width: 54%;
+  float: left;
+  margin: 5% 3%;
+  border: #1B1C1D solid 1px;
+  background-color: white;
+}
+
+.select-buttons{
+  height: 10vh;
+  width: 40vw;
+  margin: auto;
+  background-color: #666666;
+}
+
+.word-num-select{
+  float: left;
+
+}
+.turn-gacha-button{
+  float: left;
+
+}
