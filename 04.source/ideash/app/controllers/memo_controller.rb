@@ -1,4 +1,5 @@
 class MemoController < ApplicationController
+  layout 'head_left_layout'
   def new
     get_user_memos
     @memo = Idea.new

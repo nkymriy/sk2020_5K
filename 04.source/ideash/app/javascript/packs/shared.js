@@ -1,31 +1,26 @@
-//読み込み時の表示
-window_load();
-//ウィンドウサイズ変更時に更新
-window.onresize = window_load;
+require('fomantic-ui-css/semantic.min');
 
-//サイズの表示
-function window_load() {
-    var display_Width = window.parent.screen.width;
-    var window_Width = window.innerWidth;
-    var key_Width = display_Width / 3 * 2;
+document.addEventListener("turbolinks:load", function () {
+    //読み込み時の表示
+    $('.fade_object').fadeIn(500);
+    $('.popup').popup();
 
-    let home_menu = document.getElementById('home_menu');
-    let edit_menu = document.getElementById('edit_menu');
-    let home_body = document.getElementById('home_body');
-    let edit_body = document.getElementById('edit_body');
-    let idea_card = document.getElementById('ideas');
+    //サイドバーの開閉ボタン
+    $('#left_menu_show_button').on('click', function () {
+        $('#left_menu').show();
+        $('#left_icon_menu').hide()
+    });
+    $('#left_menu_hide_button').on('click', function () {
+        $('#left_menu').hide();
+        $('#left_icon_menu').show()
+    });
 
-    if (window_Width <= key_Width) {
-        if (home_body) home_body.className = 'home_body thin_margin_left';
-        if (edit_body) edit_body.className = 'home_body thin_margin_right thin_margin_left';
-        if (edit_menu) edit_menu.className = 'ui right fixed vertical small menu block-edit-sidebar';
-        if (idea_card) idea_card.classList.replace('four', 'two');
-    } else {
-        home_menu.className = 'ui left fixed vertical inverted menu';
-        if (home_body) home_body.className = 'home_body wide_margin_left';
-        if (edit_body) edit_body.className = 'home_body wide_margin_right wide_margin_left';
-        if (edit_menu) edit_menu.className = 'ui right fixed vertical menu block-edit-sidebar';
-        if (idea_card) idea_card.classList.replace('two', 'four');
-    }
-    $('#home_body').fadeIn(500);
-}
+    $('#right_menu_show_button').on('click', function () {
+        $('#right_menu').show();
+        $('#right_icon_menu').hide()
+    });
+    $('#right_menu_hide_button').on('click', function () {
+        $('#right_menu').hide();
+        $('#right_icon_menu').show()
+    });
+});

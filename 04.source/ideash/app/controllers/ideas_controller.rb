@@ -1,4 +1,5 @@
 class IdeasController < ApplicationController
+  layout 'head_left_layout'
   require 'csv'
 
   def read_release_note_csv
