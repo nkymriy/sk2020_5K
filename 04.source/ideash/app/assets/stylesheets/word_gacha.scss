@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .word-cards{
-  height: 70vh;
+  height: 65vh;
   width: 40vw;
   margin: auto;
   padding-top: 15vh;
@@ -33,9 +33,8 @@
 
 .select-buttons{
   height: 10vh;
-  width: 40vw;
+  width: 20vw;
   margin: auto;
-  background-color: #666666;
 }
 
 .word-num-select{
@@ -44,5 +43,5 @@
 }
 .turn-gacha-button{
   float: left;
-
+  margin-left: 4%;
 }
