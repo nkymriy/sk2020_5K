@@ -1,5 +1,36 @@
-<%= render :partial => 'shared/header' %>
 <%= javascript_pack_tag "idea/word_gacha" %>
-<div id="process_1"><%= render :partial => 'word_gacha/process_1'%></div>
+<div class="edit_body" id="edit_body">
+  <div class="word-cards">
+    <div class="to-previous-area">
+      <div class="to-previous-button">
+        <i class="caret down clockwise rotated huge link icon"></i>
+      </div>
+    </div>
+    <div class="word-card">
 
-<%= render :partial => 'shared/homemenu' %>
+    </div>
+    <div class="to-next-area">
+      <div class="to-next-button">
+        <i class="caret down counterclockwise rotated huge link icon"></i>
+      </div>
+    </div>
+  </div>
+  <div class="select-buttons">
+    <div class="word-num-select">
+      <div class="ui selection dropdown">
+        <input type="hidden" name="gacha-select">
+        <i class="dropdown icon"></i>
+        <div class="default text">回数選択</div>
+        <div class="scrollhint menu">
+          <div class="item" data-value="3">３連</div>
+          <div class="item" data-value="5">５連</div>
+          <div class="item" data-value="7">７連</div>
+          <div class="item" data-value="10">10連</div>
+        </div>
+      </div>
+    </div>
+    <div class="turn-gacha-button">
+      <div class="ui teal button">回す</div>
+    </div>
+  </div>
+</div>
