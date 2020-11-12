@@ -1,4 +1,4 @@
-<%= render :partial => 'shared/header' %>
+<%= javascript_pack_tag 'common/new' %>
 <div class="tech_about_body">
   <div id="home_body" class="" style="margin-top: -2px">
     <div class="ui segments block-tech-about">
@@ -41,7 +41,8 @@
           <div class="participant">
             <ul>
               <li>
-                <i class="user circle icon"></i><%= current_user.user_name.blank? ? "Anonymous" : current_user.user_name %>(自分)
+                <i class="user circle icon"></i><%= current_user.user_name.blank? ? "Anonymous" : current_user.user_name %>
+                (自分)
               </li>
             </ul>
           </div>
@@ -55,5 +56,3 @@
     </div>
   </div>
 </div>
-<%= javascript_pack_tag 'common/new' %>
-<%= render :partial => 'shared/homemenu' %>

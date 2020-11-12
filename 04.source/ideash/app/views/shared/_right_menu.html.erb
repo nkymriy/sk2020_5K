@@ -1,7 +1,11 @@
-<%= javascript_pack_tag 'shared/_editmenu' %>
+<%= javascript_pack_tag 'shared/_right_menu' %>
 <input type="hidden" id="user_id" value="<%= current_user.id %>">
 <!-- 1 -->
-<div class="ui right fixed vertical menu block-edit-sidebar" id="edit_menu">
+<div class="ui right fixed vertical menu block-edit-sidebar right_menu" id="right_menu">
+  <a class="item" id="right_menu_hide_button">
+    <i class="angle double right icon"></i>折りたたむ
+  </a>
+
   <!-- 2 -->
   <div class="item timer">
     <%# TODO: タイマー実装後に削除 %>
@@ -86,4 +90,10 @@
           </div>
     </div>
   </div>
+</div>
+
+<div class="ui vertical icon menu right_menu" id="right_icon_menu">
+  <a class="popup item" id="right_menu_show_button" data-content="メニューを開く" data-position="right center">
+    <i class="angle double left icon"></i>
+  </a>
 </div>
