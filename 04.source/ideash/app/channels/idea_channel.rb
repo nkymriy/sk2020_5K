@@ -52,7 +52,8 @@ class IdeaChannel < ApplicationCable::Channel
 
   def pause()
     res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 4")
-
+    p "----------------------#{res}------------------------"
+    p "----------------------#{Idea.find(params[:idea].idea_category)}------------------------"
     # TODO: ループを利用したコードへの短縮が可能に見えるので、余裕ができたら短縮を試みる
     if (res[3].nil?)
       IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'start', 'option': 'sample_option'}}

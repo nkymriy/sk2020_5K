@@ -11,6 +11,7 @@ $(document).on("turbolinks:load", function () {
                 // Called when the subscription is ready for use on the server
                 // console.log('test')
                 this.perform('join_user');
+                return this.perform('pause');
             },
 
             disconnected() {
