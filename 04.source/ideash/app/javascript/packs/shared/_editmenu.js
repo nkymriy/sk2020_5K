@@ -1,7 +1,15 @@
 $(function () {
     require('fomantic-ui-css/semantic.min');
     require('jquery-ui/ui/widgets/draggable')
-    $('.chat').draggable();
+    //$('.chat').draggable();
+
+    jQuery( function() {
+        $('.chat').draggable( {
+            containment: '#jquery-ui-draggable',
+            scroll: false
+        } );
+    } );
+
     // let clipboard = new Clipboard('.copy');
     let timerId = setInterval(showClock2, 1000);
     showClock2(timerId)
