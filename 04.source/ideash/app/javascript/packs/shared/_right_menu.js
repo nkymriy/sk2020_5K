@@ -1,7 +1,6 @@
 $(function () {
     require('fomantic-ui-css/semantic.min');
     require('jquery-ui/ui/widgets/draggable')
-    //$('.chat').draggable();
 
     $(function () {
         $('.chat').draggable({
