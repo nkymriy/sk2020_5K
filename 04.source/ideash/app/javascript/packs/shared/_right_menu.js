@@ -3,9 +3,9 @@ $(function () {
     require('jquery-ui/ui/widgets/draggable')
     //$('.chat').draggable();
 
-    jQuery( function() {
+    $( function() {
         $('.chat').draggable( {
-            containment: '#jquery-ui-draggable',
+            containment: '#main_content',
             scroll: false
         } );
     } );
