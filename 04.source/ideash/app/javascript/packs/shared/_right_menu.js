@@ -3,12 +3,12 @@ $(function () {
     require('jquery-ui/ui/widgets/draggable')
     //$('.chat').draggable();
 
-    $( function() {
-        $('.chat').draggable( {
-            containment: '#main_content',
+    $(function () {
+        $('.chat').draggable({
+            containment: '#wrap',
             scroll: false
-        } );
-    } );
+        });
+    });
 
     // let clipboard = new Clipboard('.copy');
     let timerId = setInterval(showClock2, 1000);
