@@ -29,6 +29,13 @@
   margin: 5% 3%;
   border: #1B1C1D solid 1px;
   background-color: white;
+  //上下中央揃え
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.word-card h1{
+  margin: auto;
 }
 
 .select-buttons{
