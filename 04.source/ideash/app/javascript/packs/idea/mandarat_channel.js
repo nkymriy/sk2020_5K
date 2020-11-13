@@ -1,98 +1,114 @@
 import consumer from "../../channels/consumer"
+require('fomantic-ui-css/semantic.min');
 
 $(document).on("turbolinks:load", function () {
     if ($('.websocket-mandarat').length > 0) {
         // const chatChannel = consumer.subscriptions.create({
         consumer.task = consumer.subscriptions.create({
-            channel: 'IdeaChannel',
-            idea: $('#idea_logs').data('idea_id')
-        }, {
-            connected() {
-                // Called when the subscription is ready for use on the server
-                // console.log('test')
-                this.perform('join_user');
-                return this.perform('pause');
-            },
+                channel: 'IdeaChannel',
+                idea: $('#idea_logs').data('idea_id')
+            }, {
+                connected() {
+                    // Called when the subscription is ready for use on the server
+                    // console.log('test')
+                    this.perform('join_user');
+                    return this.perform('pause');
+                },
 
-            disconnected() {
-                // Called when the subscription has been terminated by the server
-            },
+                disconnected() {
+                    // Called when the subscription has been terminated by the server
+                },
 
-            received(idea_log) {
+                received(idea_log) {
 
-                let query = idea_log['idea_logs']
-                let val = parseInt(localStorage.getItem('radio_value'));
+                    let query = idea_log['idea_logs']
+                    let val = parseInt(localStorage.getItem('radio_value'));
 
-                //作成時
-                if (query['mode'] === 'join') {
-                    let user_id = 'participant_' + query['user_id']
-                    if ($('#' + user_id).length === 0) {
-                        $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
+                    //作成時
+                    if (query['mode'] === 'join') {
+                        let user_id = 'participant_' + query['user_id']
+                        if ($('#' + user_id).length === 0) {
+                            $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon">${query['join']['user_mail']}</i></li>`)
+                        }
                     }
-                }
-                //編集時
-                if (query['mode'] === 'editing') {
-                    let first = '.t';
-                    let sel_num = parseInt(query["editing"]["object_id"]) - val;
-                    let sel_class = first + sel_num;
-                    $(sel_class).css('background-color', '#C0C0C0');
-                }
-                //確定時
-                else if (query['mode'] === 'edit') {
-                    let text = query["edit"]["content"];
-                    let first1 = '.t';
-                    let first2 = 'zoom_';
-                    let bigid = query["edit"]["object_id"];
-                    let minid = bigid - val;
-                    let sel_class = first1 + minid;
-                    let sel_id = first2 + minid;
-                    $('#' + bigid).text(text);
-                    array[bigid] = text;
-                    if (minid >= 0 && minid <= 8) {
-                        document.getElementById(sel_id).value = text;
+                    //編集時
+                    if (query['mode'] === 'editing') {
+                        let first = '.t';
+                        let sel_num = parseInt(query["editing"]["object_id"]) - val;
+                        let sel_class = first + sel_num;
+                        $(sel_class).css('background-color', '#C0C0C0');
                     }
-                    $(sel_class).css('background-color', '#FFFFFF');
-                    if (Math.floor(bigid / 10) === 4) {
-                        $('#theme' + bigid % 40).text(text);
-                    }
-                } else if (query['mode'] === 'chat') {
-                    var user_id = 'chatuser_' + query['user_id']
-                    var user_name = escapeHTML(query['chat']['user_name'])
-                    var chat_text = escapeHTML(query['chat']['content']);
-                    var chat_div;
-                    if ($('#user_id').val() === query['user_id']) {
-                        chat_div = `<div class="ui right pointing label chat_message">${chat_text}</div>`
-                    } else {
-                        chat_div = `<div class="ui left pointing label chat_message">${chat_text}</div>`
-                    }
-                    if (user_id != $('.chat_content').first().attr('name')) {
-                        $('.chat_contents').first().prepend(`
+                    //確定時
+                    else if (query['mode'] === 'edit') {
+                        let text = query["edit"]["content"];
+                        let first1 = '.t';
+                        let first2 = 'zoom_';
+                        let bigid = query["edit"]["object_id"];
+                        let minid = bigid - val;
+                        let sel_class = first1 + minid;
+                        let sel_id = first2 + minid;
+                        $('#' + bigid).text(text);
+                        array[bigid] = text;
+                        if (minid >= 0 && minid <= 8) {
+                            document.getElementById(sel_id).value = text;
+                        }
+                        $(sel_class).css('background-color', '#FFFFFF');
+                        if (Math.floor(bigid / 10) === 4) {
+                            $('#theme' + bigid % 40).text(text);
+                        }
+                    } else if (query['mode'] === 'chat') {
+                        var user_id = 'chatuser_' + query['user_id']
+                        var user_name = escapeHTML(query['chat']['user_name'])
+                        var chat_text = escapeHTML(query['chat']['content']);
+                        var chat_div;
+                        if ($('#user_id').val() === query['user_id']) {
+                            chat_div = `<div class="ui right pointing label chat_message">${chat_text}</div>`
+                        } else {
+                            chat_div = `<div class="ui left pointing label chat_message">${chat_text}</div>`
+                        }
+                        if (user_id != $('.chat_content').first().attr('name')) {
+                            $('.chat_contents').first().prepend(`
                         <div class="chat_content" name="chatuser_${query['user_id']}">
                             <h6 class="chat_username">${user_name}</h6>
                         </div>
                     `)
+                        }
+                        $('.chat_username').first().after(chat_div)
+                    } else if (query['mode'] === 'system') {
+                        if (query['system']['operation'] === 'stop') {
+                            if (query['system']['option'] === 'process1') {
+                                $('body')
+                                    .toast({
+                                        title: 'FINISH',
+                                        message: '終了!!お疲れさまでした!!',
+                                        showProgress: 'bottom',
+                                        classProgress: 'blue'
+                                    });
+                            }
+                        }
                     }
-                    $('.chat_username').first().after(chat_div)
+                },
+                editing: function (content) {
+                    return this.perform('editing',
+                        content);
+                },
+                edit: function (content) {
+                    return this.perform('edit',
+                        content);
+                },
+                chat: function (idea_log) {
+                    return this.perform('chat_send',
+                        idea_log
+                    );
                 }
-            },
-            editing: function (content) {
-                return this.perform('editing',
-                    content);
-            },
-            edit: function (content) {
-                return this.perform('edit',
-                    content);
-            },
-            chat: function (idea_log) {
-                return this.perform('chat_send',
-                    idea_log
-                );
             }
-        });
+        );
 
         //初回読み込み時の処理
         let array = {};
-        for (let i = 0; i <= 8; i++) {
+        for (let i = 0; i <= 8;
+             i++
+        ) {
             for (let j = 0; j <= 8; j++) {
                 let x = i * 10 + j;
                 let text = $('input:hidden[name="read_' + x + '"]').val();
