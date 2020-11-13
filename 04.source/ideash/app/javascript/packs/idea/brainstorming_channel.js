@@ -1,5 +1,6 @@
 import consumer from "../../channels/consumer"
 
+require('fomantic-ui-css/semantic.min')
 require('jquery/src/jquery')
 $(function () {
     if ($('.websocket').length > 0) {
@@ -74,18 +75,33 @@ $(function () {
                 } else if (query['mode'] === 'system') {
                     if (query['system']['operation'] === 'stop') {
                         if (query['system']['option'] === 'process1') {
-                            alert('プロセス2に移行します!!\n' +
-                                'メンバー内でアイデアを共有し、\n' +
-                                '質問やアイデアの結合を行いましょう!!')
+                            $('body')
+                                .toast({
+                                    title: 'プロセス2に移行します!!',
+                                    message: 'メンバー内でアイデアを共有し、\n' +
+                                        '質問やアイデアの結合を行いましょう!!',
+                                    showProgress: 'bottom',
+                                    classProgress: 'blue'
+                                });
                             $('#idea_add').prop('disabled', true)
                         } else if (query['system']['option'] === 'process2') {
-                            alert('プロセス3に移行します!!')
+                            $('body')
+                                .toast({
+                                    title: 'プロセス3に移行します!!',
+                                    showProgress: 'bottom',
+                                    classProgress: 'blue'
+                                });
                             $('#process_1').hide()
                             $('#process_3').show()
                             $('#idea_add').prop('disabled', false)
                         } else if (query['system']['option'] === 'process3') {
-                            alert('終了!!\n' +
-                                'お疲れさまでした!!')
+                            $('body')
+                                .toast({
+                                    title: '終了!!\n' +
+                                        'お疲れ様でした!!',
+                                    showProgress: 'bottom',
+                                    classProgress: 'blue'
+                                });
                         }
                     } else if (query['system']['operation'] === 'group_rename') {
                         var id = '#brain_rename_' + query['system']['option']['group_id'].toString()
