@@ -107,6 +107,7 @@ Rails.application.routes.draw do
   post 'idea/word_gacha/create' => 'word_gacha#create'
   get 'idea/word_gacha/edit' => 'word_gacha#edit', as: :idea_word_gacha_edit
   get 'idea/word_gacha/_process_1' => 'word_gacha#_process_1'
+  get 'idea/word_gacha/get_wordgacha_jsons' => 'api#get_wordgacha_jsons', as: 'wordgacha_jsons'
 
 
   # NOTE: Action Cable の有効化

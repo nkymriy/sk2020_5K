@@ -16,7 +16,7 @@
   position:relative;
 }
 
-.to-previous-button,.to-next-button{
+#to-previous-button,#to-next-button{
   position:absolute;
   top: 50%;
   left: 15%;
@@ -48,7 +48,7 @@
   float: left;
 
 }
-.turn-gacha-button{
+.turn-gacha-area{
   float: left;
   margin-left: 4%;
 }
