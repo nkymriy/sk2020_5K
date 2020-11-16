@@ -1,6 +1,10 @@
 class IdeaChannel < ApplicationCable::Channel
   def subscribed
+    target_time1,target_time2,target_time3 = subscribed_target_time
     stream_from "idea_channel_#{params[:idea]}"
+    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {"target_time":target_time1}
+    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {"target_time":target_time2}
+    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {"target_time":target_time3}
   end
 
   def unsubscribed
@@ -60,6 +64,15 @@ class IdeaChannel < ApplicationCable::Channel
       process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
       process2 = {'id' => res[1]['id'], 'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
       process3 = {'id' => res[2]['id'], 'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
+
+      # create_process = ActiveRecord::Base.connection.execute("select time(created_at) from idea_logs where idea_id = '#{@idea.id}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 1")
+      # ##本番環境では分を足す　*60
+      # process1_min = process1['time']
+      # create_process_str = create_process.to_s
+      #
+      # create_process_conversion = Time.parse(create_process_str)
+      # @target_time = create_process_conversion + process1_min
+      #
 
       if process1['time'] == 0 || process2['time'] == 0 || process3['time'] == 0
         return
@@ -131,4 +144,29 @@ class IdeaChannel < ApplicationCable::Channel
       ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'grouping', 'option': {'content': content, 'object_id': object_id, 'group_id': group_id}}}
     end
   end
+
+  def subscribed_target_time
+
+    res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 4")
+
+    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'start', 'option': 'sample_option'}}
+    # NOTE: プロセス1,2,3における時間を設定する
+    process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
+    process2 = {'id' => res[1]['id'], 'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
+    process3 = {'id' => res[2]['id'], 'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
+
+    create_process = ActiveRecord::Base.connection.execute("select time(created_at) from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 1")
+    ##本番環境では分を足す　*60
+    process1_min = process1['time']
+    process2_min = process2['time']
+    process3_min = process3['time']
+    create_process_str = create_process.to_s
+    create_process_conversion = Time.parse(create_process_str)
+    target_time1 = create_process_conversion + process1_min
+    target_time2 = create_process_conversion + process1_min + process2_min
+    target_time3 = create_process_conversion + process1_min + process2_min +process3_min
+    return target_time1,target_time2,target_time3
+  end
+
+
 end
