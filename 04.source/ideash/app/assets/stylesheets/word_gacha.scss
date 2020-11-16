@@ -23,6 +23,7 @@
   transform: translateY(-50%);
 }
 .word-card{
+  position: relative;
   height: 90%;
   width: 54%;
   float: left;
@@ -36,6 +37,40 @@
 }
 .word-card h1{
   margin: auto;
+}
+#rank_top,#rank_bottom{
+  position: absolute;
+  font-size: 3vw;
+  font-weight: bolder;
+  height: fit-content;
+  padding: 10%;
+}
+#rank_top{
+  top:0;
+  right: 0;
+}
+#rank_bottom{
+  transform: rotateX( 180deg )+rotateY( 180deg );
+  bottom: 0;
+  left: 0;
+}
+.N_rank{
+  color: #666666;
+}
+.R_rank{
+  color: #26AEAF;
+}
+.SR_rank{
+  color: #ACB6E5;
+  background: -webkit-linear-gradient(0deg, #ACB6E5, #86FDE8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.SSR_rank{
+  color: #DA8E00;
+  background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03, #DA8E00, #EDAC06, #F7DE05, #ECB802, #EDAC06);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .select-buttons{
