@@ -46,8 +46,8 @@ $(document).on("turbolinks:load", function () {
                         let minid = bigid - val;
                         let sel_class = first1 + minid;
                         let sel_id = first2 + minid;
-                        if(text.length>15) {
-                            let clamptext = text.slice(0,14);
+                        if(text.length>18) {
+                            let clamptext = text.slice(0,17);
                             $('#' + bigid).text(clamptext+'.....');
                         }else {
                             $('#' + bigid).text(text);
@@ -115,8 +115,8 @@ $(document).on("turbolinks:load", function () {
                 let x = i * 10 + j;
                 let text = $('input:hidden[name="read_' + x + '"]').val();
                 array[x] = text;
-                if(text.length>15) {
-                    let clamptext = text.slice(0,14);
+                if(text.length>18) {
+                    let clamptext = text.slice(0,17);
                     $('#' + x).text(clamptext+'....');
                 }else {
                     $('#' + x).text(text);
