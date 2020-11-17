@@ -9,7 +9,6 @@ function toast_updated() {
     // 初回時は空白になるのでそのまま返す
     if (is_updated === "") return;
     let user_name = $('#account_input').val();
-    console.log(is_updated)
     if (is_updated) {
         $('body')
             .toast({

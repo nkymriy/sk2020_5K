@@ -1,5 +1,6 @@
 class MandaratController < ApplicationController
   layout 'head_left_layout'
+
   def replay
     check_idea_category
   end
@@ -29,7 +30,20 @@ class MandaratController < ApplicationController
       idea.idea_category_id = Settings.idea_category_id.mandarat
       idea.idea_name = params[:theme]
     end
+
     if new_idea.save!
+      if !params[:is_unlimited]
+        IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process1', 'option': '0'}}
+      else
+        if Rails.env.development?
+          # テスト用(秒単位)
+          IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process1', 'option': (params[:process1].to_i).to_s}}
+        else
+          # 本番用(分単位)
+          IdeaLog.create! idea_id: new_idea.id, query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'process1', 'option': (params[:process1].to_i * 60).to_s}}
+        end
+      end
+
       logger.debug "create new idea: #{new_idea.inspect}"
       redirect_to idea_mandarat_edit_url(id: new_idea.id)
     else
