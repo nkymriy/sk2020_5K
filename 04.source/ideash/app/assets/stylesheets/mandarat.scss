@@ -166,10 +166,29 @@
 }
 .tab td div {
   font-size: 9pt;
-  max-width:100%;
-  height:1.1em;
+  width: 100%;
+  height: 100%;
+  //height: 1.1em;
   overflow: hidden;
-  text-overflow: ellipsis;
+  //text-overflow: ellipsis;
+  //white-space: nowrap;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  max-height: 100%;
+  //min-height: 100%;
+  //min-width: 100%;
+}
+.tab {
+  table-layout: fixed;
+  width: 180px;
+  height: 180px;
+  max-width: 180px;
+  max-height: 180px;
+}
+
+.tab td{
+  display: table-cell;
+  //max-width: 90px;
 }
 
 @for $i from 0 through 8 {
