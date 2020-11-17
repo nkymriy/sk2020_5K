@@ -186,7 +186,7 @@ class IdeaLog < ApplicationRecord
     grouping_contents = {}
     add_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'add'")
     group_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'group'")
-    grouping_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and JSON_EXTRACT(query, '$.mode') = 'grouping'")
+    grouping_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{idea_id}' and is_active = 0 and JSON_EXTRACT(query, '$.mode') = 'grouping'")
 
     add_res.select do |a_res|
       add_contents.merge!(JSON.parse(a_res['query'])['add']['object_id'] => JSON.parse(a_res['query'])['add']['content'])

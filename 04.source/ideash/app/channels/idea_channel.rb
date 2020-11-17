@@ -143,8 +143,9 @@ class IdeaChannel < ApplicationCable::Channel
     group_id = data['group_id'].to_i
     content = data['content']
     grouping_res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'grouping'")
-    grouping_id = grouping_res.select { |hoge| JSON.parse(hoge['query'])['grouping']['object_id'] === object_id }[0]['id']
-    if IdeaLog.find(grouping_id).update! query: {'user_id': current_user.id, 'mode': 'grouping', 'grouping': {'object_id': object_id, 'group_id': group_id}}
+    grouping_id = grouping_res.select { |hoge| JSON.parse(hoge['query'])['grouping']['object_id'] === object_id }.last['id']
+    if IdeaLog.find(grouping_id).update! is_active: 1
+      IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'grouping', 'grouping': {'object_id': object_id, 'group_id': group_id}}
       ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'grouping', 'option': {'content': content, 'object_id': object_id, 'group_id': group_id}}}
     end
   end
