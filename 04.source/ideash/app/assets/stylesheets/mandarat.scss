@@ -129,8 +129,12 @@
   background-color: white;
 }
 
-.mandarat-blocks input{
+.mandarat-blocks textarea{
   text-align: center;
+  resize: none;
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .mandarat-blocks .off{
