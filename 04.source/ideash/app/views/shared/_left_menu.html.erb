@@ -1,7 +1,7 @@
 <%# 左サイドバー %>
 <div class="ui vertical menu left_menu" id="left_menu">
   <a class="item" id="left_menu_hide_button">
-    <i class="angle double left icon"></i>折りたたむ
+    <i class="angle double left icon"></i>　
   </a>
   <%= link_to "ホーム", idea_home_path, class: "item" %>
   <%= link_to "新規作成", idea_category_path, class: "item" %>
@@ -16,19 +16,19 @@
 
 <div class="ui vertical icon menu left_menu" id="left_icon_menu">
   <a class="popup item" id="left_menu_show_button" data-content="メニューを開く" data-position="right center">
-    <i class="angle double right icon"></i>
+    <i class="angle double right grey icon"></i>
   </a>
   <a class="popup item" href="<%= idea_home_path %>" data-content="ホーム" data-position="right center">
-    <i class="home icon"></i>
+    <i class="home grey icon"></i>
   </a>
   <a class="popup item" href="<%= idea_category_path %>" data-content="新規作成" data-position="right center">
-    <i class="plus square outline icon"></i>
+    <i class="edit grey icon"></i>
   </a>
 
   <a class="popup item" href="<%= idea_history_path %>" data-content="履歴" data-position="right center">
-    <i class="history icon"></i>
+    <i class="folder open grey icon"></i>
   </a>
   <a class="popup item" href="<%= profile_edit_path %>" data-content="設定" data-position="right center">
-    <i class="user circle icon"></i>
+    <i class="cog grey icon"></i>
   </a>
 </div>
