@@ -112,7 +112,7 @@ Rails.application.routes.draw do
   get 'idea/word_slot/replay' => 'word_slot#replay'
   post 'idea/word_slot/create' => 'word_slot#create'
   get 'idea/word_slot/edit' => 'word_slot#edit', as: :idea_word_slot_edit
-  get 'idea/word_slot/get_wordgacha_jsons' => 'api#get_wordgacha_jsons', as: 'wordgacha_jsons'
+  get 'idea/word_slot/get_wordslot_jsons' => 'api#get_wordgacha_jsons', as: 'wordslot_jsons'
 
 
   # NOTE: Action Cable の有効化
