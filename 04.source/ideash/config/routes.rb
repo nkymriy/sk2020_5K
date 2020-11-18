@@ -102,6 +102,14 @@ Rails.application.routes.draw do
   get 'idea/mandarat/edit/:id' => 'mandarat#edit', as: :idea_mandarat_edit
   get 'idea/mandarat/_process_1' => 'mandarat#_process_1'
 
+  # INFO: 単語ガチャ
+  get 'idea/word_gacha/replay' => 'word_gacha#replay'
+  post 'idea/word_gacha/create' => 'word_gacha#create'
+  get 'idea/word_gacha/edit' => 'word_gacha#edit', as: :idea_word_gacha_edit
+  get 'idea/word_gacha/_process_1' => 'word_gacha#_process_1'
+  get 'idea/word_gacha/get_wordgacha_jsons' => 'api#get_wordgacha_jsons', as: 'wordgacha_jsons'
+
+
   # NOTE: Action Cable の有効化
   mount ActionCable.server => '/cable'
   # developmentモードでのみ以下のルーティングが行われる

@@ -1,0 +1,2 @@
+module WordGachaHelper
+end
