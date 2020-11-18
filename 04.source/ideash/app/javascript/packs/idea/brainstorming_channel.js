@@ -115,14 +115,11 @@ $(function () {
                     `)
                 } else if (query['mode'] === 'settime') {
                     let row_target_times = query['settime']['target_times'];
-                    console.log(row_target_times +"row")
                     let target_times = []
                     for (let i in row_target_times) {
                         target_times.push(new Date(row_target_times[i]));
                     }
                     start_timer(target_times)
-                    // document.getElementById('remaining').innerHTML = msg2;
-                    // console.log(msg2)
                 }
             },
 
