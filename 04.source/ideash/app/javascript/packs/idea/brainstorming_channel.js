@@ -16,7 +16,6 @@ $(function () {
             disconnected() {
                 // Called when the subscription has been terminated by the server
             },
-
             received(json_idea_log) {
                 let query = json_idea_log['idea_logs']
                 if (query['mode'] === 'join') {
@@ -114,8 +113,19 @@ $(function () {
                           </div>
                         </div>
                     `)
+                } else if (query['mode'] === 'settime') {
+                    let row_target_times = query['settime']['target_times'];
+                    console.log(row_target_times +"row")
+                    let target_times = []
+                    for (let i in row_target_times) {
+                        target_times.push(new Date(row_target_times[i]));
+                    }
+                    start_timer(target_times)
+                    // document.getElementById('remaining').innerHTML = msg2;
+                    // console.log(msg2)
                 }
             },
+
             add: function (json_idea_log) {
                 return this.perform('add',
                     json_idea_log
@@ -189,7 +199,25 @@ $(function () {
             consumer.task.unsubscribe()
         }
     }
+    function start_timer(target_times) {
+        setInterval(show_timer, 1000, target_times)
+    }
+    function show_timer(target_times) {
+        target_times.sort();
+        let target_date = new Date(target_times[0]);
+        target_date.setHours(target_date.getHours() + 9);
+        let now_date = new Date();
+        let date_difference = target_date - now_date;
+        var dMin = date_difference / (1000 * 60);   // 分
+        date_difference = date_difference % (1000 * 60);
+        var dSec = date_difference / 1000;   // 秒
+        var msg = Math.floor(dMin) + "分"
+            + Math.floor(dSec) + "秒";
+        console.log(msg);
+        document.getElementById('remaining').innerHTML = msg;
+    }
 });
+
 
 // NOTE: エスケープ処理
 const escapeHTML = function (val) {

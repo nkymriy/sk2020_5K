@@ -1,10 +1,8 @@
 class IdeaChannel < ApplicationCable::Channel
   def subscribed
-    target_time1,target_time2,target_time3 = subscribed_target_time
+    target_times = subscribed_target_time
     stream_from "idea_channel_#{params[:idea]}"
-    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {"target_time":target_time1}
-    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {"target_time":target_time2}
-    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {"target_time":target_time3}
+    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {"mode":"settime","settime":{"target_times": target_times}}
   end
 
   def unsubscribed
@@ -30,10 +28,10 @@ class IdeaChannel < ApplicationCable::Channel
       return
     end
     if (current_user.user_name != nil)
-      IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'join', 'join': {'user_name': current_user.user_name }}
+      IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'join', 'join': {'user_name': current_user.user_name}}
     else
       # NOTE: ユーザ名が設定されていない場合Anonymousで登録する
-      IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'join', 'join': {'user_name': 'Anonymous' }}
+      IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'join', 'join': {'user_name': 'Anonymous'}}
     end
   end
 
@@ -64,15 +62,6 @@ class IdeaChannel < ApplicationCable::Channel
       process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
       process2 = {'id' => res[1]['id'], 'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
       process3 = {'id' => res[2]['id'], 'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
-
-      # create_process = ActiveRecord::Base.connection.execute("select time(created_at) from idea_logs where idea_id = '#{@idea.id}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 1")
-      # ##本番環境では分を足す　*60
-      # process1_min = process1['time']
-      # create_process_str = create_process.to_s
-      #
-      # create_process_conversion = Time.parse(create_process_str)
-      # @target_time = create_process_conversion + process1_min
-      #
 
       if process1['time'] == 0 || process2['time'] == 0 || process3['time'] == 0
         return
@@ -164,8 +153,8 @@ class IdeaChannel < ApplicationCable::Channel
     create_process_conversion = Time.parse(create_process_str)
     target_time1 = create_process_conversion + process1_min
     target_time2 = create_process_conversion + process1_min + process2_min
-    target_time3 = create_process_conversion + process1_min + process2_min +process3_min
-    return target_time1,target_time2,target_time3
+    target_time3 = create_process_conversion + process1_min + process2_min + process3_min
+    return [target_time1, target_time2, target_time3]
   end
 
 
