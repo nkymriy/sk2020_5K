@@ -18,7 +18,6 @@ import 'fomantic-ui-css/semantic.min.css'
 require('fomantic-ui-css/semantic.min')
 
 // 共有js
-// require('./common/check_controller_action')
 require('./shared')
 require('./shared/_right_menu')
 
