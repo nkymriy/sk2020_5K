@@ -76,3 +76,33 @@ function showClock2(timerId) {
         document.getElementById("RealtimeClockArea2").innerHTML = msg;
     }
 }
+
+$(function () {
+    <% if controller_name == 'brainstorming' then %>
+    console.log('aaaa')
+    $('body').append('<div class="modal js-modal">\n' +
+        '        <div class="modal__bg js-modal-close"></div>\n' +
+        '        <div class="modal__content">\n' +
+        '          <p>ブレインストーミングです</p>\n' +
+        '          <a class="js-modal-close" href="">閉じる</a>\n' +
+        '        </div><!--modal__inner-->\n' +
+        '      </div><!--modal-->')
+    <% elsif controller_name == 'mandarat' %>
+    $('body').append('<div class="modal js-modal">\n' +
+        '        <div class="modal__bg js-modal-close"></div>\n' +
+        '        <div class="modal__content">\n' +
+        '          <p>マンダラートです</p>\n' +
+        '          <a class="js-modal-close" href="">閉じる</a>\n' +
+        '        </div><!--modal__inner-->\n' +
+        '      </div><!--modal-->')
+    <% end %>
+
+    $('.js-modal-open').on('click', function () {
+        $('.js-modal').fadeIn();
+        return false;
+    });
+    $('.js-modal-close').on('click', function () {
+        $('.js-modal').fadeOut();
+        return false;
+    });
+});
