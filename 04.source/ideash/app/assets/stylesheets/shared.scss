@@ -240,7 +240,7 @@ body {
     margin: 10px;
   }
 
-  .fade_object{
+  .fade_object {
     display: none;
   }
 
@@ -281,4 +281,11 @@ body {
     }
   }
 
+}
+
+img.icon_image {
+  height: 30px;
+  width: 100%;
+  object-fit: contain;
+  margin: auto;
 }

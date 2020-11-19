@@ -1,0 +1,89 @@
+// Place all the styles related to the word_gacha controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.word-cards{
+  height: 65vh;
+  width: 40vw;
+  margin: auto;
+  padding-top: 15vh;
+}
+
+.to-previous-area,.to-next-area{
+  height: 100%;
+  width: 20%;
+  float: left;
+  position:relative;
+}
+
+#to-previous-button,#to-next-button{
+  position:absolute;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+}
+.word-card{
+  position: relative;
+  height: 90%;
+  width: 54%;
+  float: left;
+  margin: 5% 3%;
+  border: #1B1C1D solid 1px;
+  background-color: white;
+  //上下中央揃え
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.word-card h1{
+  margin: auto;
+}
+#rank_top,#rank_bottom{
+  position: absolute;
+  font-size: 3vw;
+  font-weight: bolder;
+  height: fit-content;
+  padding: 10%;
+}
+#rank_top{
+  top:0;
+  right: 0;
+}
+#rank_bottom{
+  transform: rotateX( 180deg )+rotateY( 180deg );
+  bottom: 0;
+  left: 0;
+}
+.N_rank{
+  color: #666666;
+}
+.R_rank{
+  color: #26AEAF;
+}
+.SR_rank{
+  color: #ACB6E5;
+  background: -webkit-linear-gradient(0deg, #ACB6E5, #86FDE8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.SSR_rank{
+  color: #DA8E00;
+  background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03, #DA8E00, #EDAC06, #F7DE05, #ECB802, #EDAC06);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.select-buttons{
+  height: 10vh;
+  width: 20vw;
+  margin: auto;
+}
+
+.word-num-select{
+  float: left;
+
+}
+.turn-gacha-area{
+  float: left;
+  margin-left: 4%;
+}
