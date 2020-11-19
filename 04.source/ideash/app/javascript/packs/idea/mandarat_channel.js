@@ -1,7 +1,10 @@
 import consumer from "../../channels/consumer"
+import {checkControllerAction} from "../common/check_controller_action";
+
 require('fomantic-ui-css/semantic.min');
 
 $(document).on("turbolinks:load", function () {
+    if (!checkControllerAction(['mandarat'], ['edit'])) return
     if ($('.websocket-mandarat').length > 0) {
         // const chatChannel = consumer.subscriptions.create({
         consumer.task = consumer.subscriptions.create({
