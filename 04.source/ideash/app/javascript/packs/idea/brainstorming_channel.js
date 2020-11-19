@@ -208,11 +208,15 @@ $(function () {
         var dMin = date_difference / (1000 * 60);   // 分
         date_difference = date_difference % (1000 * 60);
         var dSec = date_difference / 1000;   // 秒
-        var msg = Math.floor(dMin) + "分"
-            + Math.floor(dSec) + "秒";
-        console.log(msg);
-        document.getElementById('remaining').innerHTML = msg;
-    }
+        if(dMin && dSec < 0){
+            document.getElementById('remaining').innerHTML = "終了";
+        }else{
+            var msg = Math.floor(dMin) + "分"
+                + Math.floor(dSec) + "秒";
+            document.getElementById('remaining').innerHTML = msg;
+            }
+        }
+
 });
 
 
