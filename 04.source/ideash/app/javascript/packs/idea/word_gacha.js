@@ -1,7 +1,9 @@
-$(document).on("turbolinks:load", function () {
-    require('fomantic-ui-css/semantic.min')
-    $('.ui.dropdown').dropdown()
+import {checkControllerAction} from "../common/check_controller_action";
+require('fomantic-ui-css/semantic.min')
 
+$(document).on("turbolinks:load", function () {
+    checkControllerAction(['word_gacha'],['edit'])
+    $('.ui.dropdown').dropdown()
     //ガチャを回す
     $('#turn-gacha-button').on('click', turnbtn);
     let gacha_num = 0;

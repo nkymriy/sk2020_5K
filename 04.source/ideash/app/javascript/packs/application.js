@@ -22,8 +22,11 @@ require('./common/check_controller_action')
 require('./common/new')
 //top
 require('./top')
-//brainstormingのedit画面
+//brainstorming#edit
 require('./idea/brainstorming_channel')
+
+//word_gacha
+require('./idea/word_gacha')
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
