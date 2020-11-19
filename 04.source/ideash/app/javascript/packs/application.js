@@ -15,7 +15,7 @@ require("jquery-ui/ui/widgets/draggable")
 
 // fomantic-uiの読み込み
 import 'fomantic-ui-css/semantic.min.css'
-require('fomantic-ui-css/semantic')
+require('fomantic-ui-css/semantic.min')
 
 // 共有js
 // require('./common/check_controller_action')
