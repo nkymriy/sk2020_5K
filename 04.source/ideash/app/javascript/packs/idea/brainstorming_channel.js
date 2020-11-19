@@ -1,8 +1,7 @@
 import consumer from "../../channels/consumer"
 import {checkControllerAction} from "../common/check_controller_action";
 
-require('fomantic-ui-css/semantic.min')
-require('jquery/src/jquery')
+
 $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['brainstorming'], ['edit'])) return
 

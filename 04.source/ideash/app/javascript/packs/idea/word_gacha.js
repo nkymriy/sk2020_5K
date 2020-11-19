@@ -1,5 +1,4 @@
 import {checkControllerAction} from "../common/check_controller_action";
-require('fomantic-ui-css/semantic.min')
 
 $(document).on("turbolinks:load", function () {
     checkControllerAction(['word_gacha'],['edit'])

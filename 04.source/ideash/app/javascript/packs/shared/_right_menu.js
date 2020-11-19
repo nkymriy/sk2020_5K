@@ -1,8 +1,5 @@
 import {checkControllerAction} from "../common/check_controller_action";
 
-require('fomantic-ui-css/semantic.min');
-require('jquery-ui/ui/widgets/draggable')
-
 $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['brainstorming', 'mandarat'], ['edit'])) return
 
@@ -11,7 +8,6 @@ $(document).on("turbolinks:load", function () {
         scroll: false
     });
 
-    // let clipboard = new Clipboard('.copy');
     let timerId = setInterval(showClock2, 1000);
     showClock2(timerId)
 

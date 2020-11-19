@@ -1,6 +1,5 @@
 import {checkControllerAction} from "../common/check_controller_action";
 
-require('fomantic-ui-css/semantic.min');
 document.addEventListener("turbolinks:load", function () {
     if (!checkControllerAction(['memo'], ['new', 'edit'])) return;
 

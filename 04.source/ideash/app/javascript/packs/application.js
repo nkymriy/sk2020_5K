@@ -10,9 +10,12 @@ require("channels")
 
 require("jquery")
 require("jquery-ui")
+require("jquery-ui/ui/widgets/draggable")
+
 
 // fomantic-uiの読み込み
 import 'fomantic-ui-css/semantic.min.css'
+require('fomantic-ui-css/semantic')
 
 // 共有js
 // require('./common/check_controller_action')

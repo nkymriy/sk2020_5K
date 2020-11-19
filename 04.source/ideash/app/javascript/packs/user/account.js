@@ -1,6 +1,5 @@
 import {checkControllerAction} from "../common/check_controller_action";
 
-require('fomantic-ui-css/semantic.min');
 $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['registrations'],['profile_edit'])) return;
     toast_updated();
