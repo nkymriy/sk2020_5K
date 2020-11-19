@@ -17,6 +17,7 @@ import 'fomantic-ui-css/semantic.min.css'
 // 共有js
 // require('./common/check_controller_action')
 require('./shared')
+require('./shared/_right_menu')
 
 // 各コントローラー用
 // idea新規作成画面
