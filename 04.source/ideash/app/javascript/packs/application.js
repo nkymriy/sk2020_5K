@@ -15,7 +15,7 @@ require("jquery-ui")
 import 'fomantic-ui-css/semantic.min.css'
 
 // 共有js
-require('./common/check_controller_action')
+// require('./common/check_controller_action')
 require('./shared')
 
 // 各コントローラー用
@@ -23,6 +23,8 @@ require('./shared')
 require('./common/new')
 //top
 require('./top')
+//user#edit
+require('./user/account')
 //memo#memo
 require('./memo/memo')
 //brainstorming#edit
