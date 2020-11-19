@@ -22,9 +22,10 @@ require('./common/check_controller_action')
 require('./common/new')
 //top
 require('./top')
+//memo#memo
+require('./memo/memo')
 //brainstorming#edit
 require('./idea/brainstorming_channel')
-
 //word_gacha
 require('./idea/word_gacha')
 
