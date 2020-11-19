@@ -232,6 +232,10 @@ body {
     overflow: scroll;
   }
 
+  #left_menu::-webkit-scrollbar {
+    display:none;
+  }
+
   #left_icon_menu {
     display: none;
   }
