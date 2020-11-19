@@ -228,7 +228,8 @@ body {
   #left_menu {
     min-width: 200px;
     width: 15vh;
-
+    overflow: hidden;
+    overflow: scroll;
   }
 
   #left_icon_menu {
