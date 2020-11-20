@@ -138,7 +138,6 @@ $(function () {
                     start_timer(target_times)
                 }
             },
-
             add: function (json_idea_log) {
                 return this.perform('add',
                     json_idea_log
@@ -213,25 +212,38 @@ $(function () {
         }
     }
     function start_timer(target_times) {
-        setInterval(show_timer, 1000, target_times)
-    }
-    function show_timer(target_times) {
         target_times.sort();
+        setInterval(show_timer, 100, target_times)
+    }
+    function show_timer(target_times= []) {
+        //ひとつ目がない
+        console.log(target_times.length)
+        if (target_times.length === 0){
+            console.log("exit")
+            clearInterval(show_timer);
+            return;
+        }
         let target_date = new Date(target_times[0]);
         target_date.setHours(target_date.getHours() + 9);
         let now_date = new Date();
-        let date_difference = target_date - now_date;
-        var dMin = date_difference / (1000 * 60);   // 分
-        date_difference = date_difference % (1000 * 60);
-        var dSec = date_difference / 1000;   // 秒
-        if(dMin && dSec < 0){
-            document.getElementById('remaining').innerHTML = "終了";
+        let diff_time = target_date - now_date;
+        //あるので表示
+        if (diff_time > 0){
+            let dMin = diff_time / (1000 * 60);   // 分
+            diff_time = diff_time % (1000 * 60);
+            let dSec = diff_time / 1000;   // 秒
+            if(dMin && dSec < 0){
+                document.getElementById('remaining').innerHTML = "終了";
+            }else{
+                let msg = Math.floor(dMin) + "分"
+                    + Math.floor(dSec) + "秒";
+                document.getElementById('remaining').innerHTML = msg;
+                }
         }else{
-            var msg = Math.floor(dMin) + "分"
-                + Math.floor(dSec) + "秒";
-            document.getElementById('remaining').innerHTML = msg;
-            }
+            clearInterval(show_timer);
+            setInterval(show_timer, 100, target_times.shift())
         }
+    }
 
 });
 
