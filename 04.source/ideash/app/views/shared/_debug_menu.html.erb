@@ -1,43 +1,54 @@
 <!-- デバッグメニュー -->
 <%# debug_menuをproduction環境で見せたくないためapplication.jsには書かない %>
-<%=javascript_pack_tag 'shared/_debug_menu' %>
+<%= javascript_pack_tag 'shared/_debug_menu' %>
 <div class="ui modal" id="debug-modal-window">
   <div class="ui segments">
     <div class="ui segment">
       <div class="ui header">デバッグメニュー</div>
     </div>
     <div class="ui segment">
-      <div class="ui grid">
-        <div class="ui list">
-          <div class="ui label">STATUS INFO</div>
-          <% if user_signed_in? %>
-            <div class="item">
-              <i class="users icon"></i>
-              USER-ID:<%= current_user.id %>
-            </div>
-            <div class="item">
-              <i class="users icon"></i>
-              USER-NAME:<%= current_user.user_name %>
-            </div>
-            <div class="item">
-              <i class="mail icon"></i>
-              EMAIL:<%= current_user.email %>
-            </div>
-          <% else %>
-            未ログイン
-          <% end %>
+      <div class="ui list">
+        <div class="ui label">STATUS INFO</div>
+        <% if user_signed_in? %>
+          <div class="item">
+            <i class="users icon"></i>
+            USER-ID:<%= current_user.id %>
+          </div>
+          <div class="item">
+            <i class="users icon"></i>
+            USER-NAME:<%= current_user.user_name %>
+          </div>
+          <div class="item">
+            <i class="mail icon"></i>
+            EMAIL:<%= current_user.email %>
+          </div>
+        <% else %>
+          未ログイン
+        <% end %>
+      </div>
+    </div>
+    <div class="ui segment">
+      <div class="ui list">
+        <div class="ui label">RAILS INFO</div>
+        <div class="item">
+          <i class="terminal icon"></i>
+          CONTROLLER: <%= controller_name %>
+        </div>
+        <div class="item">
+          <i class="code icon"></i>
+          ACTION: <%= action_name %>
         </div>
       </div>
     </div>
-  </div>
-  <div class="ui segment">
-    <div class="ui actions">
-      <% if user_signed_in? %>
-        <%= link_to "サインアウト", account_signout_path, class: 'ui red button' %>
-      <% else %>
-        <%= link_to "サインイン", account_signin_path, class: 'ui blue button' %>
-        <%= link_to "サインアップ", account_signup_path, class: 'ui green button' %>
-      <% end %>
+    <div class="ui segment">
+      <div class="ui actions">
+        <% if user_signed_in? %>
+          <%= link_to "サインアウト", account_signout_path, class: 'ui red button' %>
+        <% else %>
+          <%= link_to "サインイン", account_signin_path, class: 'ui blue button' %>
+          <%= link_to "サインアップ", account_signup_path, class: 'ui green button' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
