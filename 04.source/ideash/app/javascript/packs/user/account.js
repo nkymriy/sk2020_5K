@@ -1,9 +1,8 @@
 import {checkControllerAction} from "../common/check_controller_action";
 
 $(document).on("turbolinks:load", function () {
-    if (!checkControllerAction(['registrations'],['profile_edit'])) return;
+    if (!checkControllerAction(['registrations'],['profile_edit','profile_update'])) return;
     toast_updated();
-
     function toast_updated() {
         let is_updated = $('#is_updated').val();
         // 初回時は空白になるのでそのまま返す
