@@ -1,5 +1,3 @@
-require('fomantic-ui-css/semantic.min');
-
 document.addEventListener("turbolinks:load", function () {
     //読み込み時の表示
     $('.fade_object').fadeIn(500);
