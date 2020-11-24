@@ -1,15 +1,13 @@
-$(function () {
-    require('fomantic-ui-css/semantic.min');
-    require('jquery-ui/ui/widgets/draggable')
+import {checkControllerAction} from "../common/check_controller_action";
 
-    $(function () {
-        $('.chat').draggable({
-            containment: '#wrap',
-            scroll: false
-        });
+$(document).on("turbolinks:load", function () {
+    if (!checkControllerAction(['brainstorming', 'mandarat'], ['edit'])) return
+
+    $('.chat').draggable({
+        containment: '#wrap',
+        scroll: false
     });
 
-    // let clipboard = new Clipboard('.copy');
     let timerId = setInterval(showClock2, 1000);
     showClock2(timerId)
 

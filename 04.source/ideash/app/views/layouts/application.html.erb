@@ -34,7 +34,7 @@
   <%= favicon_link_tag('icon.svg') %>
 
 </head>
-<body class="<%= controller_name %> <%= action_name %>">
+<body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
 <% if Rails.env.development? %>
   <%= render :partial => 'shared/debug_menu' %>
 <% end %>
