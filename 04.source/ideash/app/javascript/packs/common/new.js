@@ -1,5 +1,8 @@
-// NOTE: テーマを入力しないとアイデアを作成できないようにする処理
+import {checkControllerAction} from "./check_controller_action";
+
 $(document).on("turbolinks:load", function () {
+    if (!checkControllerAction(['brainstorming', 'mandarat'], ['new'])) return
+    // NOTE: テーマを入力しないとアイデアを作成できないようにする処理
     $("input[id='theme']").blur(function () {
         if (!$(this).val().match(/\S/g)) {
             $(this).css('background-color', '#FEF4F8');
