@@ -15,12 +15,16 @@
       <% else %>
         <tr>
       <% end %>
-      <td class="collapsing">
-        <i class="folder icon"></i>
-        <%= idea.idea_name.truncate(20, omission: '...') %>
-      </td>
       <td>
-        <%= link_to "#{@categories[idea.idea_category_id]["idea_category_name"]}", "#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}", local: true, data: {"turbolinks" => false} %>
+        <%= link_to ("#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}"), local: true, data: {"turbolinks" => false} do %>
+          <%= "#{@categories[idea.idea_category_id]["idea_category_name"]}" %>
+        <% end %>
+      </td>
+      <td class="collapsing">
+        <%= link_to ("#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}"), local: true, data: {"turbolinks" => false} do %>
+          <i class="folder icon"></i>
+          <%= idea.idea_name.truncate(20, omission: '...') %>
+        <% end %>
       </td>
       </tr>
     <% end %>
