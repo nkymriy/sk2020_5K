@@ -49,35 +49,9 @@ $(document).on("turbolinks:load", function () {
     $('#reset_chat_position').on('click', function () {
         $('.item').removeAttr('style')
     })
-});
-
-function set2fig(num) {
-    // 桁数が1桁だったら先頭に0を加えて2桁に調整する
-    var ret;
-    if (num < 10) {
-        ret = "0" + num;
-    } else {
-        ret = num;
-    }
-    return ret;
-}
-
-function showClock2(timerId) {
-    var nowTime = new Date();
-    var nowHour = set2fig(nowTime.getHours());
-    var nowMin = set2fig(nowTime.getMinutes());
-    var nowSec = set2fig(nowTime.getSeconds());
-    var msg = nowHour + ":" + nowMin + ":" + nowSec;
-    if ($('#RealtimeClockArea2').length === 0) {
-        clearInterval(timerId)
-    } else {
-        document.getElementById("RealtimeClockArea2").innerHTML = msg;
-    }
-}
-
-$(function () {
-    console.log(location.href)
-    if (location.href.match(/brainstorming/)) {
+    
+    //modalの設定
+     if (location.href.match(/brainstorming/)) {
         $('body').append('<div class="modal js-modal">\n' +
             '        <div class="modal__bg js-modal-close"></div>\n' +
             '        <div class="modal__content">\n' +
@@ -113,3 +87,27 @@ $(function () {
         return false;
     });
 });
+
+function set2fig(num) {
+    // 桁数が1桁だったら先頭に0を加えて2桁に調整する
+    var ret;
+    if (num < 10) {
+        ret = "0" + num;
+    } else {
+        ret = num;
+    }
+    return ret;
+}
+
+function showClock2(timerId) {
+    var nowTime = new Date();
+    var nowHour = set2fig(nowTime.getHours());
+    var nowMin = set2fig(nowTime.getMinutes());
+    var nowSec = set2fig(nowTime.getSeconds());
+    var msg = nowHour + ":" + nowMin + ":" + nowSec;
+    if ($('#RealtimeClockArea2').length === 0) {
+        clearInterval(timerId)
+    } else {
+        document.getElementById("RealtimeClockArea2").innerHTML = msg;
+    }
+}
