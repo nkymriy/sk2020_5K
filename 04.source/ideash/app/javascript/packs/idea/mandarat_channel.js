@@ -1,7 +1,8 @@
 import consumer from "../../channels/consumer"
-require('fomantic-ui-css/semantic.min');
+import {checkControllerAction} from "../common/check_controller_action";
 
 $(document).on("turbolinks:load", function () {
+    if (!checkControllerAction(['mandarat'], ['edit'])) return
     if ($('.websocket-mandarat').length > 0) {
         // const chatChannel = consumer.subscriptions.create({
         consumer.task = consumer.subscriptions.create({
@@ -46,7 +47,12 @@ $(document).on("turbolinks:load", function () {
                         let minid = bigid - val;
                         let sel_class = first1 + minid;
                         let sel_id = first2 + minid;
-                        $('#' + bigid).text(text);
+                        if(text.length>24) {
+                            let clamptext = text.slice(0,23);
+                            $('#' + bigid).text(clamptext+'.....');
+                        }else {
+                            $('#' + bigid).text(text);
+                        }
                         array[bigid] = text;
                         if (minid >= 0 && minid <= 8) {
                             document.getElementById(sel_id).value = text;
@@ -105,14 +111,17 @@ $(document).on("turbolinks:load", function () {
 
         //初回読み込み時の処理
         let array = {};
-        for (let i = 0; i <= 8;
-             i++
-        ) {
+        for (let i = 0; i <= 8; i++) {
             for (let j = 0; j <= 8; j++) {
                 let x = i * 10 + j;
                 let text = $('input:hidden[name="read_' + x + '"]').val();
                 array[x] = text;
-                $('#' + x).text(text);
+                if(text.length>24) {
+                    let clamptext = text.slice(0,23);
+                    $('#' + x).text(clamptext+'....');
+                }else {
+                    $('#' + x).text(text);
+                }
                 if (i === 4 && x !== 44) {
                     $('#theme' + j).text(text);
                 }
