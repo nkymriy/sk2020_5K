@@ -209,3 +209,13 @@
     outline: none;
   }
 }
+
+.theme-tab {
+  border-collapse: collapse;
+  width: 113px;
+}
+.theme-tab td {
+  padding: 3px;
+  height: 40px;
+  background-color: white;
+}
