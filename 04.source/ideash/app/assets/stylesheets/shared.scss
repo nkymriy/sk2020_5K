@@ -222,24 +222,25 @@ body {
   display: flex;
 
   .left_menu {
+    overflow: hidden scroll;
     position: sticky;
     display: block;
     float: left;
     margin: 0;
   }
 
-  #left_menu {
-    min-width: 200px;
-    width: 15vh;
-    overflow: hidden scroll;
+  .left_menu::-webkit-scrollbar {
+    display: none;
   }
 
-  #left_menu::-webkit-scrollbar {
-    display: none;
+  #left_menu {
+    min-width: 200px;
+    width: 15vw;
   }
 
   #left_icon_menu {
     display: none;
+    width: 55px;
   }
 
   #main_content {
@@ -253,19 +254,28 @@ body {
   }
 
   .right_menu {
+    overflow: hidden scroll;
     position: sticky;
     display: flex;
     float: right;
     margin: 0;
   }
 
-  #right_menu {
-    width: 20vh;
+  .right_menu::-webkit-scrollbar {
+    display: none;
   }
+
+  #right_menu {
+    width: 15vw;
+    min-width: 150px;
+    max-width: 200px;
+  }
+
 
   #right_icon_menu {
     display: none;
     height: fit-content;
+    width: 50px;
     position: fixed;
     top: 40px;
     right: 0;
