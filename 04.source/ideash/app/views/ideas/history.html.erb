@@ -1,6 +1,6 @@
 <%# TODO: サムネイル表示に対応する %>
 <div class="ui container">
-  <table class="ui celled striped table">
+  <table class="ui selectable celled striped table">
     <thead>
     <tr>
       <th colspan="3">
@@ -13,18 +13,14 @@
       <% if Rails.env.test? %>
         <tr class="feature-test-history">
       <% else %>
-        <tr>
+        <tr onclick="location.href='<%= "#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}" %>'">
       <% end %>
-      <td>
-        <%= link_to ("#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}"), local: true, data: {"turbolinks" => false} do %>
-          <%= "#{@categories[idea.idea_category_id]["idea_category_name"]}" %>
-        <% end %>
+      <td class='collapsing'>
+        <i class="folder icon"></i>
+        <%= "#{@categories[idea.idea_category_id]["idea_category_name"]}" %>
       </td>
-      <td class="collapsing">
-        <%= link_to ("#{@categories[idea.idea_category_id]['manage_name']}/edit/#{idea.id}"), local: true, data: {"turbolinks" => false} do %>
-          <i class="folder icon"></i>
-          <%= idea.idea_name.truncate(20, omission: '...') %>
-        <% end %>
+      <td>
+        <%= idea.idea_name.truncate(20, omission: '...') %>
       </td>
       </tr>
     <% end %>
