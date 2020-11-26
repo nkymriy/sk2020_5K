@@ -105,6 +105,8 @@ $(document).on("turbolinks:load", function () {
                                     showProgress: 'bottom',
                                     classProgress: 'blue'
                                 });
+                        }else if (query['system']['option'] === 'unlimited'){
+                            $('#change_button').prop('disabled', false)
                         }
                     } else if (query['system']['operation'] === 'group_rename') {
                         var id = '#brain_rename_' + query['system']['option']['group_id'].toString()
