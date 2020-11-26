@@ -4,8 +4,16 @@ $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['brainstorming', 'mandarat'], ['edit'])) return
 
     $('.chat').draggable({
-        containment: '#wrap',
-        scroll: false
+        appendTo: 'body',
+        containment: '#wrap', //ドラッグ可能範囲
+        scroll: false, //ドラッグ中のスクロールを拒否
+        helper: 'clone',
+        start: function(){ //hide original when showing clone
+            $(this).hide();
+        },
+        stop: function(){ //show original when hiding clone
+            $(this).show();
+        }
     });
 
     let timerId = setInterval(showClock2, 1000);
@@ -49,9 +57,9 @@ $(document).on("turbolinks:load", function () {
     $('#reset_chat_position').on('click', function () {
         $('.item').removeAttr('style')
     })
-    
+
     //modalの設定
-     if (location.href.match(/brainstorming/)) {
+    if (location.href.match(/brainstorming/)) {
         $('body').append('<div class="modal js-modal">\n' +
             '        <div class="modal__bg js-modal-close"></div>\n' +
             '        <div class="modal__content">\n' +

@@ -49,10 +49,6 @@ body {
   margin-right: 185px;
 }
 
-/*left_menu*/
-.header_div {
-}
-
 .menu_icon {
   width: 40px;
 }
@@ -154,14 +150,13 @@ body {
 }
 
 .chat {
-  height: 50%;
+  //height: 50%;
   //max-height: 40%;
-  display: grid !important;
+  //display: grid !important;
   background-color: white !important;
   border: 1px solid !important;
   border-color: darkgray !important;
-  z-index: 0;
-
+  //position: absolute !important;
 
   .chat-area {
     height: 100%;
@@ -235,7 +230,7 @@ body {
 
   #left_menu {
     min-width: 200px;
-    width: 15vw;
+    max-width: 200px;
   }
 
   #left_icon_menu {
