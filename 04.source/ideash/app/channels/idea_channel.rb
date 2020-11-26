@@ -148,4 +148,16 @@ class IdeaChannel < ApplicationCable::Channel
       ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'grouping', 'option': {'content': content, 'object_id': object_id, 'group_id': group_id}}}
     end
   end
+
+  def get_process_time()
+    res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 3")
+    process1 = {'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
+    process2 = {'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
+    process3 = {'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
+    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'get_process_time', 'option': {'content': content, 'object_id': object_id, 'group_id': group_id}}}
+    return [process1,process2,process3]
+    p '---------------------------'
+    p process1
+    p '---------------------------'
+  end
 end

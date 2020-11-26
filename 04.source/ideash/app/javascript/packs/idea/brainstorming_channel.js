@@ -120,6 +120,9 @@ $(document).on("turbolinks:load", function () {
                         $('#' + object_id).remove();
                         $('#' + group_id).append(div);
                     }
+                    else if (query['system']['operation'] === 'get_process_time') {
+                        console.log('aaaaaaaaaaa');
+                    }
                 } else if (query['mode'] === 'group') {
                     var group_id = escapeHTML(query['group']['group_id'])
                     var group_name = escapeHTML(query['group']['name'])
@@ -157,6 +160,9 @@ $(document).on("turbolinks:load", function () {
                     json_idea_log
                 );
             },
+            get_process_time: function () {
+                return this.perform('get_process_time');
+            }
         });
 
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
@@ -182,6 +188,8 @@ $(document).on("turbolinks:load", function () {
                 return event.preventDefault();
             }
         });
+
+        consumer.task.get_process_time();
 
         $('#group_add').on('click', function () {
             consumer.task.group_add();
