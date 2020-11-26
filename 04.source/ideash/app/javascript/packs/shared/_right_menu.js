@@ -1,15 +1,13 @@
-$(function () {
-    require('fomantic-ui-css/semantic.min');
-    require('jquery-ui/ui/widgets/draggable')
+import {checkControllerAction} from "../common/check_controller_action";
 
-    $(function () {
-        $('.chat').draggable({
-            containment: '#wrap',
-            scroll: false
-        });
+$(document).on("turbolinks:load", function () {
+    if (!checkControllerAction(['brainstorming', 'mandarat'], ['edit'])) return
+
+    $('.chat').draggable({
+        containment: '#wrap',
+        scroll: false
     });
 
-    // let clipboard = new Clipboard('.copy');
     let timerId = setInterval(showClock2, 1000);
     showClock2(timerId)
 
@@ -51,6 +49,43 @@ $(function () {
     $('#reset_chat_position').on('click', function () {
         $('.item').removeAttr('style')
     })
+    
+    //modalの設定
+     if (location.href.match(/brainstorming/)) {
+        $('body').append('<div class="modal js-modal">\n' +
+            '        <div class="modal__bg js-modal-close"></div>\n' +
+            '        <div class="modal__content">\n' +
+            '          <p>ブレインストーミングとは、' +
+            'アレックス・F・オズボーンによって考案された会議方式のひとつ。' +
+            '集団思考、集団発想法、課題抽出ともいう。' +
+            '1941年に良いアイデアを生み出す状態の解析が行われた後、' +
+            '1953年に発行した著書 Applied Imagination の中で、' +
+            '会議方式の名称として使用された。</p>\n' +
+            '          <a class="js-modal-close" href="">閉じる</a>\n' +
+            '        </div><!--modal__inner-->\n' +
+            '      </div><!--modal-->')
+    } else if (location.href.match(/mandarat/)) {
+        $('body').append('<div class="modal js-modal">\n' +
+            '        <div class="modal__bg js-modal-close"></div>\n' +
+            '        <div class="modal__content">\n' +
+            '          <p>マンダラートは、発想法の一種。' +
+            '紙などに9つのマスを用意し、' +
+            'それを埋めていくという作業ルールを設けることにより、' +
+            'アイデアを整理・外化し、思考を深めていくことができる。' +
+            '今泉浩晃によって1987年に考案された。</p>\n' +
+            '          <a class="js-modal-close" href="">閉じる</a>\n' +
+            '        </div><!--modal__inner-->\n' +
+            '      </div><!--modal-->')
+    }
+
+    $('.js-modal-open').on('click', function () {
+        $('.js-modal').fadeIn();
+        return false;
+    });
+    $('.js-modal-close').on('click', function () {
+        $('.js-modal').fadeOut();
+        return false;
+    });
 });
 
 function set2fig(num) {

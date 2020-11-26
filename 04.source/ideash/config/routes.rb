@@ -72,7 +72,7 @@ Rails.application.routes.draw do
     # INFO: アカウント設定
     # get 'account/edit' => 'users/registrations#edit'
     get 'account/edit', to: 'users/registrations#profile_edit', as: 'profile_edit'
-    patch 'profile_update', to: 'users/registrations#profile_update', as: 'profile_update'
+    patch 'account/edit', to: 'users/registrations#profile_update', as: 'profile_update'
   end
 
   # INFO: ユーザのホーム画面

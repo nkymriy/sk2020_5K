@@ -228,7 +228,11 @@ body {
   #left_menu {
     min-width: 200px;
     width: 15vh;
+    overflow: hidden scroll;
+  }
 
+  #left_menu::-webkit-scrollbar {
+    display:none;
   }
 
   #left_icon_menu {
@@ -288,4 +292,29 @@ img.icon_image {
   width: 100%;
   object-fit: contain;
   margin: auto;
+}
+
+/*right_menu*/
+/*TODO: クラス名等が怪しいので調整を行う */
+.modal{
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.modal__bg{
+  background: rgba(0,0,0,0.8);
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}
+.modal__content{
+  background: #fff;
+  left: 50%;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 60%;
 }

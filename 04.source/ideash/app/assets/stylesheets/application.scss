@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-/*TODO: fomantic-uiの読み込みをnode_moduleから行いたい*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap");
 
 body {
     font-family: 'Roboto', sans-serif;
