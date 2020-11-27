@@ -7,6 +7,7 @@ $(document).on("turbolinks:load", function () {
     $('#category2').on('click', category_btn2);
     $('#category3').on('click', category_btn3);
     $('#category4').on('click', category_btn4);
+    $('#category5').on('click', category_btn5);
 
     function category_btn1() {
         $('body').append('<div class="modal js-modal">\n' +
@@ -40,6 +41,15 @@ $(document).on("turbolinks:load", function () {
             '        <div class="modal__bg js-modal-close"></div>\n' +
             '        <div class="modal__content">\n' +
             '          <p>--単語ガチャの説明--</p>\n' +
+            '          <a class="js-modal-close" href="">閉じる</a>\n' +
+            '        </div><!--modal__inner-->\n' +
+            '      </div><!--modal-->')
+    }
+    function category_btn5() {
+        $('body').append('<div class="modal js-modal">\n' +
+            '        <div class="modal__bg js-modal-close"></div>\n' +
+            '        <div class="modal__content">\n' +
+            '          <p>--単語スロットの説明--</p>\n' +
             '          <a class="js-modal-close" href="">閉じる</a>\n' +
             '        </div><!--modal__inner-->\n' +
             '      </div><!--modal-->')
