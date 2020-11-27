@@ -9,9 +9,9 @@
     let is_process1 = <%= res[0]['is_active'] %>;
     let is_process2 = <%= res[1]['is_active'] %>;
     let is_process3 = <%= res[2]['is_active'] %>;
-    is_unlimited = <%= JSON.parse(res[0]['query'])['system']['option'].to_i %>;
+    let is_unlimited = <%= JSON.parse(res[0]['query'])['system']['option'].to_i %> === 0;
 
-    if (is_unlimited === 0){
+    if (is_unlimited){
         $('#change_button').prop('disabled', false)
         $('#process_1').show()
         $('#process_3').hide()
