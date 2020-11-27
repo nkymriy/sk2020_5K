@@ -64,7 +64,6 @@ class IdeaChannel < ApplicationCable::Channel
         process3 = {'id' => res[2]['id'], 'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
 
         if process1['time'] == 0 || process2['time'] == 0 || process3['time'] == 0
-          ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'stop', 'option': 'unlimited'}}
           return
         end
 

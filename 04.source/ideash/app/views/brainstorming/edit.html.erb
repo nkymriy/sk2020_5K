@@ -6,7 +6,6 @@
 </div>
 <script>
     <% res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{@idea.id}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 3")%>
-    <% IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'start', 'option': 'sample_option'}}%>
     let is_process1 = <%= res[0]['is_active'] %>;
     let is_process2 = <%= res[1]['is_active'] %>;
     let is_process3 = <%= res[2]['is_active'] %>;
