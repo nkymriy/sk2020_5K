@@ -103,14 +103,10 @@ Rails.application.routes.draw do
   get 'idea/mandarat/_process_1' => 'mandarat#_process_1'
 
   # INFO: 単語ガチャ
-  get 'idea/word_gacha/replay' => 'word_gacha#replay'
-  post 'idea/word_gacha/create' => 'word_gacha#create'
   get 'idea/word_gacha/edit' => 'word_gacha#edit', as: :idea_word_gacha_edit
   get 'idea/word_gacha/get_wordgacha_jsons' => 'api#get_wordgacha_jsons', as: 'wordgacha_jsons'
 
   # INFO: 単語スロット
-  get 'idea/word_slot/replay' => 'word_slot#replay'
-  post 'idea/word_slot/create' => 'word_slot#create'
   get 'idea/word_slot/edit' => 'word_slot#edit', as: :idea_word_slot_edit
   get 'idea/word_slot/get_wordslot_jsons' => 'api#get_wordgacha_jsons', as: 'wordslot_jsons'
 
