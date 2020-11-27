@@ -46,18 +46,18 @@
   font-size: larger;
   margin: auto;
 }
-#rank_top,#rank_bottom{
+.rank_top,.rank_bottom{
   position: absolute;
   font-size: 3vw;
   font-weight: bolder;
   height: fit-content;
   padding: 10%;
 }
-#rank_top{
+.rank_top{
   top:0;
   right: 0;
 }
-#rank_bottom{
+.rank_bottom{
   transform: rotateX( 180deg )+rotateY( 180deg );
   bottom: 0;
   left: 0;
@@ -83,7 +83,6 @@
 
 .turn-gacha-area{
   position: absolute;
-  top: 50%;
   left: 50%;
   -webkit-transform : translate(-50%,-50%);
   transform : translate(-50%,-50%);
