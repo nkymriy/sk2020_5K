@@ -71,6 +71,7 @@ $(document).on("turbolinks:load", function () {
 
         }
 
+        $(wordCards).fadeIn(500);
         wordCards.style.display ="block";
 
     }
