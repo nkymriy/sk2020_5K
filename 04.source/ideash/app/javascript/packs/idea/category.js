@@ -3,13 +3,14 @@ import {checkControllerAction} from "../common/check_controller_action";
 $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['ideas'], ['category'])) return
 
-    $('#category1').on('click', category_btn1);
-    $('#category2').on('click', category_btn2);
-    $('#category3').on('click', category_btn3);
-    $('#category4').on('click', category_btn4);
-    $('#category5').on('click', category_btn5);
+    $('#memo-more-info').on('click', memo_info_btn);
+    $('#brainstorming-more-info').on('click', brainstorming_info_btn);
+    $('#mandarat-more-info').on('click', mandarat_info_btn);
+    $('#word-gacha-more-info').on('click', word_gacha_info_btn);
+    $('#word-slot-more-info').on('click', word_slot_info_btn);
 
-    function category_btn1() {
+    function memo_info_btn() {
+        $('#memo-more-info').modal('show');
         $('body').append('<div class="modal js-modal">\n' +
             '        <div class="modal__bg js-modal-close"></div>\n' +
             '        <div class="modal__content">\n' +
@@ -18,7 +19,8 @@ $(document).on("turbolinks:load", function () {
             '        </div><!--modal__inner-->\n' +
             '      </div><!--modal-->')
     };
-    function category_btn2() {
+    function brainstorming_info_btn() {
+        $('#brainstorming-more-info').modal('show');
         $('body').append('<div class="modal js-modal">\n' +
             '        <div class="modal__bg js-modal-close"></div>\n' +
             '        <div class="modal__content">\n' +
@@ -27,7 +29,8 @@ $(document).on("turbolinks:load", function () {
             '        </div><!--modal__inner-->\n' +
             '      </div><!--modal-->')
     }
-    function category_btn3() {
+    function mandarat_info_btn() {
+        $('#mandarat-more-info').modal('show');
         $('body').append('<div class="modal js-modal">\n' +
             '        <div class="modal__bg js-modal-close"></div>\n' +
             '        <div class="modal__content">\n' +
@@ -36,7 +39,8 @@ $(document).on("turbolinks:load", function () {
             '        </div><!--modal__inner-->\n' +
             '      </div><!--modal-->')
     }
-    function category_btn4() {
+    function word_gacha_info_btn() {
+        $('#word-gacha-more-info').modal('show');
         $('body').append('<div class="modal js-modal">\n' +
             '        <div class="modal__bg js-modal-close"></div>\n' +
             '        <div class="modal__content">\n' +
@@ -45,7 +49,8 @@ $(document).on("turbolinks:load", function () {
             '        </div><!--modal__inner-->\n' +
             '      </div><!--modal-->')
     }
-    function category_btn5() {
+    function word_slot_info_btn() {
+        $('#word-slot-more-info').modal('show');
         $('body').append('<div class="modal js-modal">\n' +
             '        <div class="modal__bg js-modal-close"></div>\n' +
             '        <div class="modal__content">\n' +
