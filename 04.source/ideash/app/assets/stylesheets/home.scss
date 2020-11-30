@@ -94,6 +94,11 @@ body {
 .release_info::-webkit-scrollbar {
   display:none;
 }
+.release_note_content .header{
+  font-weight: normal !important;
+  font-size: small !important;
+}
+
 .twitter_window{
   border-radius: 5px;
   height: 40%;
@@ -108,9 +113,19 @@ body {
   border-radius: 5px;
   margin-top: 3%;
   height: 23%;
-  padding: 12% 7%;
   font-size: smaller;
+  position: relative;
 }
+
+.about_us_content{
+  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+}
+
 .link_icons{
   margin-top: 5%;
 }
