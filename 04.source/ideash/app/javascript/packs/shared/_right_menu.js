@@ -3,10 +3,7 @@ import {checkControllerAction} from "../common/check_controller_action";
 $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['brainstorming', 'mandarat'], ['edit'])) return
 
-    $('.chat').draggable({
-        containment: '#wrap',
-        scroll: false
-    });
+    // $('.chat').draggable();
 
     let timerId = setInterval(showClock2, 1000);
     showClock2(timerId)
@@ -49,9 +46,9 @@ $(document).on("turbolinks:load", function () {
     $('#reset_chat_position').on('click', function () {
         $('.item').removeAttr('style')
     })
-    
+
     //modalの設定
-     if (location.href.match(/brainstorming/)) {
+    if (location.href.match(/brainstorming/)) {
         $('body').append('<div class="modal js-modal">\n' +
             '        <div class="modal__bg js-modal-close"></div>\n' +
             '        <div class="modal__content">\n' +
