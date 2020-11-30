@@ -1,7 +1,9 @@
 import {checkControllerAction} from "../common/check_controller_action";
 
 $(document).on("turbolinks:load", function () {
-    checkControllerAction(['word_gacha'],['edit'])
+
+    if (!checkControllerAction(['controller_name'], ['action_name'])) return
+
     $('.ui.dropdown').dropdown()
 
     //ガチャを回す
@@ -9,7 +11,7 @@ $(document).on("turbolinks:load", function () {
     //閉じる
     $('#close-card-area').on('click', closebtn);
 
-    const wordCards = document.getElementById("word-cards");
+    const wordCards = $(getElementById("word-cards"));
     wordCards.style.display ="none";
 
 
@@ -78,7 +80,7 @@ $(document).on("turbolinks:load", function () {
 
     function closebtn() {
 
-        let cardsArea = document.getElementById('cards_area');
+        let cardsArea = $(getElementById("cards_area"));
         let cardsAreaParent = cardsArea.parentNode;
         cardsAreaParent.removeChild(cardsArea);
 
