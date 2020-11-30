@@ -1,37 +1,12 @@
 <div class="edit_body" id="edit_body">
-  <div class="word-cards">
-    <div class="to-previous-area">
-      <div id="to-previous-button">
-        <i class="caret down clockwise rotated huge link icon"></i>
-      </div>
-    </div>
-    <div class="word-card">
-      <div id="rank_top"></div>
-      <h1 id="gacha-word">単語ガチャ</h1>
-      <div id="rank_bottom"></div>
-    </div>
-    <div class="to-next-area">
-      <div id="to-next-button">
-        <i class="caret down counterclockwise rotated huge link icon"></i>
-      </div>
-    </div>
-  </div>
-  <div class="select-buttons">
-    <div class="word-num-select">
-      <div class="ui selection dropdown">
-        <input type="hidden" id="gacha-select">
-        <i class="dropdown icon"></i>
-        <div class="default text">回数選択</div>
-        <div class="scrollhint menu">
-          <div class="item" data-value="3">３連</div>
-          <div class="item" data-value="5">５連</div>
-          <div class="item" data-value="7">７連</div>
-          <div class="item" data-value="10">10連</div>
-        </div>
-      </div>
-    </div>
+  <div class="word-gatcha">
     <div class="turn-gacha-area">
-      <div class="ui teal button" id="turn-gacha-button">回す</div>
+      <div class="ui teal big button" id="turn-gacha-button"><i class="gem icon"></i>回す</div>
+    </div>
+    <div id="word-cards">
+      <div id="cards_close">
+        <button class="ui grey tertiary small button" id="close-card-area">close  <i class="times circle icon"></i></button>
+      </div>
     </div>
   </div>
 </div>
