@@ -19,16 +19,6 @@
   display:none;
 }
 
-#cards_close{
-  width: 100%;
-}
-
-#cards_close h1{
-  color: #666666;
-  font-size: medium;
-  text-align: right;
-}
-
 .word-card{
   position: relative;
   height: 220px;
@@ -83,6 +73,7 @@
 
 .turn-gacha-area{
   position: absolute;
+  top: 50%;
   left: 50%;
   -webkit-transform : translate(-50%,-50%);
   transform : translate(-50%,-50%);

@@ -6,6 +6,13 @@ $(document).on("turbolinks:load", function () {
 
     //ガチャを回す
     $('#turn-gacha-button').on('click', turnbtn);
+    //閉じる
+    $('#close-card-area').on('click', closebtn);
+
+    const wordCards = document.getElementById("word-cards");
+    wordCards.style.display ="none";
+
+
     let word_list
 
     function turnbtn() {
@@ -28,7 +35,14 @@ $(document).on("turbolinks:load", function () {
         let rank_class;
         let rank_text;
 
+        let newParent =
+            '<div id="cards_area"></div>'
+        ;
+
+        $(newParent).appendTo('#word-cards');
+
         for(let i=0;i<10;i++){
+
             console.log(word_list)
 
             if (word_list[i][2]<=10000){
@@ -45,16 +59,29 @@ $(document).on("turbolinks:load", function () {
                 rank_text="SSR";
             }
 
-            let newElement =
+            let newCard =
                 '<div class="word-card">' +
                 '<div class="rank_top '+rank_class+'">'+rank_text+'</div>' +
                 '<h1>'+word_list[i][1]+'</h1>' +
-                '<div class=rank_bottom "'+rank_class+'">'+rank_text+'</div>' +
+                '<div class="rank_bottom '+rank_class+'">'+rank_text+'</div>' +
                 '</div>'
             ;
 
-            $(newElement).appendTo('#word-cards');
+            $(newCard).appendTo('#cards_area');
 
         }
+
+        wordCards.style.display ="block";
+
+    }
+
+    function closebtn() {
+
+        let cardsArea = document.getElementById('cards_area');
+        let cardsAreaParent = cardsArea.parentNode;
+        cardsAreaParent.removeChild(cardsArea);
+
+        wordCards.style.display ="none";
+
     }
 });
