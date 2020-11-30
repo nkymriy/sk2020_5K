@@ -28,4 +28,27 @@ $(document).on("turbolinks:load", function () {
             $('#process3').prop('disabled', false)
         }
     });
+
+    // $('#slider_process1').slider();
+    // $('.ui.slider').slider({
+    //     min: 1,
+    //     max: 30,
+    //     start: 15,
+    //     step: 5,
+    //     smooth: true,
+    //
+    //     onChange: function (value) {
+    //         console.log(value)
+    //         $('#hoge').val(value)
+    //     }
+    // });
+
+    var labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "λ", "μ", "ν", "ξ", "ο", "π", "ρ", "σ/ς", "τ", "υ", "φ", "χ", "ψ", "ω"];
+    $('.ui.slider')
+        .slider({
+            interpretLabel: function(value) {
+                return labels[value];
+            }
+        })
+    ;
 });

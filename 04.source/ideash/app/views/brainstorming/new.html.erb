@@ -25,6 +25,8 @@
            end %>
 
         <ul>
+          手順１：<input id="hoge" value=5><div class="ui labeled slider" id="slider_process1"></div>
+<!--          <div class="ui input"><li>手順①：<%#= f.text_field 'slider_input_process1', disabled: "" %></div>-->
           <li>手順①：<%= f.select 'process1', time_limit, selected: 10 %> </li>
           <li>手順②：<%= f.select 'process2', time_limit, selected: 5 %> </li>
           <li>手順③：<%= f.select 'process3', time_limit, selected: 15 %> </li>
