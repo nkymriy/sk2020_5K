@@ -221,3 +221,23 @@
   height: 40px;
   background-color: white;
 }
+@media screen and(max-width: 1100px) {
+  #wrap {
+    #edit_body {
+      #mandarat-main {
+        display: none;
+      }
+      #mandarat-main.to-left-area {
+        display: none;
+      }
+
+      #mandarat-main.to-down-area {
+        display: none;
+      }
+
+      #mandarat-main.to-right-area {
+        display: none;
+      }
+    }
+  }
+}
