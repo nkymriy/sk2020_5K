@@ -96,6 +96,7 @@ $(document).on("turbolinks:load", function () {
                             $('#process_1').hide()
                             $('#process_3').show()
                             $('#idea_add').prop('disabled', false)
+                            $('#change_button').prop('disabled', false)
                         } else if (query['system']['option'] === 'process3') {
                             $('body')
                                 .toast({

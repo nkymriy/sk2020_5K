@@ -1,0 +1,31 @@
+<%= javascript_pack_tag "idea/word_slot" %>
+<div class="edit_body" id="edit_body">
+  <div class="word-slot">
+    <div class="slot-head"></div>
+    <div class="slot-body">
+      <div class="slot-words">
+        <div class="slot-word">
+          <h1 id="slot-word-left">単語ガチャ</h1>
+          <div class="ui inverted circular tiny button slot-stop-button" id="stop-left-button">　</div>
+        </div>
+        <div class="slot-word">
+          <h1 id="slot-word-center">単語ガチャ</h1>
+          <div class="ui inverted circular tiny button slot-stop-button" id="stop-center-button">　</div>
+        </div>
+        <div class="slot-word">
+          <h1 id="slot-word-right">単語ガチャ</h1>
+          <div class="ui inverted circular tiny button slot-stop-button" id="stop-right-button">　</div>
+        </div>
+      </div>
+      <div class="slot-image">
+        <p>WORD<br>SLOT</p>
+        <%= image_tag 'thinkman.webp', class: 'slot-think-man' %>
+      </div>
+    </div>
+  </div>
+  <div class="slot-button">
+    <div class="turn-slot-area">
+      <div class="ui teal button" id="turn-slot-button">回す</div>
+    </div>
+  </div>
+</div>
