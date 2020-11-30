@@ -10,54 +10,23 @@ $(document).on("turbolinks:load", function () {
     $('#word-slot-more-info').on('click', word_slot_info_btn);
 
     function memo_info_btn() {
-        $('#memo-more-info').modal('show');
-        $('body').append('<div class="modal js-modal">\n' +
-            '        <div class="modal__bg js-modal-close"></div>\n' +
-            '        <div class="modal__content">\n' +
-            '          <p>--メモの説明--</p>\n' +
-            '          <a class="js-modal-close" href="">閉じる</a>\n' +
-            '        </div><!--modal__inner-->\n' +
-            '      </div><!--modal-->')
+        $('#memo-modal-window').modal('show');
     };
+
     function brainstorming_info_btn() {
-        $('#brainstorming-more-info').modal('show');
-        $('body').append('<div class="modal js-modal">\n' +
-            '        <div class="modal__bg js-modal-close"></div>\n' +
-            '        <div class="modal__content">\n' +
-            '          <p>--ブレインストーミングの説明--</p>\n' +
-            '          <a class="js-modal-close" href="">閉じる</a>\n' +
-            '        </div><!--modal__inner-->\n' +
-            '      </div><!--modal-->')
+        $('#brainstorming-modal-window').modal('show');
     }
+
     function mandarat_info_btn() {
-        $('#mandarat-more-info').modal('show');
-        $('body').append('<div class="modal js-modal">\n' +
-            '        <div class="modal__bg js-modal-close"></div>\n' +
-            '        <div class="modal__content">\n' +
-            '          <p>--マンダラートの説明--</p>\n' +
-            '          <a class="js-modal-close" href="">閉じる</a>\n' +
-            '        </div><!--modal__inner-->\n' +
-            '      </div><!--modal-->')
+        $('#mandarat-modal-window').modal('show');
     }
+
     function word_gacha_info_btn() {
-        $('#word-gacha-more-info').modal('show');
-        $('body').append('<div class="modal js-modal">\n' +
-            '        <div class="modal__bg js-modal-close"></div>\n' +
-            '        <div class="modal__content">\n' +
-            '          <p>--単語ガチャの説明--</p>\n' +
-            '          <a class="js-modal-close" href="">閉じる</a>\n' +
-            '        </div><!--modal__inner-->\n' +
-            '      </div><!--modal-->')
+        $('#word-gacha-model-window').modal('show');
     }
+
     function word_slot_info_btn() {
-        $('#word-slot-more-info').modal('show');
-        $('body').append('<div class="modal js-modal">\n' +
-            '        <div class="modal__bg js-modal-close"></div>\n' +
-            '        <div class="modal__content">\n' +
-            '          <p>--単語スロットの説明--</p>\n' +
-            '          <a class="js-modal-close" href="">閉じる</a>\n' +
-            '        </div><!--modal__inner-->\n' +
-            '      </div><!--modal-->')
+        $('#word-slot-model-window').modal('show');
     }
 
     $('.js-modal-open').on('click', function () {
