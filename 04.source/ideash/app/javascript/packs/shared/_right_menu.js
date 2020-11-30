@@ -3,18 +3,7 @@ import {checkControllerAction} from "../common/check_controller_action";
 $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['brainstorming', 'mandarat'], ['edit'])) return
 
-    $('.chat').draggable({
-        appendTo: 'body',
-        containment: '#wrap', //ドラッグ可能範囲
-        scroll: false, //ドラッグ中のスクロールを拒否
-        helper: 'clone',
-        start: function(){ //hide original when showing clone
-            $(this).hide();
-        },
-        stop: function(){ //show original when hiding clone
-            $(this).show();
-        }
-    });
+    // $('.chat').draggable();
 
     let timerId = setInterval(showClock2, 1000);
     showClock2(timerId)
