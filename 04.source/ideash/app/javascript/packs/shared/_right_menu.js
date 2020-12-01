@@ -2,13 +2,20 @@ import {checkControllerAction} from "../common/check_controller_action";
 
 $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['brainstorming', 'mandarat'], ['edit'])) return
-
-    $('.chat').draggable({
-        containment: "#wrap",
-        handle: ".header-text",
-        opacity: 0.5,
-    });
-
+    // let $chat = $('.chat')
+    let $chat = $('.chat')
+    $chat
+        .draggable({
+            containment: "#wrap",
+            handle: ".header-text",
+            opacity: 0.5,
+        })
+        .resizable({
+            minHeight: 300,
+            minWidth:150,
+            handles: "e,s,w,se,sw"
+        });
+    console.log($chat.resizable)
     let timerId = setInterval(showClock2, 1000);
     showClock2(timerId)
 
