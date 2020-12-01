@@ -5,6 +5,8 @@ $(document).on("turbolinks:load", function () {
 
     $('.chat').draggable({
         containment: "#wrap",
+        handle: ".header-text",
+        opacity: 0.5,
     });
 
     let timerId = setInterval(showClock2, 1000);
