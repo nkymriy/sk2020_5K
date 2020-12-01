@@ -150,20 +150,15 @@ body {
 }
 
 .chat {
-  height: 50%;
-  //max-height: 40%;
-  //display: grid !important;
+  height: 300px;
+  width: 200px;
   background-color: white !important;
   border: 1px solid !important;
   border-color: darkgray !important;
-  position: sticky !important;
-
-  .chat-area {
-    //height: 100%;
-    max-height: 80%;
-    padding-top: 1px;
-    overflow-y: scroll;
-  }
+  position: fixed !important;
+  bottom: 0;
+  right: 0;
+  z-index: 30000;
 
   .chat-input {
     width: 100%;
@@ -171,10 +166,17 @@ body {
     margin-bottom: 5px;
   }
 
+  .chat-area {
+    height: 100%;
+    max-height: 80%;
+    padding-top: 1px;
+    overflow: scroll;
+  }
+
   .chat_username {
     margin: 5px !important;
   }
-
+  //
   .chat_message {
     display: block !important;
     margin: 2px !important;

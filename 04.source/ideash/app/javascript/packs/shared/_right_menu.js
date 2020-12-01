@@ -3,7 +3,7 @@ import {checkControllerAction} from "../common/check_controller_action";
 $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['brainstorming', 'mandarat'], ['edit'])) return
 
-    // $('.chat').draggable();
+    $('.chat').draggable();
 
     let timerId = setInterval(showClock2, 1000);
     showClock2(timerId)
