@@ -127,7 +127,6 @@ $(document).on("turbolinks:load", function () {
                         for (let i=0; i<3; i++) {
                             $('#time' + i).text(process_words[i] + process_times[i]['time'] + '分');
                         }
-
                     }
                 } else if (query['mode'] === 'group') {
                     var group_id = escapeHTML(query['group']['group_id'])
