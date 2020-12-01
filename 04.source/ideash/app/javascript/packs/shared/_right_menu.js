@@ -2,20 +2,38 @@ import {checkControllerAction} from "../common/check_controller_action";
 
 $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['brainstorming', 'mandarat'], ['edit'])) return
-    // let $chat = $('.chat')
+
+    //チャット欄の設定
     let $chat = $('.chat')
+    let chat_original_position
+    let chat_original_size
     $chat
         .draggable({
             containment: "#wrap",
             handle: ".header-text",
             opacity: 0.5,
+            start: function (event, ui) {
+                chat_original_position = chat_original_position ?? ui.position;
+            }
         })
         .resizable({
             minHeight: 300,
-            minWidth:150,
-            handles: "e,s,w,se,sw"
+            minWidth: 150,
+            handles: "e,s,w,se,sw,ne,nw",
+            start: function (event, ui) {
+                chat_original_size = chat_original_size ?? ui.originalSize
+            }
         });
-    console.log($chat.resizable)
+
+    $('#reset_chat_position').on('click', function () {
+        $('.chat').animate({
+            top: (!chat_original_position) ? "auto" : chat_original_position.top,
+            left: (!chat_original_position) ? "auto" : chat_original_position.left,
+            height: (!chat_original_size) ? "auto" : chat_original_size.hight,
+            width: (!chat_original_size) ? "auto" : chat_original_size.width,
+        })
+    })
+
     let timerId = setInterval(showClock2, 1000);
     showClock2(timerId)
 
@@ -53,10 +71,6 @@ $(document).on("turbolinks:load", function () {
         // 要素削除
         document.body.removeChild(tmp);
     });
-
-    $('#reset_chat_position').on('click', function () {
-        $('.item').removeAttr('style')
-    })
 
     //modalの設定
     if (location.href.match(/brainstorming/)) {
