@@ -1,6 +1,8 @@
 class IdeaChannel < ApplicationCable::Channel
   def subscribed
     stream_from "idea_channel_#{params[:idea]}"
+    process_times = get_process_time
+    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'get_process_time', "process_times": process_times}}
   end
 
   def unsubscribed
@@ -154,7 +156,7 @@ class IdeaChannel < ApplicationCable::Channel
     process1 = {'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
     process2 = {'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
     process3 = {'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
-    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'get_process_time', 'option': {'content': content, 'object_id': object_id, 'group_id': group_id}}}
+    # ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'get_process_time', 'option': {'content': content, 'object_id': object_id, 'group_id': group_id}}}
     return [process1,process2,process3]
     p '---------------------------'
     p process1
