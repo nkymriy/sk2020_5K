@@ -29,26 +29,34 @@ $(document).on("turbolinks:load", function () {
         }
     });
 
-    // $('#slider_process1').slider();
-    // $('.ui.slider').slider({
-    //     min: 1,
-    //     max: 30,
-    //     start: 15,
-    //     step: 5,
-    //     smooth: true,
-    //
-    //     onChange: function (value) {
-    //         console.log(value)
-    //         $('#hoge').val(value)
-    //     }
-    // });
+    $('#slider_process1').slider({
+        min: 1,
+        max: 30,
+        start: 10,
 
-    var labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "λ", "μ", "ν", "ξ", "ο", "π", "ρ", "σ/ς", "τ", "υ", "φ", "χ", "ψ", "ω"];
-    $('.ui.slider')
-        .slider({
-            interpretLabel: function(value) {
-                return labels[value];
-            }
-        })
-    ;
+        onChange: function (value) {
+            $('#process1').val(value)
+        }
+    });
+
+    $('#slider_process2').slider({
+        min: 1,
+        max: 30,
+        start: 5,
+
+        onChange: function (value) {
+            $('#process2').val(value)
+        }
+    });
+
+    $('#slider_process3').slider({
+        min: 1,
+        max: 30,
+        start: 15,
+
+        onChange: function (value) {
+            $('#process3').val(value)
+        }
+    });
+
 });
