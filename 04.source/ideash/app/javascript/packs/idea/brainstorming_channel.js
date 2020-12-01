@@ -121,8 +121,12 @@ $(document).on("turbolinks:load", function () {
                         $('#' + group_id).append(div);
                     }
                     else if (query['system']['operation'] === 'get_process_time') {
-                        console.log('aaaaaaaaaaa');
-                        //timer(target_times)
+                        let process_times = query['system']['process_times'];
+                        console.log(process_times);
+                        for (let i=0; i<3; i++) {
+                            $('#time' + i).text(process_times[i]);
+                        }
+
                     }
                 } else if (query['mode'] === 'group') {
                     var group_id = escapeHTML(query['group']['group_id'])
