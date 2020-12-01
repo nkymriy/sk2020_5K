@@ -29,7 +29,7 @@ $(document).on("turbolinks:load", function () {
         }
     });
 
-    $('#slider_process1').slider({
+    $('#brainstorming_slider_process1').slider({
         min: 1,
         max: 30,
         start: 10,
@@ -39,7 +39,7 @@ $(document).on("turbolinks:load", function () {
         }
     });
 
-    $('#slider_process2').slider({
+    $('#brainstorming_slider_process2').slider({
         min: 1,
         max: 30,
         start: 5,
@@ -49,13 +49,22 @@ $(document).on("turbolinks:load", function () {
         }
     });
 
-    $('#slider_process3').slider({
+    $('#brainstorming_slider_process3').slider({
         min: 1,
         max: 30,
         start: 15,
 
         onChange: function (value) {
             $('#process3').val(value)
+        }
+    });
+    $('#mandarat_slider_process1').slider({
+        min: 1,
+        max: 30,
+        start: 20,
+
+        onChange: function (value) {
+            $('#process1').val(value)
         }
     });
 
