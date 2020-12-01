@@ -96,6 +96,7 @@ $(document).on("turbolinks:load", function () {
                             $('#process_1').hide()
                             $('#process_3').show()
                             $('#idea_add').prop('disabled', false)
+                            $('#change_button').prop('disabled', false)
                         } else if (query['system']['option'] === 'process3') {
                             $('body')
                                 .toast({
@@ -134,7 +135,7 @@ $(document).on("turbolinks:load", function () {
                     $('.group-contents').append(`
                         <div class="group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
                           <div class="ui stacked segments group" id="group_id_${group_id}">
-                            <div class="ui huge transparent input">
+                            <div class="group_name ui huge transparent input">
                               <input type="text" name="brain_rename_${group_id}" id="brain_rename_${group_id}" placeholder="${group_name}" data-behavior="idea_speaker"}>
                             </div>
                           </div>

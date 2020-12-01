@@ -2,32 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.word-cards{
-  height: 65vh;
-  width: 40vw;
-  margin: auto;
-  padding-top: 15vh;
-}
-
-.to-previous-area,.to-next-area{
-  height: 100%;
-  width: 20%;
-  float: left;
-  position:relative;
-}
-
-#to-previous-button,#to-next-button{
-  position:absolute;
+#word-cards{
+  background-color: white;
+  border-radius: 10px;
+  height: 70vh;
+  width: 60vw;
+  padding: 1%;
+  position: absolute;
   top: 50%;
-  left: 15%;
-  transform: translateY(-50%);
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  overflow: auto;
 }
+#word-cards::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+  display:none;
+}
+
 .word-card{
   position: relative;
-  height: 90%;
-  width: 54%;
+  height: 220px;
+  width: 150px;
   float: left;
-  margin: 5% 3%;
+  margin: 1% 1%;
   border: #1B1C1D solid 1px;
   background-color: white;
   //上下中央揃え
@@ -36,20 +33,21 @@
   align-items: center;
 }
 .word-card h1{
+  font-size: larger;
   margin: auto;
 }
-#rank_top,#rank_bottom{
+.rank_top,.rank_bottom{
   position: absolute;
   font-size: 3vw;
   font-weight: bolder;
   height: fit-content;
   padding: 10%;
 }
-#rank_top{
+.rank_top{
   top:0;
   right: 0;
 }
-#rank_bottom{
+.rank_bottom{
   transform: rotateX( 180deg )+rotateY( 180deg );
   bottom: 0;
   left: 0;
@@ -73,17 +71,10 @@
   -webkit-text-fill-color: transparent;
 }
 
-.select-buttons{
-  height: 10vh;
-  width: 20vw;
-  margin: auto;
-}
-
-.word-num-select{
-  float: left;
-
-}
 .turn-gacha-area{
-  float: left;
-  margin-left: 4%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
 }

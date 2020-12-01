@@ -19,7 +19,7 @@ require('fomantic-ui-css/semantic.min')
 
 // 共有js
 require('./shared')
-require('./shared/_right_menu.js.erb')
+require('./shared/_right_menu')
 
 // 各コントローラー用
 // idea新規作成画面

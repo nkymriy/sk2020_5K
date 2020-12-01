@@ -87,23 +87,26 @@ class IdeaChannel < ApplicationCable::Channel
           idea_log.update(is_active: 1)
           ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'stop', 'option': 'process3'}}
         end
-
       end
+
     elsif (idea_category_id === 3)
-      process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
+      if (res[1].nil?)
+        IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'start', 'option': 'sample_option'}}
+        process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
 
-      if process1['time'] == 0
-        return
+        if process1['time'] == 0
+          return
+        end
+
+        # プロセス1の処理
+        timer(process1['time']) do
+          idea_log = IdeaLog.find_by(id: process1['id'])
+          idea_log.update(is_active: 1)
+          ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'stop', 'option': 'process1'}}
+        end
       end
-
-      # プロセス1の処理
-      timer(process1['time']) do
-        idea_log = IdeaLog.find_by(id: process1['id'])
-        idea_log.update(is_active: 1)
-        ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'stop', 'option': 'process1'}}
-      end
-
     end
+
   end
 
   def timer(arg, &proc)
