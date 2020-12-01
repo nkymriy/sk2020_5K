@@ -156,6 +156,7 @@ body {
   border: 1px solid !important;
   border-color: darkgray !important;
   position: fixed !important;
+  padding-bottom: 10px;
   bottom: 0;
   right: 0;
   z-index: 30000;
@@ -170,7 +171,7 @@ body {
     height: 100%;
     max-height: 80%;
     padding-top: 1px;
-    overflow: scroll;
+    overflow-y: scroll;
   }
 
   .chat_username {
