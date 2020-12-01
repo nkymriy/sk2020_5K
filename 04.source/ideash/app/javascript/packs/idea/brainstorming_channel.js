@@ -123,9 +123,10 @@ $(document).on("turbolinks:load", function () {
                     }
                     else if (query['system']['operation'] === 'get_process_time') {
                         let process_times = query['system']['process_times'];
-                        console.log(process_times);
+                        //console.log(process_times);
                         for (let i=0; i<3; i++) {
-                            $('#time' + i).text(process_times[i]);
+                            $('#time' + i).text(process_times[i]['time']);
+                            //console.log(process_times[i]['time']);
                         }
 
                     }
