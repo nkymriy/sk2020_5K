@@ -2,17 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+/*new*/
 .tech_about_body .home_body {
   margin-right: 1% !important;
 }
 
 .block-tech-about {
   width: 100% !important;
-}
-
-.change_process{
-  margin-bottom: 2% !important;
-  margin-left: 1% !important;
 }
 
 .techname {
@@ -51,9 +47,10 @@
 /*process1*/
 .theme {
   background-color: white;
-  font-size: large;
-  border-radius: 15px;
-  padding: 2%;
+  font-size: medium;
+  border-radius: 10px;
+  padding: 1.5%;
+  margin: 1% 0 !important;
 }
 
 .process1_ideas {
@@ -96,21 +93,20 @@
   overflow: hidden;
 }
 
-#group_add{
-  margin-left: 1%;
-}
-
 .group-contents {
-  height: 70vh;
+  height: 68vh;
   width: 80%;
-  padding: 1%;
+  margin: 1% 0;
+  padding: 0.5%;
+  background-color: white;
+  border-radius: 10px;
 
   float: left;
   overflow: auto;
 }
 
 .idea-contents {
-  height: 70vh;
+  height: 68vh;
   width: 20%;
   padding: 1%;
 
@@ -119,6 +115,7 @@
 }
 
 .idea-contents .idea {
+  width: 90%;
   font-size: medium;
   display: flex;
   justify-content: center;
@@ -130,13 +127,29 @@
   height: 200px;
   background-color: white;
   padding: 1%;
+  margin-bottom: 1%;
 }
 
-.idea-contents .idea {
+.idea-contents .idea{
   height: fit-content;
   margin-bottom: 5%;
 }
 
+.group .idea{
+  margin: 0.5% !important;
+}
+
 .group_name {
   display: block !important;
+}
+
+/*edit*/
+.brainstorming_edit{
+  margin: 2%;
+}
+.brainstorming_header{
+  height: 30px;
+  font-size: small;
+  color: #1B1C1D;
+  margin-left: 0.5%;
 }
