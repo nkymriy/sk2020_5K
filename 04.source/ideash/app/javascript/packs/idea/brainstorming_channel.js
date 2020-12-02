@@ -37,7 +37,7 @@ $(document).on("turbolinks:load", function () {
 
                     var id = parseInt(localStorage.getItem('card_id')) + 1;
                     var div = $(
-                        '<div class="teal card idea none" id="' + id + '">\n' +
+                        '<div class="teal card idea none square-card" id="' + id + '">\n' +
                         '      <div class="content">\n' +
                         idea_text +
                         '      </div>\n' +
