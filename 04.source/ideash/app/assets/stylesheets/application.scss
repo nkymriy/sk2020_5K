@@ -27,3 +27,7 @@ body.pushable > .pusher {
 body, input, textarea {
     font-family: 'Roboto', sans-serif;
 }
+
+#main_content::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+  display:none;
+}

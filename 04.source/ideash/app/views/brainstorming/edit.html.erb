@@ -1,6 +1,9 @@
 <span class="websocket" id="idea_logs" data-idea_id="<%= @idea.id %>"></span>
-<div id="edit_body">
-  <button class="ui black basic mini button change_process" id="change_button" onclick="changeBtn()" disabled>画面切り替え</button>アイデア出しとグルーピングの画面が切り替わります
+<div id="edit_body" class="brainstorming_edit">
+  <div class="brainstorming_header">
+    <button class="ui black basic mini button change_process" id="change_button" onclick="changeBtn()" disabled>画面切り替え</button>
+    アイデア出しとグルーピングの画面が切り替わります
+  </div>
   <div id="process_1"><%= render :partial => 'brainstorming/process_1', locals: {idea: @idea, idea_logs: @idea_logs} %></div>
   <div id="process_3"><%= render :partial => 'brainstorming/process_3', locals: {idea: @idea, idea_logs: @idea_logs, grouping_contents: @grouping_contents} %></div>
 </div>
