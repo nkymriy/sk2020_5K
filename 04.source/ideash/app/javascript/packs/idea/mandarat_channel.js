@@ -90,6 +90,10 @@ $(document).on("turbolinks:load", function () {
                                         classProgress: 'blue'
                                     });
                             }
+                        } else if (query['system']['operation'] === 'get_process_time') {
+                            let process_times = query['system']['process_times'];
+                            let process_words = ['アイデア出し：'];
+                            $('#time' + 0).text(process_words[0] + process_times[0]['time'] + '分');
                         }
                     }
                 },
