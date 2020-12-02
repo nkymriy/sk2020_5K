@@ -164,15 +164,8 @@ $(document).on("turbolinks:load", function () {
                 return this.perform('grouping',
                     json_idea_log
                 );
-            },
-            get_process_time: function () {
-                return this.perform('get_process_time');
             }
         });
-
-        function timer() {
-
-        }
 
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
             if (event.keyCode === 13) {
@@ -197,7 +190,6 @@ $(document).on("turbolinks:load", function () {
                 return event.preventDefault();
             }
         });
-
 
         $('#group_add').on('click', function () {
             consumer.task.group_add();

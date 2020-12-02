@@ -9,7 +9,6 @@ class BrainstormingController < ApplicationController
     @idea = Idea.find_by(id: params[:id])
     @idea_logs = @idea.idea_logs
     @idea_users = @idea.user
-    # res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 3")
     # 既に登録されているかどうか
     is_added_user = @idea_users.where(id: current_user.id).exists?
     unless is_added_user
