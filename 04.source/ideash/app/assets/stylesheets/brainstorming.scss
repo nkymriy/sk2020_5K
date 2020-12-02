@@ -58,7 +58,7 @@
 
 .process1_ideas {
   height: 70vh;
-  overflow: auto;
+  //overflow: auto;
 }
 
 .process1_ideas .idea {
@@ -84,8 +84,22 @@
 
 .idea .content {
   height: 35vh;
-  overflow: auto;
+  //overflow: auto;
 }
+
+.square-card {
+  //height: 150px !important;
+  //width: 150px !important;
+  min-width: 50px !important;
+  //max-width: 300px !important;
+  min-height: 50px !important;
+  overflow-y: scroll;
+}
+
+.square-card::-webkit-scrollbar {
+  display: none;
+}
+
 .post_idea .input{
   width: 100%;
 }
