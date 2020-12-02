@@ -17,7 +17,7 @@
       <% if content.query['mode'] == 'add' %>
         <div class="teal card idea" id="">
           <div class="content">
-            <%= content.query["add"]["content"] %>
+            <%= content.query["add"]["content"].slice(0..29) + '.....' %>
           </div>
         </div>
       <% end %>

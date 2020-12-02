@@ -36,10 +36,21 @@ $(document).on("turbolinks:load", function () {
                     }
 
                     var id = parseInt(localStorage.getItem('card_id')) + 1;
+
+                    let count = 30;
+                    let text_length = idea_text.length;
+                    let limit_idea_text;
+                    if (text_length > count){
+                        let show_idea_text = idea_text.slice(0,count);
+                        limit_idea_text = show_idea_text += ".....";
+                    }else{
+                        limit_idea_text = idea_text;
+                    }
+
                     var div = $(
                         '<div class="teal card idea none" id="' + id + '">\n' +
                         '      <div class="content">\n' +
-                        idea_text +
+                        limit_idea_text +
                         '      </div>\n' +
                         '    </div>'
                     );
@@ -214,3 +225,4 @@ $(document).on("turbolinks:load", function () {
 const escapeHTML = function (val) {
     return $('<div />').text(val).html();
 };
+
