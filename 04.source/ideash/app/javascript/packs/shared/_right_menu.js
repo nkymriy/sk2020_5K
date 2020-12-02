@@ -12,8 +12,8 @@ $(document).on("turbolinks:load", function () {
             containment: "#wrap",
             handle: ".header-text",
             opacity: 0.5,
-            start: function (event, ui) {
-                chat_original_position = chat_original_position ?? ui.position;
+            create: function (event, ui) {
+                chat_original_position = $chat.position()
             }
         })
         .resizable({
@@ -27,10 +27,10 @@ $(document).on("turbolinks:load", function () {
 
     $('#reset_chat_position').on('click', function () {
         $('.chat').animate({
+            height: (!chat_original_size) ? "auto" : chat_original_size.height,
+            width: (!chat_original_size) ? "auto" : chat_original_size.width,
             top: (!chat_original_position) ? "auto" : chat_original_position.top,
             left: (!chat_original_position) ? "auto" : chat_original_position.left,
-            height: (!chat_original_size) ? "auto" : chat_original_size.hight,
-            width: (!chat_original_size) ? "auto" : chat_original_size.width,
         })
     })
 
