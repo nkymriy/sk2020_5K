@@ -1,6 +1,8 @@
 class IdeaChannel < ApplicationCable::Channel
   def subscribed
+    target_times = subscribed_target_time
     stream_from "idea_channel_#{params[:idea]}"
+    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {"mode":"settime","settime":{"target_times": target_times}}
   end
 
   def unsubscribed
@@ -172,9 +174,9 @@ class IdeaChannel < ApplicationCable::Channel
     target_time1 = create_process_conversion + process1_min
     target_time2 = create_process_conversion + process1_min + process2_min
     target_time3 = create_process_conversion + process1_min + process2_min + process3_min
-    logger.debug "-----------------------"
-    logger.debug target_time1,target_time2,target_time3
-    logger.debug "-----------------------"
+    logger.debug("-----------------------")
+    logger.debug(target_time1,target_time2,target_time3)
+    logger.debug("-----------------------")
 
     return [target_time1, target_time2, target_time3]
   end
