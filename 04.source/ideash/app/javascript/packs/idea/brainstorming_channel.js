@@ -219,7 +219,7 @@ $(document).on("turbolinks:load", function () {
 
 function start_timer(target_times) {
     target_times.sort();
-    setInterval(show_timer, 1000, target_times)
+    setInterval(show_timer, 100, target_times)
 }
 function show_timer(target_times= []) {
     //ひとつ目がない
@@ -231,23 +231,27 @@ function show_timer(target_times= []) {
     }
     let target_date = new Date(target_times[0]);
     target_date.setHours(target_date.getHours() + 9);
+    console.log(target_date);
     let now_date = new Date();
+    now_date.setDate(now_date.getDate() + 1);
+    console.log(now_date);
     let diff_time = target_date - now_date;
+    // console.log(diff_time);
     //あるので表示
     if (diff_time > 0){
         let dMin = diff_time / (1000 * 60);   // 分
         diff_time = diff_time % (1000 * 60);
         let dSec = diff_time / 1000;   // 秒
         if(dMin && dSec < 0){
-            $('#remaining').innerHTML = "終了";
+            document.getElementById('remaining').innerHTML = "終了";
         }else{
             let msg = Math.floor(dMin) + "分"
                 + Math.floor(dSec) + "秒";
-            $('#remaining').innerHTML = msg;
+            document.getElementById('remaining').innerHTML = msg;
         }
     }else{
         clearInterval(show_timer);
-        setInterval(show_timer, 1000, target_times.shift())
+        setInterval(show_timer, 100, target_times.shift())
     }
 }
 
