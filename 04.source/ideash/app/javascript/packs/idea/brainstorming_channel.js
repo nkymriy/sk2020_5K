@@ -217,17 +217,21 @@ $(document).on("turbolinks:load", function () {
     }
 });
 
+let target_timer;
+
 function start_timer(target_times) {
     target_times.sort();
-    setInterval(show_timer, 1000, target_times)
+    target_timer = setInterval(show_timer, 1000, target_times)
+    console.log(`1 ${target_timer}`)
 }
 function show_timer(target_times= []) {
     //ひとつ目がない
-    console.log(target_times.length)
+    console.log(target_times)
+    console.log(`TARGET_TIMER : ${target_timer}`)
     if (target_times.length === 0){
-        console.log("exit")
-        clearInterval(show_timer);
-        return;
+        console.log(`END_TIMER: ${target_timer}`)
+        clearInterval(target_timer);
+        return
     }
     let target_date = new Date(target_times[0]);
     target_date.setHours(target_date.getHours() + 9);
@@ -250,9 +254,9 @@ function show_timer(target_times= []) {
             document.getElementById('remaining').innerHTML = msg;
         }
     }else{
-        clearInterval(show_timer);
+        clearInterval(target_timer);
         target_times.shift()
-        setInterval(show_timer, 1000, target_times)
+        target_timer = setInterval(show_timer, 1000, target_times)
     }
 }
 
