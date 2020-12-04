@@ -14,10 +14,12 @@
     let is_process3 = <%= res[2]['is_active'] %>;
     let is_unlimited = <%= JSON.parse(res[0]['query'])['system']['option'].to_i %> === 0;
 
+
     if (is_unlimited){
         $('#change_button').prop('disabled', false)
         $('#process_1').show()
         $('#process_3').hide()
+        document.getElementById('remaining').innerHTML = "終了";
     } else if (!is_process1) {
         $('#process_3').hide()
     } else if (!is_process2) {

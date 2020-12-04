@@ -222,25 +222,17 @@ let target_timer;
 function start_timer(target_times) {
     target_times.sort();
     target_timer = setInterval(show_timer, 1000, target_times)
-    console.log(`1 ${target_timer}`)
 }
 function show_timer(target_times= []) {
     //ひとつ目がない
-    console.log(target_times)
-    console.log(`TARGET_TIMER : ${target_timer}`)
     if (target_times.length === 0){
-        console.log(`END_TIMER: ${target_timer}`)
         clearInterval(target_timer);
         return
     }
     let target_date = new Date(target_times[0]);
     target_date.setHours(target_date.getHours() + 9);
-    console.log(target_date);
     let now_date = new Date();
-    // now_date.setDate(now_date.getDate() + 1);
-    console.log(now_date);
     let diff_time = target_date - now_date;
-    // console.log(diff_time);
     //あるので表示
     if (diff_time > 0){
         let dMin = diff_time / (1000 * 60);   // 分
