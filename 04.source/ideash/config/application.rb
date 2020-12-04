@@ -20,5 +20,7 @@ module Ideash
     config.cache_store = :redis_cache_store
     #タイムゾーンを東京に
     config.time_zone = 'Tokyo'
+    # deviseで利用する言語を日本語に
+    config.i18n.default_locale = :ja
   end
 end

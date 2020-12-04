@@ -100,6 +100,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.9.2)
+      devise (>= 4.7.1)
     diff-lcs (1.4.4)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
@@ -375,6 +377,7 @@ DEPENDENCIES
   capybara-screenshot
   config
   devise
+  devise-i18n
   dotenv-rails
   factory_bot_rails
   faker
