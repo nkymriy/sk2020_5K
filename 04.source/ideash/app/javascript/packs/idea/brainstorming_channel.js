@@ -219,7 +219,7 @@ $(document).on("turbolinks:load", function () {
 
 function start_timer(target_times) {
     target_times.sort();
-    setInterval(show_timer, 100, target_times)
+    setInterval(show_timer, 1000, target_times)
 }
 function show_timer(target_times= []) {
     //ひとつ目がない
@@ -233,7 +233,7 @@ function show_timer(target_times= []) {
     target_date.setHours(target_date.getHours() + 9);
     console.log(target_date);
     let now_date = new Date();
-    now_date.setDate(now_date.getDate() + 1);
+    // now_date.setDate(now_date.getDate() + 1);
     console.log(now_date);
     let diff_time = target_date - now_date;
     // console.log(diff_time);
@@ -251,7 +251,8 @@ function show_timer(target_times= []) {
         }
     }else{
         clearInterval(show_timer);
-        setInterval(show_timer, 100, target_times.shift())
+        target_times.shift()
+        setInterval(show_timer, 1000, target_times)
     }
 }
 
