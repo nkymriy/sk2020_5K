@@ -58,11 +58,20 @@
 img.image_info_memo {
   width: 480px;
   height: 300px;
-  //position: absolute; top:0; left:0;
+  border: 2px solid black;
 }
 
 .memo-info-text {
   font-size: 18px;
+  text-align: left;
+  padding-bottom: 8px;
+  padding-left: 150px;
+}
+ul {
+  list-style: none;
+}
+li{
+  width: 600px;
 }
 
 /*history*/

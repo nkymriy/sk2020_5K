@@ -117,13 +117,14 @@
   <div class="modal js-modal" id="memo-modal-window">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
-      <p>メモの説明</p>
       <%= image_tag 'memo_info_img', class: 'image_info_memo' %>
-      <p class="memo-info-text">①メモのタイトルを入力してください。</p>
-      <p class="memo-info-text">②メモの内容を入力してください。</p>
-      <p class="memo-info-text">③入力が終わったら「保存」ボタンをクリック！</p>
-      <br>
-      <br>
+      <ul>
+        <li class="memo-info-text">①メモのタイトルを入力してください。</li>
+        <li class="memo-info-text">②メモの内容を入力してください。</li>
+        <li class="memo-info-text">③入力が終わったら「保存」ボタンをクリック！</li>
+        <li class="memo-info-text">保存されたメモは、右のリストから<br>確認・編集することができます。</li>
+        <br>
+      </ul>
       <a class="js-modal-close" href="">閉じる</a>
     </div><!--modal__inner-->
   </div><!--modal-->
