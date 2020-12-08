@@ -178,7 +178,12 @@
   <div class="modal js-modal" id="word-slot-model-window">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
-      <p>--単語スロットの説明--</p>
+      <%= image_tag 'slot_info_img', class: 'image_info_slot' %>
+      <ul>
+        <li class="info-text">①「回す」を押すとスロットが始まります。</li>
+        <li class="info-text">②スロットを止めることができます。</li>
+        <li class="info-text">③ランダムに選ばれたワードが表示されます。</li>
+      </ul>
       <a class="js-modal-close" href="">閉じる</a>
     </div><!--modal__inner-->
   </div><!--modal-->
