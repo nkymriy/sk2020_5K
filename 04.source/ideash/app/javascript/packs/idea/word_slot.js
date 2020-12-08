@@ -44,11 +44,11 @@ $(document).on("turbolinks:load", function () {
             success: function (data) {
                 if (slotMachine.spinCount > 0) return;
                 slotMachine.wordList = data;
-                slotMachine.left.interval = setInterval(spinReel, 100, "left");
+                slotMachine.left.interval = setInterval(spinReel, 50+getRandomInt(100), "left");
                 slotMachine.left.isSpining = true;
-                slotMachine.center.interval = setInterval(spinReel, 100, "center");
+                slotMachine.center.interval = setInterval(spinReel, 50+getRandomInt(100), "center");
                 slotMachine.center.isSpining = true;
-                slotMachine.right.interval = setInterval(spinReel, 100, "right");
+                slotMachine.right.interval = setInterval(spinReel, 50+getRandomInt(100), "right");
                 slotMachine.right.isSpining = true;
                 slotMachine.spinCount = 3
             }
