@@ -55,13 +55,7 @@
   padding-left: 4%;
 }
 
-img.image_info_memo {
-  width: 480px;
-  height: 300px;
-  border: 2px solid black;
-}
-
-.memo-info-text {
+.info-text {
   font-size: 18px;
   text-align: left;
   padding-bottom: 8px;
@@ -72,6 +66,24 @@ ul {
 }
 li{
   width: 600px;
+}
+
+/*category-img*/
+img.image_info_memo {
+  width: 480px;
+  height: 300px;
+  border: 2px solid black;
+}
+
+img.image1_info_brainstorming {
+  width: 480px;
+  height: 300px;
+  border: 2px solid black;
+}
+img.image2_info_brainstorming {
+  width: 480px;
+  height: 300px;
+  border: 2px solid black;
 }
 
 /*history*/
