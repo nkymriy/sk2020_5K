@@ -127,7 +127,7 @@ $(document).on("turbolinks:load", function () {
                     $('.group-contents').append(`
                         <div class="ui stacked segments group" id="group_id_${group_id}">
                             <div class="hidden_group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
-                                <div class="group_name ui huge transparent input">
+                                <div class="group_name ui transparent input">
                                     <input type="text" name="brain_rename_${group_id}" id="brain_rename_${group_id}" placeholder="${group_name}" data-behavior="idea_speaker"}>
                                 </div>
                             </div>
