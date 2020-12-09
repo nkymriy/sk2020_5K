@@ -1,77 +1,79 @@
+import {checkControllerAction} from "../common/check_controller_action";
+
 $(document).on("turbolinks:load", function () {
-    require('fomantic-ui-css/semantic.min')
+    if (!checkControllerAction(['word_slot'], ['edit'])) return;
+    const WORD_SIZE = 20;
 
+    let slotMachine = {
+        "turnButton": $('#turn-slot-button'),
+        "left": {
+            "button": $('#stop-left-button'),
+            "reel": $('#slot-word-left'),
+            "interval": "",
+            "index": getRandomInt(WORD_SIZE),
+            "isSpining": false,
+        },
+        "center": {
+            "button": $('#stop-center-button'),
+            "reel": $('#slot-word-center'),
+            "index": getRandomInt(WORD_SIZE),
+            "interval": "",
+            "isSpining": false,
+        },
+        "right": {
+            "button": $('#stop-right-button'),
+            "reel": $('#slot-word-right'),
+            "index": getRandomInt(WORD_SIZE),
+            "interval": "",
+            "isSpining": false,
+        },
+        "spinCount": 0,
+        "wordList": []
+    }
 
-    let word_list
-    let anime_list
+    slotMachine.turnButton.on('click', turnSlot);
+    slotMachine.left.button.on('click', {"position": "left"}, stopReel);
+    slotMachine.center.button.on('click', {"position": "center"}, stopReel);
+    slotMachine.right.button.on('click', {"position": "right"}, stopReel);
 
-    let rotationLeft
-    let rotationCenter
-    let rotationRight
-
-    //ガチャを回す
-    $('#turn-slot-button').on('click', turnbtn);
-    $('#stop-left-button').on('click', stop_left);
-    $('#stop-center-button').on('click',stop_center);
-    $('#stop-right-button').on('click',stop_right);
-    
-    function turnbtn() {
+    function turnSlot() {
         $.ajax({
             url: "get_wordslot_jsons",
             type: "GET",
-            data: {gacha_num: 20},
+            data: {gacha_num: WORD_SIZE},
             success: function (data) {
-                anime_list = data;
-            },
-            error: function (data) {
-                //失敗時の処理
-            }
-        });
-        $.ajax({
-            url: "get_wordslot_jsons",
-            type: "GET",
-            data: {gacha_num: 3},
-            success: function (data) {
-                word_list = data;
-                rotationLeft = setInterval(rotation_left, 200);
-                rotationCenter = setInterval(rotation_center, 200);
-                rotationRight = setInterval(rotation_right, 200);
-
-            },
-            error: function (data) {
-                //失敗時の処理
+                if (slotMachine.spinCount > 0) return;
+                slotMachine.wordList = data;
+                slotMachine.left.interval = setInterval(spinReel, 50+getRandomInt(100), "left");
+                slotMachine.left.isSpining = true;
+                slotMachine.center.interval = setInterval(spinReel, 50+getRandomInt(100), "center");
+                slotMachine.center.isSpining = true;
+                slotMachine.right.interval = setInterval(spinReel, 50+getRandomInt(100), "right");
+                slotMachine.right.isSpining = true;
+                slotMachine.spinCount = 3
             }
         });
     }
 
-    function stop_left() {
-        clearInterval(rotationLeft);
-        document.getElementById('slot-word-left').innerHTML = word_list[0][1];
-    }
-    function stop_center() {
-        clearInterval(rotationCenter);
-        document.getElementById('slot-word-center').innerHTML = word_list[1][1];
-    }
-    function stop_right() {
-        clearInterval(rotationRight);
-        document.getElementById('slot-word-right').innerHTML = word_list[2][1];
+    function spinReel(position) {
+        slotMachine[position].reel.text(slotMachine.wordList[slotMachine[position].index][1]);
+        slotMachine[position].index += 1
+        if (slotMachine[position].index >= WORD_SIZE) {
+            slotMachine[position].index = 0
+        }
     }
 
-
-    var min = 1 ;
-    var max = 19 ;
-
-    function rotation_left() {
-        var rand = Math.floor( Math.random() * (max + 1 - min) ) + min ;
-        document.getElementById('slot-word-left').innerHTML = anime_list[rand][1];
+    function stopReel(eo) {
+        let position = eo.data.position;
+        if (slotMachine[position].isSpining) {
+            slotMachine[position].isSpining = false;
+            clearInterval(slotMachine[position].interval);
+            slotMachine.spinCount -= 1
+        }
     }
-    function rotation_center() {
-        var rand = Math.floor( Math.random() * (max + 1 - min) ) + min ;
-        document.getElementById('slot-word-center').innerHTML = anime_list[rand][1];
-    }
-    function rotation_right() {
-        var rand = Math.floor( Math.random() * (max + 1 - min) ) + min ;
-        document.getElementById('slot-word-right').innerHTML = anime_list[rand][1];
-    }
-
 });
+
+//乱数取得
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
