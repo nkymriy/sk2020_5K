@@ -125,12 +125,12 @@ $(document).on("turbolinks:load", function () {
                     var group_id = escapeHTML(query['group']['group_id'])
                     var group_name = escapeHTML(query['group']['name'])
                     $('.group-contents').append(`
-                        <div class="group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
-                          <div class="ui stacked segments group" id="group_id_${group_id}">
-                            <div class="group_name ui huge transparent input">
-                              <input type="text" name="brain_rename_${group_id}" id="brain_rename_${group_id}" placeholder="${group_name}" data-behavior="idea_speaker"}>
+                        <div class="ui stacked segments group" id="group_id_${group_id}">
+                            <div class="hidden_group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
+                                <div class="group_name ui huge transparent input">
+                                    <input type="text" name="brain_rename_${group_id}" id="brain_rename_${group_id}" placeholder="${group_name}" data-behavior="idea_speaker"}>
+                                </div>
                             </div>
-                          </div>
                         </div>
                     `)
                 }
