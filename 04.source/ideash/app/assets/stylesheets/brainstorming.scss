@@ -134,18 +134,28 @@
   padding: 1%;
   margin-bottom: 1%;
 }
+.hidden_group{
+  height: 185px;
+}
 
 .idea-contents .idea{
   height: fit-content;
   margin-bottom: 5%;
 }
 
-.group .idea{
+.hidden_group .idea{
   margin: 0.5% !important;
 }
 
 .group_name {
   display: block !important;
+}
+
+.hidden_group{
+  overflow: auto;
+}
+.hidden_group::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+  display:none;
 }
 
 /*edit*/

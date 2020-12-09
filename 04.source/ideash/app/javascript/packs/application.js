@@ -10,7 +10,9 @@ require("channels")
 
 require("jquery")
 require("jquery-ui")
+require("jquery-ui/themes/base/all.css")
 require("jquery-ui/ui/widgets/draggable")
+require("jquery-ui/ui/widgets/resizable")
 
 
 // fomantic-uiの読み込み
@@ -36,6 +38,8 @@ require('./idea/brainstorming_channel')
 require('./idea/mandarat_channel')
 //word_gacha
 require('./idea/word_gacha')
+//word_slot
+require('./idea/word_slot')
 //category
 require('./idea/category')
 
