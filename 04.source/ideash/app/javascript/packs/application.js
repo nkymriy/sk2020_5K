@@ -38,6 +38,8 @@ require('./idea/brainstorming_channel')
 require('./idea/mandarat_channel')
 //word_gacha
 require('./idea/word_gacha')
+//word_slot
+require('./idea/word_slot')
 //category
 require('./idea/category')
 
