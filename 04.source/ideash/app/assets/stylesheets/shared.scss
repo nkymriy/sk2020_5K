@@ -250,6 +250,10 @@ body {
     overflow-y: scroll;
   }
 
+  #main_content::-webkit-scrollbar {
+    display: none;
+  }
+
   .fade_object {
     display: none;
   }
@@ -338,4 +342,8 @@ img.icon_image {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 60%;
+}
+
+.bold {
+  padding-bottom:5px;
 }

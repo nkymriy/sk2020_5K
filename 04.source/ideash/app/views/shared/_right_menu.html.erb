@@ -1,4 +1,5 @@
 <input type="hidden" id="user_id" value="<%= current_user.id %>">
+<%= javascript_pack_tag "idea/brainstorming_channel" %>
 <!-- 1 -->
 <div class="ui right fixed vertical menu block-edit-sidebar right_menu" id="right_menu">
   <a class="item" id="right_menu_hide_button">
@@ -19,9 +20,9 @@
         <i class="question circle outline icon js-modal-open"></i>ブレインストーミング
       </div>
       <ul class="explain-list">
-        <li class="bold">アイデア出し： 無制限</li>
-        <li><s>意見だし　　：</s></li>
-        <li><s>グルーピング：</s></li>
+        <li class="bold"><div id="time0"></div></li>
+        <li class="bold"><div id="time1"></div></li>
+        <li class="bold"><div id="time2"></div></li>
       </ul>
     </div>
   <% elsif controller_name == 'mandarat' %>
@@ -31,7 +32,7 @@
         <i class="question circle outline icon js-modal-open"></i>マンダラート
       </div>
       <ul class="explain-list">
-        <li class="bold">アイデア出し： 無制限</li>
+        <li class="bold"><div id="time0"></div></li>
       </ul>
     </div>
   <% end %>

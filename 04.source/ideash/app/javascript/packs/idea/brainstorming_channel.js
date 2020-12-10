@@ -37,7 +37,7 @@ $(document).on("turbolinks:load", function () {
 
                     var id = parseInt(localStorage.getItem('card_id')) + 1;
                     var div = $(
-                        '<div class="teal card idea none" id="' + id + '">\n' +
+                        '<div class="teal card idea none square-card" id="' + id + '">\n' +
                         '      <div class="content">\n' +
                         idea_text +
                         '      </div>\n' +
@@ -121,16 +121,23 @@ $(document).on("turbolinks:load", function () {
                         $('#' + object_id).remove();
                         $('#' + group_id).append(div);
                     }
+                    else if (query['system']['operation'] === 'get_process_time') {
+                        let process_times = query['system']['process_times'];
+                        let process_words = ['アイデア出し：','意見だし　　：','グルーピング：'];
+                        for (let i=0; i<3; i++) {
+                            $('#time' + i).text(process_words[i] + process_times[i]['time'] + '分');
+                        }
+                    }
                 } else if (query['mode'] === 'group') {
                     var group_id = escapeHTML(query['group']['group_id'])
                     var group_name = escapeHTML(query['group']['name'])
                     $('.group-contents').append(`
-                        <div class="group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
-                          <div class="ui stacked segments group" id="group_id_${group_id}">
-                            <div class="group_name ui huge transparent input">
-                              <input type="text" name="brain_rename_${group_id}" id="brain_rename_${group_id}" placeholder="${group_name}" data-behavior="idea_speaker"}>
+                        <div class="ui stacked segments group" id="group_id_${group_id}">
+                            <div class="hidden_group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
+                                <div class="group_name ui transparent input">
+                                    <input type="text" name="brain_rename_${group_id}" id="brain_rename_${group_id}" placeholder="${group_name}" data-behavior="idea_speaker"}>
+                                </div>
                             </div>
-                          </div>
                         </div>
                     `)
                 }
@@ -157,7 +164,7 @@ $(document).on("turbolinks:load", function () {
                 return this.perform('grouping',
                     json_idea_log
                 );
-            },
+            }
         });
 
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {
