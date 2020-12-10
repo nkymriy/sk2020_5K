@@ -15,7 +15,7 @@
   <div class="ui four cards process1_ideas" id="ideas">
     <% for content in idea_logs.reverse do %>
       <% if content.query['mode'] == 'add' %>
-        <div class="teal card idea" id="">
+        <div class="teal card idea square-card">
           <div class="content">
             <%= content.query["add"]["content"] %>
           </div>

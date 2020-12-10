@@ -250,6 +250,10 @@ body {
     overflow-y: scroll;
   }
 
+  #main_content::-webkit-scrollbar {
+    display: none;
+  }
+
   .fade_object {
     display: none;
   }
