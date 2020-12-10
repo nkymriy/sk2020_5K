@@ -53,13 +53,14 @@ class IdeaChannel < ApplicationCable::Channel
   end
 
   def pause()
-    logger.debug "````````````````````````````````````````````````pause()``````````"
-
-    res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 4")
+    res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 5")
     idea_category_id = Idea.find(params[:idea]).idea_category_id
     # TODO: ループを利用したコードへの短縮が可能に見えるので、余裕ができたら短縮を試みる
     # NOTE: ブレインストーミングの場合
     if idea_category_id == 2
+      logger.debug "````````````````````````````````````````````````pause()``````````"
+      logger.debug res
+      logger.debug "````````````````````````````````````````````````pause()``````````"
       if  res[4].nil?
         IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'start', 'option': 'sample_option'}}
         # NOTE: プロセス1,2,3における時間を設定する
@@ -91,8 +92,8 @@ class IdeaChannel < ApplicationCable::Channel
         end
       end
 
-    elsif (idea_category_id === 3)
-      if (res[1].nil?)
+    elsif idea_category_id == 3
+      if res[1].nil?
         IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'start', 'option': 'sample_option'}}
         process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
 

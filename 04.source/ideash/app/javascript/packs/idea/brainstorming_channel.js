@@ -249,6 +249,9 @@ function show_timer(target_times= []) {
         clearInterval(target_timer);
         target_times.shift()
         target_timer = setInterval(show_timer, 1000, target_times)
+        if (target_times.length === 0){
+            document.getElementById('remaining').innerHTML = '終了';
+        }
     }
 }
 
