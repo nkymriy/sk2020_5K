@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 body {
-  background-color: #f5f5f5 !important;
+  background-color: #C2EBEA !important;
 }
 
 /*みどり部分*/
@@ -107,7 +107,7 @@ body {
 
 /*白になるとこ*/
 .gradation {
-  background: linear-gradient(180deg, #26AEAF 0%, rgba(51, 178, 177, 0.916667) 28.12%, #f5f5f5 100%);
+  background: linear-gradient(180deg, #26AEAF 0%, rgba(51, 178, 177, 0.916667) 28.12%, #C2EBEA 100%);
   height: 40%;
   margin-top: -10px;
 }
@@ -215,8 +215,8 @@ p {
   position: relative;
   width: 100%;
   height: 17%;
-  background-color: #000000;
-  color: white;
+  background-color: white;
+  color: #1B1C1D;
   text-align: center;
 }
 
@@ -237,7 +237,7 @@ ul.footer-menu li {
 }
 
 .footer-menu a:link, .footer-menu a:visited, .footer-menu a:hover, .footer-menu a:active {
-  color: white;
+  color: #1B1C1D;
 }
 
 /*リリースノート*/
