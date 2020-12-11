@@ -55,6 +55,69 @@
   padding-left: 4%;
 }
 
+.info-text {
+  font-size: 18px;
+  text-align: left;
+  padding-bottom: 8px;
+  padding-left: 150px;
+}
+
+ul {
+  list-style: none;
+}
+li{
+  width: 600px;
+}
+
+/*category-img*/
+img.image_info_memo {
+  width: 635px;
+  height: 400px;
+  border: 2px solid black;
+}
+
+img.image1_info_brainstorming {
+  width: 495px;
+  height: 280px;
+  border: 2px solid black;
+}
+
+img.image2_info_brainstorming {
+  width: 495px;
+  height: 280px;
+  border: 2px solid black;
+}
+
+img.image1_info_mandarat {
+  width: 430px;
+  height: 265px;
+  border: 2px solid black;
+}
+
+img.image2_info_mandarat {
+  width: 430px;
+  height: 255px;
+  border: 2px solid black;
+}
+
+img.image1_info_gacha {
+  width: 150px;
+  height: 200px;
+  border: 2px solid black;
+}
+
+img.image2_info_gacha {
+  width: 480px;
+  height: 300px;
+  border: 2px solid black;
+}
+
+img.image_info_slot {
+  width: 500px;
+  height: 510px;
+  border: 2px solid black;
+}
+
 /*history*/
 .history_segment .histories {
   height: 65vh;

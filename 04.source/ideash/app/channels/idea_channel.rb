@@ -1,6 +1,8 @@
 class IdeaChannel < ApplicationCable::Channel
   def subscribed
     stream_from "idea_channel_#{params[:idea]}"
+    process_times = get_process_time
+    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'get_process_time', "process_times": process_times}}
   end
 
   def unsubscribed
@@ -149,6 +151,20 @@ class IdeaChannel < ApplicationCable::Channel
     grouping_id = grouping_res.select { |hoge| JSON.parse(hoge['query'])['grouping']['object_id'] === object_id }[0]['id']
     if IdeaLog.find(grouping_id).update! query: {'user_id': current_user.id, 'mode': 'grouping', 'grouping': {'object_id': object_id, 'group_id': group_id}}
       ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'grouping', 'option': {'content': content, 'object_id': object_id, 'group_id': group_id}}}
+    end
+  end
+
+  def get_process_time()
+    idea_category_id = Idea.find(params[:idea]).idea_category_id
+    res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 3")
+    if (idea_category_id === 2)
+      process1 = {'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
+      process2 = {'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
+      process3 = {'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
+      return [process1,process2,process3]
+    elsif (idea_category_id === 3)
+      process1 = {'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
+      return [process1]
     end
   end
 end

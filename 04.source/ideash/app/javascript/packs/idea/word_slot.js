@@ -11,21 +11,21 @@ $(document).on("turbolinks:load", function () {
             "reel": $('#slot-word-left'),
             "interval": "",
             "index": getRandomInt(WORD_SIZE),
-            "isSpining": false,
+            "isSpinning": false,
         },
         "center": {
             "button": $('#stop-center-button'),
             "reel": $('#slot-word-center'),
             "index": getRandomInt(WORD_SIZE),
             "interval": "",
-            "isSpining": false,
+            "isSpinning": false,
         },
         "right": {
             "button": $('#stop-right-button'),
             "reel": $('#slot-word-right'),
             "index": getRandomInt(WORD_SIZE),
             "interval": "",
-            "isSpining": false,
+            "isSpinning": false,
         },
         "spinCount": 0,
         "wordList": []
@@ -37,36 +37,36 @@ $(document).on("turbolinks:load", function () {
     slotMachine.right.button.on('click', {"position": "right"}, stopReel);
 
     function turnSlot() {
+        if (slotMachine.spinCount > 0) return;
         $.ajax({
             url: "get_wordslot_jsons",
             type: "GET",
             data: {gacha_num: WORD_SIZE},
             success: function (data) {
-                if (slotMachine.spinCount > 0) return;
                 slotMachine.wordList = data;
                 slotMachine.left.interval = setInterval(spinReel, 50+getRandomInt(100), "left");
-                slotMachine.left.isSpining = true;
+                slotMachine.left.isSpinning = true;
                 slotMachine.center.interval = setInterval(spinReel, 50+getRandomInt(100), "center");
-                slotMachine.center.isSpining = true;
+                slotMachine.center.isSpinning = true;
                 slotMachine.right.interval = setInterval(spinReel, 50+getRandomInt(100), "right");
-                slotMachine.right.isSpining = true;
+                slotMachine.right.isSpinning = true;
                 slotMachine.spinCount = 3
             }
         });
     }
 
     function spinReel(position) {
-        slotMachine[position].reel.text(slotMachine.wordList[slotMachine[position].index][1]);
         slotMachine[position].index += 1
         if (slotMachine[position].index >= WORD_SIZE) {
             slotMachine[position].index = 0
         }
+        slotMachine[position].reel.text(slotMachine.wordList[slotMachine[position].index][1]);
     }
 
     function stopReel(eo) {
         let position = eo.data.position;
-        if (slotMachine[position].isSpining) {
-            slotMachine[position].isSpining = false;
+        if (slotMachine[position].isSpinning) {
+            slotMachine[position].isSpinning = false;
             clearInterval(slotMachine[position].interval);
             slotMachine.spinCount -= 1
         }
