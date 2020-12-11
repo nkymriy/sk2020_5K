@@ -123,6 +123,11 @@ body {
   padding-top: 10%;
 }
 
+/*第3.5区分*/
+.seg_h1 {
+  text-align: center;
+}
+
 /*説明部分のCSS*/
 h1 {
   font-size: 4vw;
@@ -130,6 +135,12 @@ h1 {
 
 h2 {
   font-size: 1.5vw;
+  font-weight: lighter;
+  margin-top: -3px;
+}
+
+h3 {
+  font-size: 1.3vw;
   font-weight: lighter;
   margin-top: -3px;
 }
