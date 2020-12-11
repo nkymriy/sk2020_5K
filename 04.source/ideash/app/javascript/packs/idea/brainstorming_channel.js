@@ -121,6 +121,13 @@ $(document).on("turbolinks:load", function () {
                         $('#' + object_id).remove();
                         $('#' + group_id).append(div);
                     }
+                    else if (query['system']['operation'] === 'get_process_time') {
+                        let process_times = query['system']['process_times'];
+                        let process_words = ['アイデア出し：','意見だし　　：','グルーピング：'];
+                        for (let i=0; i<3; i++) {
+                            $('#time' + i).text(process_words[i] + process_times[i]['time'] + '分');
+                        }
+                    }
                 } else if (query['mode'] === 'group') {
                     var group_id = escapeHTML(query['group']['group_id'])
                     var group_name = escapeHTML(query['group']['name'])
@@ -156,7 +163,7 @@ $(document).on("turbolinks:load", function () {
                 return this.perform('grouping',
                     json_idea_log
                 );
-            },
+            }
         });
 
         $(document).on('keypress', '[data-behavior~=idea_speaker]', function (event) {

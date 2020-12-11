@@ -117,35 +117,73 @@
   <div class="modal js-modal" id="memo-modal-window">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
-      <p>--メモの説明--</p>
+      <%= image_tag 'memo_info_img', class: 'image_info_memo' %>
+      <ul>
+        <li class="info-text">①メモのタイトルを入力してください。</li>
+        <li class="info-text">②メモの内容を入力してください。</li>
+        <li class="info-text">③入力が終わったら「保存」ボタンをクリック！</li>
+        <li class="info-text">保存されたメモは、右のリストから<br>確認・編集することができます。</li>
+      </ul>
       <a class="js-modal-close" href="">閉じる</a>
     </div><!--modal__inner-->
   </div><!--modal-->
   <div class="modal js-modal" id="brainstorming-modal-window">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
-      <p>--ブレインストーミングの説明--</p>
+      <%= image_tag 'brainstorming_info_img1', class: 'image1_info_brainstorming' %>
+      <%= image_tag 'brainstorming_info_img2', class: 'image2_info_brainstorming' %>
+      <ul>
+        <li class="info-text">①作成時に入力したテーマが表示されます。</li>
+        <li class="info-text">②案を入力してEnter</li>
+        <li class="info-text">③全ての参加者の案が表示されます。</li>
+        <li class="info-text">④別途参照</li>
+        <li class="info-text">⑤グループを追加することができます。</li>
+        <li class="info-text">⑥グループ名を変更することができます。</li>
+        <li class="info-text">⑦ドラッグ&ドロップで案をグルーピングできます。</li>
+      </ul>
       <a class="js-modal-close" href="">閉じる</a>
     </div><!--modal__inner-->
   </div><!--modal-->
   <div class="modal js-modal" id="mandarat-modal-window">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
-      <p>--マンダラートの説明--</p>
+      <%= image_tag 'mandarat_info_img1', class: 'image1_info_mandarat' %>
+      <%= image_tag 'mandarat_info_img2', class: 'image2_info_mandarat' %>
+      <ul>
+        <li class="info-text">①メイン・サブテーマが表示されます。</li>
+        <li class="info-text">②入力してマスを埋めていきます。<br>他の参加者が編集していると色が変わります。</li>
+        <li class="info-text">③矢印の方向に移動します。上下左も同様。</li>
+        <li class="info-text">④全体画面（画像２枚目）を見ることができます。</li>
+        <li class="info-text">⑤現在開いている場所が表示されます。<br>選択することで移動することもできます。</li>
+        <li class="info-text">⑥メインテーマとサブテーマが表示されます。</li>
+        <li class="info-text">⑦別途参照。</li>
+        <li class="info-text">⑧81マス全てが表示されます。（閲覧のみ）<br>画面をクリックするすることで元の画面に戻れます。</li>
+      </ul>
       <a class="js-modal-close" href="">閉じる</a>
     </div><!--modal__inner-->
   </div><!--modal-->
   <div class="modal js-modal" id="word-gacha-model-window">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
-      <p>--単語ガチャの説明--</p>
+      <%= image_tag 'gacha_info_img1', class: 'image1_info_gacha' %>
+      <%= image_tag 'gacha_info_img2', class: 'image2_info_gacha' %>
+      <ul>
+        <li class="info-text">①「回す」を押すと結果画面（画像右）に移動します。</li>
+        <li class="info-text">②初期画面（画像左）に移動します。</li>
+        <li class="info-text">③ランダムに選ばれた10個のワードが表示されます。</li>
+      </ul>
       <a class="js-modal-close" href="">閉じる</a>
     </div><!--modal__inner-->
   </div><!--modal-->
   <div class="modal js-modal" id="word-slot-model-window">
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
-      <p>--単語スロットの説明--</p>
+      <%= image_tag 'slot_info_img', class: 'image_info_slot' %>
+      <ul>
+        <li class="info-text">①「回す」を押すとスロットが始まります。</li>
+        <li class="info-text">②スロットを止めることができます。</li>
+        <li class="info-text">③ランダムに選ばれたワードが表示されます。</li>
+      </ul>
       <a class="js-modal-close" href="">閉じる</a>
     </div><!--modal__inner-->
   </div><!--modal-->
