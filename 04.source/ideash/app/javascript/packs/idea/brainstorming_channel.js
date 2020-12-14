@@ -243,13 +243,10 @@ function show_timer(target_times= []) {
         let dMin = diff_time / (1000 * 60);   // 分
         diff_time = diff_time % (1000 * 60);
         let dSec = diff_time / 1000;   // 秒
-        if(dMin && dSec < 0){
-            document.getElementById('remaining').innerHTML = "終了";
-        }else{
-            let msg = Math.floor(dMin) + "分"
-                + Math.floor(dSec) + "秒";
-            document.getElementById('remaining').innerHTML = msg;
-        }
+
+        let msg = Math.floor(dMin) + "分"
+            + Math.floor(dSec) + "秒";
+        document.getElementById('remaining').innerHTML = msg;
     }else{
         clearInterval(target_timer);
         target_times.shift()
