@@ -241,12 +241,16 @@ function show_timer(target_times= []) {
         return
     }
     let target_date = new Date(target_times[0]);
+    console.log('1' + target_date);
     target_date.setHours(target_date.getHours() + 9);
+    console.log('2' + target_date);
     let now_date = new Date();
+    console.log('3' + now_date);
     let show_now_date = now_date.getHours() + ':'
                       + now_date.getMinutes() + ':'
                       + now_date.getSeconds();
     let diff_time = target_date - now_date;
+    console.log('4' + diff_time);
     //あるので表示
     if (diff_time > 0){
         let dMin = diff_time / (1000 * 60);   // 分
@@ -267,7 +271,6 @@ function show_timer(target_times= []) {
             $('#time_title').text('残り時間');
             $('#remaining').text('終了');
         }
-
     }
 }
 
