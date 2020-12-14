@@ -126,8 +126,8 @@ $(document).on("turbolinks:load", function () {
                         for (let i = 0; i < 3; i++) {
                             $('#time' + i).text(process_words[i] + process_times[i]['time'] + '分');
                         }
-                        let target_unlimited = process_times[0]['time'];
-                        time_unlimited(target_unlimited);
+                        let process1_time = process_times[0]['time'];
+                        show_unlimited(process1_time);
                     }
                 } else if (query['mode'] === 'group') {
                     var group_id = escapeHTML(query['group']['group_id'])
@@ -225,10 +225,10 @@ $(document).on("turbolinks:load", function () {
 });
 
 let target_timer;
-let target_unlimited;
+let process_unlimited;
 
-function time_unlimited(time_unlimited) {
-    target_unlimited = time_unlimited;
+function show_unlimited(process1_time) {
+    process_unlimited = process1_time;
 }
 function start_timer(target_times) {
     target_times.sort();
@@ -260,7 +260,7 @@ function show_timer(target_times= []) {
             + Math.floor(dSec) + "秒";
         $('#time_title').text('残り時間');
         $('#remaining').text(msg);
-    }else if(target_unlimited === 0){
+    }else if(process_unlimited === 0){
         $('#time_title').text('現在時刻');
         $('#remaining').text(show_now_date);
     }else{
