@@ -246,14 +246,15 @@ function show_timer(target_times= []) {
 
         let msg = Math.floor(dMin) + "分"
             + Math.floor(dSec) + "秒";
-        document.getElementById('remaining').innerHTML = msg;
+        $('#remaining').text(msg);
     }else{
         clearInterval(target_timer);
         target_times.shift()
         target_timer = setInterval(show_timer, 1000, target_times)
         if (target_times.length === 0){
-            document.getElementById('remaining').innerHTML = '終了';
+            $('#remaining').text('終了');
         }
+
     }
 }
 
