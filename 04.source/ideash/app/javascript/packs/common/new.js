@@ -3,9 +3,9 @@ import {checkControllerAction} from "./check_controller_action";
 $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['brainstorming', 'mandarat'], ['new'])) return
     // NOTE: テーマを入力しないとアイデアを作成できないようにする処理
-    let $process1 = $("#process_1")
-    let $process2 = $("#process_2")
-    let $process3 = $("#process_3")
+    let $process1 = $("#process1")
+    let $process2 = $("#process2")
+    let $process3 = $("#process3")
 
     $("input[id='theme']").blur(function () {
         if (!$(this).val().match(/\S/g)) {
