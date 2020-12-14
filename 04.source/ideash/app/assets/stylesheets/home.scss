@@ -77,7 +77,7 @@ body {
 }
 
 .home_right{
-  height: 90vh;
+  height: 100%;
   width: 18%;
   float: left;
   margin-left: 1vw;
@@ -94,9 +94,14 @@ body {
 .release_info::-webkit-scrollbar {
   display:none;
 }
+.release_note_content .header{
+  font-weight: normal !important;
+  font-size: small !important;
+}
+
 .twitter_window{
   border-radius: 5px;
-  height: 40%;
+  height: calc(62% - 150px);
 }
 .twitter-timeline{
   width:100%;
@@ -107,10 +112,20 @@ body {
   background-color: white;
   border-radius: 5px;
   margin-top: 3%;
-  height: 23%;
-  padding: 12% 7%;
+  height: 150px;
   font-size: smaller;
+  position: relative;
 }
+
+.about_us_content{
+  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+}
+
 .link_icons{
   margin-top: 5%;
 }

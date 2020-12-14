@@ -9,8 +9,8 @@
   <div class="item timer">
     <%# TODO: タイマー実装後に削除 %>
     <!-- 時計 -->
-    <small>現在時刻</small><br>
-    <div id="RealtimeClockArea2" class="timer_min"></div>
+    <small>残り時間</small><br>
+    <div id="remaining"></div>
   </div>
   <% if controller_name == 'brainstorming' then %>
     <%# ブレインストーミング %>
@@ -19,9 +19,9 @@
         <i class="question circle outline icon js-modal-open"></i>ブレインストーミング
       </div>
       <ul class="explain-list">
-        <li class="bold">アイデア出し： 無制限</li>
-        <li><s>意見だし　　：</s></li>
-        <li><s>グルーピング：</s></li>
+        <li class="bold"><div id="time0"></div></li>
+        <li class="bold"><div id="time1"></div></li>
+        <li class="bold"><div id="time2"></div></li>
       </ul>
     </div>
   <% elsif controller_name == 'mandarat' %>
@@ -31,7 +31,7 @@
         <i class="question circle outline icon js-modal-open"></i>マンダラート
       </div>
       <ul class="explain-list">
-        <li class="bold">アイデア出し： 無制限</li>
+        <li class="bold"><div id="time0"></div></li>
       </ul>
     </div>
   <% end %>
@@ -57,42 +57,41 @@
   <button class="ui small button" id="reset_chat_position">
     チャットの位置リセット
   </button>
-
-  <div class="item chat">
-    <div class="header-text" title="ドラッグして移動">
-      chat
-      <%= image_tag "draggable.svg", id: "draggable_svg" %>
-    </div>
-    <div class="ui input mini chat-input">
-      <%= text_field_tag 'idea_chat', nil, placeholder: '話しかける...', data: {behavior: 'idea_speaker'} %>
-    </div>
-    <div class="chat-area">
-      <div class="inline field">
-        <div class="chat_contents">
-          <% preview_user_id = nil %>
-          <% for idea_log in @idea_logs.reverse %>
-            <% if idea_log.query['mode'] == 'chat' %>
-              <% if preview_user_id != idea_log.query['user_id'] %>
-                </div>
-                <div class="chat_content" name="chatuser_<%= idea_log.query['user_id'] %>">
-                  <h6 class="chat_username"><%= idea_log.query['chat']['user_name'] %></h6>
-              <% end %>
-              <% if current_user.id == idea_log.query['user_id'] %>
-                <div class="ui right pointing label chat_message"><%= idea_log.query['chat']['content'] %></div>
-              <% else %>
-                <div class="ui left pointing label chat_message"><%= idea_log.query['chat']['content'] %></div>
-              <% end %>
-              <% preview_user_id = idea_log.query['user_id'] %>
-            <% end %>
-          <% end %>
-          </div>
-          </div>
-    </div>
-  </div>
 </div>
 
 <div class="ui vertical icon menu right_menu" id="right_icon_menu">
   <a class="popup item" id="right_menu_show_button" data-content="メニューを開く" data-position="right center">
     <i class="angle double left grey icon"></i>
   </a>
+</div>
+
+<%# チャット欄 %>
+<div class="chat">
+  <div class="header-text" title="ドラッグして移動">
+    chat
+    <%= image_tag "draggable.svg", id: "draggable_svg" %>
+  </div>
+  <div class="ui input mini chat-input">
+    <%= text_field_tag 'idea_chat', nil, placeholder: '話しかける...', data: {behavior: 'idea_speaker'} %>
+  </div>
+  <div class="chat-area">
+    <div class="inline field chat_contents">
+      <% preview_user_id = nil %>
+      <% for idea_log in @idea_logs.reverse %>
+        <% if idea_log.query['mode'] == 'chat' %>
+          <% if preview_user_id != idea_log.query['user_id'] %>
+            <div class="chat_content" name="chatuser_<%= idea_log.query['user_id'] %>">
+              <h6 class="chat_username"><%= idea_log.query['chat']['user_name'] %></h6>
+          <% end %>
+          <% if current_user.id == idea_log.query['user_id'] %>
+            <div class="ui right pointing label chat_message"><%= idea_log.query['chat']['content'] %></div>
+          <% else %>
+            <div class="ui left pointing label chat_message"><%= idea_log.query['chat']['content'] %></div>
+          <% end %>
+          <% preview_user_id = idea_log.query['user_id'] %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
 </div>

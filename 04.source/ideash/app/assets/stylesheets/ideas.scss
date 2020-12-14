@@ -2,75 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-/*home*/
-.creat_new_segment {
-  height: 40%;
-}
-
-.creat_new_segment .categories {
-  height: 25vh;
-}
-
-.creat_new_segment .category {
-  color: #1B1C1D;
-  background-color: white;
-  border: #DADADA solid 4px;
-}
-
-.creat_new_segment .category {
-  height: 25vh;
-  width: 230px;
-  margin: 0 2%;
-  padding-top: 3%;
-  border-radius: 10px;
-  /*中央よせ*/
-  text-align: center;
-}
-
-.techname_eng {
-  color: #1B1C1D;
-  font-size: xx-large;
-  font-weight: bold;
-  margin-bottom: 3%;
-}
-
-.techname_ja {
-  color: #666666;
-  font-size: larger;
-  margin-bottom: 10%;
-}
-
-.techname_icon {
-  padding-left: 4%;
-}
-
-.recent_creation_segment {
-  height: 30%;
-}
-
-.recent_creation_segment .histories {
-  height: 20vh;
-}
-
-.recent_creation_segment .history {
-  border: #999999 solid 1px;
-  height: 20vh;
-  width: 20%;
-  margin: 0 2%;
-  border-radius: 10px;
-}
-
-.home_body .header {
-  //font-size: medium;
-  //font-weight: bold;
-  margin-left: 3%;
-}
-
-.home_body .more {
-  font-size: larger;
-  font-weight: bold;
-}
-
 /*category*/
 .category_segment .categories {
   height: 65vh;
@@ -106,6 +37,85 @@
 
 .header {
   font-size: 15px;
+}
+.techname_eng {
+  color: #1B1C1D;
+  font-size: xx-large;
+  font-weight: bold;
+  margin-bottom: 3%;
+}
+
+.techname_ja {
+  color: #666666;
+  font-size: larger;
+  margin-bottom: 10%;
+}
+
+.techname_icon {
+  padding-left: 4%;
+}
+
+.info-text {
+  font-size: 18px;
+  text-align: left;
+  padding-bottom: 8px;
+  padding-left: 150px;
+}
+
+ul {
+  list-style: none;
+}
+li{
+  width: 600px;
+}
+
+/*category-img*/
+img.image_info_memo {
+  width: 635px;
+  height: 400px;
+  border: 2px solid black;
+}
+
+img.image1_info_brainstorming {
+  width: 495px;
+  height: 280px;
+  border: 2px solid black;
+}
+
+img.image2_info_brainstorming {
+  width: 495px;
+  height: 280px;
+  border: 2px solid black;
+}
+
+img.image1_info_mandarat {
+  width: 430px;
+  height: 265px;
+  border: 2px solid black;
+}
+
+img.image2_info_mandarat {
+  width: 430px;
+  height: 255px;
+  border: 2px solid black;
+}
+
+img.image1_info_gacha {
+  width: 150px;
+  height: 200px;
+  border: 2px solid black;
+}
+
+img.image2_info_gacha {
+  width: 480px;
+  height: 300px;
+  border: 2px solid black;
+}
+
+img.image_info_slot {
+  width: 500px;
+  height: 510px;
+  border: 2px solid black;
 }
 
 /*history*/
