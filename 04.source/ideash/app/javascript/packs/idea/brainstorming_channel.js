@@ -126,6 +126,8 @@ $(document).on("turbolinks:load", function () {
                         for (let i = 0; i < 3; i++) {
                             $('#time' + i).text(process_words[i] + process_times[i]['time'] + '分');
                         }
+                        let target_unlimited = process_times[0]['time'];
+                        time_unlimited(target_unlimited);
                     }
                 } else if (query['mode'] === 'group') {
                     var group_id = escapeHTML(query['group']['group_id'])
@@ -223,7 +225,11 @@ $(document).on("turbolinks:load", function () {
 });
 
 let target_timer;
+let target_unlimited;
 
+function time_unlimited(time_unlimited) {
+    target_unlimited = time_unlimited;
+}
 function start_timer(target_times) {
     target_times.sort();
     target_timer = setInterval(show_timer, 1000, target_times)
@@ -237,26 +243,34 @@ function show_timer(target_times= []) {
     let target_date = new Date(target_times[0]);
     target_date.setHours(target_date.getHours() + 9);
     let now_date = new Date();
+    let show_now_date = now_date.getHours() + ':'
+                      + now_date.getMinutes() + ':'
+                      + now_date.getSeconds();
     let diff_time = target_date - now_date;
     //あるので表示
     if (diff_time > 0){
         let dMin = diff_time / (1000 * 60);   // 分
         diff_time = diff_time % (1000 * 60);
         let dSec = diff_time / 1000;   // 秒
-
         let msg = Math.floor(dMin) + "分"
             + Math.floor(dSec) + "秒";
+        $('#time_title').text('残り時間');
         $('#remaining').text(msg);
+    }else if(target_unlimited === 0){
+        $('#time_title').text('現在時刻');
+        $('#remaining').text(show_now_date);
     }else{
         clearInterval(target_timer);
         target_times.shift()
         target_timer = setInterval(show_timer, 1000, target_times)
         if (target_times.length === 0){
+            $('#time_title').text('残り時間');
             $('#remaining').text('終了');
         }
 
     }
 }
+
 
 
 // NOTE: エスケープ処理
