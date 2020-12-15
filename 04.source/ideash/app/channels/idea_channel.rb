@@ -185,8 +185,7 @@ class IdeaChannel < ApplicationCable::Channel
     process1_min = process1['time']
     process2_min = process2['time']
     process3_min = process3['time']
-    create_process_str = create_process.to_s
-    create_process_conversion = Time.parse(create_process_str)
+    create_process_conversion = Time.parse(res[0]['created_at'])
     target_time1 = create_process_conversion + process1_min
     target_time2 = create_process_conversion + process1_min + process2_min
     target_time3 = create_process_conversion + process1_min + process2_min + process3_min
