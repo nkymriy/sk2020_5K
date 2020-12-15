@@ -120,11 +120,10 @@ $(document).on("turbolinks:load", function () {
                         );
                         $('#' + object_id).remove();
                         $('#' + group_id).append(div);
-                    }
-                    else if (query['system']['operation'] === 'get_process_time') {
+                    } else if (query['system']['operation'] === 'get_process_time') {
                         let process_times = query['system']['process_times'];
-                        let process_words = ['アイデア出し：','意見だし　　：','グルーピング：'];
-                        for (let i=0; i<3; i++) {
+                        let process_words = ['アイデア出し：', '意見だし　　：', 'グルーピング：'];
+                        for (let i = 0; i < 3; i++) {
                             $('#time' + i).text(process_words[i] + process_times[i]['time'] + '分');
                         }
                     }
@@ -132,15 +131,21 @@ $(document).on("turbolinks:load", function () {
                     var group_id = escapeHTML(query['group']['group_id'])
                     var group_name = escapeHTML(query['group']['name'])
                     $('.group-contents').append(`
-                        <div class="ui stacked segments group" id="group_id_${group_id}">
-                            <div class="hidden_group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
-                                <div class="group_name ui transparent input">
-                                    <input type="text" name="brain_rename_${group_id}" id="brain_rename_${group_id}" placeholder="${group_name}" data-behavior="idea_speaker"}>
-                                </div>
+                        <div class="ui stacked segments group hidden_group" id="group_id_${group_id}" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
+                            <div class="group_name ui transparent input">
+                                <input type="text" name="brain_rename_${group_id}" id="brain_rename_${group_id}" placeholder="${group_name}" data-behavior="idea_speaker"}>
                             </div>
                         </div>
                     `)
+                }else if (query['mode'] === 'settime') {
+                    let row_target_times = query['settime']['target_times'];
+                    let target_times = []
+                    for (let i in row_target_times) {
+                        target_times.push(new Date(row_target_times[i]));
+                    }
+                    start_timer(target_times)
                 }
+
             },
             add: function (json_idea_log) {
                 return this.perform('add',
@@ -216,6 +221,45 @@ $(document).on("turbolinks:load", function () {
         }
     }
 });
+
+let target_timer;
+
+function start_timer(target_times) {
+    target_times.sort();
+    target_timer = setInterval(show_timer, 1000, target_times)
+}
+function show_timer(target_times= []) {
+    //ひとつ目がない
+    if (target_times.length === 0){
+        clearInterval(target_timer);
+        return
+    }
+    let target_date = new Date(target_times[0]);
+    target_date.setHours(target_date.getHours() + 9);
+    let now_date = new Date();
+    let diff_time = target_date - now_date;
+    //あるので表示
+    if (diff_time > 0){
+        let dMin = diff_time / (1000 * 60);   // 分
+        diff_time = diff_time % (1000 * 60);
+        let dSec = diff_time / 1000;   // 秒
+        if(dMin && dSec < 0){
+            document.getElementById('remaining').innerHTML = "終了";
+        }else{
+            let msg = Math.floor(dMin) + "分"
+                + Math.floor(dSec) + "秒";
+            document.getElementById('remaining').innerHTML = msg;
+        }
+    }else{
+        clearInterval(target_timer);
+        target_times.shift()
+        target_timer = setInterval(show_timer, 1000, target_times)
+        if (target_times.length === 0){
+            document.getElementById('remaining').innerHTML = '終了';
+        }
+    }
+}
+
 
 // NOTE: エスケープ処理
 const escapeHTML = function (val) {

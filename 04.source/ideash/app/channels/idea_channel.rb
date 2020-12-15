@@ -2,7 +2,9 @@ class IdeaChannel < ApplicationCable::Channel
   def subscribed
     stream_from "idea_channel_#{params[:idea]}"
     process_times = get_process_time
+    target_times = subscribed_target_time
     ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {'mode': 'system', 'system': {'operation': 'get_process_time', "process_times": process_times}}
+    ActionCable.server.broadcast "idea_channel_#{params[:idea]}", idea_logs: {"mode":"settime","settime":{"target_times": target_times}}
   end
 
   def unsubscribed
@@ -53,12 +55,12 @@ class IdeaChannel < ApplicationCable::Channel
   end
 
   def pause()
-    res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 4")
+    res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 5")
     idea_category_id = Idea.find(params[:idea]).idea_category_id
     # TODO: ループを利用したコードへの短縮が可能に見えるので、余裕ができたら短縮を試みる
     # NOTE: ブレインストーミングの場合
     if (idea_category_id === 2)
-      if (res[3].nil?)
+      if (res[4].nil?)
         IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'start', 'option': 'sample_option'}}
         # NOTE: プロセス1,2,3における時間を設定する
         process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
@@ -167,4 +169,28 @@ class IdeaChannel < ApplicationCable::Channel
       return [process1]
     end
   end
+
+  def subscribed_target_time
+
+    res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 4")
+
+    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'start', 'option': 'sample_option'}}
+    # NOTE: プロセス1,2,3における時間を設定する
+    process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
+    process2 = {'id' => res[1]['id'], 'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
+    process3 = {'id' => res[2]['id'], 'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
+
+    create_process = ActiveRecord::Base.connection.execute("select time(created_at) from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 1")
+    ##本番環境では分を足す　*60
+    process1_min = process1['time']
+    process2_min = process2['time']
+    process3_min = process3['time']
+    create_process_str = create_process.to_s
+    create_process_conversion = Time.parse(create_process_str)
+    target_time1 = create_process_conversion + process1_min
+    target_time2 = create_process_conversion + process1_min + process2_min
+    target_time3 = create_process_conversion + process1_min + process2_min + process3_min
+    return [target_time1, target_time2, target_time3]
+  end
+
 end
