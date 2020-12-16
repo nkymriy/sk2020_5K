@@ -197,23 +197,24 @@ $(document).on("turbolinks:load", function () {
             }
         });
         //左上のミニマップ選択された後
-        $('input:radio[name="hoge"]').change(function () {
-            const value = $('input:radio[name="hoge"]:checked').val();
-            //編集不可
-            if (value === "40") {
+        $('[data-minimap="true"]').on('click',function(){
+            let minimapId = $(this).data("minimap-id");
+            console.log(`click! ${$(this).data("minimap-id")}`);
+            if (minimapId === "40") {
                 $('#zoom_4').prop('disabled', true);
             } else {
                 $('#zoom_4').prop('disabled', false);
             }
-            //初期化と連想配列内の値表示
+            // 初期化と連想配列内の値表示
             for (let i = 0; i < 9; i++) {
-                let aryid = parseInt(value) + i;
+                let aryid = parseInt(minimapId) + i;
                 let zoom_div_first = '#zoom_div_';
                 $(zoom_div_first + i).text('');
                 $(zoom_div_first + i).text(array[aryid]);
             }
-            localStorage.setItem('radio_value', value);
+            localStorage.setItem('radio_value', minimapId);
         });
+
         $('input[value="40"]').prop('checked', true).change();
 
         //矢印ボタンでミニマップを移動

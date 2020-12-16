@@ -4,49 +4,54 @@
       <a id="allview"><i class="compress arrows alternate icon"></i>全体を見る</a>
     </div>
     <table border="1">
-      <!--あとで書き換える-->
-      <tr>
-        <td>
-          <input id="radio1" class="radiobutton" name="hoge" type="radio" value=0 />
-          <label for="radio1"></label>
-        </td>
-        <td>
-          <input id="radio2" class="radiobutton" name="hoge" type="radio" value=10 />
-          <label for="radio2"></label>
-        </td>
-        <td>
-          <input id="radio3" class="radiobutton" name="hoge" type="radio" value=20 />
-          <label for="radio3"></label>
-        </td>
-      <tr>
-      <tr>
-        <td>
-          <input id="radio4" class="radiobutton" name="hoge" type="radio" value=30 />
-          <label for="radio4"></label>
-        </td>
-        <td>
-          <input id="radio5" class="radiobutton" name="hoge" type="radio" value=40 />
-          <label for="radio5"></label>
-        </td>
-        <td>
-          <input id="radio6" class="radiobutton" name="hoge" type="radio" value=50 />
-          <label for="radio6"></label>
-        </td>
-      <tr>
-      <tr>
-        <td>
-          <input id="radio7" class="radiobutton" name="hoge" type="radio" value=60 />
-          <label for="radio7"></label>
-        </td>
-        <td>
-          <input id="radio8" class="radiobutton" name="hoge" type="radio" value=70 />
-          <label for="radio8"></label>
-        </td>
-        <td>
-          <input id="radio9" class="radiobutton" name="hoge" type="radio" value=80 />
-          <label for="radio9"></label>
-        </td>
-      <tr>
+      <% 3.times do |i| %>
+        <tr>
+          <% 3.times do |j| %>
+            <td data-minimap="true" data-minimap-id=<%= (i * 3 + j) * 10 %>>
+          <% end %>
+        </tr>
+      <% end %>
+      <!--        <td>-->
+      <!--          <input id="radio1" class="radiobutton" name="hoge" type="radio" value=0/>-->
+      <!--          <label for="radio1"></label>-->
+      <!--        </td>-->
+      <!--        <td>-->
+      <!--          <input id="radio2" class="radiobutton" name="hoge" type="radio" value=10/>-->
+      <!--          <label for="radio2"></label>-->
+      <!--        </td>-->
+      <!--        <td>-->
+      <!--          <input id="radio3" class="radiobutton" name="hoge" type="radio" value=20/>-->
+      <!--          <label for="radio3"></label>-->
+      <!--        </td>-->
+      <!--      <tr>-->
+      <!--      <tr>-->
+      <!--        <td>-->
+      <!--          <input id="radio4" class="radiobutton" name="hoge" type="radio" value=30/>-->
+      <!--          <label for="radio4"></label>-->
+      <!--        </td>-->
+      <!--        <td>-->
+      <!--          <input id="radio5" class="radiobutton" name="hoge" type="radio" value=40/>-->
+      <!--          <label for="radio5"></label>-->
+      <!--        </td>-->
+      <!--        <td>-->
+      <!--          <input id="radio6" class="radiobutton" name="hoge" type="radio" value=50/>-->
+      <!--          <label for="radio6"></label>-->
+      <!--        </td>-->
+      <!--      <tr>-->
+      <!--      <tr>-->
+      <!--        <td>-->
+      <!--          <input id="radio7" class="radiobutton" name="hoge" type="radio" value=60/>-->
+      <!--          <label for="radio7"></label>-->
+      <!--        </td>-->
+      <!--        <td>-->
+      <!--          <input id="radio8" class="radiobutton" name="hoge" type="radio" value=70/>-->
+      <!--          <label for="radio8"></label>-->
+      <!--        </td>-->
+      <!--        <td>-->
+      <!--          <input id="radio9" class="radiobutton" name="hoge" type="radio" value=80/>-->
+      <!--          <label for="radio9"></label>-->
+      <!--        </td>-->
+      <!--      <tr>-->
     </table>
   </div>
   <div class="themes-area">
@@ -56,17 +61,17 @@
       <br>
       <div class="active item">サブテーマ</div>
       <table border="1" class="theme-tab">
-        <%for i in 1..8 %>
-        <tr>
-          <td>
-            <%if i<5 then%>
-              <div class="item" id="sub-theme-<%= i %>"><p class="themes" id="theme<%= i-1 %>"></p></div>
-            <%else%>
-              <div class="item" id="sub-theme-<%= i %>"><p class="themes" id="theme<%= i %>"></p></div>
-            <%end%>
-          </td>
-        </tr>
-        <%end%>
+        <% for i in 1..8 %>
+          <tr>
+            <td>
+              <% if i < 5 then %>
+                <div class="item" id="sub-theme-<%= i %>"><p class="themes" id="theme<%= i - 1 %>"></p></div>
+              <% else %>
+                <div class="item" id="sub-theme-<%= i %>"><p class="themes" id="theme<%= i %>"></p></div>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
       </table>
     </div>
   </div>
