@@ -180,7 +180,6 @@ class IdeaChannel < ApplicationCable::Channel
     process2 = {'id' => res[1]['id'], 'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
     process3 = {'id' => res[2]['id'], 'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
 
-    create_process = ActiveRecord::Base.connection.execute("select time(created_at) from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 1")
     ##本番環境では分を足す　*60
     process1_min = process1['time']
     process2_min = process2['time']
