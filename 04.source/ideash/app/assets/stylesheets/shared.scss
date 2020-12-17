@@ -347,3 +347,12 @@ img.icon_image {
 .bold {
   padding-bottom:5px;
 }
+
+.ui.labeled.slider{
+  margin-top: 10px !important;
+}
+
+// TODO: CSSの不具合を回避するための処置
+.auto.labels li.label{
+  width: auto;
+}

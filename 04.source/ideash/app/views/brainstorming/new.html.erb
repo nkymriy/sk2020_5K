@@ -13,28 +13,53 @@
         </ul>
         <h4 class="header-text rule">ルール</h4>
         <ul>
-          <li>批判禁止　出たいアイデアを批判したり、実現性を求めたりしないこと。</li>
+          <li>批判禁止　出たアイデアを批判したり、実現性を求めたりしないこと。</li>
           <li>自由奔放　柔軟なアイデアを出すために固定概念や慣習に囚われないようにする。</li>
           <li>質より量　思考の限界を超えられるよう、とにかくたくさんのアイデアを出すように心がける。</li>
         </ul>
-        <h4 class="header-text timer-setting">時間設定</h4>
+        <h4 class="header-text timer-setting">時間設定(分)</h4>
 
         <% time_limit = []
            for num in 1..30
              time_limit.push ["#{num}分", num]
            end %>
 
-        <ul>
-          <li>手順①：<%= f.select 'process1', time_limit, selected: 10 %> </li>
-          <li>手順②：<%= f.select 'process2', time_limit, selected: 5 %> </li>
-          <li>手順③：<%= f.select 'process3', time_limit, selected: 15 %> </li>
-          <li><%= f.check_box 'is_unlimited' %> 無制限モード</li>
-          <li>※ 無制限モードでは設定した時間による強制的なプロセスの進行が行われないため、時間を気にせずアイデア発想を行うことができます。</li>
-        </ul>
+        <div class="ui list">
+          <div class="ui small right labeled input">
+            <label class="ui label">手順①</label>
+            <%= f.number_field 'process1', value: 10, readonly: true %>
+            <div class="ui basic label">分</div>
+          </div>
+          <div class="item">
+            <div class="ui labeled slider" id="brainstorming_slider_process1"></div>
+          </div>
+
+          <div class="ui small right labeled input">
+            <label class="ui label">手順②</label>
+            <%= f.number_field 'process2', value: 5, readonly: true %>
+            <div class="ui basic label">分</div>
+          </div>
+          <div class="item">
+            <div class="ui labeled slider" id="brainstorming_slider_process2"></div>
+          </div>
+
+          <div class="ui small right labeled input">
+            <label class="ui label">手順③</label>
+            <%= f.number_field 'process3', value: 15, readonly: true %>
+            <div class="ui basic label">分</div>
+          </div>
+          <div class="item">
+            <div class="ui labeled slider" id="brainstorming_slider_process3"></div>
+          </div>
+          <div class="ui checkbox item">
+            <%= f.check_box 'is_unlimited' %><label>無制限モード</label>
+          </div>
+          <div class="item">※ 無制限モードでは設定した時間による強制的なプロセスの進行が行われないため、時間を気にせずアイデア発想を行うことができます。</div>
+        </div>
         <h4 class="header-text  timer-setting">テーマ設定</h4>
-        <ul>
-          <li><%= f.text_field 'theme', placeholder: "発想のテーマを入力してください", size: 50 %></li>
-        </ul>
+        <div class="ui list">
+          <div class="ui input item"><%= f.text_field 'theme', placeholder: "発想のテーマを入力してください", size: 50 %></div>
+        </div>
         <h4 class="header-text">参加者(※招待する場合、開始後に右側に表示される招待ボタンをクリックしてURLをコピーし、他の参加者に伝えてください。)</h4>
         <div class="participant">
           <ul>
