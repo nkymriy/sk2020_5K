@@ -1,9 +1,6 @@
 // Place all the styles related to the top controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-body {
-  background-color: #C2EBEA !important;
-}
 
 /*みどり部分*/
 .top {
@@ -106,6 +103,10 @@ body {
 }
 
 /*白になるとこ*/
+.about{
+  background-color: #C2EBEA;
+}
+
 .gradation {
   background: linear-gradient(180deg, #26AEAF 0%, rgba(51, 178, 177, 0.916667) 28.12%, #C2EBEA 100%);
   height: 40%;

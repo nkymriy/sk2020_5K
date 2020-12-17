@@ -17,11 +17,12 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #E3F2F2 !important;
+
 }
 
-/*サイドバー開閉後の背景色*/
-body.pushable > .pusher {
-    background: #DADADA;
+.edit_body::-webkit-scrollbar {
+  display:none;
 }
 
 body, input, textarea {
