@@ -197,24 +197,28 @@ $(document).on("turbolinks:load", function () {
             }
         });
         //左上のミニマップ選択された後
-        $('input:radio[name="hoge"]').change(function () {
-            const value = $('input:radio[name="hoge"]:checked').val();
-            //編集不可
-            if (value === "40") {
+        let $minimap = $('[data-minimap="true"]')
+        $minimap.on('click change',function(){
+            let minimapId = $(this).data("minimap-id");
+            $minimap.removeClass("selected-mandarat-minimap")
+            $(this).addClass("selected-mandarat-minimap")
+            if (minimapId === 40) {
                 $('#zoom_4').prop('disabled', true);
             } else {
                 $('#zoom_4').prop('disabled', false);
             }
-            //初期化と連想配列内の値表示
+            // 初期化と連想配列内の値表示
             for (let i = 0; i < 9; i++) {
-                let aryid = parseInt(value) + i;
+                let aryid = minimapId + i;
                 let zoom_div_first = '#zoom_div_';
                 $(zoom_div_first + i).text('');
                 $(zoom_div_first + i).text(array[aryid]);
             }
-            localStorage.setItem('radio_value', value);
+            localStorage.setItem('radio_value', minimapId);
         });
-        $('input[value="40"]').prop('checked', true).change();
+
+        //最初は中央を選択する
+        $(`[data-minimap-id=40]`).prop('checked', true).change();
 
         //矢印ボタンでミニマップを移動
         $(function () {
@@ -226,28 +230,28 @@ $(document).on("turbolinks:load", function () {
             function upbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) - 30;
                 if (radioval >= 0) {
-                    $('input[value=' + radioval + ']').prop('checked', true).change();
+                    $(`[data-minimap-id=${radioval}]`).prop('checked', true).change();
                 }
             }
 
             function leftbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) - 10;
                 if (radioval % 30 !== 20) {
-                    $('input[value=' + radioval + ']').prop('checked', true).change();
+                    $(`[data-minimap-id=${radioval}]`).prop('checked', true).change();
                 }
             }
 
             function rightbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) + 10;
                 if (radioval % 30 !== 0) {
-                    $('input[value=' + radioval + ']').prop('checked', true).change();
+                    $(`[data-minimap-id=${radioval}]`).prop('checked', true).change();
                 }
             }
 
             function downbtn() {
                 let radioval = parseInt(localStorage.getItem('radio_value')) + 30;
                 if (radioval <= 80) {
-                    $('input[value=' + radioval + ']').prop('checked', true).change();
+                    $(`[data-minimap-id=${radioval}]`).prop('checked', true).change();
                 }
             }
         });
