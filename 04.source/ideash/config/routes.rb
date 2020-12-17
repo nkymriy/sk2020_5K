@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   # INFO: トップページ
   root 'top#index'
   get 'release_note' => 'top#release_note', as: 'release_note'
+  get 'top_category' => 'top#top_category', as: 'top_category'
 
 
   # INFO: devise(ユーザ認証関連)

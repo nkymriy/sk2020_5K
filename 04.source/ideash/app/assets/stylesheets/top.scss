@@ -123,6 +123,11 @@ body {
   padding-top: 10%;
 }
 
+/*第3.5区分*/
+.seg_h1 {
+  text-align: center;
+}
+
 /*説明部分のCSS*/
 h1 {
   font-size: 4vw;
@@ -130,6 +135,12 @@ h1 {
 
 h2 {
   font-size: 1.5vw;
+  font-weight: lighter;
+  margin-top: -3px;
+}
+
+h3 {
+  font-size: 1.3vw;
   font-weight: lighter;
   margin-top: -3px;
 }
@@ -186,6 +197,12 @@ p {
   width: 70%;
   top: 15%;
   left: -25%;
+}
+
+.function_show_btn {
+  width: 105px;
+  margin: 0 auto;
+  width: 120px;
 }
 
 /*第6区分*/
@@ -250,4 +267,10 @@ ul.footer-menu li {
 .release_note_list {
   padding-top: 0.5em !important;
   margin: 0 0 0 2em !important;
+}
+
+/*機能説明*/
+.back_btn {
+  width: 90px;
+  margin: 0 auto;
 }
