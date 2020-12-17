@@ -5,6 +5,9 @@ import {checkControllerAction} from "../common/check_controller_action";
 $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['brainstorming'], ['edit'])) return
 
+    let targetTimerInterval;
+    let isUnlimitedMode;
+
     if ($('.websocket').length > 0) {
         consumer.task = consumer.subscriptions.create({
             channel: 'IdeaChannel',
@@ -23,7 +26,7 @@ $(document).on("turbolinks:load", function () {
             received(json_idea_log) {
                 let query = json_idea_log['idea_logs']
                 if (query['mode'] === 'join') {
-                    var user_id = 'participant_' + query['user_id']
+                    let user_id = 'participant_' + query['user_id']
                     if ($('#' + user_id).length === 0) {
                         $('.users').append(`<li id="participant_${query['user_id']}"><i class="user circle icon"></i>${query['join']['user_name']}</li>`)
                     }
@@ -35,8 +38,8 @@ $(document).on("turbolinks:load", function () {
                         return false;
                     }
 
-                    var id = parseInt(localStorage.getItem('card_id')) + 1;
-                    var div = $(
+                    let id = parseInt(localStorage.getItem('card_id')) + 1;
+                    let div = $(
                         '<div class="teal card idea none square-card" id="' + id + '">\n' +
                         '      <div class="content">\n' +
                         idea_text +
@@ -46,8 +49,8 @@ $(document).on("turbolinks:load", function () {
                     $("#ideas").prepend(div);
                     $('#' + id).show('slide', '', 500);
                     localStorage.setItem('card_id', id);
-                    var object_id = "object_id_" + query['add']['object_id']
-                    var p3_div = $(
+                    let object_id = "object_id_" + query['add']['object_id']
+                    let p3_div = $(
                         `<div class="idea" id=${object_id} draggable="true" ondragstart="dragstart_handler(event)">\n` +
                         '       <div class="ui teal large label">\n' +
                         idea_text +
@@ -56,10 +59,10 @@ $(document).on("turbolinks:load", function () {
                     );
                     $("#p3_ideas").prepend(p3_div);
                 } else if (query['mode'] === 'chat') {
-                    var user_id = 'chatuser_' + query['user_id']
-                    var user_name = escapeHTML(query['chat']['user_name'])
-                    var chat_text = escapeHTML(query['chat']['content']);
-                    var chat_div;
+                    let user_id = 'chatuser_' + query['user_id']
+                    let user_name = escapeHTML(query['chat']['user_name'])
+                    let chat_text = escapeHTML(query['chat']['content']);
+                    let chat_div;
                     if ($('#user_id').val() === query['user_id']) {
                         chat_div = `<div class="ui right pointing label chat_message">${chat_text}</div>`
                     } else {
@@ -107,13 +110,13 @@ $(document).on("turbolinks:load", function () {
                                 });
                         }
                     } else if (query['system']['operation'] === 'group_rename') {
-                        var id = '#brain_rename_' + query['system']['option']['group_id'].toString()
-                        var name = query['system']['option']['name']
+                        let id = '#brain_rename_' + query['system']['option']['group_id'].toString()
+                        let name = query['system']['option']['name']
                         $(id).attr('placeholder', name)
                     } else if (query['system']['operation'] === 'grouping') {
-                        var object_id = 'object_id_' + query['system']['option']['object_id']
-                        var group_id = 'group_id_' + query['system']['option']['group_id']
-                        var div = $(
+                        let object_id = 'object_id_' + query['system']['option']['object_id']
+                        let group_id = 'group_id_' + query['system']['option']['group_id']
+                        let div = $(
                             `<div class="idea ui teal large label" id=${object_id} draggable="true" ondragstart="dragstart_handler(event)">\n` +
                             query['system']['option']['content'] +
                             '</div>'
@@ -126,10 +129,12 @@ $(document).on("turbolinks:load", function () {
                         for (let i = 0; i < 3; i++) {
                             $('#time' + i).text(process_words[i] + process_times[i]['time'] + '分');
                         }
+                        let process1_time = process_times[0]['time'];
+                        isUnlimitedMode = process1_time === 0;
                     }
                 } else if (query['mode'] === 'group') {
-                    var group_id = escapeHTML(query['group']['group_id'])
-                    var group_name = escapeHTML(query['group']['name'])
+                    let group_id = escapeHTML(query['group']['group_id'])
+                    let group_name = escapeHTML(query['group']['name'])
                     $('.group-contents').append(`
                         <div class="ui stacked segments group hidden_group" id="group_id_${group_id}" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
                             <div class="group_name ui transparent input">
@@ -137,13 +142,13 @@ $(document).on("turbolinks:load", function () {
                             </div>
                         </div>
                     `)
-                }else if (query['mode'] === 'settime') {
+                } else if (query['mode'] === 'settime') {
                     let row_target_times = query['settime']['target_times'];
                     let target_times = []
                     for (let i in row_target_times) {
                         target_times.push(new Date(row_target_times[i]));
                     }
-                    start_timer(target_times)
+                    startTimer(target_times)
                 }
 
             },
@@ -205,7 +210,7 @@ $(document).on("turbolinks:load", function () {
             console.log(event.target.id.indexOf('group_id'))
             if (event.target.id.indexOf('group_id') === 0) {
                 event.preventDefault();
-                var content = {
+                let content = {
                     content: {
                         object_id: event.target.lastChild.id.replace(/[^0-9]/g, ''),
                         group_id: event.target.id.replace(/[^0-9]/g, ''),
@@ -220,48 +225,52 @@ $(document).on("turbolinks:load", function () {
             consumer.task.unsubscribe()
         }
     }
-});
 
-let target_timer;
-
-function start_timer(target_times) {
-    target_times.sort();
-    target_timer = setInterval(show_timer, 1000, target_times)
-}
-function show_timer(target_times= []) {
-    //ひとつ目がない
-    if (target_times.length === 0){
-        clearInterval(target_timer);
-        return
+    function startTimer(target_times) {
+        target_times.sort();
+        targetTimerInterval = setInterval(showTimer, 1000, target_times)
     }
-    let target_date = new Date(target_times[0]);
-    target_date.setHours(target_date.getHours() + 9);
-    let now_date = new Date();
-    let diff_time = target_date - now_date;
-    //あるので表示
-    if (diff_time > 0){
-        let dMin = diff_time / (1000 * 60);   // 分
-        diff_time = diff_time % (1000 * 60);
-        let dSec = diff_time / 1000;   // 秒
-        if(dMin && dSec < 0){
-            document.getElementById('remaining').innerHTML = "終了";
-        }else{
+
+    function showTimer(target_times = []) {
+        //ひとつ目がない
+        if (target_times.length === 0) {
+            clearInterval(targetTimerInterval);
+            return
+        }
+        let targetDate = new Date(target_times[0]);
+        targetDate.setHours(targetDate.getHours() + 9);
+        let nowDate = new Date();
+        let showNowDate = nowDate.getHours() + ':'
+            + nowDate.getMinutes() + ':'
+            + nowDate.getSeconds();
+        let diffTime = targetDate - nowDate;
+        //あるので表示
+        if (diffTime > 0) {
+            let dMin = diffTime / (1000 * 60);   // 分
+            diffTime = diffTime % (1000 * 60);
+            let dSec = diffTime / 1000;   // 秒
             let msg = Math.floor(dMin) + "分"
                 + Math.floor(dSec) + "秒";
-            document.getElementById('remaining').innerHTML = msg;
-        }
-    }else{
-        clearInterval(target_timer);
-        target_times.shift()
-        target_timer = setInterval(show_timer, 1000, target_times)
-        if (target_times.length === 0){
-            document.getElementById('remaining').innerHTML = '終了';
+            $('#time_title').text('残り時間');
+            $('#remaining').text(msg);
+        } else if (isUnlimitedMode) {
+            $('#time_title').text('現在時刻');
+            $('#remaining').text(showNowDate);
+        } else {
+            clearInterval(targetTimerInterval);
+            target_times.shift()
+            targetTimerInterval = setInterval(showTimer, 1000, target_times)
+            if (target_times.length === 0) {
+                $('#time_title').text('残り時間');
+                $('#remaining').text('終了');
+            }
+
         }
     }
-}
-
 
 // NOTE: エスケープ処理
-const escapeHTML = function (val) {
-    return $('<div />').text(val).html();
-};
+    const escapeHTML = function (val) {
+        return $('<div />').text(val).html();
+    };
+
+});
