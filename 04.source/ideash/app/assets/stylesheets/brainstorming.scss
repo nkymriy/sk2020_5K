@@ -53,11 +53,6 @@
   margin: 1% 0 !important;
 }
 
-.process1_ideas {
-  height: 70vh;
-  overflow: auto;
-}
-
 .process1_ideas .idea {
   font-size: larger;
   height: 10vh;
@@ -79,10 +74,20 @@
   overflow: auto;
 }
 
-.idea .content {
-  height: 35vh;
-  overflow: auto;
+.square-card {
+  min-width: 50px !important;
+  min-height: 50px !important;
+  overflow-y: scroll;
+
+  .content{
+    height: auto;
+  }
 }
+
+.square-card::-webkit-scrollbar {
+  display: none;
+}
+
 .post_idea .input{
   width: 100%;
 }
@@ -129,18 +134,28 @@
   padding: 1%;
   margin-bottom: 1%;
 }
+.hidden_group{
+  height: 185px;
+}
 
 .idea-contents .idea{
   height: fit-content;
   margin-bottom: 5%;
 }
 
-.group .idea{
+.hidden_group .idea{
   margin: 0.5% !important;
 }
 
 .group_name {
   display: block !important;
+}
+
+.hidden_group{
+  overflow: auto;
+}
+.hidden_group::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+  display:none;
 }
 
 /*edit*/

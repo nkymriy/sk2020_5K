@@ -11,8 +11,7 @@
           <% group_zero = group %>
           <% next %>
         <% end %>
-        <div class="group" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
-          <div class="ui stacked segments group" id="group_id_<%= group_id %>">
+        <div class="ui stacked segments group hidden_group" id="group_id_<%= group_id %>" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">
             <div class="group_name ui transparent input">
               <%= text_field_tag "brain_rename_#{group_id}", '', placeholder: group["name"], data: {behavior: 'idea_speaker'} %>
             </div>
@@ -21,7 +20,6 @@
                 <%= content %>
               </div>
             <% } %>
-          </div>
         </div>
       <% } %>
     </div>

@@ -56,46 +56,17 @@
       <br>
       <div class="active item">サブテーマ</div>
       <table border="1" class="theme-tab">
+        <%for i in 1..8 %>
         <tr>
           <td>
-            <div class="item" id="sub-theme-1"><p id="theme0">テーマ１</p></div>
+            <%if i<5 then%>
+              <div class="item" id="sub-theme-<%= i %>"><p class="themes" id="theme<%= i-1 %>"></p></div>
+            <%else%>
+              <div class="item" id="sub-theme-<%= i %>"><p class="themes" id="theme<%= i %>"></p></div>
+            <%end%>
           </td>
         </tr>
-        <tr>
-          <td>
-            <div class="item" id="sub-theme-2"><p id="theme1">テーマ２</p></div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="item" id="sub-theme-3"><p id="theme2">テーマ３</p></div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="item" id="sub-theme-4"><p id="theme3">テーマ４</p></div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="item" id="sub-theme-5"><p id="theme5">テーマ５</p></div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="item" id="sub-theme-6"><p id="theme6">テーマ６</p></div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="item" id="sub-theme-7"><p id="theme7">テーマ７</p></div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="item" id="sub-theme-8"><p id="theme8">テーマ８</p></div>
-          </td>
-        </tr>
+        <%end%>
       </table>
     </div>
   </div>

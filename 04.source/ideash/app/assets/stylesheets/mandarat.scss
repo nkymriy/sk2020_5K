@@ -4,7 +4,7 @@
 
 
 /*shared*/
-.mandarat-shared{
+.mandarat-shared {
   height: 80vh;
   width: 18%;
   margin-top: 3%;
@@ -14,22 +14,22 @@
   float: left;
 }
 
-#to_while_link a{
+#to_while_link a {
   //margin: auto;
   color: black;
   font-size: small !important;
 }
 
-.current-location-area{
+.current-location-area {
   margin-top: 3%;
 }
 
-.current-location-area table{
+.current-location-area table {
   border-collapse: collapse;
   //margin: auto;
 }
 
-.current-location-area td{
+.current-location-area td {
   //padding: 18px;
   width: 35px;
   height: 38px;
@@ -56,153 +56,167 @@
   background-color: #26AEAF;
 }
 
-.themes-area{
+.themes-area {
   margin-top: 15%;
   //background-color: #666666;
   height: 75%;
   width: 100%;
 }
-#main,#theme0,#theme1,#theme2,#theme3,#theme4,#theme5,#theme6,#theme7,#theme8{
+
+.themes {
   font-size: small;
   color: #1B1C1D;
   width: 100%;
 }
 
-.themes-area .active{
+.themes-area .active {
   margin-bottom: 5%;
   color: #666666 !important;
 }
 
 
 /*main*/
-.mandarat-main{
+.mandarat-main {
   margin-top: 1%;
   height: 80vh;
   width: 70%;
+  min-width: 610px;
   float: left;
 }
 
-.mandarat-main .to-up-area ,.mandarat-main .to-down-area{
+.mandarat-main .to-up-area, .mandarat-main .to-down-area {
   height: 56px;
   width: calc(80% + 122px);
 }
 
-.mandarat-main .to-left-area ,.mandarat-main .to-right-area{
+.mandarat-main .to-left-area, .mandarat-main .to-right-area {
   height: 69vh;
   width: 56px;
   float: left;
   padding-top: 31vh;
 }
 
-.mandarat-main .to-down-area{
-  margin-top:69vh;
+.mandarat-main .to-down-area {
+  margin-top: 69vh;
 }
 
-.mandarat-main #to-up-button ,.mandarat-main #to-down-button{
+.mandarat-main #to-up-button, .mandarat-main #to-down-button {
   width: fit-content;
   margin: auto;
 }
 
-.mandarat-main #to-left-button ,.mandarat-main #to-right-button{
+.mandarat-main #to-left-button, .mandarat-main #to-right-button {
   height: fit-content;
 }
 
-.mandarat-main .to-left-area{
+.mandarat-main .to-left-area {
   margin-right: 10px !important;
 }
 
-.mandarat-blocks{
+.mandarat-blocks {
   height: 69vh;
   width: 80%;
   float: left;
 }
 
-.mandarat-blocks table{
+.mandarat-blocks table {
   border-collapse: collapse;
   table-layout: fixed;
 }
 
-.mandarat-blocks td{
+.mandarat-blocks td {
   width: 20vw;
   height: 23vh !important;
   border: solid 1px black;
   background-color: white;
+  position: relative;
 }
 
-.mandarat-blocks textarea{
+.mandarat-blocks textarea {
   text-align: center;
   resize: none;
   width: 100%;
   display: table-cell;
-  vertical-align: middle;
 }
 
-.mandarat-blocks .off{
+.mandarat-blocks .text_block{
+  width: fit-content;
+  height: fit-content;
+  max-width: 90%;
+  max-height: 95%;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  text-align: center;
+}
+
+.mandarat-blocks .off {
   background-color: #DADADA;
 }
 
 /*main2*/
-.mandarat-overview{
+.mandarat-overview {
   border: solid 1px black;
   width: fit-content;
   margin: auto;
 }
-.mandarat-overview table{
+
+.mandarat-overview table {
   border-collapse: collapse;
 }
 
-.main-theme-block{
+.main-theme-block {
   width: 30vh;
   height: 30vh;
   background-color: white;
   padding: 0 !important;
 }
 
-.sub-theme-block td{
+.sub-theme-block td {
   width: 10vh;
   height: 10vh;
   border: solid 1px #000000;
   background-color: white;
-  text-align: center;
 }
+
 .btn-invalid {
   pointer-events: none;
 }
-.tab td div {
-  font-size: 9pt;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  word-break: break-all;
-  overflow-wrap: break-word;
-  max-width: 100%;
-  max-height: 100%;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-}
+
 .tab {
   table-layout: fixed;
   width: 170px;
   height: 10px;
-  max-width: 170px;
-  max-height: 170px;
-  min-width: 170px;
-  min-height: 170px;
 }
-
 .tab td{
   width: 80px;
   height: 80px;
-  max-height: 80px;
-  max-width: 80px;
+
+  position: relative;
+}
+.tab td div {
+  font-size: 9pt;
+  width: fit-content;
+  height: fit-content;
+  max-height: 100%;
+  max-width: 100%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  text-align: center;
 }
 
 @for $i from 0 through 8 {
   .t#{$i} {
-    border:none;
-    background:none;
-    -webkit-appearance:none;
+    border: none;
+    background: none;
+    -webkit-appearance: none;
     width: 12vw;
     height: 23vh !important;
     border-radius: 0;
@@ -212,10 +226,31 @@
 
 .theme-tab {
   border-collapse: collapse;
-  width: 113px;
+  width: 112px;
 }
+
 .theme-tab td {
   padding: 3px;
   height: 40px;
   background-color: white;
+}
+
+@media screen and(max-width: 1024px) {
+  .to-up-area {
+    display: none !important;
+  }
+  .to-left-area {
+    visibility:hidden !important;
+  }
+  .to-down-area {
+    display: none !important;
+  }
+  .to-right-area {
+    display: none !important;
+  }
+}
+
+.edit_body{
+  overflow: scroll;
+  display: flex;
 }

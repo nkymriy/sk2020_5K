@@ -9,8 +9,8 @@
   <div class="item timer">
     <%# TODO: タイマー実装後に削除 %>
     <!-- 時計 -->
-    <small>現在時刻</small><br>
-    <div id="RealtimeClockArea2" class="timer_min"></div>
+    <small id="time_title"></small><br>
+    <div id="remaining"></div>
   </div>
   <% if controller_name == 'brainstorming' then %>
     <%# ブレインストーミング %>
@@ -19,9 +19,9 @@
         <i class="question circle outline icon js-modal-open"></i>ブレインストーミング
       </div>
       <ul class="explain-list">
-        <li class="bold">アイデア出し： 無制限</li>
-        <li><s>意見だし　　：</s></li>
-        <li><s>グルーピング：</s></li>
+        <li class="bold"><div id="time0"></div></li>
+        <li class="bold"><div id="time1"></div></li>
+        <li class="bold"><div id="time2"></div></li>
       </ul>
     </div>
   <% elsif controller_name == 'mandarat' %>
@@ -31,7 +31,7 @@
         <i class="question circle outline icon js-modal-open"></i>マンダラート
       </div>
       <ul class="explain-list">
-        <li class="bold">アイデア出し： 無制限</li>
+        <li class="bold"><div id="time0"></div></li>
       </ul>
     </div>
   <% end %>

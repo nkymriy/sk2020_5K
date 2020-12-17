@@ -33,31 +33,45 @@ $(document).on("turbolinks:load", function () {
                     }
                     //編集時
                     if (query['mode'] === 'editing') {
-                        let first = '.t';
                         let sel_num = parseInt(query["editing"]["object_id"]) - val;
-                        let sel_class = first + sel_num;
+                        let sel_class = '.t' + sel_num;
+                        let sel_id = '#zoom_div_' +sel_num;
                         $(sel_class).css('background-color', '#C0C0C0');
+
+                        let input_text = $(sel_id).text();
+                        $(sel_id).text('');
+                        $(sel_class).val(input_text);
                     }
                     //確定時
                     else if (query['mode'] === 'edit') {
                         let text = query["edit"]["content"];
                         let first1 = '.t';
                         let first2 = 'zoom_';
+                        let first3 = '#zoom_div_';
                         let bigid = query["edit"]["object_id"];
                         let minid = bigid - val;
                         let sel_class = first1 + minid;
                         let sel_id = first2 + minid;
+                        let sel_div_id =first3 +minid;
+
                         if(text.length>24) {
                             let clamptext = text.slice(0,23);
                             $('#' + bigid).text(clamptext+'.....');
                         }else {
                             $('#' + bigid).text(text);
                         }
+
                         array[bigid] = text;
+
                         if (minid >= 0 && minid <= 8) {
                             document.getElementById(sel_id).value = text;
                         }
+
+                        $(sel_class).val('');
+                        $(sel_div_id).text(text);
                         $(sel_class).css('background-color', '#FFFFFF');
+
+
                         if (Math.floor(bigid / 10) === 4) {
                             $('#theme' + bigid % 40).text(text);
                         }
@@ -90,6 +104,10 @@ $(document).on("turbolinks:load", function () {
                                         classProgress: 'blue'
                                     });
                             }
+                        } else if (query['system']['operation'] === 'get_process_time') {
+                            let process_times = query['system']['process_times'];
+                            let process_words = ['アイデア出し：'];
+                            $('#time' + 0).text(process_words[0] + process_times[0]['time'] + '分');
                         }
                     }
                 },
@@ -190,8 +208,9 @@ $(document).on("turbolinks:load", function () {
             //初期化と連想配列内の値表示
             for (let i = 0; i < 9; i++) {
                 let aryid = parseInt(value) + i;
-                document.getElementById('zoom_' + i).value = '';
-                document.getElementById('zoom_' + i).value = array[aryid];
+                let zoom_div_first = '#zoom_div_';
+                $(zoom_div_first + i).text('');
+                $(zoom_div_first + i).text(array[aryid]);
             }
             localStorage.setItem('radio_value', value);
         });
