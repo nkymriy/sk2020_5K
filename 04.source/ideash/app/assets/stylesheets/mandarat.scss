@@ -49,11 +49,10 @@
   padding: 10px 18px 11px 18px;
   width: 0px;
   height: 0px;
-
 }
 
-.current-location-area .radiobutton:checked + label {
-  background-color: #26AEAF;
+.selected-mandarat-minimap {
+  background-color: #26AEAF !important;
 }
 
 .themes-area {

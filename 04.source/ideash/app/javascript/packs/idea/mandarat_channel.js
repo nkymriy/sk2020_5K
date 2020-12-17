@@ -197,17 +197,21 @@ $(document).on("turbolinks:load", function () {
             }
         });
         //左上のミニマップ選択された後
-        $('[data-minimap="true"]').on('click',function(){
+        let $minimap = $('[data-minimap="true"]')
+        $minimap.on('click',function(){
             let minimapId = $(this).data("minimap-id");
+            $minimap.removeClass("selected-mandarat-minimap")
+            $(this).addClass("selected-mandarat-minimap")
             console.log(`click! ${$(this).data("minimap-id")}`);
-            if (minimapId === "40") {
+            if (minimapId === 40) {
+                console.log("zoom4")
                 $('#zoom_4').prop('disabled', true);
             } else {
                 $('#zoom_4').prop('disabled', false);
             }
             // 初期化と連想配列内の値表示
             for (let i = 0; i < 9; i++) {
-                let aryid = parseInt(minimapId) + i;
+                let aryid = minimapId + i;
                 let zoom_div_first = '#zoom_div_';
                 $(zoom_div_first + i).text('');
                 $(zoom_div_first + i).text(array[aryid]);
