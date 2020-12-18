@@ -22,5 +22,7 @@ module Ideash
     config.time_zone = 'Tokyo'
     # deviseで利用する言語を日本語に
     config.i18n.default_locale = :ja
+    # 自動挿入を防ぐように
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end
