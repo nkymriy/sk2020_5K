@@ -79,9 +79,12 @@ $(document).on("turbolinks:load", function () {
         min: 1,
         max: 30,
         start: 20,
+        interpretLabel: function (value) {
+            return sliderStep5(value)
+        },
 
         onChange: function (value) {
-            $process1.val(value)
+            $process3.val(value)
         }
     });
 
