@@ -101,3 +101,6 @@ gem 'memory_profiler'
 # For call-stack profiling flamegraphs
 gem 'flamegraph'
 gem 'stackprof'
+
+#デバイスの日本語化に必要なgem
+gem 'devise-i18n'
