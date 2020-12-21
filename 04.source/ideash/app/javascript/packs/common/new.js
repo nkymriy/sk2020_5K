@@ -23,13 +23,12 @@ $(document).on("turbolinks:load", function () {
 
     $('#is_unlimited').click(function () {
         if (this.checked) {
-            $process1.prop('disabled', true)
-            $process2.prop('disabled', true)
-            $process3.prop('disabled', true)
+            $('[data-input=true]').prop('disabled', true);
+            $('[data-slider=true]').addClass('disabled');
         } else {
-            $process1.prop('disabled', false)
-            $process2.prop('disabled', false)
-            $process3.prop('disabled', false)
+            $('[data-input=true]').prop('disabled', false);
+            $('[data-slider=true]').removeClass('disabled');
+
         }
     });
 
@@ -84,7 +83,7 @@ $(document).on("turbolinks:load", function () {
         },
 
         onChange: function (value) {
-            $process3.val(value)
+            $process1.val(value)
         }
     });
 

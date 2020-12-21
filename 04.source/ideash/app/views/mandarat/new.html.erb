@@ -21,11 +21,11 @@
         <div class="ui list">
           <div class="ui small right labeled input">
             <label class="ui label">手順①</label>
-            <%= f.number_field 'process1', value: 20, readonly: true %>
+            <%= f.number_field 'process1', data: {'input': true}, value: 20, readonly: true %>
             <div class="ui basic label">分</div>
           </div>
           <div class="item">
-            <div class="ui labeled slider" id="mandarat_slider_process1"></div>
+            <div class="ui labeled slider" data-slider="true" id="mandarat_slider_process1"></div>
           </div>
         </div>
         <div class="ui checkbox item">
