@@ -3,6 +3,10 @@ import {checkControllerAction} from "../common/check_controller_action";
 
 $(document).on("turbolinks:load", function () {
     if (!checkControllerAction(['mandarat'], ['edit'])) return
+
+    let targetTimerInterval;
+    let isUnlimitedMode;
+
     if ($('.websocket-mandarat').length > 0) {
         // const chatChannel = consumer.subscriptions.create({
         consumer.task = consumer.subscriptions.create({
@@ -109,6 +113,14 @@ $(document).on("turbolinks:load", function () {
                             let process_words = ['アイデア出し：'];
                             $('#time' + 0).text(process_words[0] + process_times[0]['time'] + '分');
                         }
+                    } else if (query['mode'] === 'settime') {
+                        console.log(idea_log)
+                        let row_target_times = query['settime']['target_times'];
+                        let target_times = []
+                        for (let i in row_target_times) {
+                            target_times.push(new Date(row_target_times[i]));
+                        }
+                        startTimer(target_times)
                     }
                 },
                 editing: function (content) {
@@ -290,6 +302,48 @@ $(document).on("turbolinks:load", function () {
     } else {
         if (consumer.task) {
             consumer.task.unsubscribe()
+        }
+    }
+
+    function startTimer(target_times) {
+        target_times.sort();
+        targetTimerInterval = setInterval(showTimer, 1000, target_times)
+    }
+
+    function showTimer(target_times = []) {
+        //ひとつ目がない
+        if (target_times.length === 0) {
+            clearInterval(targetTimerInterval);
+            return
+        }
+        let targetDate = new Date(target_times[0]);
+        targetDate.setHours(targetDate.getHours() + 9);
+        let nowDate = new Date();
+        let showNowDate = nowDate.getHours() + ':'
+            + nowDate.getMinutes() + ':'
+            + nowDate.getSeconds();
+        let diffTime = targetDate - nowDate;
+        //あるので表示
+        if (diffTime > 0) {
+            let dMin = diffTime / (1000 * 60);   // 分
+            diffTime = diffTime % (1000 * 60);
+            let dSec = diffTime / 1000;   // 秒
+            let msg = Math.floor(dMin) + "分"
+                + Math.floor(dSec) + "秒";
+            $('#time_title').text('残り時間');
+            $('#remaining').text(msg);
+        } else if (isUnlimitedMode) {
+            $('#time_title').text('現在時刻');
+            $('#remaining').text(showNowDate);
+        } else {
+            clearInterval(targetTimerInterval);
+            target_times.shift()
+            targetTimerInterval = setInterval(showTimer, 1000, target_times)
+            if (target_times.length === 0) {
+                $('#time_title').text('残り時間');
+                $('#remaining').text('終了');
+            }
+
         }
     }
 });

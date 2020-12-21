@@ -171,24 +171,52 @@ class IdeaChannel < ApplicationCable::Channel
   end
 
   def subscribed_target_time
-
+    idea_category_id = Idea.find(params[:idea]).idea_category_id
     res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 4")
 
     IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'start', 'option': 'sample_option'}}
-    # NOTE: プロセス1,2,3における時間を設定する
-    process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
-    process2 = {'id' => res[1]['id'], 'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
-    process3 = {'id' => res[2]['id'], 'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
+    if (idea_category_id === 2)
+      # NOTE: プロセス1,2,3における時間を設定する
+      process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
+      process2 = {'id' => res[1]['id'], 'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
+      process3 = {'id' => res[2]['id'], 'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
 
-    ##本番環境では分を足す　*60
-    process1_min = process1['time']
-    process2_min = process2['time']
-    process3_min = process3['time']
-    process_conversion = Time.parse(res[0]['created_at'])
-    target_time1 = process_conversion + process1_min
-    target_time2 = process_conversion + process1_min + process2_min
-    target_time3 = process_conversion + process1_min + process2_min + process3_min
-    return [target_time1, target_time2, target_time3]
+      ##本番環境では分を足す　*60
+      process1_min = process1['time']
+      process2_min = process2['time']
+      process3_min = process3['time']
+      process_conversion = Time.parse(res[0]['created_at'])
+      target_time1 = process_conversion + process1_min
+      target_time2 = process_conversion + process1_min + process2_min
+      target_time3 = process_conversion + process1_min + process2_min + process3_min
+      return [target_time1, target_time2, target_time3]
+    end
+
+    if (idea_category_id === 3)
+      # NOTE: プロセス1における時間を設定する
+      process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
+
+      ##本番環境では分を足す　*60
+      process1_min = process1['time']
+      process_conversion = Time.parse(res[0]['created_at'])
+      target_time1 = process_conversion + process1_min
+      return [target_time1]
+    end
+
+    # NOTE: プロセス1,2,3における時間を設定する
+    # process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
+    # process2 = {'id' => res[1]['id'], 'time' => JSON.parse(res[1]['query'])['system']['option'].to_i}
+    # process3 = {'id' => res[2]['id'], 'time' => JSON.parse(res[2]['query'])['system']['option'].to_i}
+    #
+    # ##本番環境では分を足す　*60
+    # process1_min = process1['time']
+    # process2_min = process2['time']
+    # process3_min = process3['time']
+    # process_conversion = Time.parse(res[0]['created_at'])
+    # target_time1 = process_conversion + process1_min
+    # target_time2 = process_conversion + process1_min + process2_min
+    # target_time3 = process_conversion + process1_min + process2_min + process3_min
+    # return [target_time1, target_time2, target_time3]
   end
 
 end
