@@ -127,7 +127,7 @@ $(document).on("turbolinks:load", function () {
                         let process_times = query['system']['process_times'];
                         let process_words = ['アイデア出し：', '意見だし　　：', 'グルーピング：'];
                         for (let i = 0; i < 3; i++) {
-                            $('#time' + i).text(process_words[i] + process_times[i]['time'] + '分');
+                            $('#time' + i).text(process_words[i] + Math.floor(process_times[i]['time']/60) + '分');
                         }
                         let process1_time = process_times[0]['time'];
                         isUnlimitedMode = process1_time === 0;

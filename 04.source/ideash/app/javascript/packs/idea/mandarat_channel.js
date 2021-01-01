@@ -111,7 +111,7 @@ $(document).on("turbolinks:load", function () {
                         } else if (query['system']['operation'] === 'get_process_time') {
                             let process_times = query['system']['process_times'];
                             let process_words = ['アイデア出し：'];
-                            $('#time' + 0).text(process_words[0] + process_times[0]['time'] + '分');
+                            $('#time0').text(process_words[0] + Math.floor(process_times[0]['time']/60) + '分');
                         }
                     } else if (query['mode'] === 'settime') {
                         console.log(idea_log)
