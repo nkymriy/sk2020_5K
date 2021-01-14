@@ -129,7 +129,7 @@ class IdeaChannel < ApplicationCable::Channel
 
   def group_add()
     res = ActiveRecord::Base.connection.execute("select count(*) from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'group' ")
-    group_id = res[0]['count(*)'] + 1
+    group_id = res[0]['count(*)']
     group_name = 'グループ' + res[0]['count(*)'].to_s
     IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'group', 'group': {'group_id': group_id, 'name': group_name}}
   end
@@ -174,7 +174,6 @@ class IdeaChannel < ApplicationCable::Channel
     idea_category_id = Idea.find(params[:idea]).idea_category_id
     res = ActiveRecord::Base.connection.execute("select * from idea_logs where idea_id = '#{params[:idea]}' and JSON_EXTRACT(query, '$.mode') = 'system' limit 4")
 
-    IdeaLog.create! idea_id: params[:idea], query: {'user_id': current_user.id, 'mode': 'system', 'system': {'operation': 'start', 'option': 'sample_option'}}
     if (idea_category_id === 2)
       # NOTE: プロセス1,2,3における時間を設定する
       process1 = {'id' => res[0]['id'], 'time' => JSON.parse(res[0]['query'])['system']['option'].to_i}
