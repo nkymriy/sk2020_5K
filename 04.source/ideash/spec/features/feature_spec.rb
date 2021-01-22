@@ -15,8 +15,6 @@ RSpec.describe "Feature", type: :feature do
     end
 
     #ここから/account/signin
-    #遷移に成功したかの検証(/account/signin)
-    expect(page).to have_content 'Sign-In to your account'
     expect(current_path).to eq '/account/signin'
     #loginフォームにemailとpasswordを入力する
     fill_in 'feature-test-email',with: 'develop1@example.com'
@@ -28,17 +26,30 @@ RSpec.describe "Feature", type: :feature do
     expect(current_path).to eq '/idea/home'
     click_link '新規作成'
 
+    #ここからidea/category
+    expect(current_path).to eq '/idea/category'
+    click_link 'Memo'
+
+    #ここからidea/memo/new
+    expect(current_path).to eq '/idea/memo/new'
+    fill_in 'メモに名前をつけてください',with: 'feature-test'
+    fill_in 'メモを書きましょう',with: 'feature-memo'
+    click_on '保存'
+    click_link 'feature-test'
+
+    #ここからidea/memo/edit/:id
+    expect(page).to have_field 'タイトル',with:'feature-test'
+    expect(page).to have_field '内容',with:'feature-memo'
+    click_link '履歴'
+
+    #ここからidea/history
+    expect(current_path).to eq '/idea/history'
+    click_link '新規作成'
+
     #ここから/idea/category
     #遷移に成功したか検証(/idea/category)
     expect(current_path).to eq '/idea/category'
-    click_link 'メモ'
-    expect(current_path).to eq '/idea/memo/new'
-    #headerのIdeashを押しidea/homeに戻る
-    click_link 'Ideash'
-
-    #ここから/idea/home
-    expect(current_path).to eq '/idea/home'
-    click_link 'ブレインストーミング(β)'
+    click_link 'Brainstorming'
 
     #ここからidea/brainstorming/new
     expect(current_path).to eq '/idea/brainstorming/new'
@@ -48,74 +59,33 @@ RSpec.describe "Feature", type: :feature do
     expect(page).to have_selector 'h3', text: 'テーマ: feature-test'
     fill_in '思いついたことを書いていきましょう', with: 'feature-bra'
     find('#feature-test-brainstorming').native.send_keys(:return)
-    expect(page).to have_selector 'div.content',text: 'feature-bra'
-    click_link 'Ideash'
+    click_link '新規作成'
 
-    #ここからidea/home
-    expect(current_path).to eq '/idea/home'
-    click_link 'メモ'
+    #ここからidea/category
+    expect(current_path).to eq '/idea/category'
+    click_link 'マンダラート'
 
-    #ここからidea/memo/new
-    expect(current_path).to eq '/idea/memo/new'
-    fill_in 'メモに名前をつけてください',with: 'feature-test'
-    fill_in 'メモを書きましょう',with: 'feature-memo'
-    click_on '保存'
-    expect(page).to have_content 'メモを保存しました。'
-    click_link 'feature-test'
+    #ここからマンダラーと
+    expect(current_path).to eq '/idea/mandarat/new'
+    fill_in 'theme',with: 'feature-test'
+    click_on 'はじめる'
+    click_link '単語スロット'
 
-    #ここからidea/memo/edit/:id
-    expect(page).to have_field 'タイトル',with:'feature-test'
-    expect(page).to have_field '内容',with:'feature-memo'
-    click_link 'Ideash'
+    #ここからidea/word_slot/edit
+    expect(current_path).to eq '/idea/word_slot/edit'
+    expect(page).to have_content '回す'
+    click_link '単語ガチャ'
 
-    #ここからidea/home
-    expect(current_path).to eq '/idea/home'
-    click_link '履歴'
-
-    #ここからidea/history
-    expect(current_path).to eq '/idea/history'
-    within all('tr.feature-test-history').first do
-      click_link 'メモ'
-    end
-
-    #ここからidea/memo/edit/:id
-    expect(page).to have_field 'タイトル',with:'feature-test'
-    expect(page).to have_field '内容',with:'feature-memo'
-    fill_in 'メモに名前をつけてください',with: 'feature-tes'
-    fill_in 'メモを書きましょう',with: 'feature-mem'
-    click_on '更新'
-    #idea/memo/new
-    expect(page).to have_content 'メモを更新しました'
-    click_link 'feature-tes'
-    #idea/memo/edit/:id
-    expect(page).to have_field 'タイトル',with:'feature-tes'
-    expect(page).to have_field '内容',with:'feature-mem'
-    click_link '履歴'
-
-    #ここから/idea/history
-    expect(current_path).to eq '/idea/history'
-    click_link 'ブレインストーミング'
-
-    #ここからidea/brainstorming/edit/:id
-    expect(page).to have_selector 'h3', text: 'テーマ: feature-test'
-    expect(page).to have_selector 'div.content',text: 'feature-bra'
-    click_link 'Ideash'
-
-    #ここからidea/home
-    expect(current_path).to eq '/idea/home'
+    #ここからidea/word_gacha/edit
+    expect(current_path).to eq '/idea/word_gacha/edit'
+    expect(page).to have_content '回す'
     click_link 'アカウント'
 
     #ここからidea/account
-    expect(current_path).to eq '/idea/account'
-    tds = page.all('td')
-    has_field?(tds[0])
-    has_field?(tds[1])
-    has_field?(tds[2])
-    click_link 'Ideash'
-
-    #ここからidea/home
-    expect(current_path).to eq '/idea/home'
-    click_link 'サインアウト'
+    expect(current_path).to eq '/account/edit'
+    fill_in 'account_input',with: 'test_name'
+    click_on 'Update'
+    click_link 'SignOut'
 
     #ここからtop/index
     expect(current_path).to eq '/'
@@ -137,61 +107,5 @@ RSpec.describe "Feature", type: :feature do
     fill_in 'feature-test-password',with: 'password'
     click_on 'Sign In'
 
-    #ここからidea/home
-    expect(current_path).to eq '/idea/home'
-    click_link 'Memo'
-
-    #ここからidea/memo/new
-    expect(current_path).to eq '/idea/memo/new'
-    click_link 'Ideash'
-
-    #ここからidea/home
-    expect(current_path).to eq '/idea/home'
-    click_link 'Brainstorming'
-
-    #ここからidea/brainstorming/new
-    expect(current_path).to eq '/idea/brainstorming/new'
-    click_link 'Ideash'
-
-    #ここからidea/home
-    expect(current_path).to eq '/idea/home'
-    within('div.creat_new_segment') do
-      click_link 'more'
-    end
-
-    #ここからidea/category
-    expect(current_path).to eq '/idea/category'
-    click_link 'Memo'
-
-    #ここからidea/memo/new
-    expect(current_path).to eq '/idea/memo/new'
-    click_link 'Ideash'
-
-    #ここからidea/home
-    expect(current_path).to eq '/idea/home'
-    within('div.creat_new_segment') do
-      click_link 'more'
-    end
-
-    #ここからidea/category
-    expect(current_path).to eq '/idea/category'
-    click_link 'Brainstorming'
-
-    #ここからidea/brainstorming/new
-    expect(current_path).to eq '/idea/brainstorming/new'
-    click_link 'Ideash'
-
-    #ここからidea/home
-    expect(current_path).to eq '/idea/home'
-    within('div.recent_creation_segment') do
-      click_link 'more'
-    end
-
-    #ここからidea/history
-    expect(current_path).to eq '/idea/history'
-    click_link 'Ideash'
-
-    #ここからidea/home
-    expect(current_path).to eq '/idea/home'
   end
 end
