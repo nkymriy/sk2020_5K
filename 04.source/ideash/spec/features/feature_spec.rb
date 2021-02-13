@@ -65,7 +65,7 @@ RSpec.describe "Feature", type: :feature do
     expect(current_path).to eq '/idea/category'
     click_link 'マンダラート'
 
-    #ここからマンダラーと
+    #ここからidea/mandarat/new
     expect(current_path).to eq '/idea/mandarat/new'
     fill_in 'theme',with: 'feature-test'
     click_on 'はじめる'
